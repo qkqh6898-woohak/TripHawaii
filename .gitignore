@@ -1,0 +1,19 @@
+# ⚠️ 개인정보 원본 — 절대 커밋 금지 (예약번호·연락처·바우처)
+private/
+*.secret.json
+trip-secret*.json
+vouchers/
+
+# 로컬 도구·임시 파일
+node_modules/
+.venv/
+venv/
+__pycache__/
+*.pyc
+.DS_Store
+Thumbs.db
+*.log
+test-results/
+playwright-report/
+.env
+.env.*
