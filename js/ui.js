@@ -105,7 +105,7 @@ export async function openItemSheet(itemId) {
       ${p ? placeBlockHtml(p) : ''}
       ${item.booking ? html`
         <h3 class="sheet-sub">예약</h3>
-        ${b ? wallet.bookingCardHtml(b, { compact: true }) : html`
+        ${b ? wallet.bookingCardHtml(b, { compact: true, anchor: false }) : html`
           <a class="btn btn-block" href="#/wallet?focus=${item.booking}">🔐 예약 지갑에서 보기</a>
           <p class="muted small">${wallet.status() === 'none' ? '예약 정보가 아직 등록되지 않았어요.' : '예약번호·연락처는 예약 지갑을 열면 보여요.'}</p>`}` : ''}
       <h3 class="sheet-sub">내 메모</h3>

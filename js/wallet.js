@@ -175,11 +175,12 @@ function contactsHtml(b) {
   })}</div>`;
 }
 
-export function bookingCardHtml(b, { compact = false } = {}) {
+// anchor=false: 같은 예약을 한 화면에 두 번 그릴 때(오늘 쓰는 예약) id 가 겹치지 않게 한다
+export function bookingCardHtml(b, { compact = false, anchor = true } = {}) {
   const missing = !(b.numbers || []).length;
   const vouchers = (b.vouchers || []).filter((v) => voucher(v));
   return html`
-    <article class="card wallet-card ${missing ? 'is-missing' : ''}" id="booking-${b.id}" data-booking="${b.id}">
+    <article class="card wallet-card ${missing ? 'is-missing' : ''}" ${anchor ? html`id="booking-${b.id}"` : ''} data-booking="${b.id}">
       <header class="wallet-head">
         <span class="wallet-icon" aria-hidden="true">${TYPE_ICON[b.type] || '📌'}</span>
         <div>
@@ -260,7 +261,7 @@ export async function render(root, ctx) {
       ${types.map((t) => html`<a class="chip ${filter === t ? 'is-on' : ''}" href="#/wallet?type=${t}">${TYPE_LABEL[t]}</a>`)}
     </div>
     ${missing ? html`<p class="muted small">예약번호가 아직 없는 예약 ${missing}건은 흐리게 표시돼요.</p>` : ''}
-    ${todayList.length ? html`<h2 class="section-title">오늘 쓰는 예약</h2>${todayList.map((b) => bookingCardHtml(b))}<h2 class="section-title">전체 예약</h2>` : ''}
+    ${todayList.length ? html`<h2 class="section-title">오늘 쓰는 예약</h2>${todayList.map((b) => bookingCardHtml(b, { anchor: false }))}<h2 class="section-title">전체 예약</h2>` : ''}
     ${shown.map((b) => bookingCardHtml(b))}
     <div class="card">
       <button type="button" class="btn btn-block" data-action="lock">지금 잠그기</button>
