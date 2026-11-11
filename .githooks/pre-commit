@@ -1,0 +1,12 @@
+#!/bin/sh
+# 커밋 전 검사: 개인정보 → 데이터 검증 → 오프라인 캐시 목록
+# 설치: git config core.hooksPath .githooks
+set -e
+node tools/scan-secrets.mjs --staged
+node tools/validate.mjs --quiet
+if [ -f tools/build-precache.mjs ] && [ -f sw.js ]; then
+  node tools/build-precache.mjs --check || {
+    echo "sw.js 의 캐시 목록이 오래됐습니다 → node tools/build-precache.mjs 실행 후 sw.js 를 함께 커밋하세요"
+    exit 1
+  }
+fi

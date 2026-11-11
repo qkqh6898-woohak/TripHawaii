@@ -1,0 +1,276 @@
+{
+  "schema": 1,
+  "trip": {
+    "title": "우학 ♥ 성희 하와이 신혼여행",
+    "start": "2026-11-15",
+    "end": "2026-11-27",
+    "tz": "Pacific/Honolulu",
+    "home_tz": "Asia/Seoul",
+    "travelers": [
+      { "id": "woohak", "name": "우학" },
+      { "id": "seonghee", "name": "성희" }
+    ]
+  },
+  "islands": [
+    { "id": "oahu", "name": "오아후", "dates": "11/15–19 · 11/25–27", "lead": "seonghee" },
+    { "id": "bigisland", "name": "빅아일랜드", "dates": "11/19–25", "lead": "woohak" }
+  ],
+  "weather_zones": [
+    { "id": "waikiki", "name": "와이키키", "lat": 21.28, "lng": -157.83 },
+    { "id": "oahu-east", "name": "오아후 동부 (쿠알로아)", "lat": 21.52, "lng": -157.84 },
+    { "id": "kona", "name": "코나", "lat": 19.64, "lng": -155.99 },
+    { "id": "hapuna", "name": "하푸나 (코할라 해안)", "lat": 19.99, "lng": -155.82 },
+    { "id": "volcano", "name": "화산국립공원", "lat": 19.43, "lng": -155.26, "elevation": 1215 },
+    { "id": "maunakea", "name": "마우나케아 방문자센터", "lat": 19.76, "lng": -155.46, "elevation": 2804, "cold": true }
+  ],
+  "hotels": [
+    { "id": "hilton", "name": "힐튼가든인 와이키키비치", "place": "hilton", "checkin": "2026-11-15", "checkout": "2026-11-19", "checkin_time": "15:00", "nights": 4, "booking": "hilton" },
+    { "id": "konacoast", "name": "코나코스트 리조트", "place": "konacoast", "checkin": "2026-11-19", "checkout": "2026-11-23", "checkin_time": "16:00", "checkout_time": "10:00", "nights": 4, "booking": "konacoast", "note": "체크인·체크아웃 시간은 리조트 공식 안내 기준 — 예약 확인서로 다시 확인" },
+    { "id": "westin", "name": "웨스틴 하푸나비치 리조트", "place": "westin", "checkin": "2026-11-23", "checkout": "2026-11-25", "checkin_time": "16:00", "checkout_time": "12:00", "nights": 2, "booking": "westin", "note": "오션뷰 킹 · 발코니" },
+    { "id": "halepuna", "name": "할레푸나 와이키키", "place": "halepuna", "checkin": "2026-11-25", "checkout": "2026-11-27", "checkin_time": "15:00", "checkout_time": "11:00", "nights": 2, "booking": "halepuna", "note": "더블 2개 · 리조트피 없음" }
+  ],
+  "flights": [
+    { "id": "yp151", "no": "YP151", "airline": "에어프레미아", "from": "ICN", "to": "HNL", "dep": "2026-11-15T22:50+09:00", "arr": "2026-11-15T12:00-10:00", "arr_approx": true, "booking": "airpremia" },
+    { "id": "hnl-koa", "airline": "섬간 항공", "from": "HNL", "to": "KOA", "dep": "2026-11-19T10:58-10:00", "arr": "2026-11-19T11:45-10:00", "booking": "interisland-1119" },
+    { "id": "koa-hnl", "airline": "섬간 항공", "from": "KOA", "to": "HNL", "dep": "2026-11-25T16:15-10:00", "arr": "2026-11-25T17:05-10:00", "booking": "interisland-1125" },
+    { "id": "yp152", "no": "YP152", "airline": "에어프레미아", "from": "HNL", "to": "ICN", "dep": "2026-11-27T14:20-10:00", "arr": null, "arr_note": "11/28(토) 저녁 인천 도착 — 항공사 겨울 시간표로는 20:20, e-티켓으로 확인", "booking": "airpremia" }
+  ],
+  "places": [
+    { "id": "hnl", "name": "호놀룰루 공항 (HNL)", "name_en": "Daniel K. Inouye International Airport", "cat": "move", "island": "oahu", "lat": 21.3319, "lng": -157.9199, "addr": "300 Rodgers Blvd, Honolulu, HI 96819", "weather_zone": "waikiki" },
+    { "id": "hilton", "name": "힐튼가든인 와이키키비치", "name_en": "Hilton Garden Inn Waikiki Beach", "cat": "hotel", "island": "oahu", "lat": 21.2789, "lng": -157.8251, "addr": "2330 Kuhio Ave, Honolulu, HI 96815", "weather_zone": "waikiki" },
+    { "id": "rhc", "name": "로열하와이안센터", "name_en": "Royal Hawaiian Center", "cat": "shop", "island": "oahu", "lat": 21.2792, "lng": -157.8297, "addr": "2201 Kalakaua Ave, Honolulu, HI 96815", "weather_zone": "waikiki", "note": "스투시 · 애플스토어 · 지미추 · 하와이 빙수" },
+    { "id": "wolfgang", "name": "울프강 스테이크하우스", "name_en": "Wolfgang's Steakhouse Waikiki", "cat": "food", "island": "oahu", "lat": 21.2783, "lng": -157.8285, "addr": "2301 Kalakaua Ave, Honolulu, HI 96815", "weather_zone": "waikiki", "note": "로열하와이안센터 C동 3층" },
+    { "id": "waikiki-beach", "name": "와이키키 해변", "name_en": "Waikiki Beach", "cat": "rest", "island": "oahu", "lat": 21.2755, "lng": -157.8253, "addr": "Kalakaua Ave, Honolulu, HI 96815", "weather_zone": "waikiki" },
+    { "id": "marukame", "name": "마루카메 우동", "name_en": "Marugame Udon Waikiki", "cat": "food", "island": "oahu", "lat": 21.2797, "lng": -157.8259, "addr": "2310 Kuhio Ave, Honolulu, HI 96815", "weather_zone": "waikiki", "note": "숙소(힐튼가든인)에서 도보 3분" },
+    { "id": "alo-cafe", "name": "알로 카페 (아사이볼)", "name_en": "ALO Cafe Hawaii", "cat": "food", "island": "oahu", "lat": 21.2771, "lng": -157.8243, "addr": "159 Kaiulani Ave, Honolulu, HI 96815", "weather_zone": "waikiki", "note": "마루카메에서 도보 6분 · 출입문은 쿠히오 애비뉴 쪽" },
+    { "id": "sheraton", "name": "쉐라톤 와이키키 (픽업 장소)", "name_en": "Sheraton Waikiki", "cat": "move", "island": "oahu", "lat": 21.2769, "lng": -157.8297, "addr": "2255 Kalakaua Ave, Honolulu, HI 96815", "weather_zone": "waikiki", "note": "11/17 쿠알로아 투어 만나는 장소 — 호텔 앞" },
+    { "id": "kualoa", "name": "쿠알로아 랜치 티켓 오피스", "name_en": "Kualoa Ranch", "cat": "tour", "island": "oahu", "lat": 21.5208, "lng": -157.8372, "addr": "49-560 Kamehameha Hwy, Kaneohe, HI 96744", "weather_zone": "oahu-east" },
+    { "id": "hanauma", "name": "하나우마베이", "name_en": "Hanauma Bay Nature Preserve", "cat": "tour", "island": "oahu", "lat": 21.2739, "lng": -157.6943, "addr": "7455 Kalanianaole Hwy, Honolulu, HI 96825", "weather_zone": "waikiki", "note": "월·화요일 휴장" },
+    { "id": "halepuna", "name": "할레푸나 와이키키", "name_en": "Halepuna Waikiki by Halekulani", "cat": "hotel", "island": "oahu", "lat": 21.2782, "lng": -157.8307, "addr": "2233 Helumoa Rd, Honolulu, HI 96815", "weather_zone": "waikiki" },
+    { "id": "kcp", "name": "코나 커피 퍼베이어스 (퀸아망)", "name_en": "Kona Coffee Purveyors b. patisserie", "cat": "food", "island": "oahu", "lat": 21.2788, "lng": -157.8257, "addr": "2330 Kalakaua Ave #160, Honolulu, HI 96815", "weather_zone": "waikiki", "note": "인터내셔널 마켓 플레이스 1층 (쿠히오 애비뉴 쪽) · 07:00 오픈 · 문서의 '호놀룰루 퀸아망'을 이곳으로 추정" },
+    { "id": "diamond-head", "name": "다이아몬드 헤드", "name_en": "Diamond Head State Monument", "cat": "sight", "island": "oahu", "lat": 21.2635, "lng": -157.805, "addr": "Diamond Head Rd, Honolulu, HI 96815", "weather_zone": "waikiki", "note": "비거주자는 입장 사전 예약 필수 (gostateparks.hawaii.gov/diamondhead)" },
+
+    { "id": "koa", "name": "코나 공항 (KOA)", "name_en": "Ellison Onizuka Kona International Airport", "cat": "move", "island": "bigisland", "lat": 19.7362, "lng": -156.0411, "addr": "73-200 Kupipi St, Kailua-Kona, HI 96740", "weather_zone": "kona" },
+    { "id": "alamo-koa", "name": "알라모 렌터카 (코나 공항)", "name_en": "Alamo Rent A Car Kona Airport", "cat": "move", "island": "bigisland", "lat": 19.7347, "lng": -156.0362, "addr": "73-106 Aulepe St, Kailua-Kona, HI 96740", "weather_zone": "kona", "note": "터미널에서 걸어갈 수 없음 — 수하물 찾는 곳 건너편 중앙 정류장에서 알라모 무료 셔틀" },
+    { "id": "konacoast", "name": "코나코스트 리조트", "name_en": "Kona Coast Resort", "cat": "hotel", "island": "bigisland", "lat": 19.5704, "lng": -155.964, "addr": "78-6842 Alii Dr, Kailua-Kona, HI 96740", "weather_zone": "kona" },
+    { "id": "kona-town", "name": "코나 시내 (알리이 드라이브)", "name_en": "Kailua-Kona, Alii Drive", "cat": "sight", "island": "bigisland", "lat": 19.6394, "lng": -155.9969, "addr": "Alii Dr, Kailua-Kona, HI 96740", "weather_zone": "kona", "note": "마트·식당·산책" },
+    { "id": "punaluu", "name": "푸날루우 블랙샌드비치", "name_en": "Punaluu Black Sand Beach", "cat": "sight", "island": "bigisland", "lat": 19.1361, "lng": -155.5039, "addr": "Ninole Loop Rd, Naalehu, HI 96772", "weather_zone": "volcano", "note": "바다거북과 3m 거리 유지" },
+    { "id": "punaluu-bakeshop", "name": "푸날루우 베이크샵", "name_en": "Punaluu Bake Shop", "cat": "food", "island": "bigisland", "lat": 19.0613, "lng": -155.586, "addr": "95-5642 Mamalahoa Hwy, Naalehu, HI 96772", "weather_zone": "volcano", "note": "나알레후" },
+    { "id": "volcano", "name": "화산국립공원 방문자센터", "name_en": "Kilauea Visitor Center, Hawaii Volcanoes National Park", "cat": "sight", "island": "bigisland", "lat": 19.4295, "lng": -155.2571, "addr": "1 Crater Rim Dr, Hawaii National Park, HI 96718", "weather_zone": "volcano", "note": "방문자센터는 보수 공사로 휴관 중일 수 있음 — 그 경우 임시 웰컴센터(킬라우에아 밀리터리 캠프, 09:00–16:45) 이용" },
+    { "id": "kilauea-overlook", "name": "킬라우에아 분화구 전망대", "name_en": "Uekahuna Overlook, Kilauea", "cat": "sight", "island": "bigisland", "lat": 19.42, "lng": -155.2881, "addr": "Crater Rim Dr West, Hawaii National Park, HI 96718", "weather_zone": "volcano" },
+    { "id": "volcano-village", "name": "볼케이노 빌리지", "name_en": "Volcano Village", "cat": "food", "island": "bigisland", "lat": 19.4297, "lng": -155.2324, "addr": "Old Volcano Rd, Volcano, HI 96785", "weather_zone": "volcano" },
+    { "id": "coffee-farm", "name": "코나커피 농장 (후보: 그린웰 팜스)", "name_en": "Greenwell Farms", "cat": "sight", "island": "bigisland", "lat": 19.511, "lng": -155.9205, "addr": "81-6581 Mamalahoa Hwy, Kealakekua, HI 96750", "weather_zone": "kona", "note": "농장은 아직 정하지 않음 — 후보: 그린웰 팜스 (무료 투어 08:30부터 30분 간격, 마지막 14:00경)" },
+    { "id": "hapuna", "name": "하푸나 비치", "name_en": "Hapuna Beach State Recreation Area", "cat": "sight", "island": "bigisland", "lat": 19.9914, "lng": -155.825, "addr": "Old Puako Rd, Waimea, HI 96743", "weather_zone": "hapuna" },
+    { "id": "westin", "name": "웨스틴 하푸나비치 리조트", "name_en": "The Westin Hapuna Beach Resort", "cat": "hotel", "island": "bigisland", "lat": 19.9944, "lng": -155.8244, "addr": "62-100 Kaunaoa Dr, Kohala Coast, HI 96743", "weather_zone": "hapuna" },
+    { "id": "maunakea-vis", "name": "마우나케아 방문자센터", "name_en": "Maunakea Visitor Information Station", "cat": "sight", "island": "bigisland", "lat": 19.7592, "lng": -155.4561, "addr": "Mauna Kea Access Rd, Hilo, HI 96720", "weather_zone": "maunakea", "note": "해발 2,804m — 패딩 필수, 30분 이상 고산 적응 · 09:00–21:00 · 이 위로는 사륜구동만" }
+  ],
+  "days": [
+    {
+      "date": "2026-11-15", "island": "oahu", "title": "하와이 도착",
+      "summary": "인천 22:50(한국) 출발 → 호놀룰루 정오 도착 → 체크인 → 로열하와이안센터 → 18:30 울프강",
+      "hotel": "hilton", "map": "maps/day-1115.png",
+      "photos": [
+        { "src": "photos/royal-hawaiian-center.jpg", "alt": "로열하와이안센터" },
+        { "src": "photos/wolfgang.jpg", "alt": "울프강 스테이크" },
+        { "src": "photos/waikiki-sunset.jpg", "alt": "와이키키 노을 산책" },
+        { "src": "photos/musubi.jpg", "alt": "무스비" }
+      ],
+      "weather_zones": ["waikiki"],
+      "items": [
+        { "id": "1115-1", "start": "00:50", "clock": "home", "title": "인천공항 도착 (출발 3시간 전)", "cat": "move", "must": true, "note": "한국 시간 19:50까지 공항 도착" },
+        { "id": "1115-2", "start": "03:50", "end": "12:00", "clock": "home", "title": "인천 출발 YP151 → 호놀룰루", "cat": "move", "booking": "airpremia", "flight": "yp151", "confirmed": true, "must": true, "note": "한국 시간 22:50 출발 · 비행 약 8시간 · 도착은 하와이 같은 날 정오 무렵" },
+        { "id": "1115-3", "start": "12:00", "approx": true, "place": "hnl", "title": "호놀룰루 도착 → 입국 심사·짐 찾기", "cat": "move" },
+        { "id": "1115-4", "start": "13:30", "place": "hilton", "title": "숙소로 이동 (택시·우버 약 25분)", "cat": "move" },
+        { "id": "1115-5", "start": "15:00", "place": "hilton", "title": "힐튼가든인 와이키키비치 체크인", "cat": "hotel", "booking": "hilton" },
+        { "id": "1115-6", "start": "15:30", "place": "rhc", "title": "로열하와이안센터 쇼핑", "cat": "shop", "note": "스투시 / 애플스토어 / 지미추" },
+        { "id": "1115-7", "start": "16:30", "place": "rhc", "title": "하와이 빙수", "cat": "food", "note": "로열하와이안센터" },
+        { "id": "1115-8", "start": "18:30", "place": "wolfgang", "title": "울프강 스테이크", "cat": "food", "booking": "wolfgang", "confirmed": true, "must": true, "note": "로열하와이안센터 3층 · 조금 단정한 옷" },
+        { "id": "1115-9", "start": "20:00", "place": "waikiki-beach", "title": "와이키키 해변 산책", "cat": "rest" },
+        { "id": "1115-10", "start": "21:00", "title": "다음날 아침용 무스비 사기", "cat": "food" }
+      ],
+      "packing": ["여권 · ESTA 승인 화면", "호텔 예약 확인서", "저녁 울프강: 조금 단정한 옷"]
+    },
+    {
+      "date": "2026-11-16", "island": "oahu", "title": "거북이 스노클링",
+      "summary": "07:00 픽업 대기 → 07:30–11:30 줌줌 거북이 투어 → 마루카메 우동 → 아사이볼 → 휴식",
+      "hotel": "hilton", "map": "maps/day-1116.png",
+      "weather_zones": ["waikiki"],
+      "items": [
+        { "id": "1116-1", "start": "07:00", "place": "hilton", "title": "숙소 앞 픽업 대기", "cat": "move", "booking": "zoomzoom", "must": true, "note": "픽업 장소 확인 필요 — 확정되면 이 일정을 고쳐 주세요" },
+        { "id": "1116-2", "start": "07:30", "end": "11:30", "title": "줌줌 거북이 투어", "cat": "tour", "booking": "zoomzoom", "confirmed": true },
+        { "id": "1116-3", "start": "12:00", "place": "marukame", "title": "점심: 마루카메 우동", "cat": "food", "note": "숙소에서 도보 3분" },
+        { "id": "1116-4", "start": "13:00", "place": "alo-cafe", "title": "후식: Alo Cafe 아사이볼", "cat": "food", "note": "마루카메에서 도보 6분" },
+        { "id": "1116-5", "start": "14:00", "end": "18:00", "place": "hilton", "title": "숙소 휴식", "cat": "rest" },
+        { "id": "1116-6", "start": "18:30", "title": "저녁: 근처 포케", "cat": "food" }
+      ],
+      "packing": ["수영복 (안에 입고 출발) · 래시가드", "비치타월 · 갈아입을 옷", "방수팩 / 아쿠아슈즈", "멀미약 (배 타면 출발 30분 전 복용)"]
+    },
+    {
+      "date": "2026-11-17", "island": "oahu", "title": "쿠알로아 UTV",
+      "summary": "09:45 쉐라톤 앞 → 10:00 픽업 → 11:55 체크인 → 12:40–15:40 UTV → 16:30 출발",
+      "hotel": "hilton", "map": "maps/day-1117.png",
+      "photos": [
+        { "src": "photos/kualoa-valley.jpg", "alt": "쿠알로아 랜치 계곡" },
+        { "src": "photos/kualoa-beach.jpg", "alt": "쿠알로아 해변과 산" }
+      ],
+      "weather_zones": ["oahu-east", "waikiki"],
+      "items": [
+        { "id": "1117-1", "start": "09:45", "place": "sheraton", "title": "만나는 장소 도착: 쉐라톤 와이키키 호텔 앞", "cat": "move", "booking": "kualoa" },
+        { "id": "1117-2", "start": "10:00", "approx": true, "place": "sheraton", "title": "픽업 출발", "cat": "move", "booking": "kualoa", "confirmed": true, "must": true },
+        { "id": "1117-3", "start": "11:55", "deadline": true, "place": "kualoa", "title": "쿠알로아 랜치 티켓 오피스 체크인", "cat": "tour", "booking": "kualoa", "must": true, "note": "여권 + 확정 이메일 · 투어 45분 전까지 체크인 (늦으면 참여 불가)" },
+        { "id": "1117-4", "start": "12:40", "end": "15:40", "place": "kualoa", "title": "디럭스 UTV 투어 3시간", "cat": "tour", "booking": "kualoa", "note": "카아아와 계곡 · 영화 촬영지" },
+        { "id": "1117-5", "start": "16:30", "place": "kualoa", "title": "쿠알로아 출발", "cat": "move" },
+        { "id": "1117-6", "start": "17:30", "approx": true, "title": "와이키키 도착", "cat": "move" },
+        { "id": "1117-7", "start": "19:00", "title": "저녁", "cat": "food" },
+        { "id": "1117-8", "start": "21:00", "title": "하나우마베이 가이드 카톡 확인", "cat": "tour", "booking": "hanauma", "must": true, "note": "내일 미팅 시간·장소 확인" }
+      ],
+      "packing": ["여권 실물 필수 + 확정 이메일 (체크인 시 확인)", "더러워져도 되는 옷 · 운동화 (흙먼지 많이 남)", "마스크 또는 버프, 물티슈", "머리끈"]
+    },
+    {
+      "date": "2026-11-18", "island": "oahu", "title": "하나우마베이 스노클링",
+      "summary": "06:00 가이드 미팅 → 07:10–11:00 스노클링 → 텐트 휴식 → 13:00 복귀 → 짐 싸기",
+      "hotel": "hilton", "map": "maps/day-1118.png",
+      "weather_zones": ["waikiki"],
+      "items": [
+        { "id": "1118-1", "start": "06:00", "end": "06:30", "title": "가이드 미팅: 와이키키 호텔 앞", "cat": "move", "booking": "hanauma", "must": true, "note": "정확한 시간·장소는 전날 카톡으로 안내" },
+        { "id": "1118-2", "start": "06:30", "end": "07:10", "place": "hanauma", "title": "하나우마베이로 이동 (약 40분)", "cat": "move" },
+        { "id": "1118-3", "start": "07:10", "end": "11:00", "place": "hanauma", "title": "스노클링", "cat": "tour", "booking": "hanauma", "confirmed": true, "note": "입장료·장비 포함" },
+        { "id": "1118-4", "start": "11:00", "end": "12:00", "place": "hanauma", "title": "비치 텐트 휴식 · 테디스버거", "cat": "food" },
+        { "id": "1118-5", "start": "13:00", "approx": true, "title": "와이키키 복귀 (총 6시간)", "cat": "move" },
+        { "id": "1118-6", "start": "14:00", "end": "18:00", "place": "hilton", "title": "숙소 휴식", "cat": "rest" },
+        { "id": "1118-7", "start": "18:30", "title": "저녁", "cat": "food" },
+        { "id": "1118-8", "start": "21:00", "title": "짐 싸기 (내일 빅아일랜드)", "cat": "rest" }
+      ],
+      "packing": ["전날 저녁 카톡 미팅시간 확인", "수영복 · 래시가드 · 비치타월", "방수팩 · 물통 (장비는 제공)", "아침 일찍 출발이라 간단한 간식"]
+    },
+    {
+      "date": "2026-11-19", "island": "oahu", "to_island": "bigisland", "title": "빅아일랜드로 이동",
+      "summary": "08:30 체크아웃 → 10:58 호놀룰루 → 11:45 코나 → 렌터카 픽업 → 코나코스트 체크인 → 장보기",
+      "hotel": "konacoast", "map": "maps/day-1119.png",
+      "weather_zones": ["kona", "waikiki"],
+      "items": [
+        { "id": "1119-1", "start": "08:30", "place": "hilton", "title": "힐튼가든인 체크아웃", "cat": "hotel", "booking": "hilton" },
+        { "id": "1119-2", "start": "09:15", "place": "hnl", "title": "호놀룰루 공항 도착 (국내선)", "cat": "move", "must": true, "note": "출발 1시간 반 전 · 섬간 항공은 수하물 유료" },
+        { "id": "1119-3", "start": "10:58", "end": "11:45", "place": "koa", "title": "호놀룰루 → 코나 항공편", "cat": "move", "booking": "interisland-1119", "flight": "hnl-koa", "must": true },
+        { "id": "1119-4", "start": "12:30", "place": "alamo-koa", "title": "알라모 렌터카 픽업", "cat": "move", "booking": "alamo", "confirmed": true, "note": "쉐보레 · 픽업 가능 시간 12~16시 · 국제운전면허증 + 한국 면허증 + 신용카드 · 터미널 건너편에서 알라모 무료 셔틀 탑승" },
+        { "id": "1119-5", "start": "15:00", "approx": true, "place": "konacoast", "title": "코나코스트 리조트 체크인", "cat": "hotel", "booking": "konacoast", "note": "체크인 시간 확인 필요 — 리조트 공식 안내는 16:00부터" },
+        { "id": "1119-6", "start": "16:30", "place": "kona-town", "title": "코나 시내 마트에서 물·장보기", "cat": "shop" },
+        { "id": "1119-7", "start": "18:30", "title": "저녁", "cat": "food" }
+      ],
+      "packing": ["항공권 · 여권", "국제운전면허증 + 한국 면허증 + 신용카드 (렌터카)", "수하물 무게 확인 (섬간 항공 유료 수하물)"]
+    },
+    {
+      "date": "2026-11-20", "island": "bigisland", "title": "블랙샌드비치 · 화산국립공원",
+      "summary": "07:00 출발 → 09:30 푸날루우 블랙샌드비치 → 베이크샵 점심 → 13:00–17:30 화산국립공원 → 21:00 복귀",
+      "hotel": "konacoast", "map": "maps/day-1120.png",
+      "weather_zones": ["volcano", "kona"],
+      "items": [
+        { "id": "1120-1", "start": "07:00", "place": "konacoast", "title": "코나코스트 출발", "cat": "move", "note": "남쪽 해안도로, 약 2시간 반" },
+        { "id": "1120-2", "start": "09:30", "end": "10:30", "place": "punaluu", "title": "푸날루우 블랙샌드비치", "cat": "sight", "note": "바다거북과 3m 거리 유지" },
+        { "id": "1120-3", "start": "11:00", "place": "punaluu-bakeshop", "title": "점심: 푸날루우 베이크샵", "cat": "food", "note": "나알레후" },
+        { "id": "1120-4", "start": "13:00", "end": "17:30", "place": "volcano", "title": "화산국립공원", "cat": "sight", "note": "방문자센터 → 킬라우에아 분화구 전망대 · 입장료는 카드 결제 · 방문자센터가 공사 중이면 임시 웰컴센터에서 안내" },
+        { "id": "1120-5", "start": "18:00", "place": "volcano-village", "title": "볼케이노 빌리지 저녁", "cat": "food", "note": "용암 불빛이 보이면 야경" },
+        { "id": "1120-6", "start": "19:00", "end": "21:00", "approx": true, "place": "konacoast", "title": "코나 복귀", "cat": "move", "note": "19:00 출발 → 21:00경 도착 (밤길 운전 주의)" }
+      ],
+      "packing": ["운동화 (용암 지대는 바닥이 거칠어요)", "바람막이 · 우비 (화산 쪽은 서늘하고 비가 자주 와요)", "국립공원 입장료용 카드", "간식 · 물 넉넉히 (가는 길에 가게 적음)"]
+    },
+    {
+      "date": "2026-11-21", "island": "bigisland", "title": "커피 농장 · 하푸나 비치 · 마우나케아 별",
+      "summary": "09:00 코나커피 농장 → 11:00–14:00 하푸나 비치 → 휴식 → 16:00 마우나케아 출발 → 일몰·별 관측 → 22:00 복귀",
+      "hotel": "konacoast", "map": "maps/day-1121.png",
+      "weather_zones": ["hapuna", "maunakea", "kona"],
+      "items": [
+        { "id": "1121-1", "start": "09:00", "end": "10:00", "place": "coffee-farm", "title": "코나커피 농장 (무료 시음)", "cat": "sight", "note": "농장 미정 — 지도 핀은 후보(그린웰 팜스)" },
+        { "id": "1121-2", "start": "11:00", "end": "14:00", "place": "hapuna", "title": "하푸나 비치", "cat": "sight" },
+        { "id": "1121-3", "start": "14:30", "end": "16:00", "place": "konacoast", "title": "숙소 휴식 · 패딩·장갑 챙기기", "cat": "rest" },
+        { "id": "1121-4", "start": "16:00", "title": "마우나케아 출발", "cat": "move", "note": "코나에서 약 1시간 반" },
+        { "id": "1121-5", "start": "17:30", "place": "maunakea-vis", "title": "마우나케아 방문자센터 도착", "cat": "sight", "note": "해발 2,800m — 고산 적응" },
+        { "id": "1121-6", "start": "18:00", "end": "20:30", "place": "maunakea-vis", "title": "일몰 · 별 관측", "cat": "sight", "tentative": true, "note": "정상은 사륜구동만 가능 → 투어 권장 · 투어 이용 여부 결정 필요" },
+        { "id": "1121-7", "start": "22:00", "approx": true, "place": "konacoast", "title": "코나 복귀", "cat": "move" }
+      ],
+      "packing": ["낮: 수영복 · 비치타월", "밤: 패딩 · 긴바지 · 장갑 · 모자 (정상은 영하권)", "고산병 대비: 물, 간식 / 전날 스쿠버 다이빙 금지"]
+    },
+    {
+      "date": "2026-11-22", "island": "bigisland", "title": "휴식일 (일정 미정)",
+      "summary": "종일 휴식 · 저녁엔 코나 시내 알리이 드라이브 산책 (후보)",
+      "hotel": "konacoast", "map": "maps/day-1122.png",
+      "weather_zones": ["kona"],
+      "items": [
+        { "id": "1122-1", "allday": true, "title": "휴식일 (일정 미정)", "cat": "rest", "tentative": true },
+        { "id": "1122-2", "start": "18:00", "place": "kona-town", "title": "코나 시내 알리이 드라이브 산책 · 저녁", "cat": "rest", "tentative": true, "note": "후보" }
+      ],
+      "packing": []
+    },
+    {
+      "date": "2026-11-23", "island": "bigisland", "title": "웨스틴 하푸나비치로 이동",
+      "summary": "10:00 코나코스트 체크아웃 → 코나 시내 점심 → (헬기투어 후보) → 16:00 웨스틴 체크인 → 선셋",
+      "hotel": "westin", "map": "maps/day-1123.png",
+      "photos": [
+        { "src": "photos/westin-hapuna.jpg", "alt": "웨스틴 하푸나비치 리조트" }
+      ],
+      "weather_zones": ["hapuna", "kona"],
+      "items": [
+        { "id": "1123-1", "start": "10:00", "place": "konacoast", "title": "코나코스트 체크아웃", "cat": "hotel", "booking": "konacoast", "must": true },
+        { "id": "1123-2", "start": "12:00", "place": "kona-town", "title": "코나 시내 점심", "cat": "food" },
+        { "id": "1123-3", "start": "14:00", "title": "헬기투어 후보", "cat": "tour", "booking": "helicopter", "tentative": true, "note": "23일 또는 24일 중 택1 — 시간 미정" },
+        { "id": "1123-4", "start": "16:00", "place": "westin", "title": "웨스틴 하푸나비치 체크인", "cat": "hotel", "booking": "westin", "confirmed": true, "note": "오션뷰 킹 · 발코니" },
+        { "id": "1123-5", "start": "18:30", "place": "westin", "title": "리조트 저녁 · 선셋", "cat": "food" }
+      ],
+      "packing": ["헬기: 어두운 색 옷 (창문 반사 줄임) · 멀미약", "헬기 탑승 시 몸무게 측정 있음"]
+    },
+    {
+      "date": "2026-11-24", "island": "bigisland", "title": "리조트 휴양",
+      "summary": "(헬기투어 후보) → 11:00–17:00 하푸나 해변·수영장 휴양 → 저녁",
+      "hotel": "westin", "map": "maps/day-1124.png",
+      "weather_zones": ["hapuna"],
+      "items": [
+        { "id": "1124-1", "start": "09:00", "title": "헬기투어 (23일에 안 했다면)", "cat": "tour", "booking": "helicopter", "tentative": true, "note": "시간 미정" },
+        { "id": "1124-2", "start": "11:00", "end": "17:00", "place": "hapuna", "title": "하푸나 해변 · 수영장 휴양", "cat": "rest" },
+        { "id": "1124-3", "start": "18:30", "place": "westin", "title": "저녁", "cat": "food" }
+      ],
+      "packing": ["헬기: 어두운 색 옷 (창문 반사 줄임) · 멀미약", "헬기 탑승 시 몸무게 측정 있음"]
+    },
+    {
+      "date": "2026-11-25", "island": "bigisland", "to_island": "oahu", "title": "오아후 복귀",
+      "summary": "12:00 웨스틴 체크아웃 → 14:30 렌터카 반납 → 16:15 코나 → 17:05 호놀룰루 → 할레푸나 체크인",
+      "hotel": "halepuna", "map": "maps/day-1125.png",
+      "weather_zones": ["hapuna", "waikiki"],
+      "items": [
+        { "id": "1125-1", "start": "12:00", "deadline": true, "place": "westin", "title": "웨스틴 체크아웃", "cat": "hotel", "booking": "westin", "must": true },
+        { "id": "1125-2", "start": "12:30", "title": "점심", "cat": "food" },
+        { "id": "1125-3", "start": "14:30", "place": "alamo-koa", "title": "코나 공항 · 알라모 렌터카 반납", "cat": "move", "booking": "alamo", "must": true },
+        { "id": "1125-4", "start": "16:15", "end": "17:05", "place": "hnl", "title": "코나 → 호놀룰루 항공편", "cat": "move", "booking": "interisland-1125", "flight": "koa-hnl", "must": true },
+        { "id": "1125-5", "start": "18:00", "place": "halepuna", "title": "할레푸나 와이키키 체크인", "cat": "hotel", "booking": "halepuna", "confirmed": true, "note": "체크인은 15:00부터 가능" },
+        { "id": "1125-6", "start": "19:30", "place": "waikiki-beach", "title": "저녁 · 해변 산책", "cat": "food" }
+      ],
+      "packing": ["항공권 · 여권", "렌터카 반납 전 주유 (연료 조건 확인)", "수하물 무게 확인 (섬간 항공 유료 수하물)"]
+    },
+    {
+      "date": "2026-11-26", "island": "oahu", "title": "다이아몬드 헤드 · 마지막 쇼핑",
+      "summary": "07:00 퀸아망 → 08:00–10:00 다이아몬드 헤드 등산 → 자유·마지막 쇼핑 → 마지막 저녁 → 짐 싸기",
+      "hotel": "halepuna", "map": "maps/day-1126.png",
+      "weather_zones": ["waikiki"],
+      "items": [
+        { "id": "1126-1", "start": "07:00", "place": "kcp", "title": "호놀룰루 퀸아망 (맛집)", "cat": "food" },
+        { "id": "1126-2", "start": "08:00", "end": "10:00", "place": "diamond-head", "title": "다이아몬드 헤드 등산", "cat": "sight", "booking": "diamondhead", "must": true, "note": "입장 사전 예약 필수 · 왕복 약 1.5~2시간 · 그늘 거의 없음" },
+        { "id": "1126-3", "start": "12:00", "end": "18:00", "title": "자유 · 마지막 쇼핑", "cat": "shop" },
+        { "id": "1126-4", "start": "18:30", "title": "마지막 저녁", "cat": "food" },
+        { "id": "1126-5", "start": "21:00", "title": "짐 싸기", "cat": "rest" }
+      ],
+      "packing": ["다이아몬드 헤드 입장 예약 화면", "운동화 · 물 · 모자 (그늘 거의 없음)"]
+    },
+    {
+      "date": "2026-11-27", "island": "oahu", "title": "귀국",
+      "summary": "11:00 할레푸나 체크아웃 → 12:00 호놀룰루 공항 → 14:20 YP152 인천행",
+      "hotel": null, "map": "maps/day-1127.png",
+      "weather_zones": ["waikiki"],
+      "items": [
+        { "id": "1127-1", "start": "11:00", "deadline": true, "place": "halepuna", "title": "할레푸나 체크아웃", "cat": "hotel", "booking": "halepuna", "must": true },
+        { "id": "1127-2", "start": "11:30", "place": "hnl", "title": "공항 이동 (약 25분)", "cat": "move" },
+        { "id": "1127-3", "start": "12:00", "place": "hnl", "title": "호놀룰루 공항 도착", "cat": "move", "must": true, "note": "카운터는 출발 1시간 전 마감" },
+        { "id": "1127-4", "start": "14:20", "place": "hnl", "title": "YP152 인천행 출발", "cat": "move", "booking": "airpremia", "flight": "yp152", "confirmed": true, "must": true, "note": "인천 도착은 11/28(토) 저녁 (시간은 e-티켓으로 확인)" }
+      ],
+      "packing": ["여권 · 항공권, 면세 한도 확인", "주스 · 액체는 위탁 수하물에"]
+    }
+  ]
+}

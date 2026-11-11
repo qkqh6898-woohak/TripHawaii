@@ -1,0 +1,5 @@
+{
+  "comment": "scan-secrets.mjs 예외 목록 — allow: 공개해도 되는 값(정확히 일치), skipGenericIn: 일반 패턴 검사를 건너뛸 경로(알려진 개인정보 대조는 계속 함)",
+  "allow": ["+10000000000"],
+  "skipGenericIn": ["vendor/"]
+}

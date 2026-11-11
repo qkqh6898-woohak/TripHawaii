@@ -1,0 +1,94 @@
+{
+  "schema": 1,
+  "note": "{name} = 예약자 영문 이름(예약 지갑을 열면 자동으로 채워짐), {spouse} = wife/husband (설정의 '이 폰 주인'에 따라 바뀜)",
+  "situations": [
+    {
+      "id": "immigration", "title": "입국 심사", "icon": "🛂",
+      "tip": "질문에 짧고 분명하게 답하면 됩니다. 숙소 이름과 돌아가는 날짜를 바로 말할 수 있게 준비하세요.",
+      "phrases": [
+        { "id": "im1", "en": "We're here on our honeymoon.", "ko": "신혼여행 왔어요.", "they": "What's the purpose of your visit?", "they_ko": "방문 목적이 무엇인가요?" },
+        { "id": "im2", "en": "We'll be staying for twelve nights.", "ko": "12박 머물 거예요.", "they": "How long will you be staying?", "they_ko": "얼마나 머무르시나요?" },
+        { "id": "im3", "en": "We're staying at the Hilton Garden Inn in Waikiki, and then on the Big Island.", "ko": "와이키키 힐튼가든인에 묵고, 그다음엔 빅아일랜드로 가요.", "they": "Where will you be staying?", "they_ko": "어디에서 묵으시나요?" },
+        { "id": "im4", "en": "Yes, we're traveling together. We just got married.", "ko": "네, 일행이에요. 막 결혼했어요.", "they": "Are you two traveling together?", "they_ko": "두 분 일행이신가요?" },
+        { "id": "im5", "en": "We have some packaged snacks to declare. No meat and no fresh fruit.", "ko": "신고할 포장 과자가 있어요. 고기나 생과일은 없어요.", "they": "Are you bringing any food with you?", "they_ko": "음식을 가지고 오셨나요?" }
+      ]
+    },
+    {
+      "id": "rentalcar", "title": "렌터카", "icon": "🚗",
+      "tip": "코나 공항 알라모 · 쉐보레 · 11/19 픽업, 11/25 반납. 추가 보험·업그레이드 권유는 필요 없으면 정중히 거절하세요.",
+      "phrases": [
+        { "id": "rc1", "en": "Hi, I have a reservation under {name}.", "ko": "{name} 이름으로 예약했어요.", "they": "Can I see your driver's license and a credit card?", "they_ko": "운전면허증과 신용카드를 보여 주시겠어요?" },
+        { "id": "rc2", "en": "Here's my international driving permit and my Korean license.", "ko": "국제운전면허증과 한국 면허증이에요." },
+        { "id": "rc3", "en": "No, thank you. I'll stick with what I booked.", "ko": "괜찮아요. 예약한 대로 할게요.", "they": "Would you like to add extra coverage or upgrade your car?", "they_ko": "추가 보험이나 차량 업그레이드를 하시겠어요?" },
+        { "id": "rc4", "en": "Do I need to return it with a full tank?", "ko": "기름을 가득 채워서 반납해야 하나요?" },
+        { "id": "rc5", "en": "Where do I return the car at Kona airport?", "ko": "코나 공항에서 차는 어디에 반납하나요?" }
+      ]
+    },
+    {
+      "id": "hotel", "title": "호텔", "icon": "🏨",
+      "tip": "체크인 때 여권과 보증금용 신용카드를 요청합니다. 신혼여행이라고 말하면 작은 배려를 받을 때가 있어요.",
+      "phrases": [
+        { "id": "ht1", "en": "Hi, we'd like to check in. The reservation is under {name}.", "ko": "체크인할게요. {name} 이름으로 예약했어요.", "they": "May I have your passport and a credit card for incidentals?", "they_ko": "여권과 보증금용 신용카드를 주시겠어요?" },
+        { "id": "ht2", "en": "We're on our honeymoon. Is there any chance of a room with a nice view?", "ko": "신혼여행인데, 전망 좋은 방이 가능할까요?" },
+        { "id": "ht3", "en": "Could we leave our bags here until check-in?", "ko": "체크인 전까지 짐을 맡길 수 있을까요?" },
+        { "id": "ht4", "en": "Could we get two more towels, please?", "ko": "수건 두 장 더 주실 수 있나요?" },
+        { "id": "ht5", "en": "What time is check-out? Is a late check-out possible?", "ko": "체크아웃은 몇 시예요? 늦은 체크아웃이 가능할까요?" }
+      ]
+    },
+    {
+      "id": "restaurant", "title": "식당", "icon": "🍽",
+      "tip": "미국은 계산서에 팁을 직접 적습니다 (보통 18~22%). 이미 포함됐는지 꼭 확인하세요 — 경비 화면에 팁 계산기가 있어요.",
+      "phrases": [
+        { "id": "rs1", "en": "We have a reservation for two at six thirty, under {name}.", "ko": "6시 30분에 2명 예약했어요. {name} 이름이에요.", "they": "Do you have a reservation?", "they_ko": "예약하셨나요?" },
+        { "id": "rs2", "en": "What do you recommend?", "ko": "추천 메뉴가 뭐예요?", "they": "Are you ready to order?", "they_ko": "주문하시겠어요?" },
+        { "id": "rs3", "en": "I'd like the steak medium rare, please.", "ko": "스테이크는 미디엄 레어로 주세요.", "they": "How would you like your steak cooked?", "they_ko": "스테이크 굽기는 어떻게 해드릴까요?" },
+        { "id": "rs4", "en": "Could we get the check, please?", "ko": "계산서 주시겠어요?", "they": "Can I get you anything else?", "they_ko": "더 필요한 건 없으세요?" },
+        { "id": "rs5", "en": "Is the tip already included?", "ko": "팁이 이미 포함되어 있나요?" }
+      ]
+    },
+    {
+      "id": "tour", "title": "투어 체크인", "icon": "🎟",
+      "tip": "쿠알로아는 11:55까지 체크인 (여권 + 확정 이메일). 예약 지갑의 확정번호를 바로 보여줄 수 있게 열어 두세요.",
+      "phrases": [
+        { "id": "tr1", "en": "Hi, we're here to check in for the UTV tour at twelve forty.", "ko": "12시 40분 UTV 투어 체크인하러 왔어요.", "they": "Can I see your confirmation and a photo ID?", "they_ko": "예약 확인서와 사진이 있는 신분증을 보여 주시겠어요?" },
+        { "id": "tr2", "en": "Here's our confirmation email and our passports.", "ko": "예약 확인 메일과 여권이에요." },
+        { "id": "tr3", "en": "Where is the meeting point for the tour?", "ko": "투어 모이는 장소가 어디예요?" },
+        { "id": "tr4", "en": "Is there a locker where we can leave our bags?", "ko": "짐을 넣어 둘 사물함이 있나요?" },
+        { "id": "tr5", "en": "Could you take a picture of us, please?", "ko": "저희 사진 좀 찍어 주실 수 있나요?" }
+      ]
+    },
+    {
+      "id": "shopping", "title": "쇼핑 · 환불", "icon": "🛍",
+      "tip": "가격표는 세금 제외입니다. 하와이는 계산할 때 약 4.7%가 더 붙어요.",
+      "phrases": [
+        { "id": "sh1", "en": "Do you have this in a smaller size?", "ko": "이거 더 작은 사이즈 있어요?" },
+        { "id": "sh2", "en": "Can I try this on?", "ko": "입어 봐도 될까요?" },
+        { "id": "sh3", "en": "I'm just looking, thank you.", "ko": "그냥 둘러보는 중이에요, 고마워요.", "they": "Can I help you find anything?", "they_ko": "찾으시는 거 있으세요?" },
+        { "id": "sh4", "en": "How much is it with tax?", "ko": "세금 포함하면 얼마예요?" },
+        { "id": "sh5", "en": "I'd like to return this. Here's the receipt.", "ko": "이거 환불하고 싶어요. 영수증 여기 있어요." }
+      ]
+    },
+    {
+      "id": "directions", "title": "길 묻기 · 교통", "icon": "🧭",
+      "tip": "주유소는 대부분 셀프·선불입니다. 주유기에서 한국 카드가 안 되면 매장 안에서 주유기 번호를 말하고 결제하세요.",
+      "phrases": [
+        { "id": "dr1", "en": "Excuse me, how do I get to the Royal Hawaiian Center?", "ko": "실례합니다, 로열하와이안센터는 어떻게 가나요?" },
+        { "id": "dr2", "en": "Is it within walking distance?", "ko": "걸어갈 수 있는 거리인가요?", "they": "It's about a ten-minute walk from here.", "they_ko": "여기서 걸어서 10분쯤이에요." },
+        { "id": "dr3", "en": "Could you take us to the Hilton Garden Inn on Kuhio Avenue?", "ko": "쿠히오 애비뉴에 있는 힐튼가든인으로 가 주세요." },
+        { "id": "dr4", "en": "Where is the pickup area for ride shares?", "ko": "우버·리프트 타는 곳이 어디예요?" },
+        { "id": "dr5", "en": "My card isn't working at the pump. Can I pay inside for pump number three?", "ko": "주유기에서 카드가 안 돼요. 3번 주유기를 안에서 계산할 수 있나요?" }
+      ]
+    },
+    {
+      "id": "emergency", "title": "긴급 (분실 · 병원)", "icon": "🆘",
+      "tip": "경찰·구급·소방은 모두 911. 위치를 물으면 호텔 이름이나 일정 화면의 주소를 그대로 읽어 주세요.",
+      "phrases": [
+        { "id": "em1", "en": "Please call an ambulance.", "ko": "구급차를 불러 주세요.", "they": "Nine one one, what's your emergency?", "they_ko": "911입니다, 무슨 일이신가요?" },
+        { "id": "em2", "en": "I lost my passport. Where is the nearest police station?", "ko": "여권을 잃어버렸어요. 가장 가까운 경찰서가 어디예요?" },
+        { "id": "em3", "en": "I need to see a doctor. Is there an urgent care clinic nearby?", "ko": "진료를 받아야 해요. 근처에 응급 진료소가 있나요?" },
+        { "id": "em4", "en": "My {spouse} isn't feeling well. Do you have anything for motion sickness?", "ko": "배우자가 몸이 안 좋아요. 멀미약 있나요?" },
+        { "id": "em5", "en": "Our rental car has a flat tire. Could you send roadside assistance?", "ko": "렌터카 타이어가 펑크 났어요. 긴급출동을 보내 주실 수 있나요?" }
+      ]
+    }
+  ]
+}

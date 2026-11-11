@@ -1,0 +1,27 @@
+{
+  "schema": 1,
+  "updated": "2026-01-01",
+  "profile": {
+    "reservation_name": "Gildong Hong",
+    "names": ["홍길동", "Gildong Hong"]
+  },
+  "bookings": [
+    {
+      "id": "sample-tour", "type": "tour", "title": "예시 투어", "vendor": "예약처 이름", "date": "2026-11-17",
+      "numbers": [{ "label": "예약번호", "value": "SAMPLE-ABC123" }],
+      "times": [{ "label": "체크인 마감", "value": "11/17(화) 11:55" }],
+      "contacts": [
+        { "label": "현지 전화", "tel": "+10000000000" },
+        { "label": "카카오톡", "kakao": "sample_id" }
+      ],
+      "paid": { "amount": 100000, "currency": "KRW" },
+      "notes": ["여권 필수"],
+      "vouchers": ["sample-tour.jpg"]
+    },
+    {
+      "id": "sample-hotel", "type": "hotel", "title": "아직 번호가 없는 예약", "date": "2026-11-19",
+      "numbers": [], "times": [], "contacts": [], "notes": [], "vouchers": []
+    }
+  ],
+  "vouchers": {}
+}

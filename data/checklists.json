@@ -1,0 +1,97 @@
+{
+  "schema": 1,
+  "owners": { "woohak": "우학", "seonghee": "성희", "both": "공동" },
+  "groups": [
+    {
+      "id": "todo", "when": "before", "title": "확인 · 예약할 것", "icon": "📌",
+      "items": [
+        { "id": "todo-zoomzoom-pickup", "text": "11/16 줌줌 거북이 투어 픽업 장소 확인", "owner": "seonghee" },
+        { "id": "todo-diamondhead", "text": "다이아몬드 헤드 입장 사전 예약 (비거주자 예약제)", "owner": "seonghee", "url": "https://gostateparks.hawaii.gov/diamondhead" },
+        { "id": "todo-helicopter", "text": "헬기투어 날짜(11/23 또는 11/24) 정하고 예약", "owner": "woohak" },
+        { "id": "todo-maunakea", "text": "마우나케아 별 관측: 투어 이용 or 직접 운전 결정 (정상은 4WD 필요)", "owner": "woohak" },
+        { "id": "todo-1122", "text": "11/22 일정 정하기", "owner": "both" },
+        { "id": "todo-volcano-vc", "text": "화산국립공원 방문자센터 재개관 여부 확인 (공사 중이면 임시 웰컴센터 이용)", "owner": "woohak", "url": "https://www.nps.gov/havo/planyourvisit/welcome-center.htm" },
+        { "id": "todo-flight-times", "text": "e-티켓으로 YP151 도착·YP152 인천 도착 시각 확인", "owner": "both" },
+        { "id": "todo-konacoast-checkin", "text": "코나코스트 리조트 체크인 시간 확인 (공식 안내는 16:00)", "owner": "woohak" },
+        { "id": "todo-missing-bookings", "text": "빠진 예약번호 넣기 (힐튼 · 코나코스트 · 섬간 항공 · 렌터카 · 울프강 · 줌줌)", "owner": "both" }
+      ]
+    },
+    {
+      "id": "docs", "when": "before", "title": "서류 · 결제", "icon": "🛂",
+      "items": [
+        { "id": "docs-passport", "text": "여권 (두 사람 모두, 유효기간 확인)", "owner": "both" },
+        { "id": "docs-esta", "text": "ESTA 승인 화면 캡처", "owner": "both" },
+        { "id": "docs-eticket", "text": "항공권(e-티켓) 저장 — 에어프레미아", "owner": "both" },
+        { "id": "docs-hotel", "text": "호텔 예약 확인서 저장", "owner": "both" },
+        { "id": "docs-license", "text": "국제운전면허증 + 한국 면허증 (렌터카)", "owner": "woohak" },
+        { "id": "docs-card", "text": "해외 결제 신용카드 (렌터카 보증금은 운전자 본인 명의)", "owner": "both" },
+        { "id": "docs-cash", "text": "달러 현금 조금 (팁용 소액권)", "owner": "both" },
+        { "id": "docs-data", "text": "로밍 또는 eSIM 준비", "owner": "both" },
+        { "id": "docs-insurance", "text": "여행자 보험 가입 확인", "owner": "both" }
+      ]
+    },
+    {
+      "id": "pack", "when": "before", "title": "짐 싸기", "icon": "🧳",
+      "items": [
+        { "id": "pack-swim", "text": "수영복 · 래시가드 · 비치타월", "owner": "both" },
+        { "id": "pack-waterproof", "text": "방수팩 · 아쿠아슈즈", "owner": "both" },
+        { "id": "pack-sunscreen", "text": "산호초 보호 선크림 (하와이는 일반 선크림 금지)", "owner": "both" },
+        { "id": "pack-sun", "text": "선글라스 · 모자", "owner": "both" },
+        { "id": "pack-shoes", "text": "운동화 (쿠알로아 · 화산 · 다이아몬드 헤드)", "owner": "both" },
+        { "id": "pack-dirty", "text": "더러워져도 되는 옷 (쿠알로아 UTV)", "owner": "both" },
+        { "id": "pack-mask", "text": "마스크 또는 버프 · 물티슈 · 머리끈", "owner": "both" },
+        { "id": "pack-warm", "text": "패딩 · 긴바지 · 장갑 · 모자 (마우나케아는 영하권)", "owner": "both" },
+        { "id": "pack-rain", "text": "바람막이 · 우비 (화산 쪽은 서늘하고 비가 잦음)", "owner": "both" },
+        { "id": "pack-dress", "text": "조금 단정한 옷 (11/15 울프강)", "owner": "both" },
+        { "id": "pack-dark", "text": "어두운 색 옷 (헬기투어 — 창문 반사 줄임)", "owner": "both" },
+        { "id": "pack-medicine", "text": "멀미약 · 상비약", "owner": "both" },
+        { "id": "pack-charger", "text": "충전기 · 보조배터리 · 변환 플러그 (미국은 11자형)", "owner": "both" }
+      ]
+    },
+    {
+      "id": "app", "when": "before", "title": "앱 준비 (출발 전 두 폰에서)", "icon": "📱",
+      "items": [
+        { "id": "app-install", "text": "홈 화면에 Aloha Trip 설치", "owner": "both" },
+        { "id": "app-wallet", "text": "예약 비밀번호로 예약 지갑 열어 보기", "owner": "both" },
+        { "id": "app-offline", "text": "설정 → '오프라인 준비 완료 ✓' 확인", "owner": "both" },
+        { "id": "app-airplane", "text": "비행기 모드에서 오늘 · 일정 · 지도 · 예약이 열리는지 확인", "owner": "both" }
+      ]
+    },
+    {
+      "id": "daily", "when": "daily", "title": "매일 공통", "icon": "🎒",
+      "items": [
+        { "id": "daily-passport", "text": "여권(또는 사본 사진) · 카드 · 현금 조금", "owner": "both" },
+        { "id": "daily-phone", "text": "휴대폰 충전 + 보조배터리", "owner": "both" },
+        { "id": "daily-sunscreen", "text": "산호초 보호 선크림", "owner": "both" },
+        { "id": "daily-sun", "text": "선글라스 · 모자 · 물", "owner": "both" }
+      ]
+    },
+    {
+      "id": "return", "when": "return", "title": "귀국 전", "icon": "🛫",
+      "items": [
+        { "id": "return-passport", "text": "여권 · 항공권 확인", "owner": "both" },
+        { "id": "return-dutyfree", "text": "면세 한도 확인 (출발 전 관세청 기준 다시 보기)", "owner": "both" },
+        { "id": "return-liquid", "text": "주스 · 액체는 위탁 수하물에", "owner": "both" },
+        { "id": "return-room", "text": "체크아웃 전 금고 · 충전기 · 냉장고 확인", "owner": "both" },
+        { "id": "return-quarantine", "text": "생과일 · 육류 · 육포는 한국 반입 금지 (검역)", "owner": "both" },
+        { "id": "return-backup", "text": "경비 백업 파일 저장 (설정 → 백업)", "owner": "both" }
+      ]
+    },
+    {
+      "id": "food", "when": "before", "title": "반입 금지 음식 (미국 · 하와이 입국)", "icon": "🚫",
+      "intro": "애매하면 신고하고 물어보는 것이 가장 안전합니다. 신고한 음식은 압수로 끝나지만, 신고하지 않으면 벌금을 낼 수 있습니다. 최종 판단은 현장 세관 검사관이 합니다.",
+      "items": [
+        { "id": "food-meat", "text": "육포 · 소시지 · 햄 · 고기만두 등 육류·육가공품은 넣지 않기 (캔·진공포장도 금지)", "owner": "both" },
+        { "id": "food-ramen", "text": "라면·컵라면은 스프 성분 확인 — 고기 성분(소·돼지·닭)이 있으면 빼기", "owner": "both" },
+        { "id": "food-kimchi", "text": "김치는 시판(공장 밀봉) 제품만 — 집에서 담근 김치는 빼기", "owner": "both" },
+        { "id": "food-fresh", "text": "생과일 · 생채소 · 씨앗 · 흙 묻은 식물은 넣지 않기", "owner": "both" },
+        { "id": "food-declare", "text": "미국 세관 신고에서 음식 소지 '예(Yes)'에 체크", "owner": "both" },
+        { "id": "food-hawaii", "text": "하와이 농산물 신고서 작성 (기내 배부 또는 Akamai Arrival 온라인)", "owner": "both" }
+      ],
+      "links": [
+        { "label": "미국 세관(CBP) — 농산물 반입 안내", "url": "https://www.cbp.gov/travel/international-visitors/agricultural-items" },
+        { "label": "하와이 농산물 신고 (Akamai Arrival)", "url": "https://akamaiarrival.hawaii.gov/" }
+      ]
+    }
+  ]
+}
