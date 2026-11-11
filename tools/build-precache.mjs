@@ -9,7 +9,8 @@ import { readFileSync, writeFileSync, readdirSync, existsSync, statSync } from '
 import { join, dirname, extname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
+// ALOHA_ROOT: 다른 폴더(테스트용 사본)를 대상으로 돌릴 때 지정
+const ROOT = process.env.ALOHA_ROOT || join(dirname(fileURLToPath(import.meta.url)), '..');
 const BEGIN = '/* PRECACHE:BEGIN */';
 const END = '/* PRECACHE:END */';
 

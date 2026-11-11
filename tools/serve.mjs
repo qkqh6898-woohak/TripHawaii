@@ -8,7 +8,8 @@ import { readFile, stat } from 'node:fs/promises';
 import { join, dirname, extname, normalize, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
+// ALOHA_ROOT: 다른 폴더(테스트용 사본)를 대상으로 돌릴 때 지정
+const ROOT = process.env.ALOHA_ROOT || join(dirname(fileURLToPath(import.meta.url)), '..');
 const BASE = '/TripHawaii/';
 const PORT = Number(process.argv[2]) || 8765;
 const TYPES = {
