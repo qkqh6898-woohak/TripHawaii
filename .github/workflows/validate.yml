@@ -1,0 +1,25 @@
+name: validate
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: 개인정보 검사 (평문 예약번호·전화번호·이메일이 없는지)
+        run: node tools/scan-secrets.mjs
+      - name: 데이터 검증 (trip.json · phrases · checklists)
+        run: node tools/validate.mjs
+      - name: 오프라인 캐시 목록이 최신인지
+        run: node tools/build-precache.mjs --check
+      - name: 단위 테스트
+        run: node --test "tests/*.test.mjs"

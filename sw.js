@@ -3,7 +3,7 @@
 // (파일을 고친 뒤 `node tools/build-precache.mjs` 를 실행하면 버전과 목록이 바뀐다 — 직접 고치지 말 것).
 
 /* PRECACHE:BEGIN */
-const VERSION = '9b42-4400';
+const VERSION = '5f24-db99';
 const FILES = [
   ['index.html', '74b53b86'],
   ['manifest.webmanifest', '433937d9'],
@@ -20,7 +20,7 @@ const FILES = [
   ['js/prefs.js', 'fae33838'],
   ['js/settings.js', '1221144e'],
   ['js/sw-client.js', '47f1e6bd'],
-  ['js/time.js', 'aaca7991'],
+  ['js/time.js', '423a3520'],
   ['js/today.js', 'dd83e2ff'],
   ['js/trip.js', '6cc7df95'],
   ['js/tts.js', 'd3e03a07'],

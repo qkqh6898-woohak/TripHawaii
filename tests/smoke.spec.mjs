@@ -13,7 +13,7 @@ import { tmpdir } from 'node:os';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import assert from 'node:assert/strict';
-import { encryptJSON, MIN_ITER } from '../js/crypto.js';
+import { encryptJSON, b64ToBytes, MIN_ITER } from '../js/crypto.js';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const PASSWORD = 'smoke-test-password';
@@ -43,9 +43,14 @@ async function buildSite() {
   // 실제 일정의 예약 id 하나를 넣어 '일정 → 예약' 연결도 확인한다
   secret.bookings.push({ id: 'kualoa', type: 'tour', title: '테스트 쿠알로아', date: '2026-11-17', numbers: [{ label: '확정번호', value: 'TESTCONF1' }], times: [], contacts: [], paid: { amount: 387190, currency: 'KRW' }, notes: [], vouchers: [] });
   mkdirSync(join(dir, 'data'), { recursive: true });
-  writeFileSync(join(dir, 'data', 'secret.enc'), JSON.stringify(await encryptJSON(secret, PASSWORD, { iter: MIN_ITER })) + '\n');
+  const env = await encryptJSON(secret, PASSWORD, { iter: MIN_ITER });
+  writeFileSync(join(dir, 'data', 'secret.enc'), JSON.stringify(env) + '\n');
+  rebuildPrecache(dir);
+  return { dir, secret, env };
+}
+
+function rebuildPrecache(dir) {
   execFileSync(process.execPath, [join(ROOT, 'tools', 'build-precache.mjs')], { env: { ...process.env, ALOHA_ROOT: dir }, stdio: 'pipe' });
-  return dir;
 }
 
 function startServer(dir, port) {
@@ -331,14 +336,95 @@ async function runFlow(browser, base, vp) {
   return problems;
 }
 
+// ───────────── 여행 전·출발일·마지막 날·여행 후 화면 ─────────────
+async function runPhases(browser, base) {
+  const ctx = await browser.newContext({ viewport: { width: 390, height: 844 }, locale: 'ko-KR', serviceWorkers: 'block' });
+  await ctx.route(/open-meteo|frankfurter/, (r) => r.abort());
+  const page = await ctx.newPage();
+  const view = async (now) => {
+    await page.goto(`${base}?now=${encodeURIComponent(now)}#/today`);
+    await page.reload();
+    await page.waitForSelector('html.is-ready');
+    await page.waitForTimeout(200);
+    return page.locator('#view').innerText();
+  };
+  let t = await view('2026-11-14T10:00+09:00');                    // 한국 11/14 오전
+  assert.match(t, /D-1/);
+  assert.match(t, /출발까지 1일 12시간/);
+  assert.match(t, /첫날 미리보기/);
+  t = await view('2026-11-15T10:00+09:00');                        // 출발 당일 오전 (하와이는 아직 11/14)
+  assert.match(t, /D-DAY/);
+  assert.match(t, /오늘 출발해요/);
+  t = await view('2026-11-15T22:00+09:00');                        // 공항, 출발 50분 전
+  assert.match(t, /1일차/);
+  assert.match(t, /한국 22:50 인천 출발 YP151/);
+  assert.match(t, /50분 남음/);
+  assert.match(t, /이제 움직일 시간/);                              // 늦으면 안 되는 일정 1시간 전 강조
+  t = await view('2026-11-15T03:50');                              // 하와이 03:50 = 이륙
+  assert.match(t, /비행 중/);
+  assert.match(t, /도착까지 8시간 10분/);
+  t = await view('2026-11-19T09:00');                              // 섬 이동일: 체크아웃·체크인 배너
+  assert.match(t, /오늘 체크아웃 · 힐튼가든인/);
+  assert.match(t, /오늘 체크인 · 코나코스트 리조트 \(16:00부터\)/);
+  assert.match(t, /오아후 → 빅아일랜드/);
+  t = await view('2026-11-27T15:00');                              // 귀국편 출발 직후
+  assert.match(t, /13일차/);
+  assert.match(t, /YP152 인천행 출발/);
+  assert.doesNotMatch(t, /▶ 다음/);
+  t = await view('2026-11-28T09:00');
+  assert.match(t, /여행 끝/);
+  await ctx.close();
+  console.log('  [phases] 여행 전(D-1·D-DAY) · 출발 직전 · 비행 중 · 섬 이동일 · 마지막 날 · 여행 후 ✓');
+}
+
+// ───────────── 예약 정보 갱신: 같은 비밀번호로 다시 암호화 → 새 버전 적용 → 비밀번호 없이 바뀜 ─────────────
+async function runUpdate(browser, base, site) {
+  const ctx = await browser.newContext({ viewport: { width: 390, height: 844 }, locale: 'ko-KR' });
+  await ctx.route(/open-meteo|frankfurter/, (r) => r.abort());
+  const page = await ctx.newPage();
+  const swReady = () => page.waitForFunction(async () => {
+    const reg = await navigator.serviceWorker.getRegistration();
+    return !!(reg && reg.active && navigator.serviceWorker.controller);
+  }, null, { timeout: 30000, polling: 300 });
+  await page.goto(`${base}?now=${NOW}#/wallet`);
+  await page.waitForSelector('html.is-ready');
+  await swReady();
+  await page.locator('input[name="password"]').fill(PASSWORD);
+  await page.locator('[data-form="unlock"] button[type="submit"]').click();
+  await page.waitForSelector('#booking-sample-hotel.is-missing', { timeout: 15000 });
+
+  // 저장소 쪽: 빠졌던 예약번호를 채워 같은 비밀번호·같은 salt 로 다시 암호화하고 캐시 목록을 갱신
+  const next = JSON.parse(JSON.stringify(site.secret));
+  next.bookings.find((b) => b.id === 'sample-hotel').numbers = [{ label: '예약번호', value: 'NEWHOTEL77' }];
+  const env2 = await encryptJSON(next, PASSWORD, { iter: MIN_ITER, salt: b64ToBytes(site.env.salt) });
+  writeFileSync(join(site.dir, 'data', 'secret.enc'), JSON.stringify(env2) + '\n');
+  rebuildPrecache(site.dir);
+
+  await page.reload();                                               // 앱을 다시 열면 새 버전을 받아 둔다
+  await page.waitForSelector('html.is-ready');
+  await page.waitForSelector('[data-apply-update]', { timeout: 30000 });
+  assert.equal(await page.locator('#booking-sample-hotel.is-missing').count(), 1);   // 적용 전에는 예전 내용
+  await Promise.all([page.waitForEvent('load'), page.locator('[data-apply-update]').click()]);
+  await page.waitForSelector('html.is-ready');
+  await page.waitForSelector('#booking-sample-hotel', { timeout: 15000 });
+  await page.waitForFunction(() => /NEWHOTEL77/.test(document.querySelector('#view').innerText), null, { timeout: 15000 });
+  assert.equal(await page.locator('[data-form="unlock"]').count(), 0, '비밀번호를 다시 묻지 않아야 함');
+  assert.equal(await page.locator('#booking-sample-hotel.is-missing').count(), 0);
+  await ctx.close();
+  console.log('  [update] 예약 정보 갱신 → 새 버전 적용 → 비밀번호 없이 새 내용 ✓');
+}
+
 // ───────────── 실행 ─────────────
-const dir = await buildSite();
+const site = await buildSite();
+const dir = site.dir;
 const port = 18000 + Math.floor(Math.random() * 1000);
 const server = await startServer(dir, port);
 const base = `http://localhost:${port}/TripHawaii/`;
 const browser = await chromium.launch();
 let failed = false;
 try {
+  console.log('▶ 시각별 화면');
+  await runPhases(browser, base);
   for (const vp of VIEWPORTS) {
     console.log(`▶ ${vp.name} ${vp.width}×${vp.height}`);
     const problems = await runFlow(browser, base, vp);
@@ -347,6 +433,8 @@ try {
       console.error(`  [${vp.name}] 브라우저 오류 ${problems.length}건:\n   ` + [...new Set(problems)].join('\n   '));
     }
   }
+  console.log('▶ 예약 정보 갱신');
+  await runUpdate(browser, base, site);
 } catch (e) {
   failed = true;
   console.error('❌ ' + (e && e.stack ? e.stack : e));

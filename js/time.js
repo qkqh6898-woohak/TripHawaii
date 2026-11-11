@@ -69,7 +69,8 @@ export function zonedToEpoch(date, time, tz) {
 // ?now=2026-11-17T09:12  → 하와이 시각으로 해석. 끝에 Z 나 +09:00 이 붙으면 그대로 해석.
 export function parseNowParam(str, tz = HST) {
   if (!str) return null;
-  const s = String(str).trim().replace(' ', 'T');
+  // 주소창에서는 '+' 가 공백으로 바뀌므로 '…T10:00 09:00' 꼴도 '+09:00' 으로 읽는다
+  const s = String(str).trim().replace(/(T\d{2}:\d{2}(?::\d{2})?) (\d{2}:?\d{2})$/, '$1+$2').replace(' ', 'T');
   if (/(Z|[+-]\d{2}:?\d{2})$/.test(s)) {
     const ms = Date.parse(s);
     return Number.isNaN(ms) ? null : ms;
