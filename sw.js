@@ -3,11 +3,11 @@
 // (파일을 고친 뒤 `node tools/build-precache.mjs` 를 실행하면 버전과 목록이 바뀐다 — 직접 고치지 말 것).
 
 /* PRECACHE:BEGIN */
-const VERSION = '5f24-db99';
+const VERSION = 'f6e5-763c';
 const FILES = [
   ['index.html', '74b53b86'],
   ['manifest.webmanifest', '433937d9'],
-  ['css/app.css', 'c977dfc7'],
+  ['css/app.css', '5688d5b0'],
   ['js/checklist.js', 'b5ef02ff'],
   ['js/crypto.js', '98dac433'],
   ['js/days.js', '79384bd8'],
@@ -18,14 +18,14 @@ const FILES = [
   ['js/more.js', 'b8b532c7'],
   ['js/phrases.js', '60ceb0f1'],
   ['js/prefs.js', 'fae33838'],
-  ['js/settings.js', '1221144e'],
+  ['js/settings.js', '2a60c20c'],
   ['js/sw-client.js', '47f1e6bd'],
   ['js/time.js', '423a3520'],
-  ['js/today.js', 'dd83e2ff'],
+  ['js/today.js', '8775b815'],
   ['js/trip.js', '6cc7df95'],
   ['js/tts.js', 'd3e03a07'],
   ['js/ui.js', 'b4a8e379'],
-  ['js/util.js', 'ebffe87c'],
+  ['js/util.js', 'b9e732c0'],
   ['js/viewer.js', 'ef9f8888'],
   ['js/wallet.js', 'e87547ff'],
   ['js/weather.js', 'f8590ea6'],

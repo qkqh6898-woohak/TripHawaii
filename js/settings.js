@@ -143,6 +143,8 @@ export async function render(root, ctx) {
       ${segHtml('font', { s: '작게', m: '보통', l: '크게' }, p.font)}
       <h3 class="set-label">밝기</h3>
       ${segHtml('theme', { auto: '자동', light: '밝게', dark: '어둡게' }, p.theme)}
+      <h3 class="set-label">영어 발음 속도</h3>
+      ${segHtml('ttsRate', { 0.85: '느리게', 1: '보통', 1.15: '빠르게' }, p.ttsRate)}
     </section>
 
     <section class="card">
@@ -208,6 +210,7 @@ export async function render(root, ctx) {
     if (t.name === 'owner') { await setPref('owner', t.value); toast(`${OWNERS[t.value]} 폰으로 설정했어요`); }
     if (t.name === 'font') await setPref('font', t.value);
     if (t.name === 'theme') await setPref('theme', t.value);
+    if (t.name === 'ttsRate') await setPref('ttsRate', Number(t.value) || 1);
     if (t.name === 'rate') {
       const v = Number(String(t.value).replace(/[^\d.]/g, ''));
       if (v > 500 && v < 5000) { await setPref('rate', v); await setPref('rateSource', 'manual'); await setPref('rateDate', null); toast('환율을 바꿨어요'); ctx.rerender(); } else { toast('환율은 500~5000 사이로 입력해 주세요'); t.value = prefs().rate; }

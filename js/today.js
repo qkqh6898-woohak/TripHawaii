@@ -1,5 +1,5 @@
 // 오늘 — 지금 시각(하와이·한국), 진행 중·다음 일정과 남은 시간, 오늘 일정·준비물·지출
-import { html, setHTML, fmtKRW, fmtUSD, isStandalone, isIOS } from './util.js';
+import { html, setHTML, fmtKRW, fmtUSD, isStandalone, isIOS, inAppBrowser, copyText } from './util.js';
 import { getTrip, dayByDate, hotel, place as getPlace, islandLabel, directionsUrl } from './trip.js';
 import * as time from './time.js';
 import { itemRowHtml, bindItemClicks, openItemSheet } from './ui.js';
@@ -84,6 +84,19 @@ function ownerPromptHtml() {
 
 function installHtml() {
   if (isStandalone() || prefs().installHintDismissed) return '';
+  const inApp = inAppBrowser();
+  if (inApp) {
+    return html`
+      <section class="card install-hint">
+        <h2>📲 ${inApp} 안에서 열렸어요</h2>
+        <p>여기서는 홈 화면에 설치할 수 없어요. 메뉴(⋮ 또는 공유 버튼)에서 <b>다른 브라우저로 열기</b>를 눌러
+        ${isIOS() ? 'Safari' : 'Chrome'} 로 연 다음 설치해 주세요.</p>
+        <div class="btn-row">
+          <button type="button" class="btn btn-primary" data-action="copy-url">앱 주소 복사</button>
+          <button type="button" class="btn" data-action="hide-install">닫기</button>
+        </div>
+      </section>`;
+  }
   return html`
     <section class="card install-hint">
       <h2>📲 홈 화면에 설치해 주세요</h2>
@@ -242,6 +255,7 @@ export async function render(root) {
     if (!a) return;
     if (a.dataset.action === 'hide-install') { await setPref('installHintDismissed', true); a.closest('.install-hint').remove(); }
     if (a.dataset.action === 'install') { await promptInstall(); }
+    if (a.dataset.action === 'copy-url') copyText(location.origin + location.pathname, '주소를 복사했어요. 브라우저 주소창에 붙여넣어 주세요.');
   });
 }
 

@@ -77,6 +77,17 @@ export function isIOS() {
   return /iPad|iPhone|iPod/.test(ua) || (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1);
 }
 
+// 카카오톡 등 앱 안의 브라우저에서는 '홈 화면에 추가'가 되지 않는다 → 어떤 앱인지 알려준다
+export function inAppBrowser() {
+  const ua = navigator.userAgent || '';
+  if (/KAKAOTALK/i.test(ua)) return '카카오톡';
+  if (/NAVER/i.test(ua)) return '네이버 앱';
+  if (/Instagram/i.test(ua)) return '인스타그램';
+  if (/FBAN|FBAV/i.test(ua)) return '페이스북';
+  if (/\bLine\//i.test(ua)) return '라인';
+  return '';
+}
+
 // ───────────── 토스트 ─────────────
 let toastTimer;
 export function toast(message, ms = 2200) {
