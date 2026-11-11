@@ -27,7 +27,7 @@ function itemActionsHtml(item) {
   const p = getPlace(item.place);
   return html`
     <div class="btn-row">
-      ${p ? html`<a class="btn btn-primary" href="${directionsUrl(p)}" target="_blank" rel="noopener noreferrer">🧭 길찾기</a>` : ''}
+      ${p && !item.flight ? html`<a class="btn btn-primary" href="${directionsUrl(p)}" target="_blank" rel="noopener noreferrer">🧭 길찾기</a>` : ''}
       ${item.booking ? html`<a class="btn" href="#/wallet?focus=${item.booking}">🎫 예약 보기</a>` : ''}
       <button type="button" class="btn" data-item="${item.id}">자세히</button>
     </div>`;
