@@ -12,7 +12,9 @@ export function timeHtml(item, day) {
     const z = time.homeClock(day.date, item.start, getTrip().trip);
     return html`<span class="t-main">${z.time}</span><span class="t-sub">한국 시간</span>`;
   }
-  return html`<span class="t-main">${item.start}${item.approx ? '경' : ''}${item.deadline ? '까지' : ''}</span>${item.end ? html`<span class="t-sub">~${item.end}</span>` : ''}`;
+  // 시각은 크게, 꾸밈말(~끝 시각 · 까지 · 쯤)은 아래 작은 줄에 — 좁은 칸에서 줄이 깨지지 않게
+  const sub = [item.end ? `~${item.end}` : '', item.deadline ? '까지' : '', item.approx ? '쯤' : ''].filter(Boolean).join(' ');
+  return html`<span class="t-main">${item.start}</span>${sub ? html`<span class="t-sub">${sub}</span>` : ''}`;
 }
 
 /**

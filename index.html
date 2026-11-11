@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; connect-src 'self' https://api.open-meteo.com https://api.frankfurter.dev https://api.frankfurter.app; manifest-src 'self'; worker-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'">
+  <meta name="referrer" content="no-referrer">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#c8402a">
+  <meta name="color-scheme" content="light dark">
+  <meta name="description" content="하와이 신혼여행 일정 · 지도 · 예약 · 경비 — 인터넷 없이도 열리는 여행 앱">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="하와이">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="format-detection" content="telephone=no">
+  <title>Aloha Trip</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+  <div id="app">
+    <header id="topbar">
+      <a class="brand" href="#/today"><span aria-hidden="true">🌺</span> Aloha Trip</a>
+      <div id="status" aria-live="polite"></div>
+    </header>
+
+    <main id="view" tabindex="-1">
+      <div class="card loading">
+        <p>일정을 불러오는 중이에요…</p>
+        <p class="muted small">계속 이 화면이면 인터넷에 연결한 뒤 다시 열어 주세요.</p>
+      </div>
+    </main>
+
+    <nav id="tabs" aria-label="주 메뉴">
+      <a href="#/today" data-tab="today"><span class="tab-icon" aria-hidden="true">🌺</span><span>오늘</span></a>
+      <a href="#/days" data-tab="days"><span class="tab-icon" aria-hidden="true">📅</span><span>일정</span></a>
+      <a href="#/maps" data-tab="maps"><span class="tab-icon" aria-hidden="true">🗺</span><span>지도</span></a>
+      <a href="#/wallet" data-tab="wallet"><span class="tab-icon" aria-hidden="true">🎫</span><span>예약</span></a>
+      <a href="#/more" data-tab="more"><span class="tab-icon" aria-hidden="true">☰</span><span>더보기</span></a>
+    </nav>
+  </div>
+
+  <div id="sheet-root"></div>
+  <div id="toast-root" role="status" aria-live="polite"></div>
+
+  <noscript>
+    <div class="card">이 앱은 자바스크립트가 켜져 있어야 해요. 브라우저 설정에서 자바스크립트를 켜 주세요.</div>
+  </noscript>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

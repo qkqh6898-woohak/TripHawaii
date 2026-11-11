@@ -13,6 +13,7 @@ const DEFAULTS = {
   rate: DEFAULT_RATE,     // 1 USD = ? KRW
   rateDate: null,         // 환율 기준일
   rateSource: 'default',  // default | auto | manual
+  rateFetched: null,      // 마지막으로 자동 환율을 받은 날 (YYYY-MM-DD)
   fee: 0,                 // 해외 카드 결제 수수료 (%)
   theme: 'auto',          // auto | light | dark
   font: 'm',              // s | m | l

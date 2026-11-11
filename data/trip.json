@@ -83,7 +83,7 @@
         { "id": "1115-4", "start": "13:30", "place": "hilton", "title": "숙소로 이동 (택시·우버 약 25분)", "cat": "move" },
         { "id": "1115-5", "start": "15:00", "place": "hilton", "title": "힐튼가든인 와이키키비치 체크인", "cat": "hotel", "booking": "hilton" },
         { "id": "1115-6", "start": "15:30", "place": "rhc", "title": "로열하와이안센터 쇼핑", "cat": "shop", "note": "스투시 / 애플스토어 / 지미추" },
-        { "id": "1115-7", "start": "16:30", "place": "rhc", "title": "하와이 빙수", "cat": "food", "note": "로열하와이안센터" },
+        { "id": "1115-7", "start": "16:30", "place": "rhc", "title": "하와이 빙수", "cat": "food" },
         { "id": "1115-8", "start": "18:30", "place": "wolfgang", "title": "울프강 스테이크", "cat": "food", "booking": "wolfgang", "confirmed": true, "must": true, "note": "로열하와이안센터 3층 · 조금 단정한 옷" },
         { "id": "1115-9", "start": "20:00", "place": "waikiki-beach", "title": "와이키키 해변 산책", "cat": "rest" },
         { "id": "1115-10", "start": "21:00", "title": "다음날 아침용 무스비 사기", "cat": "food" }

@@ -1,0 +1,7 @@
+# 모든 글 파일을 LF 로 통일한다 — sw.js 의 파일 해시(오프라인 캐시 검증)가 운영체제에 따라 달라지지 않게
+* text=auto eol=lf
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.webp binary
+*.enc text eol=lf
