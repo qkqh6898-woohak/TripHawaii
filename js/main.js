@@ -1,5 +1,5 @@
 // 앱 시작점 — 주소(#/화면) 읽기, 하단 탭, 초기화, 새 버전·오프라인 표시
-import { html, setHTML, $, closeAllSheets, toast } from './util.js';
+import { html, setHTML, $, closeAllSheets, toast, layersSettled } from './util.js';
 import * as time from './time.js';
 import * as db from './db.js';
 import { loadPrefs } from './prefs.js';
@@ -18,6 +18,7 @@ import * as expenses from './expenses.js';
 import * as phrases from './phrases.js';
 import * as settings from './settings.js';
 import * as videos from './videos.js';
+import * as ideas from './ideas.js';
 
 const VIEWS = {
   today: { mod: today, tab: 'today', title: '오늘' },
@@ -32,6 +33,7 @@ const VIEWS = {
   phrases: { mod: phrases, tab: 'more', title: '여행 영어' },
   settings: { mod: settings, tab: 'more', title: '설정' },
   videos: { mod: videos, tab: 'more', title: '하와이 영상' },
+  ideas: { mod: ideas, tab: 'more', title: '추천 코스' },
 };
 
 let current = null;
@@ -48,10 +50,16 @@ function parseHash() {
   return { name, params: parts.slice(1), query: Object.fromEntries(new URLSearchParams(qs)) };
 }
 
-function navigate(hash, replace = false) {
-  if (replace) history.replaceState(null, '', location.pathname + location.search + hash);
-  else location.hash = hash;
-  if (replace) renderRoute();
+// replace = true: 방문 기록을 쌓지 않고 화면만 바꾼다 (좌우로 밀어 넘길 때 — 뒤로 가기가 길어지지 않게)
+async function navigate(hash, replace = false, { slide } = {}) {
+  await layersSettled();   // 방금 닫은 창의 기록 정리가 끝난 뒤에 주소를 바꾼다
+  if (slide) document.documentElement.dataset.slide = slide;
+  if (replace) {
+    history.replaceState(null, '', location.pathname + location.search + hash);
+    renderRoute();
+  } else {
+    location.hash = hash;
+  }
 }
 
 async function renderRoute({ keepScroll = false } = {}) {
@@ -148,6 +156,7 @@ async function boot() {
   window.addEventListener('offline', updateTopbar);
 
   if (!location.hash) history.replaceState(null, '', location.pathname + location.search + '#/today');
+  else if (history.state && history.state.alohaLayer) history.replaceState(null, '');   // 창을 연 채 새로 고친 경우
   await renderRoute();
   updateTopbar();
   document.documentElement.classList.add('is-ready');

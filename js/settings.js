@@ -1,6 +1,6 @@
 // 설정 — 이 폰 주인, 화면, 환율, 예약 잠금, 오프라인 준비 상태, 백업/복원, 설치 방법
 import * as db from './db.js';
-import { html, setHTML, toast, confirmSheet, downloadFile, pickFileText, fmtKRW, isIOS, isStandalone } from './util.js';
+import { html, setHTML, toast, confirmSheet, downloadFile, pickFileText, fmtKRW, isIOS, isStandalone, haptic } from './util.js';
 import { prefs, setPref, loadPrefs, OWNERS, DEFAULT_RATE } from './prefs.js';
 import { offlineStatus, checkForUpdate, updateReady, applyUpdate, swSupported } from './sw-client.js';
 import { mergeExpenses, sanitizeExpense, listExpenses } from './expenses.js';
@@ -49,7 +49,7 @@ export async function autoRate() {
 }
 
 // ───────────── 백업 / 복원 (예약 정보는 포함하지 않는다) ─────────────
-const BACKUP_PREFS = ['owner', 'rate', 'rateDate', 'rateSource', 'fee', 'theme', 'font', 'ttsRate', 'favPhrases'];
+const BACKUP_PREFS = ['owner', 'rate', 'rateDate', 'rateSource', 'fee', 'theme', 'font', 'ttsRate', 'favPhrases', 'ideaFav', 'haptic'];
 
 export async function buildBackup() {
   const p = prefs();
@@ -126,6 +126,7 @@ export async function render(root, ctx) {
   const st = await offlineStatus();
   const persisted = await db.isPersisted();
   const walletState = wallet.status();
+  const canVibrate = typeof navigator !== 'undefined' && typeof navigator.vibrate === 'function';
   const ios = isIOS();
 
   setHTML(root, html`
@@ -145,6 +146,7 @@ export async function render(root, ctx) {
       ${segHtml('theme', { auto: '자동', light: '밝게', dark: '어둡게' }, p.theme)}
       <h3 class="set-label">영어 발음 속도</h3>
       ${segHtml('ttsRate', { 0.85: '느리게', 1: '보통', 1.15: '빠르게' }, p.ttsRate)}
+      <label class="check-inline"><input type="checkbox" name="haptic" ${p.haptic !== false ? 'checked' : ''}> 체크·즐겨찾기 때 짧게 진동 ${canVibrate ? '' : '(이 기기는 진동을 지원하지 않아요)'}</label>
     </section>
 
     <section class="card">
@@ -220,6 +222,7 @@ export async function render(root, ctx) {
       const v = Number(String(t.value).replace(/[^\d.]/g, ''));
       if (v >= 0 && v <= 10) { await setPref('fee', v); toast('수수료를 바꿨어요'); } else { toast('수수료는 0~10% 사이로 입력해 주세요'); t.value = prefs().fee; }
     }
+    if (t.name === 'haptic') { await setPref('haptic', t.checked); if (t.checked) haptic(20); }
     if (t.name === 'lock') {
       await setPref('lock', t.checked);
       if (t.checked) { await db.del('secret', 'main'); toast('이제 열 때마다 비밀번호를 물어요'); } else toast('다음에 열면 이 폰에 저장돼요');

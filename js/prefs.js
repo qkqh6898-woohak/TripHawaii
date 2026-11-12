@@ -1,6 +1,6 @@
 // 기기별 설정값 (IndexedDB settings 저장소) — 화면은 settings.js 가 그린다
 import * as db from './db.js';
-import { uuid } from './util.js';
+import { uuid, setHaptic } from './util.js';
 
 export const OWNERS = { woohak: '우학', seonghee: '성희' };
 export const PAYERS = { woohak: '우학', seonghee: '성희', joint: '공동' };
@@ -24,6 +24,8 @@ const DEFAULTS = {
   deviceId: null,
   installHintDismissed: false,
   favPhrases: [],
+  haptic: true,           // 체크·즐겨찾기 때 짧은 진동 (지원하는 폰에서만)
+  ideaFav: [],            // 추천 코스 중 관심 표시한 것
 };
 
 let cache = null;
@@ -50,8 +52,9 @@ export async function setPref(key, value) {
 }
 
 export function applyPrefs() {
-  if (typeof document === 'undefined') return;
   const p = prefs();
+  setHaptic(p.haptic !== false);
+  if (typeof document === 'undefined') return;
   const el = document.documentElement;
   if (p.theme === 'auto') delete el.dataset.theme; else el.dataset.theme = p.theme;
   el.dataset.font = p.font || 'm';

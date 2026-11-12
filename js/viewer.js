@@ -1,6 +1,6 @@
 // 전체 화면 이미지 보기 — 지도·사진·바우처를 두 손가락으로 확대하고 끌어서 옮긴다.
 // 사진이 여러 장이면 좌우로 밀어 넘긴다.
-import { html, setHTML } from './util.js';
+import { html, setHTML, pushLayer, dropLayer } from './util.js';
 
 const MAX_SCALE = 6;
 const SWIPE_MIN = 50;
@@ -176,11 +176,16 @@ export function openViewer(src, alt = '', opts = {}) {
     zoomAt(next, e.clientX, e.clientY);
   }, { passive: false });
 
-  const close = () => {
+  let closed = false;
+  const close = (viaBack = false) => {
+    if (closed) return;
+    closed = true;
     document.removeEventListener('keydown', onKey);
     wrap.remove();
     document.body.classList.remove('viewer-open');
+    dropLayer(layer, { silent: viaBack === true });
   };
+  const layer = pushLayer(() => close(true));   // 폰의 뒤로 가기로도 닫힌다
   const onKey = (e) => {
     if (e.key === 'Escape') close();
     if (many && e.key === 'ArrowRight') show(index + 1);

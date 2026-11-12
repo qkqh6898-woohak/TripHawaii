@@ -10,6 +10,7 @@ import { offlineStatus, canPromptInstall, promptInstall } from './sw-client.js';
 import * as wallet from './wallet.js';
 import { prefs, setPref, OWNERS } from './prefs.js';
 import { hotelBannersHtml } from './days.js';
+import { noticesForDate, noticeHtml } from './ideas.js';
 
 export const live = ['clock', 'weather', 'offline', 'wallet', 'install'];
 
@@ -168,6 +169,7 @@ async function renderDuring(root, trip, now, phase) {
   const packs = packingItems(day, checks);
   const money = await todaySummary();
   const wx = await weatherHtml(day.weather_zones, phase.date, { compact: true });
+  const notices = await noticesForDate(phase.date);
 
   const stateOf = (it) => {
     if (cn.current && cn.current.item.id === it.id) return 'current';
@@ -181,6 +183,7 @@ async function renderDuring(root, trip, now, phase) {
     ${wx}
     ${hotelBannersHtml(phase.date)}
     ${nowNextHtml(cn, now, info, phase.date)}
+    ${notices.map((n) => html`<section class="card card-notice">${noticeHtml(n)}</section>`)}
     ${ownerPromptHtml()}
     ${installHtml()}
 

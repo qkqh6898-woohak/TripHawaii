@@ -44,9 +44,12 @@
 | 📅 **일정** | 11/15~27 날짜별 시간 일정 · 지도 · 사진. **화면을 좌우로 밀면 앞·뒤 날짜로** 넘어갑니다. 항목을 누르면 주소 복사 · 길찾기 · 연결된 예약 · 사진(여러 장은 좌우로 밀기) · 내 메모 |
 | 🗺 **지도** | 한국↔하와이, 하와이 전체, 섬별, 날짜별 약도(오프라인). 누르면 크게 보고 두 손가락으로 확대 |
 | 🎫 **예약** | 비밀번호로 여는 예약 지갑 — 예약번호(누르면 복사), 전화, 카카오톡 ID, 바우처 |
-| ☰ **더보기** | 체크리스트 · 경비(정산, 팁 계산기) · 여행 영어(발음 듣기) · 하와이 영상(일정별 한국어 유튜브) · 설정(환율, 글자 크기, 백업) |
+| ☰ **더보기** | 체크리스트 · 경비(정산, 팁 계산기) · 여행 영어(발음 듣기) · **추천 코스**(넣어 볼 만한 곳 · 날짜별 알림) · 하와이 영상(일정별 한국어 유튜브) · 설정(환율, 글자 크기, 백업) |
 
 - ⚠ 표시와 빨간 테두리는 **늦으면 안 되는 일정**입니다. 1시간 전부터 더 강조됩니다.
+- **손가락 동작**: 좌우로 밀기 = 일정·지도의 앞·뒤 날짜, 회화의 앞·뒤 상황, 체크리스트의 옆 탭, 사진 넘기기. 모두 화면의 버튼·칩으로도 똑같이 됩니다.
+  폰의 **뒤로 가기**(버튼·제스처)는 열려 있는 창이나 사진 보기를 먼저 닫습니다. 체크·즐겨찾기 때의 짧은 진동은 설정에서 끌 수 있습니다(안드로이드만 지원).
+- **추천 코스**는 확정 일정이 아닙니다. `data/ideas.json` 에 있고, 그날 일정 화면에 '이날 넣어 볼 만한 것'과 알림(추수감사절·용암 분출 예보)으로도 보입니다.
 - 버튼·목록 등 누르는 곳은 모두 48px 이상, 글자는 16px 이상, 색 대비는 4.5:1 이상으로 맞췄습니다.
 - 일정 시각은 모두 **하와이 시간**입니다. (한국이 19시간 빠름)
 - **길찾기**는 Google 지도로 열리며 인터넷이 필요합니다. 지도 탭의 약도는 인터넷 없이 보입니다.
@@ -126,7 +129,7 @@ git config core.hooksPath .githooks     # 커밋 전 자동 검사 켜기 (저�
 index.html · manifest.webmanifest · sw.js(오프라인) · css/app.css
 js/      main(주소→화면) today days maps wallet checklist expenses phrases settings more
          time(하와이·한국 시각) trip db prefs crypto weather tts sw-client ui viewer util
-data/    trip.json(일정·장소) phrases.json checklists.json videos.json(유튜브) secret.enc(암호화된 예약)
+data/    trip.json(일정·장소) phrases.json checklists.json videos.json(유튜브) ideas.json(추천 코스·알림) secret.enc(암호화된 예약)
 maps/    make_maps.py 가 trip.json 으로 그린 약도 PNG
 photos/  대표 사진 (직접 찍거나 받은 사진만)
 tools/   validate · encrypt · decrypt-check · scan-secrets · build-precache · serve · maps/

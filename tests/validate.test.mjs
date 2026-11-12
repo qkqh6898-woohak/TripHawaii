@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { validateTrip, validatePhrases, validateChecklists, validateSecret, validateVideos } from '../tools/validate.mjs';
+import { validateTrip, validatePhrases, validateChecklists, validateSecret, validateVideos, validateIdeas } from '../tools/validate.mjs';
 import { scanText, checkPath, checkEncFile, collectKnownSecrets } from '../tools/scan-secrets.mjs';
 
 const load = (rel) => JSON.parse(readFileSync(new URL('../' + rel, import.meta.url), 'utf8'));
@@ -106,6 +106,17 @@ test('체크리스트: 항목 id 중복 없음', () => {
   assert.deepEqual(validateChecklists(doc).errors, []);
   const broken = clone(doc); broken.groups[1].items[0].id = broken.groups[0].items[0].id;
   assert.ok(validateChecklists(broken).errors.some((e) => e.includes('중복')));
+});
+
+test('추천 코스: 날짜·링크·필수 항목 검사', () => {
+  const doc = load('data/ideas.json');
+  const dates = trip.days.map((d) => d.date);
+  assert.deepEqual(validateIdeas(doc, dates).errors, []);
+  assert.ok(doc.notices.some((n) => n.id === 'thanksgiving' && n.dates.includes('2026-11-26')));
+  const bad = clone(doc); bad.ideas[0].link = { label: 'x', url: 'javascript:alert(1)' };
+  assert.ok(validateIdeas(bad, dates).errors.some((e) => e.includes('https')));
+  const badDate = clone(doc); badDate.ideas[1].dates = ['2026-12-01'];
+  assert.ok(validateIdeas(badDate, dates).errors.some((e) => e.includes('여행 기간')));
 });
 
 test('영상 목록: 영상 id 형식·날짜·중복 검사', () => {

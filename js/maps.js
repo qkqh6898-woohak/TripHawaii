@@ -87,8 +87,7 @@ export async function render(root, ctx) {
     onSwipe(root, (dir) => {
       const target = dir === 'left' ? trip.days[i + 1] : trip.days[i - 1];
       if (!target) return;
-      document.documentElement.dataset.slide = dir;
-      location.hash = link({ d: target.date });
+      ctx.navigate(link({ d: target.date }), true, { slide: dir });
     });
   }
   bindItemClicks(root);

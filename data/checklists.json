@@ -10,6 +10,8 @@
         { "id": "todo-helicopter", "text": "헬기투어 날짜(11/23 또는 11/24) 정하고 예약", "owner": "woohak" },
         { "id": "todo-maunakea", "text": "마우나케아 별 관측: 투어 이용 or 직접 운전 결정 (정상은 4WD 필요)", "owner": "woohak" },
         { "id": "todo-1122", "text": "11/22 일정 정하기", "owner": "both" },
+        { "id": "todo-thanksgiving", "text": "11/26 추수감사절 저녁 식당 예약 (문 닫는 곳 많음)", "owner": "seonghee" },
+        { "id": "todo-eruption", "text": "킬라우에아 분출 예보 확인 (예상 11/16~21 · 11/19~20에 다시 보기)", "owner": "woohak", "url": "https://www.usgs.gov/volcanoes/kilauea/volcano-updates" },
         { "id": "todo-volcano-vc", "text": "화산국립공원 방문자센터 재개관 여부 확인 (공사 중이면 임시 웰컴센터 이용)", "owner": "woohak", "url": "https://www.nps.gov/havo/planyourvisit/welcome-center.htm" },
         { "id": "todo-flight-times", "text": "e-티켓으로 YP151 도착·YP152 인천 도착 시각 확인", "owner": "both" },
         { "id": "todo-konacoast-checkin", "text": "코나코스트 리조트 체크인 시간 확인 (공식 안내는 16:00)", "owner": "woohak" },

@@ -256,6 +256,32 @@ export function validateVideos(doc, tripDates = []) {
   return { errors, warnings: [] };
 }
 
+export function validateIdeas(doc, tripDates = []) {
+  const errors = [];
+  const https = (l, at) => { if (l && !/^https:\/\//.test(l.url || '')) errors.push(`${at}: link.url 은 https 주소여야 합니다`); };
+  const dates = (list, at) => { for (const d of list || []) if (tripDates.length && !tripDates.includes(d)) errors.push(`${at}: 날짜 ${d} 가 여행 기간에 없습니다`); };
+  const ids = new Set();
+  for (const [key, list] of [['notices', (doc && doc.notices) || []], ['ideas', (doc && doc.ideas) || []]]) {
+    list.forEach((x, i) => {
+      const at = `ideas.${key}[${i}]${x && x.id ? ` (${x.id})` : ''}`;
+      if (!x.id || !RE_ID.test(x.id)) errors.push(`${at}: id 형식이 올바르지 않습니다`);
+      if (ids.has(x.id)) errors.push(`${at}: id "${x.id}" 가 중복됩니다`);
+      ids.add(x.id);
+      if (!x.title) errors.push(`${at}: title 이 없습니다`);
+      if (key === 'notices' && !x.text) errors.push(`${at}: text 가 없습니다`);
+      if (key === 'ideas') {
+        if (!ISLANDS.includes(x.island)) errors.push(`${at}: island 가 올바르지 않습니다`);
+        if (!x.why || !x.how) errors.push(`${at}: why 와 how 가 있어야 합니다`);
+        for (const p of [x.place, x.place2]) if (p && (!p.name || !p.name_en || !p.addr)) errors.push(`${at}: place 에는 name, name_en, addr 가 있어야 합니다`);
+      }
+      dates(x.dates, at);
+      https(x.link, at);
+    });
+  }
+  for (const a of (doc && doc.already) || []) dates([a.date], `ideas.already (${a.title})`);
+  return { errors, warnings: [] };
+}
+
 // private/trip-secret.json (암호화 전 원본) 구조 검사
 export function validateSecret(secret) {
   const errors = [];
@@ -338,6 +364,7 @@ async function main() {
   }));
   run('data/phrases.json', () => validatePhrases(loadJSON('data/phrases.json')));
   run('data/checklists.json', () => validateChecklists(loadJSON('data/checklists.json')));
+  run('data/ideas.json', () => validateIdeas(loadJSON('data/ideas.json'), loadJSON('data/trip.json').days.map((d) => d.date)));
   run('data/videos.json', () => validateVideos(loadJSON('data/videos.json'), loadJSON('data/trip.json').days.map((d) => d.date)));
 
   if (!quiet) for (const w of warnings) console.log(`⚠️  ${w}`);

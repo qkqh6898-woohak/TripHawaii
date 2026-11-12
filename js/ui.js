@@ -117,8 +117,8 @@ function bindCommon(sheet) {
   bindCarousels(sheet.body);
   sheet.body.addEventListener('click', (e) => {
     const copy = e.target.closest('.place-block [data-copy]');
-    if (copy) { copyText(copy.dataset.copy, copy.dataset.copyLabel); return; }
-    if (e.target.closest('a[href^="#/"]')) sheet.close();
+    if (copy) copyText(copy.dataset.copy, copy.dataset.copyLabel);
+    // 시트 안의 앱 링크(#/…)는 util.js 가 시트를 닫고 이동시킨다
   });
 }
 

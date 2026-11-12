@@ -205,6 +205,114 @@ async function runFlow(browser, base, vp) {
   await shot(page, 'day');
   log('일정: 13일·시간 일정·지도·사진 넘기기·밀어서 날짜 이동·상세·메모 ✓');
 
+  // 4-2) 폰의 '뒤로 가기': 창(시트)·사진 보기만 닫히고 화면은 그대로
+  const hashNow = () => page.evaluate(() => location.hash);
+  const back = async () => { await page.goBack(); await page.waitForTimeout(350); };
+  await page.locator('[data-item="1117-3"]').click();
+  await page.waitForSelector('.sheet');
+  await back();
+  assert.equal(await page.locator('.sheet').count(), 0, '뒤로 가기로 시트가 닫혀야 함');
+  assert.equal(await hashNow(), '#/day/2026-11-17', '뒤로 가기로 시트만 닫히고 화면은 그대로');
+  await page.locator('[data-item="1117-4"]').click();                     // 시트 위에 사진 보기까지 겹친 경우
+  await page.waitForSelector('.sheet .carousel-slide');
+  await page.locator('.sheet .carousel-slide').first().click();
+  await page.waitForSelector('.viewer img');
+  await back();
+  assert.equal(await page.locator('.viewer').count(), 0, '첫 번째 뒤로 가기: 사진 보기만 닫힘');
+  assert.equal(await page.locator('.sheet').count(), 1);
+  await back();
+  assert.equal(await page.locator('.sheet').count(), 0, '두 번째 뒤로 가기: 시트가 닫힘');
+  assert.equal(await hashNow(), '#/day/2026-11-17');
+  assert.equal(await page.evaluate(() => document.body.classList.contains('sheet-open') || document.body.classList.contains('viewer-open')), false);
+  // ✕ 로 닫은 뒤에는 뒤로 가기가 한 번에 이전 화면으로 (빈 칸이 남지 않음)
+  await page.locator('[data-item="1117-3"]').click();
+  await page.waitForSelector('.sheet');
+  await page.locator('.sheet [data-sheet-close]').first().click();
+  await page.waitForTimeout(350);
+  await back();
+  assert.equal(await hashNow(), '#/today', '밀어서 넘긴 날짜는 기록에 쌓이지 않고, ✕ 로 닫은 창도 기록에 남지 않음');
+  await go(page, '#/day/2026-11-17');
+  // 시트 안의 앱 링크: 시트가 닫히고 이동, 뒤로 가기 한 번이면 돌아옴
+  await page.locator('[data-item="1117-3"]').click();
+  await page.waitForSelector('.sheet a[href^="#/wallet"]');
+  await page.locator('.sheet a[href^="#/wallet"]').first().click();
+  await page.waitForFunction(() => location.hash.startsWith('#/wallet'));
+  await page.waitForTimeout(350);
+  assert.equal(await page.locator('.sheet').count(), 0);
+  await back();
+  assert.equal(await hashNow(), '#/day/2026-11-17');
+  assert.equal(await page.locator('.sheet').count(), 0);
+  await page.waitForSelector('.view-day');
+  // 화면 가장자리에서 시작한 밀기는 무시 (폰의 뒤로 가기 제스처와 겹치지 않게)
+  await touch('.view .day-head', 8, 260);
+  await page.waitForTimeout(250);
+  assert.equal(await hashNow(), '#/day/2026-11-17');
+  log('뒤로 가기: 시트·사진 보기 닫기, 빈 칸 없음, 가장자리 밀기 무시 ✓');
+
+  // 4-3) 추천 코스 · 날짜별 알림
+  await go(page, '#/day/2026-11-26');
+  assert.match(await text(page, '.card-notice'), /추수감사절/);
+  assert.match(await text(page, '[data-item="1126-4"]'), /마지막 저녁/);
+  await go(page, '#/day/2026-11-20');
+  assert.match(await text(page, '.card-notice'), /용암 분수/);
+  assert.match(await page.locator('.card-notice a').getAttribute('href'), /^https:\/\/www\.usgs\.gov\//);
+  assert.equal(await page.locator('.view-day [data-idea="lava"]').count(), 1);
+  await page.locator('.view-day [data-idea="lava"] [data-idea-fav]').click();
+  await page.waitForTimeout(200);
+  await go(page, '#/ideas');
+  assert.equal(await page.locator('.view-ideas .idea').count(), 9);
+  assert.equal(await page.locator('.view-ideas .card-notice, .view-ideas .notice').count() >= 3, true);
+  assert.equal(await page.locator('[data-idea="lava"] [data-idea-fav]').getAttribute('aria-pressed'), 'true');   // 일정 화면에서 누른 ☆ 가 유지됨
+  assert.match(await text(page, '[data-idea="northshore"]'), /맞는 날이 없어요/);
+  const ideaLinks = await page.locator('.view-ideas .idea a[target="_blank"]').evaluateAll((els) => els.map((a) => a.href));
+  assert.ok(ideaLinks.length >= 9 && ideaLinks.every((h) => /^https:\/\/(www\.google\.com\/maps\/search\/|www\.youtube\.com\/results|www\.usgs\.gov\/)/.test(h)), '추천 코스의 바깥 링크');
+  const small = await page.locator('.view-ideas a, .view-ideas button').evaluateAll((els) => els.filter((e) => { const r = e.getBoundingClientRect(); return r.width > 0 && (r.height < 44 || r.width < 44); }).map((e) => `${e.className}:${Math.round(e.getBoundingClientRect().width)}x${Math.round(e.getBoundingClientRect().height)}`));
+  assert.deepEqual(small, [], '추천 코스 화면의 누르는 곳은 모두 44px 이상');
+  await shot(page, 'ideas');
+  await page.locator('[data-idea="lava"] [data-idea-fav]').click();
+  await go(page, '#/more');
+  assert.match(await text(page, 'a[href="#/ideas"]'), /추천 코스/);
+  log('추천 코스: 날짜별 알림·넣어 볼 만한 것 9개·☆ 유지·링크 ✓');
+
+  // 4-4) 탭처럼 생긴 화면은 좌우로 밀어 넘김 (칩·탭을 눌러도 같음) — 기록은 쌓이지 않음
+  await go(page, '#/phrases/immigration');
+  const histLen = await page.evaluate(() => history.length);
+  const sitIds = await page.locator('.chips-scroll .chip').evaluateAll((els) => els.map((a) => a.getAttribute('href').replace('#/phrases/', '')));
+  await touch('.view .page-title', 320, 80);
+  await page.waitForFunction((h) => location.hash === h, `#/phrases/${sitIds[1]}`);
+  await page.waitForTimeout(300);
+  await touch('.view .page-title', 80, 320);
+  await page.waitForFunction(() => location.hash === '#/phrases/immigration');
+  await page.waitForTimeout(300);
+  await touch('.view .page-title', 80, 320);                             // 첫 상황에서 더 밀어도 제자리
+  await page.waitForTimeout(250);
+  assert.equal(await hashNow(), '#/phrases/immigration');
+  assert.equal(await page.evaluate(() => history.length), histLen, '밀어서 넘길 때 방문 기록이 늘지 않아야 함');
+  await go(page, '#/check?tab=before&who=all');
+  await touch('.view .page-title', 320, 80);
+  await page.waitForFunction(() => /tab=daily/.test(location.hash));
+  await page.waitForTimeout(300);
+  assert.equal(await text(page, '.seg-btn.is-on'), '매일');
+  await touch('.view .page-title', 80, 320);
+  await page.waitForFunction(() => /tab=before/.test(location.hash));
+  await page.waitForTimeout(300);
+  log('밀어서 넘기기: 회화 상황·체크리스트 탭 ✓');
+
+  // 4-5) 폰을 가로로 눕혀도 화면이 옆으로 넘치지 않음
+  if (vp.name === 'phone') {
+    await page.setViewportSize({ width: 844, height: 390 });
+    for (const h of ['#/today', '#/day/2026-11-20', '#/ideas', '#/check?tab=before&who=all']) {
+      await go(page, h);
+      const over = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
+      assert.ok(over <= 1, `가로 화면에서 옆으로 넘침: ${h} (${over}px)`);
+    }
+    const tabH = await page.locator('#tabs a').first().evaluate((e) => e.getBoundingClientRect().height);
+    assert.ok(tabH >= 48, `가로 화면의 아래 탭 높이 ${tabH}`);
+    await shot(page, 'landscape');
+    await page.setViewportSize({ width: vp.width, height: vp.height });
+    log('가로 화면: 넘침 없음 ✓');
+  }
+
   // 5) 지도: 탭 전환, 크게 보기(확대), 장소 목록
   await go(page, '#/maps?m=oahu');
   await page.waitForFunction(() => { const i = document.querySelector('.map-frame img'); return i && i.complete && i.naturalWidth > 0; });

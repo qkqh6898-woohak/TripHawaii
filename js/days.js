@@ -1,5 +1,5 @@
 // 일정 — 날짜별 시간 일정 + 지도 + 사진 + 준비물
-import { html, setHTML, onSwipe } from './util.js';
+import { html, setHTML, onSwipe, haptic } from './util.js';
 import { getTrip, dayByDate, hotel, place as getPlace, islandLabel, hotelEvents, mapSize, dayPhotos } from './trip.js';
 import * as time from './time.js';
 import { itemRowHtml, bindItemClicks, carouselHtml, bindCarousels } from './ui.js';
@@ -8,6 +8,7 @@ import { getChecks, packingItems, setCheck } from './checklist.js';
 import { openViewer } from './viewer.js';
 import { topicsForDate, topicHtml } from './videos.js';
 import * as wallet from './wallet.js';
+import { noticesForDate, ideasForDate, noticeHtml, ideaHtml, bindIdeas } from './ideas.js';
 
 export const live = ['weather'];
 
@@ -45,6 +46,8 @@ export async function render(root, ctx) {
   const packs = packingItems(day, checks);
   const wx = await weatherHtml(day.weather_zones, date);
   const vids = await topicsForDate(date);
+  const notices = await noticesForDate(date);
+  const dayIdeas = await ideasForDate(date);
 
   const stateOf = (it) => {
     if (isPastDay) return 'past';
@@ -72,6 +75,7 @@ export async function render(root, ctx) {
     </header>
 
     ${hotelBannersHtml(date)}
+    ${notices.map((n) => html`<section class="card card-notice">${noticeHtml(n)}</section>`)}
     ${wx}
 
     <button type="button" class="map-frame" data-map="${day.map}" data-alt="${time.fmtDate(date)} ${day.title} 지도" aria-label="지도 크게 보기">
@@ -97,6 +101,13 @@ export async function render(root, ctx) {
         <a class="link-btn" href="#/check?tab=daily&d=${date}">매일 공통 준비물까지 보기 ›</a>
       </section>` : ''}
 
+    ${dayIdeas.length ? html`
+      <section class="card">
+        <h2>✨ 이날 넣어 볼 만한 것</h2>
+        <p class="muted small">확정 일정이 아니에요. 마음에 들면 ☆ 를 눌러 두세요.</p>
+        ${dayIdeas.map((i) => ideaHtml(i, { compact: true }))}
+      </section>` : ''}
+
     ${vids.length ? html`
       <section class="card">
         <h2>📺 영상으로 미리 보기</h2>
@@ -113,6 +124,7 @@ export async function render(root, ctx) {
 
   bindItemClicks(root);
   bindCarousels(root);
+  bindIdeas(root);
   root.addEventListener('click', (e) => {
     const map = e.target.closest('[data-map]');
     if (map) openViewer(map.dataset.map, map.dataset.alt);
@@ -123,13 +135,13 @@ export async function render(root, ctx) {
   onSwipe(root, (dir) => {
     const target = dir === 'left' ? trip.days[idx + 1] : trip.days[idx - 1];
     if (!target) return;
-    document.documentElement.dataset.slide = dir;
-    location.hash = `#/day/${target.date}`;
+    ctx.navigate(`#/day/${target.date}`, true, { slide: dir });
   });
   root.addEventListener('change', async (e) => {
     const box = e.target.closest('[data-check]');
     if (!box) return;
     await setCheck(box.dataset.check, box.checked);
+    haptic();
     box.closest('.check-row').classList.toggle('is-done', box.checked);
   });
 

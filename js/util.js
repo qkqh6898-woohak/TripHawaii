@@ -92,12 +92,15 @@ export function inAppBrowser() {
 // 손가락으로 화면을 좌우로 밀면 handler('left' | 'right') 를 부른다. (마우스는 제외)
 // 가로로 스크롤되는 줄(날짜 칩·사진 묶음)이나 입력 칸에서 시작한 동작은 무시한다.
 // el 에는 CSS 로 touch-action: pan-y 를 줘야 세로 스크롤과 함께 쓸 수 있다 (.swipe-x).
+const EDGE = 24;
 export function onSwipe(el, handler, { min = 60 } = {}) {
   let start = null;
   el.addEventListener('pointerdown', (e) => {
     start = null;
     if (e.pointerType === 'mouse' || e.isPrimary === false) return;
     if (e.target.closest && e.target.closest('.chips-scroll, .seg-scroll, .carousel-track, input, textarea, select')) return;
+    // 화면 양쪽 끝은 폰의 '뒤로 가기' 제스처 자리라서 비워 둔다 (두 동작이 겹치지 않게)
+    if (e.clientX < EDGE || e.clientX > window.innerWidth - EDGE) return;
     start = { x: e.clientX, y: e.clientY, t: Date.now() };
   });
   el.addEventListener('pointerup', (e) => {
@@ -109,6 +112,80 @@ export function onSwipe(el, handler, { min = 60 } = {}) {
     if (Math.abs(dx) >= min && Math.abs(dx) > Math.abs(dy) * 1.8 && Date.now() - s.t < 900) handler(dx < 0 ? 'left' : 'right');
   });
   el.addEventListener('pointercancel', () => { start = null; });
+}
+
+// ───────────── 진동 피드백 (지원하는 폰에서만 · 설정에서 끌 수 있음) ─────────────
+let hapticOn = true;
+export function setHaptic(on) { hapticOn = !!on; }
+export function haptic(ms = 12) {
+  try { if (hapticOn && typeof navigator !== 'undefined' && navigator.vibrate) navigator.vibrate(ms); } catch { /* 지원하지 않는 기기 */ }
+}
+
+// ───────────── 겹쳐 뜨는 창(시트·사진 보기)과 '뒤로 가기' ─────────────
+// 창을 열 때 방문 기록을 한 칸 쌓아 두면, 폰의 뒤로 가기(버튼·제스처)가 앱을 나가지 않고 창만 닫는다.
+const layers = [];
+let pendingBack = 0;
+let settleWaiters = [];
+const layerDepth = () => { try { return (history.state && history.state.alohaLayer) || 0; } catch { return 0; } };
+function settled() {
+  const w = settleWaiters;
+  settleWaiters = [];
+  w.forEach((f) => f());
+}
+
+export function pushLayer(onBack) {
+  const layer = { onBack };
+  layers.push(layer);
+  try { history.pushState({ alohaLayer: layers.length }, ''); } catch { /* 기록을 못 쌓아도 창은 열린다 */ }
+  return layer;
+}
+
+// 화면의 ✕ 등으로 닫았을 때 — 쌓아 둔 기록 한 칸을 되돌린다 (silent: 기록은 그대로 둠)
+export function dropLayer(layer, { silent = false } = {}) {
+  const i = layers.indexOf(layer);
+  if (i < 0) return;
+  layers.splice(i, 1);
+  if (silent || !layerDepth()) return;
+  pendingBack++;
+  setTimeout(() => { if (pendingBack) { pendingBack = 0; settled(); } }, 600);
+  try { history.back(); } catch { pendingBack = 0; settled(); }
+}
+
+// 창을 닫으며 되돌린 기록이 정리될 때까지 기다린다 (주소를 바꾸기 전에 부른다)
+export function layersSettled() {
+  if (!pendingBack) return Promise.resolve();
+  return new Promise((resolve) => { settleWaiters.push(resolve); });
+}
+
+export const openLayerCount = () => layers.length;
+
+function closeLayersSilently() {
+  for (const l of layers.splice(0).reverse()) { try { l.onBack(); } catch { /* 무시 */ } }
+}
+
+if (typeof window !== 'undefined') {
+  window.addEventListener('popstate', (e) => {
+    if (pendingBack > 0) { pendingBack--; if (!pendingBack) settled(); }
+    const depth = (e.state && e.state.alohaLayer) || 0;
+    while (layers.length > depth) { const l = layers.pop(); try { l.onBack(); } catch { /* 무시 */ } }
+  });
+  // 창 안의 앱 링크(#/…)를 누르면: 창을 닫고, 창 때문에 쌓인 기록 자리에 새 화면을 넣는다
+  // (이렇게 해야 뒤로 가기를 눌렀을 때 아무 일도 안 일어나는 '빈 칸'이 생기지 않는다)
+  document.addEventListener('click', (e) => {
+    if (!layers.length || e.defaultPrevented || e.button) return;
+    const a = e.target.closest && e.target.closest('a[href^="#/"]');
+    if (!a || a.target === '_blank') return;
+    e.preventDefault();
+    const href = a.getAttribute('href');
+    const hadEntry = layerDepth() > 0;
+    closeLayersSilently();
+    if (hadEntry) {
+      history.replaceState(null, '', location.pathname + location.search + href);
+      window.dispatchEvent(new Event('hashchange'));
+    } else {
+      location.hash = href;
+    }
+  }, true);
 }
 
 // ───────────── 토스트 ─────────────
@@ -172,10 +249,11 @@ export function openSheet(content, opts = {}) {
   setHTML(body, content);
   const previousFocus = document.activeElement;
   let closed = false;
-  const close = (result) => {
+  const close = (result, viaBack = false) => {
     if (closed) return;
     closed = true;
     wrap.remove();
+    dropLayer(layer, { silent: viaBack });
     openSheets = Math.max(0, openSheets - 1);
     if (!openSheets) document.body.classList.remove('sheet-open');
     document.removeEventListener('keydown', onKey);
@@ -187,6 +265,7 @@ export function openSheet(content, opts = {}) {
     if (e.target.closest('[data-sheet-close]')) close();
   });
   document.addEventListener('keydown', onKey);
+  const layer = pushLayer(() => close(undefined, true));
   root.appendChild(wrap);
   openSheets++;
   document.body.classList.add('sheet-open');
@@ -196,6 +275,7 @@ export function openSheet(content, opts = {}) {
 }
 
 export function closeAllSheets() {
+  closeLayersSilently();
   const root = document.getElementById('sheet-root');
   if (root) root.textContent = '';
   openSheets = 0;

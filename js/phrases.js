@@ -1,5 +1,5 @@
 // 상황별 영어 회화 카드 (8상황 × 5문장) + 발음 듣기
-import { html, setHTML, toast } from './util.js';
+import { html, setHTML, toast, onSwipe, haptic } from './util.js';
 import { prefs, setPref, spouseWord } from './prefs.js';
 import { speak, stopSpeaking, ttsSupported } from './tts.js';
 import * as wallet from './wallet.js';
@@ -90,6 +90,19 @@ export async function render(root, ctx) {
 
   if (!can) root.querySelectorAll('[data-say]').forEach((b) => { b.disabled = true; });
 
+  // 좌우로 밀면 앞·뒤 상황으로 (위의 상황 칩을 눌러도 같아요)
+  const order = [...d.situations.map((s) => s.id), 'fav'];
+  const at = order.indexOf(id);
+  if (at >= 0) {
+    root.classList.add('swipe-x');
+    onSwipe(root, (dir) => {
+      const next = order[at + (dir === 'left' ? 1 : -1)];
+      if (next) ctx.navigate(`#/phrases/${next}`, true, { slide: dir });
+    });
+    const on = root.querySelector('.chips-scroll .is-on');
+    if (on && on.scrollIntoView) requestAnimationFrame(() => on.scrollIntoView({ inline: 'center', block: 'nearest' }));
+  }
+
   root.addEventListener('click', async (e) => {
     const card = e.target.closest('[data-phrase]');
     if (!card) return;
@@ -110,6 +123,7 @@ export async function render(root, ctx) {
       const cur = prefs().favPhrases || [];
       const on = !cur.includes(p.id);
       await setPref('favPhrases', on ? [...cur, p.id] : cur.filter((x) => x !== p.id));
+      haptic();
       favBtn.classList.toggle('is-on', on);
       favBtn.textContent = on ? '★' : '☆';
       favBtn.setAttribute('aria-pressed', on ? 'true' : 'false');

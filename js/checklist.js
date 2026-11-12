@@ -1,7 +1,7 @@
 // 체크리스트 — 출발 전 / 매일 / 날짜별 준비물 / 귀국 전 / 반입 금지 음식
 // 체크 상태는 이 폰(IndexedDB checks)에 저장한다.
 import * as db from './db.js';
-import { html, setHTML, hashStr, toast, confirmSheet } from './util.js';
+import { html, setHTML, hashStr, toast, confirmSheet, onSwipe, haptic } from './util.js';
 import { getTrip, dayByDate } from './trip.js';
 import { prefs, ownerName } from './prefs.js';
 import * as time from './time.js';
@@ -171,10 +171,19 @@ export async function render(root, ctx) {
 
   root.querySelectorAll('.progress-bar').forEach((el) => { el.style.width = `${el.dataset.pct}%`; });
 
+  // 좌우로 밀면 옆 탭으로 (출발 전 ↔ 매일 ↔ 날짜별 ↔ 귀국 전) — 위의 탭을 눌러도 같아요
+  const tabIds = TABS.map(([t]) => t);
+  root.classList.add('swipe-x');
+  onSwipe(root, (dir) => {
+    const next = tabIds[tabIds.indexOf(tab) + (dir === 'left' ? 1 : -1)];
+    if (next) ctx.navigate(`#/check?tab=${next}&who=${who}`, true, { slide: dir });
+  });
+
   root.addEventListener('change', async (e) => {
     const box = e.target.closest('[data-check]');
     if (!box) return;
     await setCheck(box.dataset.check, box.checked);
+    haptic();
     box.closest('.check-row').classList.toggle('is-done', box.checked);
     const group = box.closest('.check-group, .check-day');
     if (group) {
