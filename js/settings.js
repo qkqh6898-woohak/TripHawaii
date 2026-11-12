@@ -182,6 +182,7 @@ export async function render(root, ctx) {
     <section class="card">
       <h2>백업</h2>
       <p class="muted small">경비·체크·메모를 파일로 저장해요. 예약 정보(비밀번호로 여는 내용)는 들어가지 않아요.</p>
+      <p class="status ${p.lastBackupAt ? 'status-ok' : ''}">${p.lastBackupAt ? `마지막 백업: ${time.fmtZoned(p.lastBackupAt, 'Asia/Seoul')} (한국 시간)` : '아직 백업한 적이 없어요'}</p>
       <div class="btn-row">
         <button type="button" class="btn" data-action="backup">백업 파일 저장</button>
         <button type="button" class="btn" data-action="restore">백업 가져오기</button>
@@ -251,7 +252,9 @@ export async function render(root, ctx) {
     if (act === 'backup') {
       const doc = await buildBackup();
       downloadFile(`aloha-trip-backup-${new Date().toISOString().slice(0, 10)}.json`, JSON.stringify(doc, null, 1));
+      await setPref('lastBackupAt', Date.now());
       toast('백업 파일을 저장했어요');
+      ctx.rerender();
     }
     if (act === 'restore') {
       const f = await pickFileText();

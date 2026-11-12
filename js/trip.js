@@ -2,6 +2,7 @@
 
 let trip = null;
 let index = null;
+let mapSizes = {};
 
 export const CAT_LABEL = { move: '이동', hotel: '숙소', sight: '관광', shop: '쇼핑', food: '음식', tour: '투어', rest: '휴식' };
 export const CAT_ICON = { move: '🚗', hotel: '🏨', sight: '🌋', shop: '🛍', food: '🍽', tour: '🎟', rest: '🌴' };
@@ -30,10 +31,16 @@ export async function loadTrip() {
   if (!res.ok) throw new Error(`일정 파일을 불러오지 못했어요 (${res.status})`);
   const t = await res.json();
   if (!t || t.schema !== 1 || !Array.isArray(t.days)) throw new Error('일정 파일 형식이 올바르지 않아요');
+  try {
+    const m = await fetch('data/maps.json', { cache: 'no-cache' });
+    if (m.ok) mapSizes = await m.json();
+  } catch { /* 크기를 몰라도 지도는 보인다 */ }
   return setTrip(t);
 }
 
 export const getTrip = () => trip;
+// 지도 이미지의 실제 크기 [가로, 세로] — <img width height> 에 넣어 로딩 중 화면 밀림을 막는다
+export const mapSize = (src) => (Array.isArray(mapSizes[src]) ? mapSizes[src] : [1080, 1400]);
 export const place = (id) => (id && index ? index.places.get(id) || null : null);
 export const hotel = (id) => (id && index ? index.hotels.get(id) || null : null);
 export const dayByDate = (date) => (index ? index.days.get(date) || null : null);

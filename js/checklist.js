@@ -157,9 +157,9 @@ export async function render(root, ctx) {
 
   setHTML(root, html`
     <h1 class="page-title"><a class="back" href="#/more" aria-label="더보기로">‹</a> ✅ 체크리스트</h1>
-    <div class="seg" role="tablist">
-      ${TABS.map(([id, label]) => html`<a class="seg-btn ${tab === id ? 'is-on' : ''}" href="#/check?tab=${id}&who=${who}">${label}</a>`)}
-    </div>
+    <nav class="seg" aria-label="체크리스트 종류">
+      ${TABS.map(([id, label]) => html`<a class="seg-btn ${tab === id ? 'is-on' : ''}" href="#/check?tab=${id}&who=${who}" ${tab === id ? html`aria-current="page"` : ''}>${label}</a>`)}
+    </nav>
     ${tab === 'before' || tab === 'return' ? html`
       <div class="chips" aria-label="담당 고르기">
         ${[['all', '전체'], ['woohak', '우학'], ['seonghee', '성희']].map(([id, label]) => html`<a class="chip ${who === id ? 'is-on' : ''}" href="${q({ who: id })}">${label}</a>`)}

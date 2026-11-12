@@ -256,7 +256,7 @@ export async function render(root, ctx) {
       <div class="banner banner-warn">예약 정보가 업데이트됐어요. 비밀번호를 다시 입력하면 새 내용이 보여요. (지금은 이전 내용)</div>
       ${passwordFormHtml('새 예약 정보 열기')}` : ''}
     ${justUpdated ? html`<div class="banner banner-ok">예약 정보가 새 내용으로 바뀌었어요.</div>` : ''}
-    <div class="chips" role="tablist" aria-label="예약 종류">
+    <div class="chips" aria-label="예약 종류">
       <a class="chip ${filter === 'all' ? 'is-on' : ''}" href="#/wallet">전체 ${list.length}</a>
       ${types.map((t) => html`<a class="chip ${filter === t ? 'is-on' : ''}" href="#/wallet?type=${t}">${TYPE_LABEL[t]}</a>`)}
     </div>

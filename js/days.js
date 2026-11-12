@@ -1,6 +1,6 @@
 // 일정 — 날짜별 시간 일정 + 지도 + 사진 + 준비물
 import { html, setHTML } from './util.js';
-import { getTrip, dayByDate, hotel, place as getPlace, islandLabel, hotelEvents } from './trip.js';
+import { getTrip, dayByDate, hotel, place as getPlace, islandLabel, hotelEvents, mapSize } from './trip.js';
 import * as time from './time.js';
 import { itemRowHtml, bindItemClicks } from './ui.js';
 import { weatherHtml } from './weather.js';
@@ -71,7 +71,7 @@ export async function render(root, ctx) {
     ${wx}
 
     <button type="button" class="map-frame" data-map="${day.map}" data-alt="${time.fmtDate(date)} ${day.title} 지도" aria-label="지도 크게 보기">
-      <img src="${day.map}" alt="${time.fmtDate(date)} ${day.title} 지도" width="1080" height="1400" loading="lazy">
+      <img src="${day.map}" alt="${time.fmtDate(date)} ${day.title} 지도" width="${mapSize(day.map)[0]}" height="${mapSize(day.map)[1]}">
       <span class="map-zoom">🔍 탭하면 크게</span>
     </button>
 

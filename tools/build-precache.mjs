@@ -42,7 +42,24 @@ function listFiles() {
 
 const sha = (buf) => createHash('sha256').update(buf).digest('hex');
 
+// 지도 이미지의 실제 크기를 data/maps.json 에 적어 둔다 → 화면이 이미지 자리를 미리 잡아 로딩 중에 밀리지 않는다
+function mapSizesJson() {
+  const dir = join(ROOT, 'maps');
+  const sizes = {};
+  if (existsSync(dir)) {
+    for (const name of readdirSync(dir).filter((n) => n.toLowerCase().endsWith('.png')).sort()) {
+      const buf = readFileSync(join(dir, name));
+      if (buf.length > 24 && buf.toString('latin1', 12, 16) === 'IHDR') sizes[`maps/${name}`] = [buf.readUInt32BE(16), buf.readUInt32BE(20)];
+    }
+  }
+  return JSON.stringify(sizes) + '\n';
+}
+
 function build() {
+  const mapsPath = join(ROOT, 'data', 'maps.json');
+  const mapsJson = mapSizesJson();
+  const mapsStale = !existsSync(mapsPath) || readFileSync(mapsPath, 'utf8') !== mapsJson;
+  if (mapsStale && !process.argv.includes('--check')) writeFileSync(mapsPath, mapsJson);
   const files = listFiles().map((p) => [p, sha(readFileSync(join(ROOT, p))).slice(0, 8)]);
   const swPath = join(ROOT, 'sw.js');
   const sw = readFileSync(swPath, 'utf8');
@@ -55,13 +72,13 @@ function build() {
   const block = `${BEGIN}\nconst VERSION = '${version}';\nconst FILES = [\n${files.map(([p, h]) => `  ['${p}', '${h}'],`).join('\n')}\n];\n${END}`;
   const next = sw.slice(0, a) + block + sw.slice(b + END.length);
   const bytes = files.reduce((n, [p]) => n + statSync(join(ROOT, p)).size, 0);
-  return { swPath, current: sw, next, version, count: files.length, bytes };
+  return { swPath, current: sw, next, version, count: files.length, bytes, mapsStale };
 }
 
 const check = process.argv.includes('--check');
 const r = build();
 if (check) {
-  if (r.current !== r.next) {
+  if (r.current !== r.next || r.mapsStale) {
     console.error('❌ sw.js 의 캐시 목록이 최신이 아닙니다 → node tools/build-precache.mjs 를 실행하고 sw.js 를 함께 커밋하세요');
     process.exit(1);
   }

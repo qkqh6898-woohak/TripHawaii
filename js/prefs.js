@@ -20,6 +20,7 @@ const DEFAULTS = {
   ttsRate: 1,
   lock: false,            // 예약 지갑을 열 때마다 비밀번호 입력
   lastSharedAt: 0,        // 마지막으로 경비를 보낸 시각
+  lastBackupAt: 0,        // 마지막으로 백업 파일을 저장한 시각
   deviceId: null,
   installHintDismissed: false,
   favPhrases: [],

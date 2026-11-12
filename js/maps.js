@@ -1,6 +1,6 @@
 // 지도 — 미리 그려 둔 약도(오프라인) + 장소 목록·길찾기
 import { html, setHTML } from './util.js';
-import { getTrip, dayByDate, placesOfDay, hotel, place as getPlace, directionsUrl, CAT_LABEL, CAT_ICON } from './trip.js';
+import { getTrip, dayByDate, placesOfDay, hotel, place as getPlace, directionsUrl, mapSize, CAT_LABEL, CAT_ICON } from './trip.js';
 import * as time from './time.js';
 import { openViewer } from './viewer.js';
 import { bindItemClicks } from './ui.js';
@@ -51,15 +51,15 @@ export async function render(root, ctx) {
 
   setHTML(root, html`
     <h1 class="page-title">🗺 지도</h1>
-    <div class="seg seg-scroll" role="tablist">
-      ${Object.entries(MAPS).map(([k, v]) => html`<a class="seg-btn ${m === k ? 'is-on' : ''}" href="#/maps?m=${k}${k === 'day' ? `&d=${date}` : ''}">${v.label}</a>`)}
-    </div>
+    <nav class="seg seg-scroll" aria-label="지도 종류">
+      ${Object.entries(MAPS).map(([k, v]) => html`<a class="seg-btn ${m === k ? 'is-on' : ''}" href="#/maps?m=${k}${k === 'day' ? `&d=${date}` : ''}" ${m === k ? html`aria-current="page"` : ''}>${v.label}</a>`)}
+    </nav>
     ${m === 'day' ? html`
       <div class="chips chips-scroll" aria-label="날짜 선택">
         ${trip.days.map((d) => html`<a class="chip ${d.date === date ? 'is-on' : ''}" href="${link({ d: d.date })}">${time.fmtMD(d.date)}</a>`)}
       </div>` : ''}
     <button type="button" class="map-frame" data-map="${src}" data-alt="${alt}" aria-label="${alt} — 크게 보기">
-      <img src="${src}" alt="${alt}" width="1080" height="1400">
+      <img src="${src}" alt="${alt}" width="${mapSize(src)[0]}" height="${mapSize(src)[1]}">
       <span class="map-zoom">🔍 탭하면 크게 · 두 손가락으로 확대</span>
     </button>
     ${m === 'day' ? html`<p class="muted small"><a href="#/day/${date}">${time.fmtDate(date)} 일정 보기 ›</a></p>` : ''}

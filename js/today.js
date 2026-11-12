@@ -15,6 +15,7 @@ export const live = ['clock', 'weather', 'offline', 'wallet', 'install'];
 
 function clockHtml(now, info, sub) {
   return html`
+    <h1 class="sr-only">오늘</h1>
     <section class="card clock" aria-label="지금 시각">
       <div class="clock-row"><span class="clock-where">🌺 하와이</span><b class="clock-time">${time.fmtZoned(now, info.tz)}</b></div>
       <div class="clock-row clock-home"><span class="clock-where">🇰🇷 한국</span><b class="clock-time">${time.fmtZoned(now, info.home_tz)}</b></div>

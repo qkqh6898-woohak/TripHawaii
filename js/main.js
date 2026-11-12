@@ -86,10 +86,14 @@ async function renderRoute({ keepScroll = false } = {}) {
 
 const busy = () => document.body.classList.contains('sheet-open') || document.body.classList.contains('viewer-open');
 
+// 짧은 시간에 여러 알림(오프라인 준비·날씨 등)이 겹쳐도 화면은 한 번만 다시 그린다
+let refreshTimer = null;
 function refreshIfLive(what) {
-  if (!current || busy()) return;
+  if (!current) return;
   const live = current.view.mod.live || [];
-  if (live.includes(what)) renderRoute({ keepScroll: true });
+  if (!live.includes(what)) return;
+  clearTimeout(refreshTimer);
+  refreshTimer = setTimeout(() => { if (!busy()) renderRoute({ keepScroll: true }); }, 200);
 }
 
 function updateTopbar() {
@@ -147,7 +151,7 @@ async function boot() {
   // 여기부터는 화면을 막지 않고 뒤에서 진행
   registerSW().then(() => updateTopbar());
   db.requestPersist();
-  wallet.initWallet().then(() => notify('wallet'));
+  wallet.initWallet();   // 첫 화면이 이미 기다렸다 그렸으므로 다시 그리지 않는다
   weather.refreshAll().then((r) => { if (r.updated) notify('weather'); });
   settings.autoRate();
 
