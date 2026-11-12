@@ -1,8 +1,8 @@
 // 일정 — 날짜별 시간 일정 + 지도 + 사진 + 준비물
-import { html, setHTML } from './util.js';
-import { getTrip, dayByDate, hotel, place as getPlace, islandLabel, hotelEvents, mapSize } from './trip.js';
+import { html, setHTML, onSwipe } from './util.js';
+import { getTrip, dayByDate, hotel, place as getPlace, islandLabel, hotelEvents, mapSize, dayPhotos } from './trip.js';
 import * as time from './time.js';
-import { itemRowHtml, bindItemClicks } from './ui.js';
+import { itemRowHtml, bindItemClicks, carouselHtml, bindCarousels } from './ui.js';
 import { weatherHtml } from './weather.js';
 import { getChecks, packingItems, setCheck } from './checklist.js';
 import { openViewer } from './viewer.js';
@@ -77,12 +77,7 @@ export async function render(root, ctx) {
       <span class="map-zoom">🔍 탭하면 크게</span>
     </button>
 
-    ${(day.photos || []).length ? html`
-      <div class="photos" aria-label="사진">
-        ${day.photos.map((ph) => html`
-          <figure class="photo"><button type="button" data-photo="${ph.src}" data-alt="${ph.alt || ''}" aria-label="${ph.alt || '사진'} 크게 보기">
-            <img src="${ph.src}" alt="${ph.alt || ''}" loading="lazy"></button><figcaption>${ph.alt || ''}</figcaption></figure>`)}
-      </div>` : ''}
+    ${carouselHtml(dayPhotos(day))}
 
     <h2 class="section-title">시간 일정</h2>
     <ol class="items">
@@ -107,25 +102,27 @@ export async function render(root, ctx) {
         <a class="link-btn" href="#/videos">하와이 영상 모두 보기 ›</a>
       </section>` : ''}
 
+    <p class="muted small center swipe-hint" aria-hidden="true">‹ 화면을 좌우로 밀면 날짜가 바뀌어요 ›</p>
     <nav class="day-nav" aria-label="앞뒤 날짜">
       ${idx > 0 ? html`<a class="btn" href="#/day/${trip.days[idx - 1].date}">‹ ${time.fmtMD(trip.days[idx - 1].date)}</a>` : html`<span></span>`}
       <a class="btn" href="#/maps?m=day&d=${date}">🗺 지도·장소</a>
       ${idx < trip.days.length - 1 ? html`<a class="btn" href="#/day/${trip.days[idx + 1].date}">${time.fmtMD(trip.days[idx + 1].date)} ›</a>` : html`<span></span>`}
     </nav>`);
 
-  // 아직 받지 못한 사진은 자리를 차지하지 않게 숨긴다
-  root.querySelectorAll('.photo img').forEach((img) => {
-    const hide = () => { const fig = img.closest('.photo'); if (fig) fig.remove(); const box = root.querySelector('.photos'); if (box && !box.children.length) box.remove(); };
-    img.addEventListener('error', hide);
-    if (img.complete && img.naturalWidth === 0 && img.currentSrc) hide();
-  });
-
   bindItemClicks(root);
+  bindCarousels(root);
   root.addEventListener('click', (e) => {
     const map = e.target.closest('[data-map]');
-    if (map) { openViewer(map.dataset.map, map.dataset.alt); return; }
-    const ph = e.target.closest('[data-photo]');
-    if (ph) openViewer(ph.dataset.photo, ph.dataset.alt);
+    if (map) openViewer(map.dataset.map, map.dataset.alt);
+  });
+
+  // 화면을 좌우로 밀면 앞·뒤 날짜로 (왼쪽으로 밀면 다음 날)
+  root.classList.add('swipe-x');
+  onSwipe(root, (dir) => {
+    const target = dir === 'left' ? trip.days[idx + 1] : trip.days[idx - 1];
+    if (!target) return;
+    document.documentElement.dataset.slide = dir;
+    location.hash = `#/day/${target.date}`;
   });
   root.addEventListener('change', async (e) => {
     const box = e.target.closest('[data-check]');

@@ -298,6 +298,23 @@ form > * + *, .sheet-body > * + *, .tip > * + *, .receive > * + *, .share > * + 
 .map-frame img { width: 100%; height: auto; }   /* width·height 속성(실제 크기)이 자리를 미리 잡아 화면이 밀리지 않는다 */
 .map-zoom { position: absolute; right: 8px; top: 8px; padding: 4px 9px; border-radius: 999px; background: rgba(27, 36, 48, .78); color: #fff; font-size: .74rem; font-weight: 700; }
 
+/* 좌우로 밀기: 세로 스크롤은 그대로 두고 가로 동작만 앱이 받는다 */
+.swipe-x { touch-action: pan-y; }
+.slide-from-right { animation: slide-r .22s ease-out; }
+.slide-from-left { animation: slide-l .22s ease-out; }
+@keyframes slide-r { from { transform: translateX(28px); opacity: .4; } to { transform: none; opacity: 1; } }
+@keyframes slide-l { from { transform: translateX(-28px); opacity: .4; } to { transform: none; opacity: 1; } }
+
+/* 사진 묶음 — 여러 장이면 좌우로 밀어 넘긴다 */
+.carousel-track { display: flex; gap: 8px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; overscroll-behavior-x: contain; border-radius: 12px; -webkit-overflow-scrolling: touch; }
+.carousel-track::-webkit-scrollbar { display: none; }
+.carousel-slide { position: relative; flex: 0 0 100%; scroll-snap-align: center; padding: 0; border: 0; border-radius: 12px; overflow: hidden; background: var(--surface-2); }
+.carousel-track.is-many .carousel-slide { flex-basis: 88%; }
+.carousel-slide img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
+.carousel-cap { position: absolute; left: 0; right: 0; bottom: 0; padding: 18px 10px 8px; background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, .7)); color: #fff; font-size: .85rem; font-weight: 700; text-align: left; }
+.carousel-count { margin-top: 6px; text-align: center; font-size: .85rem; font-variant-numeric: tabular-nums; }
+.tag-photo { background: var(--surface-2); color: var(--ink); }
+
 .photos { display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; margin-left: -12px; margin-right: -12px; padding: 0 12px; }
 .photos::-webkit-scrollbar { display: none; }
 .photo { flex: 0 0 62%; max-width: 280px; }
@@ -377,6 +394,10 @@ form > * + *, .sheet-body > * + *, .tip > * + *, .receive > * + *, .share > * + 
 .viewer-bar { position: absolute; top: 0; left: 0; right: 0; display: flex; align-items: center; gap: 8px; padding: calc(8px + var(--safe-t)) 10px 8px 14px; background: linear-gradient(rgba(0, 0, 0, .7), rgba(0, 0, 0, 0)); }
 .viewer-title { flex: 1; min-width: 0; font-weight: 700; font-size: .9rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .viewer-btn { width: 48px; height: 48px; border-radius: 50%; border: 0; background: rgba(255, 255, 255, .18); color: #fff; font-size: 1.2rem; }
+.viewer-count { font-weight: 800; font-size: .9rem; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.viewer-nav { position: absolute; top: 50%; transform: translateY(-50%); width: 48px; height: 64px; border: 0; border-radius: 12px; background: rgba(255, 255, 255, .16); color: #fff; font-size: 1.8rem; line-height: 1; }
+.viewer-prev { left: 6px; } .viewer-next { right: 6px; }
+.viewer-nav:disabled { opacity: .25; }
 .viewer-hint { position: absolute; left: 0; right: 0; bottom: 0; padding: 10px 14px calc(12px + var(--safe-b)); text-align: center; font-size: .82rem; background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, .75)); }
 
 #toast-root { position: fixed; left: 0; right: 0; bottom: calc(var(--tab-h) + var(--safe-b) + 12px); z-index: 70; display: flex; justify-content: center; padding: 0 16px; pointer-events: none; }

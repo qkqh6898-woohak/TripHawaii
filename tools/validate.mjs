@@ -159,6 +159,11 @@ export function validateTrip(trip, opts = {}) {
         }
       }
       if (it.place != null && !places.has(it.place)) err(`${ia}: place "${it.place}"가 places에 없습니다`);
+      if (it.photos != null && !Array.isArray(it.photos)) err(`${ia}: photos 는 배열이어야 합니다`);
+      for (const ph of Array.isArray(it.photos) ? it.photos : []) {
+        if (!ph.src || !/^photos\/[\w.-]+\.(jpe?g|png|webp)$/i.test(ph.src)) err(`${ia}: photos 의 src "${ph.src}" 는 photos/파일이름.jpg 형식이어야 합니다`);
+        else if (!fileExists(ph.src)) warn(`${ia}: 사진 파일이 아직 없습니다 — ${ph.src}`);
+      }
       if (it.flight != null && !flights.has(it.flight)) err(`${ia}: flight "${it.flight}" 가 flights 에 없습니다`);
       if (it.clock != null && it.clock !== 'home') err(`${ia}: clock 은 "home" 만 쓸 수 있습니다`);
       if (it.booking != null) {

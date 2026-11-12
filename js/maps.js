@@ -1,5 +1,5 @@
 // 지도 — 미리 그려 둔 약도(오프라인) + 장소 목록·길찾기
-import { html, setHTML } from './util.js';
+import { html, setHTML, onSwipe } from './util.js';
 import { getTrip, dayByDate, placesOfDay, hotel, place as getPlace, directionsUrl, mapSize, CAT_LABEL, CAT_ICON } from './trip.js';
 import * as time from './time.js';
 import { openViewer } from './viewer.js';
@@ -81,6 +81,16 @@ export async function render(root, ctx) {
       </ul>` : ''}
     <p class="muted small">지도는 인터넷 없이 보이는 약도예요. 실제 길 안내는 '길찾기'(Google 지도)를 써 주세요.</p>`);
 
+  if (m === 'day') {
+    const i = trip.days.indexOf(day);
+    root.classList.add('swipe-x');
+    onSwipe(root, (dir) => {
+      const target = dir === 'left' ? trip.days[i + 1] : trip.days[i - 1];
+      if (!target) return;
+      document.documentElement.dataset.slide = dir;
+      location.hash = link({ d: target.date });
+    });
+  }
   bindItemClicks(root);
   root.addEventListener('click', (e) => {
     const f = e.target.closest('[data-map]');

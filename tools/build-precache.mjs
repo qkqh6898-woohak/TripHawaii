@@ -55,11 +55,23 @@ function mapSizesJson() {
   return JSON.stringify(sizes) + '\n';
 }
 
+// 실제로 들어 있는 사진 파일 목록 → 앱은 이 목록에 있는 사진만 보여준다 (아직 없는 사진 때문에 빈칸이 생기지 않게)
+function photoListJson() {
+  const dir = join(ROOT, 'photos');
+  const list = existsSync(dir)
+    ? readdirSync(dir).filter((n) => ['.jpg', '.jpeg', '.png', '.webp'].includes(extname(n).toLowerCase())).sort().map((n) => `photos/${n}`)
+    : [];
+  return JSON.stringify(list) + '\n';
+}
+
 function build() {
-  const mapsPath = join(ROOT, 'data', 'maps.json');
-  const mapsJson = mapSizesJson();
-  const mapsStale = !existsSync(mapsPath) || readFileSync(mapsPath, 'utf8') !== mapsJson;
-  if (mapsStale && !process.argv.includes('--check')) writeFileSync(mapsPath, mapsJson);
+  let mapsStale = false;
+  for (const [name, text] of [['maps.json', mapSizesJson()], ['photos.json', photoListJson()]]) {
+    const path = join(ROOT, 'data', name);
+    if (existsSync(path) && readFileSync(path, 'utf8') === text) continue;
+    mapsStale = true;
+    if (!process.argv.includes('--check')) writeFileSync(path, text);
+  }
   const files = listFiles().map((p) => [p, sha(readFileSync(join(ROOT, p))).slice(0, 8)]);
   const swPath = join(ROOT, 'sw.js');
   const sw = readFileSync(swPath, 'utf8');

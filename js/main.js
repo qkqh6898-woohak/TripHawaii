@@ -60,6 +60,8 @@ async function renderRoute({ keepScroll = false } = {}) {
   const seq = ++renderSeq;
   const el = document.createElement('div');
   el.className = `view view-${route.name}`;
+  const slide = document.documentElement.dataset.slide;
+  if (slide) { el.classList.add(slide === 'left' ? 'slide-from-right' : 'slide-from-left'); delete document.documentElement.dataset.slide; }
   const ctx = { ...route, navigate, rerender: () => renderRoute({ keepScroll: true }) };
   try {
     await view.mod.render(el, ctx);

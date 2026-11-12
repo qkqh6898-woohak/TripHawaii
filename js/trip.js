@@ -3,6 +3,7 @@
 let trip = null;
 let index = null;
 let mapSizes = {};
+let photoFiles = null;   // 실제로 들어 있는 사진 (null = 목록을 못 읽음 → 모두 있다고 본다)
 
 export const CAT_LABEL = { move: '이동', hotel: '숙소', sight: '관광', shop: '쇼핑', food: '음식', tour: '투어', rest: '휴식' };
 export const CAT_ICON = { move: '🚗', hotel: '🏨', sight: '🌋', shop: '🛍', food: '🍽', tour: '🎟', rest: '🌴' };
@@ -35,12 +36,28 @@ export async function loadTrip() {
     const m = await fetch('data/maps.json', { cache: 'no-cache' });
     if (m.ok) mapSizes = await m.json();
   } catch { /* 크기를 몰라도 지도는 보인다 */ }
+  try {
+    const ph = await fetch('data/photos.json', { cache: 'no-cache' });
+    if (ph.ok) photoFiles = new Set(await ph.json());
+  } catch { /* 목록이 없으면 걸러 내지 않는다 */ }
   return setTrip(t);
 }
 
 export const getTrip = () => trip;
 // 지도 이미지의 실제 크기 [가로, 세로] — <img width height> 에 넣어 로딩 중 화면 밀림을 막는다
 export const mapSize = (src) => (Array.isArray(mapSizes[src]) ? mapSizes[src] : [1080, 1400]);
+const hasPhoto = (ph) => !!(ph && ph.src && (!photoFiles || photoFiles.has(ph.src)));
+// 일정 항목의 사진 (여러 장 가능) — 파일이 실제로 있는 것만
+export const itemPhotos = (item) => (item && Array.isArray(item.photos) ? item.photos.filter(hasPhoto) : []);
+// 그날의 사진 전부: 날짜에 직접 붙인 사진 + 각 항목의 사진 (중복 제거)
+export function dayPhotos(day) {
+  const out = [];
+  const seen = new Set();
+  const push = (ph, title) => { if (hasPhoto(ph) && !seen.has(ph.src)) { seen.add(ph.src); out.push({ src: ph.src, alt: ph.alt || title || '' }); } };
+  for (const ph of day.photos || []) push(ph, day.title);
+  for (const it of day.items || []) for (const ph of it.photos || []) push(ph, it.title);
+  return out;
+}
 export const place = (id) => (id && index ? index.places.get(id) || null : null);
 export const hotel = (id) => (id && index ? index.hotels.get(id) || null : null);
 export const dayByDate = (date) => (index ? index.days.get(date) || null : null);

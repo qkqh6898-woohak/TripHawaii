@@ -1,6 +1,7 @@
 // 여러 화면이 함께 쓰는 조각: 일정 한 줄, 일정 상세 시트, 장소 시트
 import { html, openSheet, copyText, debounce, toast } from './util.js';
-import { getTrip, place as getPlace, findItem, directionsUrl, coordsUrl, CAT_LABEL, CAT_ICON, ISLAND_LABEL } from './trip.js';
+import { getTrip, place as getPlace, findItem, directionsUrl, coordsUrl, itemPhotos, CAT_LABEL, CAT_ICON, ISLAND_LABEL } from './trip.js';
+import { openViewer } from './viewer.js';
 import * as time from './time.js';
 import * as wallet from './wallet.js';
 import * as db from './db.js';
@@ -38,11 +39,59 @@ export function itemRowHtml(item, day, state = '') {
             ${item.must ? html`<span class="tag tag-must">늦으면 안 돼요</span>` : ''}
             ${item.tentative ? html`<span class="tag tag-tentative">미정</span>` : ''}
             ${item.booking ? html`<span class="tag tag-booking">예약</span>` : ''}
+            ${itemPhotos(item).length ? html`<span class="tag tag-photo">📷 ${itemPhotos(item).length}</span>` : ''}
           </span>
         </span>
         <span class="item-go" aria-hidden="true">›</span>
       </button>
     </li>`;
+}
+
+/**
+ * 사진 묶음 — 여러 장이면 좌우로 밀어 넘긴다 (누르면 크게 보기, 거기서도 밀어서 넘김)
+ * @param {{src:string, alt?:string}[]} photos
+ */
+export function carouselHtml(photos) {
+  if (!photos || !photos.length) return '';
+  const many = photos.length > 1;
+  return html`
+    <div class="carousel" data-carousel>
+      <div class="carousel-track ${many ? 'is-many' : ''}" ${many ? html`tabindex="0" role="group" aria-label="사진 ${photos.length}장 — 좌우로 밀어 보기"` : ''}>
+        ${photos.map((ph, i) => html`
+          <button type="button" class="carousel-slide" data-gallery="${i}" aria-label="${ph.alt || '사진'} 크게 보기 (${i + 1}/${photos.length})">
+            <img src="${ph.src}" alt="${ph.alt || ''}" loading="lazy" draggable="false">
+            ${ph.alt ? html`<span class="carousel-cap">${ph.alt}</span>` : ''}
+          </button>`)}
+      </div>
+      ${many ? html`<p class="carousel-count"><b data-carousel-now>1</b> / ${photos.length} <span class="muted">· 좌우로 밀어 보세요</span></p>` : ''}
+    </div>`;
+}
+
+// 사진 묶음 동작: 밀 때 '몇 번째' 표시 갱신, 누르면 전체 화면(여러 장이면 이어서 넘김)
+export function bindCarousels(root) {
+  root.querySelectorAll('[data-carousel] .carousel-track').forEach((track) => {
+    const now = track.parentNode.querySelector('[data-carousel-now]');
+    if (!now) return;
+    let ticking = false;
+    track.addEventListener('scroll', () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        ticking = false;
+        const slides = track.querySelectorAll('.carousel-slide');
+        const center = track.scrollLeft + track.clientWidth / 2;
+        let best = 0;
+        slides.forEach((s, i) => { if (s.offsetLeft <= center) best = i; });
+        now.textContent = String(best + 1);
+      });
+    }, { passive: true });
+  });
+  root.addEventListener('click', (e) => {
+    const slide = e.target.closest('[data-gallery]');
+    if (!slide) return;
+    const list = Array.from(slide.closest('.carousel-track').querySelectorAll('.carousel-slide img')).map((img) => ({ src: img.getAttribute('src'), alt: img.getAttribute('alt') || '' }));
+    openViewer(list, '', { index: Number(slide.dataset.gallery) || 0 });
+  });
 }
 
 export function placeBlockHtml(p) {
@@ -65,6 +114,7 @@ export function placeBlockHtml(p) {
 
 function bindCommon(sheet) {
   wallet.bindBookingActions(sheet.body);
+  bindCarousels(sheet.body);
   sheet.body.addEventListener('click', (e) => {
     const copy = e.target.closest('.place-block [data-copy]');
     if (copy) { copyText(copy.dataset.copy, copy.dataset.copyLabel); return; }
@@ -102,6 +152,7 @@ export async function openItemSheet(itemId) {
         ${item.approx ? html`<span class="tag">시간은 대략</span>` : ''}
       </div>
       ${item.note ? html`<p class="detail-note">${item.note}</p>` : ''}
+      ${carouselHtml(itemPhotos(item).map((ph) => ({ src: ph.src, alt: ph.alt || item.title })))}
       ${p ? placeBlockHtml(p) : ''}
       ${item.booking ? html`
         <h3 class="sheet-sub">예약</h3>

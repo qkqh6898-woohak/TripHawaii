@@ -38,6 +38,9 @@ async function buildSite() {
   for (const name of ['index.html', 'manifest.webmanifest', 'sw.js', 'css', 'js', 'vendor', 'data', 'maps', 'icons', 'photos']) {
     if (existsSync(join(ROOT, name))) cpSync(join(ROOT, name), join(dir, name), { recursive: true });
   }
+  // 사진 묶음을 시험하려고 임시 사본에만 사진 두 장을 넣는다 (아이콘을 복사 — 저장소에는 넣지 않음)
+  mkdirSync(join(dir, 'photos'), { recursive: true });
+  for (const name of ['kualoa-valley.jpg', 'kualoa-beach.jpg']) cpSync(join(ROOT, 'icons', 'icon-192.png'), join(dir, 'photos', name));
   const secret = JSON.parse(readFileSync(join(ROOT, 'tools', 'private-example.json'), 'utf8'));
   secret.vouchers = { 'sample-tour.jpg': PNG_1PX };
   // 실제 일정의 예약 id 하나를 넣어 '일정 → 예약' 연결도 확인한다
@@ -151,6 +154,45 @@ async function runFlow(browser, base, vp) {
   assert.equal(await page.locator('.items .item').count(), 8);
   await page.waitForFunction(() => { const i = document.querySelector('.map-frame img'); return i && i.complete && i.naturalWidth > 0; });
   assert.match(await page.locator('.video-link').first().getAttribute('href'), /^https:\/\/www\.youtube\.com\/watch\?v=[\w-]{11}$/);   // 그날의 한국어 영상
+  // 사진: 그날 묶음 2장, 항목에 📷 2, 항목 상세에서 크게 보기 → 버튼·밀기로 넘김
+  const touch = (sel, x1, x2) => page.evaluate(([q, a1, a2]) => {
+    const el = document.querySelector(q);
+    const o = (x) => ({ bubbles: true, pointerId: 7, pointerType: 'touch', isPrimary: true, clientX: x, clientY: 400 });
+    el.dispatchEvent(new PointerEvent('pointerdown', o(a1)));
+    el.dispatchEvent(new PointerEvent('pointermove', o((a1 + a2) / 2)));
+    el.dispatchEvent(new PointerEvent('pointerup', o(a2)));
+  }, [sel, x1, x2]);
+  assert.equal(await page.locator('.view .carousel-slide').count(), 2);
+  assert.match(await text(page, '[data-item="1117-4"] .tag-photo'), /2/);
+  assert.equal(await page.locator('[data-item="1117-1"] .tag-photo').count(), 0);
+  await page.locator('[data-item="1117-4"]').click();
+  await page.waitForSelector('.sheet .carousel-slide');
+  assert.equal(await page.locator('.sheet .carousel-slide').count(), 2);
+  await page.locator('.sheet .carousel-slide').first().click();
+  await page.waitForSelector('.viewer img');
+  assert.equal(await text(page, '.viewer-count'), '1 / 2');
+  await page.locator('.viewer [data-v="next"]').click();
+  assert.equal(await text(page, '.viewer-count'), '2 / 2');
+  await touch('.viewer-stage', 100, 300);                               // 오른쪽으로 밀면 이전 사진
+  assert.equal(await text(page, '.viewer-count'), '1 / 2');
+  await touch('.viewer-stage', 300, 100);                               // 왼쪽으로 밀면 다음 사진
+  assert.equal(await text(page, '.viewer-count'), '2 / 2');
+  await touch('.viewer-stage', 300, 100);                               // 마지막에서는 제자리
+  assert.equal(await text(page, '.viewer-count'), '2 / 2');
+  await page.locator('.viewer [data-v="close"]').click();
+  await page.locator('.sheet [data-sheet-close]').first().click();
+  // 화면을 좌우로 밀어 날짜 이동
+  await touch('.view .day-head', 320, 80);
+  await page.waitForFunction(() => location.hash === '#/day/2026-11-18');
+  await page.waitForSelector('.view-day');
+  await page.waitForTimeout(300);
+  await touch('.view .day-head', 80, 320);
+  await page.waitForFunction(() => location.hash === '#/day/2026-11-17');
+  await page.waitForTimeout(300);
+  await touch('.view .day-head', 200, 230);                             // 조금만 움직이면 넘어가지 않음
+  await touch('.view .day-chips', 320, 80);                             // 날짜 줄에서 시작한 동작은 무시
+  await page.waitForTimeout(200);
+  assert.equal(await page.evaluate(() => location.hash), '#/day/2026-11-17');
   await page.locator('[data-item="1117-3"]').click();
   await page.waitForSelector('.sheet');
   assert.match(await text(page, '.sheet'), /쿠알로아 랜치 티켓 오피스/);
@@ -160,7 +202,7 @@ async function runFlow(browser, base, vp) {
   await page.waitForFunction(() => /저장했어요/.test(document.querySelector('.memo-state').textContent), null, { timeout: 4000 });
   await page.locator('.sheet [data-sheet-close]').first().click();
   await shot(page, 'day');
-  log('일정: 13일·시간 일정·지도·상세·메모 ✓');
+  log('일정: 13일·시간 일정·지도·사진 넘기기·밀어서 날짜 이동·상세·메모 ✓');
 
   // 5) 지도: 탭 전환, 크게 보기(확대), 장소 목록
   await go(page, '#/maps?m=oahu');

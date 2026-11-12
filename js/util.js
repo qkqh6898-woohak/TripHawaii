@@ -88,6 +88,29 @@ export function inAppBrowser() {
   return '';
 }
 
+// ───────────── 좌우로 밀기(스와이프) ─────────────
+// 손가락으로 화면을 좌우로 밀면 handler('left' | 'right') 를 부른다. (마우스는 제외)
+// 가로로 스크롤되는 줄(날짜 칩·사진 묶음)이나 입력 칸에서 시작한 동작은 무시한다.
+// el 에는 CSS 로 touch-action: pan-y 를 줘야 세로 스크롤과 함께 쓸 수 있다 (.swipe-x).
+export function onSwipe(el, handler, { min = 60 } = {}) {
+  let start = null;
+  el.addEventListener('pointerdown', (e) => {
+    start = null;
+    if (e.pointerType === 'mouse' || e.isPrimary === false) return;
+    if (e.target.closest && e.target.closest('.chips-scroll, .seg-scroll, .carousel-track, input, textarea, select')) return;
+    start = { x: e.clientX, y: e.clientY, t: Date.now() };
+  });
+  el.addEventListener('pointerup', (e) => {
+    const s = start;
+    start = null;
+    if (!s) return;
+    const dx = e.clientX - s.x;
+    const dy = e.clientY - s.y;
+    if (Math.abs(dx) >= min && Math.abs(dx) > Math.abs(dy) * 1.8 && Date.now() - s.t < 900) handler(dx < 0 ? 'left' : 'right');
+  });
+  el.addEventListener('pointercancel', () => { start = null; });
+}
+
 // ───────────── 토스트 ─────────────
 let toastTimer;
 export function toast(message, ms = 2200) {

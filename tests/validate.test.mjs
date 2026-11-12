@@ -67,6 +67,13 @@ test('깨뜨린 JSON ⑥ schema·중복 id·없는 숙소·지도 파일 누락�
   assert.ok(d.errors.some((e) => e.includes('지도 파일이 없습니다')));
 });
 
+test('항목별 사진: 경로 형식이 틀리면 실패', () => {
+  const t = clone(trip);
+  t.days[2].items[3].photos = [{ src: 'https://example.com/a.jpg' }];
+  assert.ok(validateTrip(t, allFilesExist).errors.some((e) => e.includes('photos/파일이름')));
+  assert.ok(trip.days[2].items[3].photos.length === 2);   // 쿠알로아 UTV 항목에 사진 두 장 자리
+});
+
 test('사진 파일이 아직 없으면 오류가 아니라 경고', () => {
   const r = validateTrip(trip, { fileExists: (p) => !p.startsWith('photos/') });
   assert.deepEqual(r.errors, []);

@@ -69,12 +69,6 @@
       "date": "2026-11-15", "island": "oahu", "title": "하와이 도착",
       "summary": "인천 22:50(한국) 출발 → 호놀룰루 정오 도착 → 체크인 → 로열하와이안센터 → 18:30 울프강",
       "hotel": "hilton", "map": "maps/day-1115.png",
-      "photos": [
-        { "src": "photos/royal-hawaiian-center.jpg", "alt": "로열하와이안센터" },
-        { "src": "photos/wolfgang.jpg", "alt": "울프강 스테이크" },
-        { "src": "photos/waikiki-sunset.jpg", "alt": "와이키키 노을 산책" },
-        { "src": "photos/musubi.jpg", "alt": "무스비" }
-      ],
       "weather_zones": ["waikiki"],
       "items": [
         { "id": "1115-1", "start": "00:50", "clock": "home", "title": "인천공항 도착 (출발 3시간 전)", "cat": "move", "must": true, "note": "한국 시간 19:50까지 공항 도착" },
@@ -82,11 +76,11 @@
         { "id": "1115-3", "start": "12:00", "approx": true, "place": "hnl", "title": "호놀룰루 도착 → 입국 심사·짐 찾기", "cat": "move" },
         { "id": "1115-4", "start": "13:30", "place": "hilton", "title": "숙소로 이동 (택시·우버 약 25분)", "cat": "move" },
         { "id": "1115-5", "start": "15:00", "place": "hilton", "title": "힐튼가든인 와이키키비치 체크인", "cat": "hotel", "booking": "hilton" },
-        { "id": "1115-6", "start": "15:30", "place": "rhc", "title": "로열하와이안센터 쇼핑", "cat": "shop", "note": "스투시 / 애플스토어 / 지미추" },
+        { "id": "1115-6", "start": "15:30", "place": "rhc", "title": "로열하와이안센터 쇼핑", "cat": "shop", "note": "스투시 / 애플스토어 / 지미추", "photos": [{ "src": "photos/royal-hawaiian-center.jpg", "alt": "로열하와이안센터" }] },
         { "id": "1115-7", "start": "16:30", "place": "rhc", "title": "하와이 빙수", "cat": "food" },
-        { "id": "1115-8", "start": "18:30", "place": "wolfgang", "title": "울프강 스테이크", "cat": "food", "booking": "wolfgang", "confirmed": true, "must": true, "note": "로열하와이안센터 3층 · 조금 단정한 옷" },
-        { "id": "1115-9", "start": "20:00", "place": "waikiki-beach", "title": "와이키키 해변 산책", "cat": "rest" },
-        { "id": "1115-10", "start": "21:00", "title": "다음날 아침용 무스비 사기", "cat": "food" }
+        { "id": "1115-8", "start": "18:30", "place": "wolfgang", "title": "울프강 스테이크", "cat": "food", "booking": "wolfgang", "confirmed": true, "must": true, "note": "로열하와이안센터 3층 · 조금 단정한 옷", "photos": [{ "src": "photos/wolfgang.jpg", "alt": "울프강 스테이크" }] },
+        { "id": "1115-9", "start": "20:00", "place": "waikiki-beach", "title": "와이키키 해변 산책", "cat": "rest", "photos": [{ "src": "photos/waikiki-sunset.jpg", "alt": "와이키키 노을 산책" }] },
+        { "id": "1115-10", "start": "21:00", "title": "다음날 아침용 무스비 사기", "cat": "food", "photos": [{ "src": "photos/musubi.jpg", "alt": "무스비" }] }
       ],
       "packing": ["여권 · ESTA 승인 화면", "호텔 예약 확인서", "저녁 울프강: 조금 단정한 옷"]
     },
@@ -109,16 +103,12 @@
       "date": "2026-11-17", "island": "oahu", "title": "쿠알로아 UTV",
       "summary": "09:45 쉐라톤 앞 → 10:00 픽업 → 11:55 체크인 → 12:40–15:40 UTV → 16:30 출발",
       "hotel": "hilton", "map": "maps/day-1117.png",
-      "photos": [
-        { "src": "photos/kualoa-valley.jpg", "alt": "쿠알로아 랜치 계곡" },
-        { "src": "photos/kualoa-beach.jpg", "alt": "쿠알로아 해변과 산" }
-      ],
       "weather_zones": ["oahu-east", "waikiki"],
       "items": [
         { "id": "1117-1", "start": "09:45", "place": "sheraton", "title": "만나는 장소 도착: 쉐라톤 와이키키 호텔 앞", "cat": "move", "booking": "kualoa" },
         { "id": "1117-2", "start": "10:00", "approx": true, "place": "sheraton", "title": "픽업 출발", "cat": "move", "booking": "kualoa", "confirmed": true, "must": true },
         { "id": "1117-3", "start": "11:55", "deadline": true, "place": "kualoa", "title": "쿠알로아 랜치 티켓 오피스 체크인", "cat": "tour", "booking": "kualoa", "must": true, "note": "여권 + 확정 이메일 · 투어 45분 전까지 체크인 (늦으면 참여 불가)" },
-        { "id": "1117-4", "start": "12:40", "end": "15:40", "place": "kualoa", "title": "디럭스 UTV 투어 3시간", "cat": "tour", "booking": "kualoa", "note": "카아아와 계곡 · 영화 촬영지" },
+        { "id": "1117-4", "start": "12:40", "end": "15:40", "place": "kualoa", "title": "디럭스 UTV 투어 3시간", "cat": "tour", "booking": "kualoa", "note": "카아아와 계곡 · 영화 촬영지", "photos": [{ "src": "photos/kualoa-valley.jpg", "alt": "쿠알로아 랜치 계곡" }, { "src": "photos/kualoa-beach.jpg", "alt": "쿠알로아 해변과 산" }] },
         { "id": "1117-5", "start": "16:30", "place": "kualoa", "title": "쿠알로아 출발", "cat": "move" },
         { "id": "1117-6", "start": "17:30", "approx": true, "title": "와이키키 도착", "cat": "move" },
         { "id": "1117-7", "start": "19:00", "title": "저녁", "cat": "food" },
@@ -205,15 +195,12 @@
       "date": "2026-11-23", "island": "bigisland", "title": "웨스틴 하푸나비치로 이동",
       "summary": "10:00 코나코스트 체크아웃 → 코나 시내 점심 → (헬기투어 후보) → 16:00 웨스틴 체크인 → 선셋",
       "hotel": "westin", "map": "maps/day-1123.png",
-      "photos": [
-        { "src": "photos/westin-hapuna.jpg", "alt": "웨스틴 하푸나비치 리조트" }
-      ],
       "weather_zones": ["hapuna", "kona"],
       "items": [
         { "id": "1123-1", "start": "10:00", "place": "konacoast", "title": "코나코스트 체크아웃", "cat": "hotel", "booking": "konacoast", "must": true },
         { "id": "1123-2", "start": "12:00", "place": "kona-town", "title": "코나 시내 점심", "cat": "food" },
         { "id": "1123-3", "start": "14:00", "title": "헬기투어 후보", "cat": "tour", "booking": "helicopter", "tentative": true, "note": "23일 또는 24일 중 택1 — 시간 미정" },
-        { "id": "1123-4", "start": "16:00", "place": "westin", "title": "웨스틴 하푸나비치 체크인", "cat": "hotel", "booking": "westin", "confirmed": true, "note": "오션뷰 킹 · 발코니" },
+        { "id": "1123-4", "start": "16:00", "place": "westin", "title": "웨스틴 하푸나비치 체크인", "cat": "hotel", "booking": "westin", "confirmed": true, "note": "오션뷰 킹 · 발코니", "photos": [{ "src": "photos/westin-hapuna.jpg", "alt": "웨스틴 하푸나비치 리조트" }] },
         { "id": "1123-5", "start": "18:30", "place": "westin", "title": "리조트 저녁 · 선셋", "cat": "food" }
       ],
       "packing": ["헬기: 어두운 색 옷 (창문 반사 줄임) · 멀미약", "헬기 탑승 시 몸무게 측정 있음"]
