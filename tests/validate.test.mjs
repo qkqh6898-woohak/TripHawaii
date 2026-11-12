@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { validateTrip, validatePhrases, validateChecklists, validateSecret } from '../tools/validate.mjs';
+import { validateTrip, validatePhrases, validateChecklists, validateSecret, validateVideos } from '../tools/validate.mjs';
 import { scanText, checkPath, checkEncFile, collectKnownSecrets } from '../tools/scan-secrets.mjs';
 
 const load = (rel) => JSON.parse(readFileSync(new URL('../' + rel, import.meta.url), 'utf8'));
@@ -99,6 +99,16 @@ test('체크리스트: 항목 id 중복 없음', () => {
   assert.deepEqual(validateChecklists(doc).errors, []);
   const broken = clone(doc); broken.groups[1].items[0].id = broken.groups[0].items[0].id;
   assert.ok(validateChecklists(broken).errors.some((e) => e.includes('중복')));
+});
+
+test('영상 목록: 영상 id 형식·날짜·중복 검사', () => {
+  const doc = load('data/videos.json');
+  const dates = trip.days.map((d) => d.date);
+  assert.deepEqual(validateVideos(doc, dates).errors, []);
+  const bad = clone(doc); bad.topics[1].picks[0].v = 'https://evil.example/x';
+  assert.ok(validateVideos(bad, dates).errors.some((e) => e.includes('영상 id')));
+  const badDate = clone(doc); badDate.topics[0].dates = ['2026-12-25'];
+  assert.ok(validateVideos(badDate, dates).errors.some((e) => e.includes('여행 기간')));
 });
 
 test('예약 원본 구조 검사 (예시 파일)', () => {

@@ -230,6 +230,27 @@ export function validateChecklists(doc) {
   return { errors, warnings: [] };
 }
 
+export function validateVideos(doc, tripDates = []) {
+  const errors = [];
+  const topics = doc && Array.isArray(doc.topics) ? doc.topics : [];
+  if (!topics.length) errors.push('videos: topics 가 비어 있습니다');
+  const ids = new Set();
+  topics.forEach((t, i) => {
+    const at = `videos.topics[${i}]${t && t.id ? ` (${t.id})` : ''}`;
+    if (!t.id || !RE_ID.test(t.id)) errors.push(`${at}: id 형식이 올바르지 않습니다`);
+    if (ids.has(t.id)) errors.push(`${at}: id "${t.id}" 가 중복됩니다`);
+    ids.add(t.id);
+    if (!t.title || !t.q) errors.push(`${at}: title 과 q(검색어)가 있어야 합니다`);
+    if (!['oahu', 'bigisland', 'prep'].includes(t.group)) errors.push(`${at}: group 은 oahu/bigisland/prep 중 하나여야 합니다`);
+    for (const d of t.dates || []) if (tripDates.length && !tripDates.includes(d)) errors.push(`${at}: 날짜 ${d} 가 여행 기간에 없습니다`);
+    (t.picks || []).forEach((p, pi) => {
+      if (!p.title) errors.push(`${at}.picks[${pi}]: title 이 없습니다`);
+      if (!/^[A-Za-z0-9_-]{11}$/.test(p.v || '')) errors.push(`${at}.picks[${pi}]: v "${p.v}" 는 유튜브 영상 id(11자)여야 합니다`);
+    });
+  });
+  return { errors, warnings: [] };
+}
+
 // private/trip-secret.json (암호화 전 원본) 구조 검사
 export function validateSecret(secret) {
   const errors = [];
@@ -308,6 +329,7 @@ async function main() {
   }));
   run('data/phrases.json', () => validatePhrases(loadJSON('data/phrases.json')));
   run('data/checklists.json', () => validateChecklists(loadJSON('data/checklists.json')));
+  run('data/videos.json', () => validateVideos(loadJSON('data/videos.json'), loadJSON('data/trip.json').days.map((d) => d.date)));
 
   if (!quiet) for (const w of warnings) console.log(`⚠️  ${w}`);
   if (errors.length) {

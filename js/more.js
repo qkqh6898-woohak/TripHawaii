@@ -31,6 +31,11 @@ export async function render(root) {
         <span class="menu-text"><b>여행 영어</b><span class="muted small">상황 8개 · 40문장 · 발음 듣기${favs ? ` · ★ ${favs}` : ''}</span></span>
         <span class="menu-go" aria-hidden="true">›</span>
       </a>
+      <a class="card menu-item" href="#/videos">
+        <span class="menu-icon" aria-hidden="true">📺</span>
+        <span class="menu-text"><b>하와이 영상</b><span class="muted small">일정별 한국어 유튜브 — 미리 보기 · 꿀팁 (인터넷 필요)</span></span>
+        <span class="menu-go" aria-hidden="true">›</span>
+      </a>
       <a class="card menu-item" href="#/settings">
         <span class="menu-icon" aria-hidden="true">⚙️</span>
         <span class="menu-text"><b>설정</b><span class="muted small">환율 · 글자 크기 · 오프라인 준비 · 백업 · 설치 방법</span></span>

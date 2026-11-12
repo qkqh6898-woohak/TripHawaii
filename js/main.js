@@ -17,6 +17,7 @@ import * as checklist from './checklist.js';
 import * as expenses from './expenses.js';
 import * as phrases from './phrases.js';
 import * as settings from './settings.js';
+import * as videos from './videos.js';
 
 const VIEWS = {
   today: { mod: today, tab: 'today', title: '오늘' },
@@ -30,6 +31,7 @@ const VIEWS = {
   import: { mod: { render: expenses.renderImport }, tab: 'more', title: '경비 가져오기' },
   phrases: { mod: phrases, tab: 'more', title: '여행 영어' },
   settings: { mod: settings, tab: 'more', title: '설정' },
+  videos: { mod: videos, tab: 'more', title: '하와이 영상' },
 };
 
 let current = null;

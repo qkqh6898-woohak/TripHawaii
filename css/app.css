@@ -452,6 +452,16 @@ details > summary { cursor: pointer; font-weight: 700; min-height: 48px; display
 .btn-fav.is-on { color: #d97706; border-color: #d97706; }
 .is-speaking { box-shadow: 0 0 0 3px var(--sea); }
 
+/* ───────── 영상 ───────── */
+.video-topic + .video-topic { margin-top: 12px; padding-top: 10px; border-top: 1px solid var(--line); }
+.video-topic > * + * { margin-top: 6px; }
+.video-topic-name { font-weight: 800; font-size: .92rem; }
+.video-list { display: flex; flex-direction: column; gap: 6px; }
+.video-link { display: grid; grid-template-columns: 30px 1fr; gap: 8px; align-items: center; min-height: 48px; padding: 6px 10px; border: 1.5px solid var(--line); border-radius: 12px; background: var(--surface); color: var(--ink); text-decoration: none; font-weight: 600; font-size: .92rem; line-height: 1.35; }
+.video-play { display: inline-flex; align-items: center; justify-content: center; width: 30px; height: 30px; border-radius: 50%; background: var(--danger-soft); color: var(--danger); font-size: .8rem; }
+.video-search { border-style: dashed; color: var(--muted); }
+.video-search .video-play { background: var(--surface-2); }
+
 /* ───────── 설정·더보기 ───────── */
 .set-label { margin-top: 12px !important; font-size: .82rem; color: var(--muted); }
 .status { font-weight: 700; font-size: .95rem; }

@@ -6,6 +6,7 @@ import { itemRowHtml, bindItemClicks } from './ui.js';
 import { weatherHtml } from './weather.js';
 import { getChecks, packingItems, setCheck } from './checklist.js';
 import { openViewer } from './viewer.js';
+import { topicsForDate, topicHtml } from './videos.js';
 
 export const live = ['weather'];
 
@@ -41,6 +42,7 @@ export async function render(root, ctx) {
   const checks = await getChecks();
   const packs = packingItems(day, checks);
   const wx = await weatherHtml(day.weather_zones, date);
+  const vids = await topicsForDate(date);
 
   const stateOf = (it) => {
     if (isPastDay) return 'past';
@@ -96,6 +98,13 @@ export async function render(root, ctx) {
               <input type="checkbox" data-check="${p.id}" ${p.done ? 'checked' : ''}><span class="check-text">${p.text}</span></label></li>`)}
         </ul>
         <a class="link-btn" href="#/check?tab=daily&d=${date}">매일 공통 준비물까지 보기 ›</a>
+      </section>` : ''}
+
+    ${vids.length ? html`
+      <section class="card">
+        <h2>📺 영상으로 미리 보기</h2>
+        ${vids.map((t) => topicHtml(t, { compact: true }))}
+        <a class="link-btn" href="#/videos">하와이 영상 모두 보기 ›</a>
       </section>` : ''}
 
     <nav class="day-nav" aria-label="앞뒤 날짜">

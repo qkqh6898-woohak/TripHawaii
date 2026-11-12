@@ -150,6 +150,7 @@ async function runFlow(browser, base, vp) {
   assert.equal(await page.locator('.day-chips .chip').count(), 13);
   assert.equal(await page.locator('.items .item').count(), 8);
   await page.waitForFunction(() => { const i = document.querySelector('.map-frame img'); return i && i.complete && i.naturalWidth > 0; });
+  assert.match(await page.locator('.video-link').first().getAttribute('href'), /^https:\/\/www\.youtube\.com\/watch\?v=[\w-]{11}$/);   // 그날의 한국어 영상
   await page.locator('[data-item="1117-3"]').click();
   await page.waitForSelector('.sheet');
   assert.match(await text(page, '.sheet'), /쿠알로아 랜치 티켓 오피스/);
