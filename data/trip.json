@@ -75,11 +75,11 @@
         { "id": "1115-2", "start": "03:50", "end": "12:00", "clock": "home", "title": "인천 출발 YP151 → 호놀룰루", "cat": "move", "booking": "airpremia", "flight": "yp151", "confirmed": true, "must": true, "note": "한국 시간 22:50 출발 · 비행 약 8시간 · 도착은 하와이 같은 날 정오 무렵" },
         { "id": "1115-3", "start": "12:00", "approx": true, "place": "hnl", "title": "호놀룰루 도착 → 입국 심사·짐 찾기", "cat": "move" },
         { "id": "1115-4", "start": "13:30", "place": "hilton", "title": "숙소로 이동 (택시·우버 약 25분)", "cat": "move" },
-        { "id": "1115-5", "start": "15:00", "place": "hilton", "title": "힐튼가든인 와이키키비치 체크인", "cat": "hotel", "booking": "hilton" },
+        { "id": "1115-5", "start": "15:00", "place": "hilton", "title": "힐튼가든인 와이키키비치 체크인", "cat": "hotel", "booking": "hilton", "photos": [{ "src": "photos/hilton-entrance.jpg", "alt": "힐튼가든인 와이키키비치 입구" }] },
         { "id": "1115-6", "start": "15:30", "place": "rhc", "title": "로열하와이안센터 쇼핑", "cat": "shop", "note": "스투시 / 애플스토어 / 지미추", "photos": [{ "src": "photos/royal-hawaiian-center.jpg", "alt": "로열하와이안센터" }] },
-        { "id": "1115-7", "start": "16:30", "place": "rhc", "title": "하와이 빙수", "cat": "food" },
+        { "id": "1115-7", "start": "16:30", "place": "rhc", "title": "하와이 빙수", "cat": "food", "photos": [{ "src": "photos/shave-ice.jpg", "alt": "하와이 빙수" }] },
         { "id": "1115-8", "start": "18:30", "place": "wolfgang", "title": "울프강 스테이크", "cat": "food", "booking": "wolfgang", "confirmed": true, "must": true, "note": "로열하와이안센터 3층 · 조금 단정한 옷", "photos": [{ "src": "photos/wolfgang.jpg", "alt": "울프강 스테이크" }] },
-        { "id": "1115-9", "start": "20:00", "place": "waikiki-beach", "title": "와이키키 해변 산책", "cat": "rest", "photos": [{ "src": "photos/waikiki-sunset.jpg", "alt": "와이키키 노을 산책" }] },
+        { "id": "1115-9", "start": "20:00", "place": "waikiki-beach", "title": "와이키키 해변 산책", "cat": "rest", "photos": [{ "src": "photos/waikiki-sunset.jpg", "alt": "와이키키 노을" }] },
         { "id": "1115-10", "start": "21:00", "title": "다음날 아침용 무스비 사기", "cat": "food", "photos": [{ "src": "photos/musubi.jpg", "alt": "무스비" }] }
       ],
       "packing": ["여권 · ESTA 승인 화면", "호텔 예약 확인서", "저녁 울프강: 조금 단정한 옷"]
@@ -92,7 +92,7 @@
       "items": [
         { "id": "1116-1", "start": "07:00", "place": "hilton", "title": "숙소 앞 픽업 대기", "cat": "move", "booking": "zoomzoom", "must": true, "note": "픽업 장소 확인 필요 — 확정되면 이 일정을 고쳐 주세요" },
         { "id": "1116-2", "start": "07:30", "end": "11:30", "title": "줌줌 거북이 투어", "cat": "tour", "booking": "zoomzoom", "confirmed": true },
-        { "id": "1116-3", "start": "12:00", "place": "marukame", "title": "점심: 마루카메 우동", "cat": "food", "note": "숙소에서 도보 3분" },
+        { "id": "1116-3", "start": "12:00", "place": "marukame", "title": "점심: 마루카메 우동", "cat": "food", "note": "숙소에서 도보 3분", "photos": [{ "src": "photos/marukame.jpg", "alt": "마루카메 우동 와이키키점" }] },
         { "id": "1116-4", "start": "13:00", "place": "alo-cafe", "title": "후식: Alo Cafe 아사이볼", "cat": "food", "note": "마루카메에서 도보 6분" },
         { "id": "1116-5", "start": "14:00", "end": "18:00", "place": "hilton", "title": "숙소 휴식", "cat": "rest" },
         { "id": "1116-6", "start": "18:30", "title": "저녁: 근처 포케", "cat": "food" }
@@ -105,10 +105,10 @@
       "hotel": "hilton", "map": "maps/day-1117.png",
       "weather_zones": ["oahu-east", "waikiki"],
       "items": [
-        { "id": "1117-1", "start": "09:45", "place": "sheraton", "title": "만나는 장소 도착: 쉐라톤 와이키키 호텔 앞", "cat": "move", "booking": "kualoa" },
+        { "id": "1117-1", "start": "09:45", "place": "sheraton", "title": "만나는 장소 도착: 쉐라톤 와이키키 호텔 앞", "cat": "move", "booking": "kualoa", "photos": [{ "src": "photos/sheraton-entrance.jpg", "alt": "쉐라톤 와이키키 정문 (만나는 곳)" }] },
         { "id": "1117-2", "start": "10:00", "approx": true, "place": "sheraton", "title": "픽업 출발", "cat": "move", "booking": "kualoa", "confirmed": true, "must": true },
-        { "id": "1117-3", "start": "11:55", "deadline": true, "place": "kualoa", "title": "쿠알로아 랜치 티켓 오피스 체크인", "cat": "tour", "booking": "kualoa", "must": true, "note": "여권 + 확정 이메일 · 투어 45분 전까지 체크인 (늦으면 참여 불가)" },
-        { "id": "1117-4", "start": "12:40", "end": "15:40", "place": "kualoa", "title": "디럭스 UTV 투어 3시간", "cat": "tour", "booking": "kualoa", "note": "카아아와 계곡 · 영화 촬영지", "photos": [{ "src": "photos/kualoa-valley.jpg", "alt": "쿠알로아 랜치 계곡" }, { "src": "photos/kualoa-beach.jpg", "alt": "쿠알로아 해변과 산" }] },
+        { "id": "1117-3", "start": "11:55", "deadline": true, "place": "kualoa", "title": "쿠알로아 랜치 티켓 오피스 체크인", "cat": "tour", "booking": "kualoa", "must": true, "note": "여권 + 확정 이메일 · 투어 45분 전까지 체크인 (늦으면 참여 불가)", "photos": [{ "src": "photos/kualoa-office.jpg", "alt": "쿠알로아 랜치 티켓 오피스" }] },
+        { "id": "1117-4", "start": "12:40", "end": "15:40", "place": "kualoa", "title": "디럭스 UTV 투어 3시간", "cat": "tour", "booking": "kualoa", "note": "카아아와 계곡 · 영화 촬영지", "photos": [{ "src": "photos/kualoa-valley.jpg", "alt": "쿠알로아 계곡 UTV" }, { "src": "photos/kualoa-beach.jpg", "alt": "쿠알로아 해변과 산" }] },
         { "id": "1117-5", "start": "16:30", "place": "kualoa", "title": "쿠알로아 출발", "cat": "move" },
         { "id": "1117-6", "start": "17:30", "approx": true, "title": "와이키키 도착", "cat": "move" },
         { "id": "1117-7", "start": "19:00", "title": "저녁", "cat": "food" },
@@ -124,8 +124,8 @@
       "items": [
         { "id": "1118-1", "start": "06:00", "end": "06:30", "title": "가이드 미팅: 와이키키 호텔 앞", "cat": "move", "booking": "hanauma", "must": true, "note": "정확한 시간·장소는 전날 카톡으로 안내" },
         { "id": "1118-2", "start": "06:30", "end": "07:10", "place": "hanauma", "title": "하나우마베이로 이동 (약 40분)", "cat": "move" },
-        { "id": "1118-3", "start": "07:10", "end": "11:00", "place": "hanauma", "title": "스노클링", "cat": "tour", "booking": "hanauma", "confirmed": true, "note": "입장료·장비 포함" },
-        { "id": "1118-4", "start": "11:00", "end": "12:00", "place": "hanauma", "title": "비치 텐트 휴식 · 테디스버거", "cat": "food" },
+        { "id": "1118-3", "start": "07:10", "end": "11:00", "place": "hanauma", "title": "스노클링", "cat": "tour", "booking": "hanauma", "confirmed": true, "note": "입장료·장비 포함", "photos": [{ "src": "photos/hanauma.jpg", "alt": "하나우마베이" }] },
+        { "id": "1118-4", "start": "11:00", "end": "12:00", "place": "hanauma", "title": "비치 텐트 휴식 · 테디스버거", "cat": "food", "photos": [{ "src": "photos/teddys-burger.jpg", "alt": "버거 (예시 사진)" }] },
         { "id": "1118-5", "start": "13:00", "approx": true, "title": "와이키키 복귀 (총 6시간)", "cat": "move" },
         { "id": "1118-6", "start": "14:00", "end": "18:00", "place": "hilton", "title": "숙소 휴식", "cat": "rest" },
         { "id": "1118-7", "start": "18:30", "title": "저녁", "cat": "food" },
@@ -142,8 +142,8 @@
         { "id": "1119-1", "start": "08:30", "place": "hilton", "title": "힐튼가든인 체크아웃", "cat": "hotel", "booking": "hilton" },
         { "id": "1119-2", "start": "09:15", "place": "hnl", "title": "호놀룰루 공항 도착 (국내선)", "cat": "move", "must": true, "note": "출발 1시간 반 전 · 섬간 항공은 수하물 유료" },
         { "id": "1119-3", "start": "10:58", "end": "11:45", "place": "koa", "title": "호놀룰루 → 코나 항공편", "cat": "move", "booking": "interisland-1119", "flight": "hnl-koa", "must": true },
-        { "id": "1119-4", "start": "12:30", "place": "alamo-koa", "title": "알라모 렌터카 픽업", "cat": "move", "booking": "alamo", "confirmed": true, "note": "쉐보레 · 픽업 가능 시간 12~16시 · 국제운전면허증 + 한국 면허증 + 신용카드 · 터미널 건너편에서 알라모 무료 셔틀 탑승" },
-        { "id": "1119-5", "start": "15:00", "approx": true, "place": "konacoast", "title": "코나코스트 리조트 체크인", "cat": "hotel", "booking": "konacoast", "note": "체크인 시간 확인 필요 — 리조트 공식 안내는 16:00부터" },
+        { "id": "1119-4", "start": "12:30", "place": "alamo-koa", "title": "알라모 렌터카 픽업", "cat": "move", "booking": "alamo", "confirmed": true, "note": "쉐보레 · 픽업 가능 시간 12~16시 · 국제운전면허증 + 한국 면허증 + 신용카드 · 터미널 건너편에서 알라모 무료 셔틀 탑승", "photos": [{ "src": "photos/alamo-shuttle.jpg", "alt": "알라모 공항 셔틀 (예시: 호놀룰루 공항)" }] },
+        { "id": "1119-5", "start": "15:00", "approx": true, "place": "konacoast", "title": "코나코스트 리조트 체크인", "cat": "hotel", "booking": "konacoast", "note": "체크인 시간 확인 필요 — 리조트 공식 안내는 16:00부터", "photos": [{ "src": "photos/konacoast-entrance.jpg", "alt": "코나코스트 리조트 입구" }] },
         { "id": "1119-6", "start": "16:30", "place": "kona-town", "title": "코나 시내 마트에서 물·장보기", "cat": "shop" },
         { "id": "1119-7", "start": "18:30", "title": "저녁", "cat": "food" }
       ],
@@ -156,9 +156,9 @@
       "weather_zones": ["volcano", "kona"],
       "items": [
         { "id": "1120-1", "start": "07:00", "place": "konacoast", "title": "코나코스트 출발", "cat": "move", "note": "남쪽 해안도로, 약 2시간 반" },
-        { "id": "1120-2", "start": "09:30", "end": "10:30", "place": "punaluu", "title": "푸날루우 블랙샌드비치", "cat": "sight", "note": "바다거북과 3m 거리 유지" },
-        { "id": "1120-3", "start": "11:00", "place": "punaluu-bakeshop", "title": "점심: 푸날루우 베이크샵", "cat": "food", "note": "나알레후" },
-        { "id": "1120-4", "start": "13:00", "end": "17:30", "place": "volcano", "title": "화산국립공원", "cat": "sight", "note": "방문자센터 → 킬라우에아 분화구 전망대 · 입장료는 카드 결제 · 방문자센터가 공사 중이면 임시 웰컴센터에서 안내" },
+        { "id": "1120-2", "start": "09:30", "end": "10:30", "place": "punaluu", "title": "푸날루우 블랙샌드비치", "cat": "sight", "note": "바다거북과 3m 거리 유지", "photos": [{ "src": "photos/punaluu.jpg", "alt": "푸날루우 블랙샌드비치 · 바다거북" }] },
+        { "id": "1120-3", "start": "11:00", "place": "punaluu-bakeshop", "title": "점심: 푸날루우 베이크샵", "cat": "food", "note": "나알레후", "photos": [{ "src": "photos/punaluu-bakeshop.jpg", "alt": "푸날루우 베이크샵" }] },
+        { "id": "1120-4", "start": "13:00", "end": "17:30", "place": "volcano", "title": "화산국립공원", "cat": "sight", "note": "방문자센터 → 킬라우에아 분화구 전망대 · 입장료는 카드 결제 · 방문자센터가 공사 중이면 임시 웰컴센터에서 안내", "photos": [{ "src": "photos/kilauea.jpg", "alt": "킬라우에아 분화구" }] },
         { "id": "1120-5", "start": "18:00", "place": "volcano-village", "title": "볼케이노 빌리지 저녁", "cat": "food", "note": "용암 불빛이 보이면 야경" },
         { "id": "1120-6", "start": "19:00", "end": "21:00", "approx": true, "place": "konacoast", "title": "코나 복귀", "cat": "move", "note": "19:00 출발 → 21:00경 도착 (밤길 운전 주의)" }
       ],
@@ -227,7 +227,7 @@
         { "id": "1125-2", "start": "12:30", "title": "점심", "cat": "food" },
         { "id": "1125-3", "start": "14:30", "place": "alamo-koa", "title": "코나 공항 · 알라모 렌터카 반납", "cat": "move", "booking": "alamo", "must": true },
         { "id": "1125-4", "start": "16:15", "end": "17:05", "place": "hnl", "title": "코나 → 호놀룰루 항공편", "cat": "move", "booking": "interisland-1125", "flight": "koa-hnl", "must": true },
-        { "id": "1125-5", "start": "18:00", "place": "halepuna", "title": "할레푸나 와이키키 체크인", "cat": "hotel", "booking": "halepuna", "confirmed": true, "note": "체크인은 15:00부터 가능" },
+        { "id": "1125-5", "start": "18:00", "place": "halepuna", "title": "할레푸나 와이키키 체크인", "cat": "hotel", "booking": "halepuna", "confirmed": true, "note": "체크인은 15:00부터 가능", "photos": [{ "src": "photos/halepuna-entrance.jpg", "alt": "할레푸나 와이키키 입구" }] },
         { "id": "1125-6", "start": "19:30", "place": "waikiki-beach", "title": "저녁 · 해변 산책", "cat": "food" }
       ],
       "packing": ["항공권 · 여권", "렌터카 반납 전 주유 (연료 조건 확인)", "수하물 무게 확인 (섬간 항공 유료 수하물)"]

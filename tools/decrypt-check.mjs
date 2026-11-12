@@ -10,7 +10,7 @@ import { existsSync, readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { decryptJSON } from '../js/crypto.js';
 import { validateSecret } from './validate.mjs';
-import { parseArgs, readPassword, loadPrivateSecret, deepEqual, ENC_PATH, PRIVATE_JSON, VOUCHER_DIR } from './lib/secret-io.mjs';
+import { parseArgs, readPassword, loadPrivateSecret, deepEqual, ENC_PATH, PRIVATE_JSON, VOUCHER_DIR, PRIVATE_PHOTO_DIR } from './lib/secret-io.mjs';
 
 async function main() {
   const args = parseArgs(process.argv.slice(2));
@@ -26,7 +26,7 @@ async function main() {
     throw new Error('복호화는 됐지만 내용 구조에 오류가 있습니다.');
   }
   const nVouchers = Object.keys(data.vouchers || {}).length;
-  console.log(`✅ 복호화 성공 — 예약 ${data.bookings.length}건 · 바우처 ${nVouchers}장`);
+  console.log(`✅ 복호화 성공 — 예약 ${data.bookings.length}건 · 바우처 ${nVouchers}장 · 사진 ${Object.keys(data.photos || {}).length}장`);
   const missing = data.bookings.filter((b) => !(b.numbers || []).length).map((b) => b.id);
   if (missing.length) console.log(`   예약번호 미입력: ${missing.join(', ')}`);
 
@@ -41,9 +41,14 @@ async function main() {
       const b64 = dataUrl.slice(dataUrl.indexOf(',') + 1);
       writeFileSync(join(VOUCHER_DIR, name.replace(/[\\/]/g, '_')), Buffer.from(b64, 'base64'));
     }
-    const { vouchers: _omit, ...rest } = data;
+    const photos = data.photos || {};
+    if (Object.keys(photos).length) mkdirSync(PRIVATE_PHOTO_DIR, { recursive: true });
+    for (const [name, dataUrl] of Object.entries(photos)) {
+      writeFileSync(join(PRIVATE_PHOTO_DIR, name.replace(/[\\/]/g, '_')), Buffer.from(dataUrl.slice(dataUrl.indexOf(',') + 1), 'base64'));
+    }
+    const { vouchers: _omit, photos: _omit2, ...rest } = data;
     writeFileSync(outPath, JSON.stringify({ ...rest, vouchers: {} }, null, 2) + '\n');
-    console.log(`📄 원본 복원 → ${outPath}${nVouchers ? ` (+ private/vouchers/ ${nVouchers}장)` : ''}`);
+    console.log(`📄 원본 복원 → ${outPath}${nVouchers ? ` (+ private/vouchers/ ${nVouchers}장)` : ''}${Object.keys(photos).length ? ` (+ private/photos/ ${Object.keys(photos).length}장)` : ''}`);
     console.log('   이 파일들은 .gitignore 로 커밋되지 않습니다. 고친 뒤 node tools/encrypt.mjs 를 실행하세요.');
     return;
   }

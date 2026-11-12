@@ -60,7 +60,7 @@ async function main() {
   writeFileSync(outPath, text);
   const kb = (Buffer.byteLength(text) / 1024).toFixed(1);
   console.log(`✅ 암호화 완료 → ${outPath}`);
-  console.log(`   예약 ${secret.bookings.length}건 · 바우처 ${Object.keys(secret.vouchers || {}).length}장 · ${kb}KB · PBKDF2 ${env.iter.toLocaleString()}회`);
+  console.log(`   예약 ${secret.bookings.length}건 · 바우처 ${Object.keys(secret.vouchers || {}).length}장 · 사진 ${Object.keys(secret.photos || {}).length}장 · ${kb}KB · PBKDF2 ${env.iter.toLocaleString()}회`);
   console.log(reused
     ? '   같은 비밀번호 → 기존 salt 재사용 (이미 연 폰은 비밀번호를 다시 묻지 않습니다)'
     : '   새 salt 사용 (폰에서 비밀번호를 한 번 다시 입력해야 합니다)');

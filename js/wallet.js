@@ -4,7 +4,7 @@ import * as db from './db.js';
 import { decryptJSON, decryptWithKey, sha256Hex, checkEnvelope, CryptoError, MIN_PASSWORD_LENGTH } from './crypto.js';
 import { html, setHTML, toast, copyText, fmtMoney, confirmSheet } from './util.js';
 import { prefs } from './prefs.js';
-import { getTrip, dayByDate, bookingIdsOfDay } from './trip.js';
+import { getTrip, dayByDate, bookingIdsOfDay, setPrivatePhotos } from './trip.js';
 import * as time from './time.js';
 import { openViewer } from './viewer.js';
 
@@ -16,6 +16,12 @@ export const TYPE_LABEL = { flight: '항공', hotel: '숙소', car: '렌터카',
 const TYPE_ICON = { flight: '✈️', hotel: '🏨', car: '🚗', tour: '🎟', food: '🍽', etc: '📌' };
 
 let session = null;        // { data, encHash }  — 열린 상태
+
+// 열림·잠김이 바뀔 때마다 암호화된 사진도 같이 바꾼다
+function setSession(next) {
+  session = next;
+  setPrivatePhotos(session && session.data ? session.data.photos : null);
+}
 let enc = null;            // { text, hash, env } — 저장소에 올라온 암호화 파일 (없으면 null)
 let stale = false;         // 새 파일이 올라왔는데 아직 비밀번호로 다시 열지 않음
 let justUpdated = false;
@@ -48,7 +54,7 @@ export function initWallet(force = false) {
   if (initDone && !force) return initDone;
   initDone = (async () => {
     const stored = prefs().lock ? null : await db.get('secret', 'main');
-    if (stored && stored.data && !session) session = { data: stored.data, encHash: stored.encHash };
+    if (stored && stored.data && !session) setSession({ data: stored.data, encHash: stored.encHash });
     enc = await fetchEnc();
     stale = false;
     if (enc && session && session.encHash !== enc.hash) {
@@ -56,7 +62,7 @@ export function initWallet(force = false) {
       if (stored && stored.key && stored.salt === enc.env.salt && stored.iter === enc.env.iter) {
         try {
           const data = await decryptWithKey(stored.key, enc.env);
-          session = { data, encHash: enc.hash };
+          setSession({ data, encHash: enc.hash });
           await persist(data, enc.hash, stored.key, enc.env);
           refreshed = true;
           justUpdated = true;
@@ -116,7 +122,7 @@ export async function unlock(password) {
   if (!enc) throw new CryptoError('NO_FILE', '예약 정보 파일이 아직 없어요.');
   try {
     const { data, key } = await decryptJSON(enc.env, password);
-    session = { data, encHash: enc.hash };
+    setSession({ data, encHash: enc.hash });
     stale = false;
     await persist(data, enc.hash, key, enc.env);
     await db.setSetting('walletFail', { count: 0, until: 0 });
@@ -137,7 +143,7 @@ export async function unlock(password) {
 }
 
 export async function lockNow() {
-  session = null;
+  setSession(null);
   stale = false;
   await db.del('secret', 'main');
 }

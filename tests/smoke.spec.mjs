@@ -43,6 +43,7 @@ async function buildSite() {
   for (const name of ['kualoa-valley.jpg', 'kualoa-beach.jpg']) cpSync(join(ROOT, 'icons', 'icon-192.png'), join(dir, 'photos', name));
   const secret = JSON.parse(readFileSync(join(ROOT, 'tools', 'private-example.json'), 'utf8'));
   secret.vouchers = { 'sample-tour.jpg': PNG_1PX };
+  secret.photos = { 'hanauma.jpg': PNG_1PX };            // 암호화된 사진 (예약 지갑을 열어야 보임)
   // 실제 일정의 예약 id 하나를 넣어 '일정 → 예약' 연결도 확인한다
   secret.bookings.push({ id: 'kualoa', type: 'tour', title: '테스트 쿠알로아', date: '2026-11-17', numbers: [{ label: '확정번호', value: 'TESTCONF1' }], times: [], contacts: [], paid: { amount: 387190, currency: 'KRW' }, notes: [], vouchers: [] });
   mkdirSync(join(dir, 'data'), { recursive: true });
@@ -247,6 +248,15 @@ async function runFlow(browser, base, vp) {
   await page.locator('[data-item="1117-3"]').click();
   await page.waitForSelector('.sheet .wallet-card');
   assert.match(await text(page, '.sheet'), /TESTCONF1/);
+  await page.locator('.sheet [data-sheet-close]').first().click();
+  // 암호화된 사진: 지갑을 연 뒤에만 11/18 하나우마베이 항목에 보인다
+  await go(page, '#/day/2026-11-18');
+  assert.equal(await page.locator('.view .carousel-slide').count(), 1);
+  assert.match(await page.locator('.view .carousel-slide img').getAttribute('src'), /^data:image\//);
+  assert.match(await text(page, '[data-item="1118-3"] .tag-photo'), /1/);
+  await go(page, '#/day/2026-11-17');
+  await page.locator('[data-item="1117-3"]').click();
+  await page.waitForSelector('.sheet .wallet-card');
   assert.equal(await page.locator('.sheet .memo').inputValue(), '여권 챙기기 메모');
   await page.locator('.sheet [data-sheet-close]').first().click();
   log('예약: 두 번째부터 비밀번호 없이 열림, 일정과 연결 ✓');

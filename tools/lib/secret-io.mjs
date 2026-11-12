@@ -1,5 +1,5 @@
 // tools 공용: 비밀번호 입력, private/ 원본 읽기, 바우처 이미지 묶기
-import { readFileSync, existsSync, statSync } from 'node:fs';
+import { readFileSync, existsSync, statSync, readdirSync } from 'node:fs';
 import { join, extname, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import readline from 'node:readline';
@@ -7,6 +7,8 @@ import readline from 'node:readline';
 export const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..', '..');
 export const PRIVATE_JSON = join(ROOT, 'private', 'trip-secret.json');
 export const VOUCHER_DIR = join(ROOT, 'private', 'vouchers');
+// 공개하면 안 되는 사진(인터넷에서 찾은 남의 사진 등) — 암호화 파일 안에만 넣는다
+export const PRIVATE_PHOTO_DIR = join(ROOT, 'private', 'photos');
 export const ENC_PATH = join(ROOT, 'data', 'secret.enc');
 
 const MIME = { '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.png': 'image/png', '.webp': 'image/webp', '.gif': 'image/gif' };
@@ -67,7 +69,7 @@ export function readJSON(path) {
 
 // private/trip-secret.json 을 읽고, bookings[].vouchers 에 적힌 파일을 private/vouchers/ 에서 찾아
 // data URL 로 묶는다. (JSON 안에 이미 data URL 이 있으면 그대로 둔다)
-export function loadPrivateSecret(path = PRIVATE_JSON, voucherDir = VOUCHER_DIR) {
+export function loadPrivateSecret(path = PRIVATE_JSON, voucherDir = VOUCHER_DIR, photoDir = PRIVATE_PHOTO_DIR) {
   if (!existsSync(path)) {
     throw new Error(`원본 파일이 없습니다: ${path}\n(private/trip-secret.example.json 을 참고해 만들거나, decrypt-check.mjs --export 로 복원하세요)`);
   }
@@ -86,7 +88,20 @@ export function loadPrivateSecret(path = PRIVATE_JSON, voucherDir = VOUCHER_DIR)
       vouchers[name] = `data:${mime};base64,${readFileSync(file).toString('base64')}`;
     }
   }
-  return { secret: { ...secret, vouchers }, warnings };
+  // private/photos/ 의 사진을 모두 묶는다 (앱에서는 trip.json 의 photos/이름.jpg 자리에 보인다)
+  const photos = { ...(secret.photos || {}) };
+  if (existsSync(photoDir)) {
+    for (const name of readdirSync(photoDir).sort()) {
+      const mime = MIME[extname(name).toLowerCase()];
+      if (!mime || photos[name]) continue;
+      const size = statSync(join(photoDir, name)).size;
+      if (size > 400 * 1024) warnings.push(`photos/${name}: ${(size / 1024).toFixed(0)}KB — tools/shrink_image.py 로 줄이는 것을 권장`);
+      photos[name] = `data:${mime};base64,${readFileSync(join(photoDir, name)).toString('base64')}`;
+    }
+  }
+  const out = { ...secret, vouchers };
+  if (Object.keys(photos).length) out.photos = photos;
+  return { secret: out, warnings };
 }
 
 export function deepEqual(a, b) {

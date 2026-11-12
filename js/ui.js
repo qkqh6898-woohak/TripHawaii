@@ -89,7 +89,7 @@ export function bindCarousels(root) {
   root.addEventListener('click', (e) => {
     const slide = e.target.closest('[data-gallery]');
     if (!slide) return;
-    const list = Array.from(slide.closest('.carousel-track').querySelectorAll('.carousel-slide img')).map((img) => ({ src: img.getAttribute('src'), alt: img.getAttribute('alt') || '' }));
+    const list = Array.from(slide.closest('.carousel-track').querySelectorAll('.carousel-slide img')).map((img) => ({ src: img.getAttribute('src'), alt: img.getAttribute('alt') || '' }));   // data: 주소도 그대로
     openViewer(list, '', { index: Number(slide.dataset.gallery) || 0 });
   });
 }
@@ -152,7 +152,7 @@ export async function openItemSheet(itemId) {
         ${item.approx ? html`<span class="tag">시간은 대략</span>` : ''}
       </div>
       ${item.note ? html`<p class="detail-note">${item.note}</p>` : ''}
-      ${carouselHtml(itemPhotos(item).map((ph) => ({ src: ph.src, alt: ph.alt || item.title })))}
+      ${carouselHtml(itemPhotos(item))}
       ${p ? placeBlockHtml(p) : ''}
       ${item.booking ? html`
         <h3 class="sheet-sub">예약</h3>

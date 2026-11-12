@@ -7,6 +7,7 @@ import { weatherHtml } from './weather.js';
 import { getChecks, packingItems, setCheck } from './checklist.js';
 import { openViewer } from './viewer.js';
 import { topicsForDate, topicHtml } from './videos.js';
+import * as wallet from './wallet.js';
 
 export const live = ['weather'];
 
@@ -28,6 +29,7 @@ export function hotelBannersHtml(date) {
 }
 
 export async function render(root, ctx) {
+  await wallet.initWallet();   // 암호화된 사진을 먼저 받아 둔다
   const trip = getTrip();
   const info = trip.trip;
   const date = ctx.params[0] && dayByDate(ctx.params[0]) ? ctx.params[0] : defaultDate();

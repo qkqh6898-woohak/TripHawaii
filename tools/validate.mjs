@@ -286,6 +286,10 @@ export function validateSecret(secret) {
   for (const [name, data] of Object.entries(vouchers)) {
     if (typeof data !== 'string' || !data.startsWith('data:image/')) errors.push(`secret.vouchers["${name}"]: data:image/... 형식이어야 합니다`);
   }
+  for (const [name, data] of Object.entries(secret.photos || {})) {
+    if (!/^[\w.-]+\.(jpe?g|png|webp)$/i.test(name)) errors.push(`secret.photos["${name}"]: 파일 이름 형식이 올바르지 않습니다`);
+    if (typeof data !== 'string' || !data.startsWith('data:image/')) errors.push(`secret.photos["${name}"]: data:image/... 형식이어야 합니다`);
+  }
   return { errors, warnings, ids: [...ids] };
 }
 
@@ -329,7 +333,7 @@ async function main() {
   }
 
   run('data/trip.json', () => validateTrip(loadJSON('data/trip.json'), {
-    fileExists: (rel) => existsSync(join(ROOT, rel)),
+    fileExists: (rel) => existsSync(join(ROOT, rel)) || existsSync(join(ROOT, 'private', rel)),   // 사진은 private/photos 에 있어도 된다
     bookingIds,
   }));
   run('data/phrases.json', () => validatePhrases(loadJSON('data/phrases.json')));
