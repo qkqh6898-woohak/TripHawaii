@@ -325,7 +325,40 @@ async function runFlow(browser, base, vp) {
   await go(page, '#/maps?m=day&d=2026-11-20');
   assert.match(await page.locator('.map-frame img').getAttribute('src'), /day-1120\.png/);
   await shot(page, 'maps');
-  log('지도: 섬별·날짜별·확대 ✓');
+  // 날짜별 동선: 시간순 장소 + 구글 지도 경로 전체
+  assert.equal(await page.locator('.route .place-row').count(), 6);                 // 숙소 → 푸날루우 → 베이크샵 → 화산 → 빌리지 → 숙소
+  assert.match(await text(page, '.route .place-row >> nth=1'), /09:30.*푸날루우/s);
+  const routeUrl = new URL(await page.locator('.route [data-route]').getAttribute('href'));
+  assert.equal(routeUrl.origin + routeUrl.pathname, 'https://www.google.com/maps/dir/');
+  assert.match(routeUrl.searchParams.get('origin'), /^Kona Coast Resort/);
+  assert.equal(routeUrl.searchParams.get('waypoints').split('|').length, 4);
+  assert.equal(routeUrl.searchParams.get('travelmode'), 'driving');
+  await page.locator('.route [data-place="punaluu"]').click();                      // 장소를 누르면 주소·길찾기
+  await page.waitForSelector('.sheet .place-block');
+  await page.locator('.sheet [data-sheet-close]').first().click();
+  await page.waitForTimeout(300);
+  await go(page, '#/maps?m=day&d=2026-11-19');
+  assert.equal(await page.locator('.route [data-route]').count(), 2);               // 섬을 옮기는 날은 섬별 경로 2개
+  // 일정 요약: 13일 · 시간표 · 장소 · 비어 있는 정보 · 복사 · KML
+  await go(page, '#/maps?m=summary');
+  assert.equal(await page.locator('.sum-day').count(), 13);
+  assert.match(await text(page, '[data-sum="2026-11-17"]'), /11\/17\(화\) · 3일차[\s\S]*오아후 · 숙소 힐튼가든인[\s\S]*11:55[\s\S]*쿠알로아 랜치 티켓 오피스 체크인[\s\S]*📍 쿠알로아 랜치 티켓 오피스/);
+  assert.match(await text(page, '[data-sum="2026-11-26"]'), /마지막 저녁[\s\S]*장소 미정/);
+  assert.ok(await page.locator('.miss-list li').count() >= 10);
+  const [kml] = await Promise.all([page.waitForEvent('download'), page.locator('[data-action="kml"]').click()]);
+  assert.equal(kml.suggestedFilename(), 'aloha-trip.kml');
+  const kmlPath = join(tmpdir(), `aloha-${vp.name}-${Date.now()}.kml`);
+  await kml.saveAs(kmlPath);
+  const kmlText = readFileSync(kmlPath, 'utf8');
+  rmSync(kmlPath, { force: true });
+  assert.equal((kmlText.match(/<Placemark>/g) || []).length, 26);
+  assert.ok(!kmlText.includes('SAMPLE-ABC123'), 'KML 에 예약 정보가 없어야 함');
+  const sumOver = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
+  assert.ok(sumOver <= 1, `요약 화면이 옆으로 넘침 (${sumOver}px)`);
+  const smallSum = await page.locator('.view-maps a, .view-maps button, .view-maps summary').evaluateAll((els) => els.filter((e) => { const r = e.getBoundingClientRect(); return r.width > 0 && r.height < 44; }).length);
+  assert.equal(smallSum, 0, '요약 화면의 누르는 곳은 모두 44px 이상');
+  await shot(page, 'summary');
+  log('지도: 섬별·날짜별·확대·동선·구글 경로·일정 요약·KML ✓');
 
   // 6) 예약 지갑: 틀린 비밀번호 → 오류, 맞는 비밀번호 → 카드·복사·전화·바우처
   await go(page, '#/wallet');
