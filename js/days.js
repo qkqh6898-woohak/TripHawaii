@@ -1,6 +1,6 @@
 // 일정 — 날짜별 시간 일정 + 지도 + 사진 + 준비물
 import { html, setHTML, onSwipe, haptic } from './util.js';
-import { getTrip, dayByDate, hotel, place as getPlace, islandLabel, hotelEvents, mapSize, dayPhotos } from './trip.js';
+import { getTrip, dayByDate, hotel, place as getPlace, islandLabel, hotelEvents, mapSize, dayPhotos, mapLevels } from './trip.js';
 import * as time from './time.js';
 import { itemRowHtml, bindItemClicks, carouselHtml, bindCarousels } from './ui.js';
 import { weatherHtml } from './weather.js';
@@ -80,7 +80,7 @@ export async function render(root, ctx) {
 
     <button type="button" class="map-frame" data-map="${day.map}" data-alt="${time.fmtDate(date)} ${day.title} 지도" aria-label="지도 크게 보기">
       <img src="${day.map}" alt="${time.fmtDate(date)} ${day.title} 지도" width="${mapSize(day.map)[0]}" height="${mapSize(day.map)[1]}">
-      <span class="map-zoom">🔍 탭하면 크게</span>
+      <span class="map-zoom">🔍 탭하면 크게 · 오므리면 섬 전체</span>
     </button>
 
     ${carouselHtml(dayPhotos(day))}
@@ -127,7 +127,7 @@ export async function render(root, ctx) {
   bindIdeas(root);
   root.addEventListener('click', (e) => {
     const map = e.target.closest('[data-map]');
-    if (map) openViewer(map.dataset.map, map.dataset.alt);
+    if (map) openViewer(map.dataset.map, map.dataset.alt, { levels: mapLevels(map.dataset.map, map.dataset.alt) });
   });
 
   // 화면을 좌우로 밀면 앞·뒤 날짜로 (왼쪽으로 밀면 다음 날)

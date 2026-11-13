@@ -324,6 +324,43 @@ async function runFlow(browser, base, vp) {
   await page.locator('.viewer [data-v="close"]').click();
   await go(page, '#/maps?m=day&d=2026-11-20');
   assert.match(await page.locator('.map-frame img').getAttribute('src'), /day-1120\.png/);
+  // 크게 보기에서 두 손가락으로 오므리면 섬 전체 → 하와이 전체 (버튼으로도 같음)
+  const vsrc = () => page.locator('.viewer img').getAttribute('src');
+  const pinchIn = () => page.evaluate(() => {
+    const el = document.querySelector('.viewer-stage');
+    const r = el.getBoundingClientRect();
+    const y = r.top + r.height / 2;
+    const ev = (type, id, x) => el.dispatchEvent(new PointerEvent(type, { bubbles: true, pointerId: id, pointerType: 'touch', isPrimary: id === 1, clientX: x, clientY: y }));
+    ev('pointerdown', 1, r.left + r.width * 0.2); ev('pointerdown', 2, r.left + r.width * 0.8);
+    ev('pointermove', 2, r.left + r.width * 0.5); ev('pointermove', 1, r.left + r.width * 0.45);
+    ev('pointerup', 2, r.left + r.width * 0.5); ev('pointerup', 1, r.left + r.width * 0.45);
+  });
+  await page.locator('.map-frame').click();
+  await page.waitForSelector('.viewer img');
+  assert.match(await vsrc(), /day-1120\.png$/);
+  assert.deepEqual(await page.locator('.viewer-level').allInnerTexts(), ['이날 지도', '섬 전체', '하와이 전체']);
+  await pinchIn();
+  await page.waitForTimeout(400);
+  assert.match(await vsrc(), /day-1120-wide\.png$/, '오므리면 섬 전체 지도');
+  await page.waitForFunction(() => { const i = document.querySelector('.viewer img'); return i.complete && i.naturalWidth > 0; });
+  await pinchIn();
+  await page.waitForTimeout(400);
+  assert.match(await vsrc(), /overview-hawaii\.png$/, '한 번 더 오므리면 하와이 전체');
+  assert.equal(await page.locator('.viewer [data-v="out"]').isDisabled(), true);   // 더 넓은 지도 없음
+  await page.locator('.viewer-level[data-lv="0"]').click();                      // 버튼으로 돌아오기
+  assert.match(await vsrc(), /day-1120\.png$/);
+  await page.locator('.viewer [data-v="out"]').click();                              // ⊖ 버튼
+  assert.match(await vsrc(), /day-1120-wide\.png$/);
+  assert.equal(await page.locator('.viewer-level[aria-pressed="true"]').innerText(), '섬 전체');
+  await page.locator('.viewer [data-v="close"]').click();
+  await page.waitForTimeout(300);
+  await go(page, '#/maps?m=oahu');
+  await page.locator('.map-frame').click();
+  await page.waitForSelector('.viewer img');
+  assert.deepEqual(await page.locator('.viewer-level').allInnerTexts(), ['오아후', '하와이 전체']);
+  await page.locator('.viewer [data-v="close"]').click();
+  await page.waitForTimeout(300);
+  await go(page, '#/maps?m=day&d=2026-11-20');
   await shot(page, 'maps');
   // 날짜별 동선: 시간순 장소 + 구글 지도 경로 전체
   assert.equal(await page.locator('.route .place-row').count(), 6);                 // 숙소 → 푸날루우 → 베이크샵 → 화산 → 빌리지 → 숙소

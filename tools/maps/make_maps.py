@@ -10,6 +10,7 @@
     maps/overview-hawaii.png   하와이 전체 (섬·숙소·섬간 항공)
     maps/oahu.png, maps/big-island.png   섬별 장소
     maps/day-MMDD.png          날짜별 동선 (섬을 옮기는 날은 위·아래 두 칸)
+    maps/day-MMDD-wide.png     같은 날의 섬 전체 지도 — 앱에서 날짜 지도를 두 손가락으로 오므리면 이 지도로 넘어간다
 
 한글 글꼴: 환경변수 ALOHA_FONT(ttf 경로) → tools/maps/fonts/*.ttf → koreanize-matplotlib 패키지의 나눔고딕
           → 시스템 글꼴(나눔고딕 / Noto Sans KR / 맑은 고딕 / 애플고딕) 순서로 찾는다.
@@ -247,7 +248,8 @@ def draw_pins(ax, stops, clip_extent=None):
             ax.plot([s["lon"], x], [s["lat"], y], color=INK, lw=0.6, zorder=7)
             ax.scatter([s["lon"]], [s["lat"]], s=5, color=INK, zorder=7.1)
         ax.scatter([x], [y], s=PIN_PT ** 2, color=s["color"], edgecolors="white", linewidths=1.1, zorder=8)
-        ax.text(x, y, s["label"], ha="center", va="center_baseline", fontsize=7.2 if len(s["label"]) < 2 else 6.2,
+        n = len(s["label"])
+        ax.text(x, y, s["label"], ha="center", va="center_baseline", fontsize=7.2 if n < 2 else (6.2 if n == 2 else 4.9),
                 color="white", fontweight="bold", zorder=9)
 
 
@@ -593,6 +595,93 @@ def make_day(trip, day, coast):
     save(fig, f"day-{day['date'][5:7]}{day['date'][8:10]}")
 
 
+# ───────────────────────────── 날짜별 지도의 '섬 전체' ─────────────────────────────
+ISLAND_CENTER = {"oahu": (-157.97, 21.47, 0.4, 0.3), "bigisland": (-155.5, 19.6, 0.7, 0.8)}
+
+
+def island_extent(coast, island, ratio, pad=0.07):
+    """섬 해안선 전체가 들어가는 범위 (그림 칸의 세로/가로 비율에 맞춤)"""
+    cx, cy, rx, ry = ISLAND_CENTER[island]
+    polys = [p for p in coast if abs(p[:, 0].mean() - cx) < rx and abs(p[:, 1].mean() - cy) < ry]
+    lons = np.concatenate([p[:, 0] for p in polys])
+    lats = np.concatenate([p[:, 1] for p in polys])
+    ext, _ = fit_extent([lons.min(), lons.max()], [lats.min(), lats.max()], min_km=10, pad=pad, ratio=ratio)
+    return ext
+
+
+def group_label(labels):
+    """가까이 붙은 핀 여러 개를 하나로 묶을 때 쓰는 글자: '2-4' 처럼 이어지면 범위, 아니면 '3곳'"""
+    nums = [int(x) for x in labels if x.isdigit()]
+    others = [x for x in labels if not x.isdigit()]
+    if not others and nums and nums == list(range(min(nums), max(nums) + 1)):
+        return f"{min(nums)}-{max(nums)}" if max(nums) < 10 else f"{len(nums)}곳"
+    if len(labels) == 2 and len("".join(labels)) <= 2:
+        return "·".join(labels)          # 예: 1·숙 (1번과 숙소가 붙어 있음)
+    return f"{len(labels)}곳"
+
+
+def make_day_wide(trip, day, coast):
+    panels, rows = day_panels(trip, day)
+    if not panels:
+        return
+    places = [p for p in trip["places"]]
+    n = len(panels)
+    ratio_day = 0.80 if n > 1 else 0.98          # make_day 의 칸 비율과 같게 (빨간 네모가 날짜 지도 범위와 맞도록)
+    panel_w_in = FIG_W * (1 - 2 * MARGIN)
+    panel_h = [panel_w_in * (1.0 if pn["island"] == "oahu" else 1.12) * (0.78 if n > 1 else 1.0) for pn in panels]
+    legend_rows = rows + [{"text": "빨간 네모 = 날짜 지도에서 보이는 범위 · 회색 점 = 다른 장소"}]
+    legend_in = ROW_IN * (len(legend_rows) + 0.9) + 0.06
+    gap = 0.07
+    label_in = 0.19 if n > 1 else 0.0
+    fig_h = TITLE_IN + sum(panel_h) + (gap + label_in) * n + legend_in
+    fig = plt.figure(figsize=(FIG_W, fig_h), dpi=DPI)
+    isl = " → ".join(ISLAND_KO[pn["island"]] for pn in panels)
+    draw_title(fig, f"{fmt_date(day['date'])}  {day['title']}", f"{isl} 전체 · 번호는 방문 순서")
+    y = fig_h - TITLE_IN
+    for pn, ph in zip(panels, panel_h):
+        if label_in:
+            y -= label_in
+            fig.text(MARGIN + 0.005, (y + label_in * 0.32) / fig_h, ISLAND_KO[pn["island"]], ha="left", va="center",
+                     fontsize=7.4, fontweight="bold", color=ACCENT)
+        y -= gap / 2 + ph
+        ax = fig.add_axes([MARGIN, y / fig_h, 1 - 2 * MARGIN, ph / fig_h])
+        extent = island_extent(coast, pn["island"], ph / panel_w_in)
+        draw_base(ax, coast, extent)
+        fig.canvas.draw()
+        stops = pn["stops"]
+        ids = {s["id"] for s in stops}
+        others = [p for p in places if p["island"] == pn["island"] and p["id"] not in ids]
+        if others:
+            ax.scatter([p["lng"] for p in others], [p["lat"] for p in others], s=7, color="#9aa3ad", edgecolors="white", linewidths=0.4, zorder=4)
+        # 날짜 지도에 보이는 범위
+        dext, _ = fit_extent([s["lon"] for s in stops], [s["lat"] for s in stops], min_km=1.2, ratio=ratio_day)
+        min_w = (extent[1] - extent[0]) * 0.035
+        min_h = (extent[3] - extent[2]) * 0.035
+        cx, cy = (dext[0] + dext[1]) / 2, (dext[2] + dext[3]) / 2
+        bw, bh = max(dext[1] - dext[0], min_w), max(dext[3] - dext[2], min_h)
+        ax.add_patch(Rectangle((cx - bw / 2, cy - bh / 2), bw, bh, fill=False, ec=ACCENT, lw=1.3, zorder=6))
+        by_id = {s["id"]: s for s in stops}
+        draw_route(ax, [(by_id[p]["lon"], by_id[p]["lat"]) for p in pn["route"] if p in by_id])
+        px = [to_px(ax, s["lon"], s["lat"]) for s in stops]
+        draw_context(ax, pn["island"], extent, px, max_labels=6)
+        scale_bar(ax, extent)
+        # 섬 전체 크기에서는 가까운 곳끼리 핀이 겹치므로 하나로 묶는다
+        groups = clusters(px, PIN_PX * 1.25) if len(stops) > 1 else [[0]]
+        merged = []
+        for g in groups:
+            members = [stops[i] for i in g]
+            if len(members) == 1:
+                merged.append(members[0])
+            else:
+                merged.append({"id": "+".join(m["id"] for m in members), "lon": sum(m["lon"] for m in members) / len(members),
+                               "lat": sum(m["lat"] for m in members) / len(members),
+                               "label": group_label([m["label"] for m in members]), "color": INK})
+        draw_pins(ax, merged)
+        y -= gap / 2
+    draw_legend(fig, legend_rows, legend_in, note="약도입니다 — 실제 길 안내는 앱의 '길찾기' 버튼을 쓰세요")
+    save(fig, f"day-{day['date'][5:7]}{day['date'][8:10]}-wide")
+
+
 # ───────────────────────────── 섬별 지도 ─────────────────────────────
 def make_island(trip, island, name, coast):
     places = [p for p in trip["places"] if p["island"] == island]
@@ -774,6 +863,8 @@ def main():
         name = f"day-{day['date'][5:7]}{day['date'][8:10]}"
         if want(name):
             make_day(trip, day, hawaii)
+        if want(name + "-wide"):
+            make_day_wide(trip, day, hawaii)
 
 
 if __name__ == "__main__":

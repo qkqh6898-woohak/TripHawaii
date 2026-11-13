@@ -9,6 +9,13 @@ function announce(what) {
 
 export const swSupported = () => 'serviceWorker' in navigator;
 
+// 대기 중인 새 버전이 있는지 직접 확인 (이벤트를 놓쳤을 때를 대비)
+function syncWaiting(reg = registration) {
+  if (!reg || !reg.waiting || !navigator.serviceWorker.controller || waiting === reg.waiting) return;
+  waiting = reg.waiting;
+  announce('sw-update');
+}
+
 function watch(reg) {
   const track = (worker) => {
     if (!worker) return;
@@ -20,9 +27,12 @@ function watch(reg) {
       if (worker.state === 'activated') announce('offline');
     });
   };
-  if (reg.waiting && navigator.serviceWorker.controller) { waiting = reg.waiting; announce('sw-update'); }
+  syncWaiting(reg);
   track(reg.installing);
   reg.addEventListener('updatefound', () => track(reg.installing));
+  // 앱을 연 직후 1분 동안은 몇 초마다 한 번 더 확인한다 (설치가 등록보다 먼저 끝나는 경우)
+  let n = 0;
+  const timer = setInterval(() => { syncWaiting(reg); if (++n >= 20 || waiting) clearInterval(timer); }, 3000);
 }
 
 export async function registerSW() {
@@ -31,6 +41,8 @@ export async function registerSW() {
     registration = await navigator.serviceWorker.register('sw.js');
     if (!registration) return null;
     watch(registration);
+    // 앱을 열 때마다 새 버전이 있는지 바로 확인한다 (브라우저의 자동 확인은 늦게 올 때가 있음)
+    if (navigator.serviceWorker.controller) registration.update().then(() => syncWaiting()).catch(() => {});
     navigator.serviceWorker.addEventListener('controllerchange', () => {
       if (reloading) { location.reload(); return; }
       announce('offline');
@@ -55,7 +67,7 @@ export function applyUpdate() {
 
 export async function checkForUpdate() {
   if (!registration) return false;
-  try { await registration.update(); return true; } catch { return false; }
+  try { await registration.update(); syncWaiting(); return true; } catch { return false; }
 }
 
 function ask(worker, message, timeoutMs = 2500) {

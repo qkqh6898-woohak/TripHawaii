@@ -1,6 +1,6 @@
 // 지도 — 미리 그려 둔 약도(오프라인) + 날짜별 동선(시간표·장소) + Google 지도 경로 · 전체 일정 요약
 import { html, setHTML, onSwipe, copyText, downloadFile, toast } from './util.js';
-import { getTrip, dayByDate, placesOfDay, hotel, place as getPlace, directionsUrl, mapSize, CAT_LABEL, CAT_ICON } from './trip.js';
+import { getTrip, dayByDate, placesOfDay, hotel, place as getPlace, directionsUrl, mapSize, mapLevels, CAT_LABEL, CAT_ICON } from './trip.js';
 import * as time from './time.js';
 import { openViewer } from './viewer.js';
 import { bindItemClicks, timeHtml } from './ui.js';
@@ -176,7 +176,7 @@ export async function render(root, ctx) {
       </div>` : ''}
     <button type="button" class="map-frame" data-map="${src}" data-alt="${alt}" aria-label="${alt} — 크게 보기">
       <img src="${src}" alt="${alt}" width="${mapSize(src)[0]}" height="${mapSize(src)[1]}">
-      <span class="map-zoom">🔍 탭하면 크게 · 두 손가락으로 확대</span>
+      <span class="map-zoom">🔍 탭하면 크게${mapLevels(src).length > 1 ? ' · 오므리면 더 넓게' : ''}</span>
     </button>
     ${m === 'day' ? html`<p class="muted small"><a class="link-btn" href="#/day/${date}">${time.fmtDate(date)} 일정 보기 ›</a></p>${dayRouteHtml(day)}` : ''}
 
@@ -209,6 +209,6 @@ export async function render(root, ctx) {
   bindItemClicks(root);
   root.addEventListener('click', (e) => {
     const f = e.target.closest('[data-map]');
-    if (f) openViewer(f.dataset.map, f.dataset.alt);
+    if (f) openViewer(f.dataset.map, f.dataset.alt, { levels: mapLevels(f.dataset.map, f.dataset.alt) });
   });
 }

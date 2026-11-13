@@ -404,7 +404,17 @@ form > * + *, .sheet-body > * + *, .tip > * + *, .receive > * + *, .share > * + 
 .viewer-nav { position: absolute; top: 50%; transform: translateY(-50%); width: 48px; height: 64px; border: 0; border-radius: 12px; background: rgba(255, 255, 255, .16); color: #fff; font-size: 1.8rem; line-height: 1; }
 .viewer-prev { left: 6px; } .viewer-next { right: 6px; }
 .viewer-nav:disabled { opacity: .25; }
-.viewer-hint { position: absolute; left: 0; right: 0; bottom: 0; padding: 10px 14px calc(12px + var(--safe-b)); text-align: center; font-size: .82rem; background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, .75)); }
+.viewer-foot { position: absolute; left: 0; right: 0; bottom: 0; padding: 10px calc(14px + var(--safe-r)) calc(12px + var(--safe-b)) calc(14px + var(--safe-l)); background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, .78)); }
+.viewer-hint { text-align: center; font-size: .82rem; }
+.viewer-levels { display: flex; justify-content: center; gap: 6px; margin-bottom: 8px; }
+.viewer-level { flex: 0 1 auto; min-height: 48px; padding: 6px 14px; border-radius: 999px; border: 1.5px solid rgba(255, 255, 255, .45); background: rgba(0, 0, 0, .35); color: #fff; font-weight: 700; font-size: .88rem; }
+.viewer-level[aria-pressed="true"] { background: #fff; color: #111; border-color: #fff; }
+.viewer-btn:disabled { opacity: .35; }
+/* 지도 단계가 바뀔 때: 넓어지면 크게 시작해 줄어들고, 좁아지면 작게 시작해 커진다 */
+.viewer-stage img.lv-out { animation: lv-out .32s ease-out; }
+.viewer-stage img.lv-in { animation: lv-in .32s ease-out; }
+@keyframes lv-out { from { transform: scale(1.9); opacity: .25; } to { transform: scale(1); opacity: 1; } }
+@keyframes lv-in { from { transform: scale(.55); opacity: .25; } to { transform: scale(1); opacity: 1; } }
 
 #toast-root { position: fixed; left: 0; right: 0; bottom: calc(var(--tab-h) + var(--safe-b) + 12px); z-index: 70; display: flex; justify-content: center; padding: 0 16px; pointer-events: none; }
 .toast { max-width: 520px; padding: 10px 16px; border-radius: 999px; background: #1b2430; color: #fff; font-weight: 700; font-size: .9rem; text-align: center; box-shadow: 0 6px 20px rgba(0, 0, 0, .3); }

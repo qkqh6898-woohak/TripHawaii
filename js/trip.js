@@ -46,6 +46,23 @@ export async function loadTrip() {
 export const getTrip = () => trip;
 // 지도 이미지의 실제 크기 [가로, 세로] — <img width height> 에 넣어 로딩 중 화면 밀림을 막는다
 export const mapSize = (src) => (Array.isArray(mapSizes[src]) ? mapSizes[src] : [1080, 1400]);
+// 지도 크게 보기에서 오므렸을 때 넘어갈 더 넓은 지도들 (좁은 것 → 넓은 것)
+const OVERVIEW = 'maps/overview-hawaii.png';
+export function mapLevels(src, alt = '') {
+  const known = Object.keys(mapSizes).length > 0;
+  const has = (s) => !known || Array.isArray(mapSizes[s]);
+  const out = [{ src, alt, label: '이 지도' }];
+  const day = /^maps\/day-(\d{4})\.png$/.exec(src || '');
+  if (day) {
+    out[0].label = '이날 지도';
+    const wide = `maps/day-${day[1]}-wide.png`;
+    if (has(wide)) out.push({ src: wide, alt: `${alt} — 섬 전체`, label: '섬 전체' });
+  } else if (src === 'maps/oahu.png') out[0].label = '오아후';
+  else if (src === 'maps/big-island.png') out[0].label = '빅아일랜드';
+  else return out;                     // 하와이 전체·한국↔하와이는 더 넓은 지도가 없다
+  if (has(OVERVIEW)) out.push({ src: OVERVIEW, alt: '하와이 전체 일정 지도', label: '하와이 전체' });
+  return out;
+}
 // 예약 지갑을 열면 받는 암호화된 사진 { '이름.jpg': 'data:image/...' } — wallet.js 가 넣어 준다
 let privatePhotos = {};
 export function setPrivatePhotos(map) { privatePhotos = map && typeof map === 'object' ? map : {}; }
