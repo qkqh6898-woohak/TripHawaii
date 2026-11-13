@@ -85,9 +85,10 @@ export function missingInfo() {
       if (it.tentative) { out.push({ ...base, kind: 'tentative', what: '할지 말지 · 시간이 정해지지 않았어요' }); continue; }
       if (it.pending) { out.push({ ...base, kind: 'wait', what: it.pending }); continue; }   // 우리가 정하는 것이 아니라 연락을 기다리는 것
       if (place(it.place) || it.clock === 'home') continue;
+      if (it.booking && placedBookings.has(it.booking)) continue;   // 같은 예약의 다른 일정에 장소가 있음
       const meet = /미팅|만나는|픽업/.test(it.title);
       if (meet) out.push({ ...base, kind: 'meet', what: '만나는 장소(정확한 위치)가 없어요' });
-      else if (['food', 'shop', 'sight', 'tour'].includes(it.cat) && !(it.booking && placedBookings.has(it.booking))) out.push({ ...base, kind: 'place', what: `장소가 정해지지 않았어요${/추천:/.test(it.note || '') ? ' · 💡 추천 있음 (일정 화면 참고)' : ''}` });
+      else if (['food', 'shop', 'sight', 'tour'].includes(it.cat)) out.push({ ...base, kind: 'place', what: `장소가 정해지지 않았어요${/추천:/.test(it.note || '') ? ' · 💡 추천 있음 (일정 화면 참고)' : ''}` });
       else if (it.cat === 'tour' && !/확인/.test(it.title)) out.push({ ...base, kind: 'place', what: '투어 장소(집합·진행 위치)가 없어요' });
     }
   }
