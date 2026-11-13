@@ -81,16 +81,16 @@ test('여행 중·후 판단은 하와이 날짜 기준', () => {
   assert.deepEqual([after.phase, after.daysSince], ['after', 1]);
 });
 
-test('진행 중 / 다음 일정: 11/17 09:12 → 다음은 09:45 쉐라톤 앞', () => {
+test('진행 중 / 다음 일정: 11/17 09:12 → 다음은 10:00 쉐라톤 알로하 랜딩', () => {
   const r = T.currentAndNext(trip.days, at('2026-11-17T09:12'));
   assert.equal(r.current, null);
   assert.equal(r.next.item.id, '1117-1');
-  assert.equal(T.fmtDuration(r.next.startMs - at('2026-11-17T09:12')), '33분');
+  assert.equal(T.fmtDuration(r.next.startMs - at('2026-11-17T09:12')), '48분');
 });
 
 test('끝 시각이 없으면 다음 일정 시작까지 진행 중', () => {
   const r = T.currentAndNext(trip.days, at('2026-11-17T10:30'));
-  assert.equal(r.current.item.id, '1117-2');           // 10:00 픽업 출발 ~ 11:55
+  assert.equal(r.current.item.id, '1117-2');           // 10:15 픽업 출발 ~ 11:55
   assert.equal(r.next.item.id, '1117-3');
   assert.ok(r.past.has('1117-1'));
 });
@@ -99,8 +99,8 @@ test('끝 시각이 있으면 그 시각까지 진행 중 (UTV 12:40–15:40)', 
   const r = T.currentAndNext(trip.days, at('2026-11-17T14:00'));
   assert.equal(r.current.item.id, '1117-4');
   assert.equal(r.current.endMs, at('2026-11-17T15:40'));
-  assert.equal(r.next.item.id, '1117-5');
-  // 15:40~16:30 사이는 진행 중인 일정 없음
+  assert.equal(r.next.item.id, '1117-9');             // 16:15 복귀 버스 체크인
+  // 15:40~16:15 사이는 진행 중인 일정 없음
   assert.equal(T.currentAndNext(trip.days, at('2026-11-17T16:00')).current, null);
 });
 

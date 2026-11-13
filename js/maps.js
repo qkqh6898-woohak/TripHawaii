@@ -66,7 +66,8 @@ function dayRouteHtml(day) {
 // 전체 일정 요약: 날짜 · 시간표 · 장소
 function summaryHtml(trip) {
   const miss = missingInfo();
-  const noPlace = new Set(miss.filter((m) => m.kind === 'place' || m.kind === 'meet').map((m) => m.item));   // 장소가 필요한데 없는 일정
+  const noPlace = new Set(miss.filter((m) => m.kind === 'place' || m.kind === 'meet').map((m) => m.item));
+  const waiting = new Map(miss.filter((m) => m.kind === 'wait').map((m) => [m.item, m.what]));   // 장소가 필요한데 없는 일정
   return html`
     <section class="card">
       <h2>📋 전체 일정 요약</h2>
@@ -106,7 +107,7 @@ function summaryHtml(trip) {
             <li class="sum-row ${it.tentative ? 'is-tentative' : ''}">
               <span class="sum-time">${timeHtml(it, day)}</span>
               <span class="sum-what"><b>${it.title}</b>${it.tentative ? html` <span class="tag tag-tentative">미정</span>` : ''}
-                ${p ? html`<span class="sum-place">📍 ${p.name}</span>` : noPlace.has(it.id) ? html`<span class="sum-place">📍 장소 미정</span>` : ''}</span>
+                ${p ? html`<span class="sum-place">📍 ${p.name}</span>` : noPlace.has(it.id) ? html`<span class="sum-place">📍 장소 미정</span>` : waiting.has(it.id) ? html`<span class="sum-place">⏳ ${waiting.get(it.id)}</span>` : ''}</span>
             </li>`;
   })}
         </ol>

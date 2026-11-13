@@ -17,8 +17,8 @@ test('동선: 시간순으로 묶고, 전날 숙소 출발 · 오늘 숙소 복�
   assert.equal(s[0].auto, 'start');
   assert.equal(s.at(-1).auto, 'end');
   assert.deepEqual(s.map((v) => v.pin), ['숙', '1', '2', '숙']);                 // 약도 번호와 같은 번호
-  assert.equal(s[1].time, '09:45');
-  assert.equal(s[2].items.length, 3);                                           // 쿠알로아에서 이어지는 일정 3개
+  assert.equal(s[1].time, '10:00');
+  assert.equal(s[2].items.length, 4);                                           // 쿠알로아에서 이어지는 일정 4개
 });
 
 test('동선: 모든 날짜에 경로 주소가 있고 형식이 맞다', () => {
@@ -50,11 +50,12 @@ test('빈 정보 찾기: 미정 · 장소 없는 식사 · 만나는 장소 · �
   const has = (item, kind) => m.some((v) => v.item === item && v.kind === kind);
   assert.ok(has('1122-1', 'tentative'));
   assert.ok(has('1126-4', 'place'));            // 마지막 저녁
-  assert.ok(has('1118-1', 'meet'));             // 가이드 미팅 장소
+  assert.ok(has('1118-1', 'wait'));             // 가이드 미팅 장소 — 전날 카톡을 기다리는 것
   assert.ok(has('1116-2', 'place'));            // 줌줌 투어 장소
   assert.ok(!m.some((v) => v.item === '1117-8'));   // '카톡 확인'은 장소가 필요 없는 일
   assert.ok(!m.some((v) => v.item === '1115-1'));   // 한국에서의 일정은 제외
-  assert.ok(m.some((v) => v.kind === 'flight' && /편명/.test(v.what)));
+  assert.ok(!m.some((v) => v.kind === 'flight' && /편명/.test(v.what)));   // 섬간 항공편명(AS1098 · AS1127)이 들어감
+  assert.ok(m.some((v) => v.kind === 'flight' && /도착 시각/.test(v.what)));
 });
 
 test('요약 글·KML: 날짜·시각·장소가 들어가고 개인 정보는 없다', () => {

@@ -166,6 +166,7 @@ export function validateTrip(trip, opts = {}) {
       }
       if (it.flight != null && !flights.has(it.flight)) err(`${ia}: flight "${it.flight}" 가 flights 에 없습니다`);
       if (it.clock != null && it.clock !== 'home') err(`${ia}: clock 은 "home" 만 쓸 수 있습니다`);
+      if (it.pending != null && (typeof it.pending !== 'string' || !it.pending.trim())) err(`${ia}: pending 은 무엇을 기다리는지 적은 글이어야 합니다`);
       if (it.booking != null) {
         if (!RE_ID.test(it.booking)) err(`${ia}: booking "${it.booking}" 형식이 올바르지 않습니다`);
         bookingRefs.add(it.booking);

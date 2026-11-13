@@ -121,8 +121,8 @@ async function runFlow(browser, base, vp) {
   const clocks = await page.locator('.clock-time').allInnerTexts();
   assert.deepEqual(clocks, ['11/17(화) 09:12', '11/18(수) 04:12'], '하와이·한국 시각');
   const next = await text(page, '.next-card');
-  assert.match(next, /09:45/);
-  assert.match(next, /33분 남음/);
+  assert.match(next, /10:00/);
+  assert.match(next, /48분 남음/);
   assert.match(await text(page, '.clock-sub'), /3일차.*오아후.*힐튼가든인/);
   assert.match(await page.locator('.next-card a.btn-primary').getAttribute('href'), /^https:\/\/www\.google\.com\/maps\/dir\/\?api=1&destination=/);
   log('오늘: 시각·다음 일정·길찾기 링크 ✓');
@@ -152,7 +152,7 @@ async function runFlow(browser, base, vp) {
   // 4) 일정: 날짜 칩 13개, 시간 일정, 지도 이미지, 항목 상세 → 길찾기
   await go(page, '#/day/2026-11-17');
   assert.equal(await page.locator('.day-chips .chip').count(), 13);
-  assert.equal(await page.locator('.items .item').count(), 8);
+  assert.equal(await page.locator('.items .item').count(), 9);
   await page.waitForFunction(() => { const i = document.querySelector('.map-frame img'); return i && i.complete && i.naturalWidth > 0; });
   assert.match(await page.locator('.video-link').first().getAttribute('href'), /^https:\/\/www\.youtube\.com\/watch\?v=[\w-]{11}$/);   // 그날의 한국어 영상
   // 사진: 그날 묶음 2장, 항목에 📷 2, 항목 상세에서 크게 보기 → 버튼·밀기로 넘김
@@ -513,7 +513,7 @@ async function runFlow(browser, base, vp) {
   await page.locator('[data-form="unlock"] button[type="submit"]').click();
   await page.waitForSelector('.wallet-card', { timeout: 15000 });
   await go(page, '#/today');
-  assert.match(await text(page, '.next-card'), /09:45/);
+  assert.match(await text(page, '.next-card'), /10:00/);
   assert.match(await text(page, '.weather'), /28°\/22°/);              // 마지막으로 받은 날씨
   assert.equal(await page.locator('.pill-off').count(), 1);
   await go(page, '#/day/2026-11-20');

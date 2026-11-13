@@ -83,6 +83,7 @@ export function missingInfo() {
     for (const it of day.items) {
       const base = { date: day.date, item: it.id, time: timeLabel(it, day), title: it.title };
       if (it.tentative) { out.push({ ...base, kind: 'tentative', what: '할지 말지 · 시간이 정해지지 않았어요' }); continue; }
+      if (it.pending) { out.push({ ...base, kind: 'wait', what: it.pending }); continue; }   // 우리가 정하는 것이 아니라 연락을 기다리는 것
       if (place(it.place) || it.clock === 'home') continue;
       const meet = /미팅|만나는|픽업/.test(it.title);
       if (meet) out.push({ ...base, kind: 'meet', what: '만나는 장소(정확한 위치)가 없어요' });

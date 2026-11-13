@@ -15,7 +15,10 @@
         { "id": "todo-volcano-vc", "text": "화산국립공원 방문자센터 재개관 여부 확인 (공사 중이면 임시 웰컴센터 이용)", "owner": "woohak", "url": "https://www.nps.gov/havo/planyourvisit/welcome-center.htm" },
         { "id": "todo-flight-times", "text": "e-티켓으로 YP151 도착·YP152 인천 도착 시각 확인", "owner": "both" },
         { "id": "todo-konacoast-checkin", "text": "코나코스트 리조트 체크인 시간 확인 (공식 안내는 16:00)", "owner": "woohak" },
-        { "id": "todo-missing-bookings", "text": "빠진 예약번호 넣기 (힐튼 · 코나코스트 · 섬간 항공 · 렌터카 · 울프강 · 줌줌)", "owner": "both" }
+        { "id": "todo-hanauma-count", "text": "하나우마베이 투어 예약 인원 확인 (예약 내역에 성인 1개로 표시 — 2명이 맞는지 업체에 문의)", "owner": "woohak" },
+        { "id": "todo-alamo-flight", "text": "알라모에 바뀐 도착편 알리기 (예약서는 AS1088 · 실제는 AS1098, 12:19 도착)", "owner": "woohak" },
+        { "id": "todo-kualoa-voucher", "text": "쿠알로아 랜치 확정 이메일(바우처 3장) 받았는지 확인 — 스팸함도 보기", "owner": "woohak" },
+        { "id": "todo-missing-bookings", "text": "빠진 예약번호 넣기 (코나코스트 · 울프강 · 줌줌 · 다이아몬드 헤드)", "owner": "both" }
       ]
     },
     {
