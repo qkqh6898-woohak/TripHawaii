@@ -51,7 +51,8 @@ test('빈 정보 찾기: 미정 · 장소 없는 식사 · 만나는 장소 · �
   assert.ok(has('1122-1', 'tentative'));
   assert.ok(has('1126-4', 'place'));            // 마지막 저녁
   assert.ok(has('1118-1', 'wait'));             // 가이드 미팅 장소 — 전날 카톡을 기다리는 것
-  assert.ok(has('1116-2', 'place'));            // 줌줌 투어 장소
+  assert.ok(!m.some((v) => v.item === '1116-2'));  // 거북이 투어: 픽업 장소(힐튼 후문)가 정해짐
+  assert.match(m.find((v) => v.item === '1126-4').what, /추천 있음/);
   assert.ok(!m.some((v) => v.item === '1117-8'));   // '카톡 확인'은 장소가 필요 없는 일
   assert.ok(!m.some((v) => v.item === '1115-1'));   // 한국에서의 일정은 제외
   assert.ok(!m.some((v) => v.kind === 'flight' && /편명/.test(v.what)));   // 섬간 항공편명(AS1098 · AS1127)이 들어감

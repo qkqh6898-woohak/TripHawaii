@@ -1,67 +1,385 @@
 {
   "schema": 1,
-  "updated": "2026-11-12",
+  "updated": "2026-11-13",
   "note": "확정 일정이 아니라 '넣어 볼 만한 것'입니다. dates 는 넣기 좋은 날(후보), 비어 있으면 지금 일정에 맞는 날이 없다는 뜻입니다.",
   "notices": [
-    { "id": "eruption", "icon": "🌋", "dates": ["2026-11-19", "2026-11-20", "2026-11-21"],
+    {
+      "id": "eruption",
+      "icon": "🌋",
+      "dates": [
+        "2026-11-19",
+        "2026-11-20",
+        "2026-11-21"
+      ],
       "title": "킬라우에아 용암 분수 — 다음 분출 예상 11/16~21",
       "text": "미국 지질조사국(USGS)이 11/11에 낸 예상 기간이에요. 직전 분출(56번째)은 11/5에 약 6시간 이어졌어요. 화산국립공원에 가는 11/20이 이 기간 안이라 운이 좋으면 볼 수 있어요. 예상일 뿐이니 전날 밤과 당일 아침에 USGS 공지를 확인하세요.",
-      "link": { "label": "USGS 킬라우에아 최신 공지", "url": "https://www.usgs.gov/volcanoes/kilauea/volcano-updates" } },
-    { "id": "thanksgiving", "icon": "🦃", "dates": ["2026-11-25", "2026-11-26"],
+      "link": {
+        "label": "USGS 킬라우에아 최신 공지",
+        "url": "https://www.usgs.gov/volcanoes/kilauea/volcano-updates"
+      }
+    },
+    {
+      "id": "thanksgiving",
+      "icon": "🦃",
+      "dates": [
+        "2026-11-25",
+        "2026-11-26"
+      ],
       "title": "11/26(목)은 미국 추수감사절",
-      "text": "문을 닫거나 일찍 닫는 식당·매장이 많아요. 마지막 저녁은 미리 예약하고, 쇼핑할 곳과 가려는 맛집의 영업 여부를 확인하세요." },
-    { "id": "blackfriday", "icon": "🛍", "dates": ["2026-11-27"],
+      "text": "문을 닫거나 일찍 닫는 식당·매장이 많아요. 마지막 저녁은 미리 예약하고, 쇼핑할 곳과 가려는 맛집의 영업 여부를 확인하세요."
+    },
+    {
+      "id": "blackfriday",
+      "icon": "🛍",
+      "dates": [
+        "2026-11-27"
+      ],
       "title": "11/27(금)은 블랙프라이데이",
-      "text": "할인 폭은 크지만 11:00 체크아웃 · 12:00 공항 도착이라 쇼핑할 시간은 거의 없어요. 꼭 살 것이 있으면 아침 일찍 한 곳만 들르세요." }
+      "text": "할인 폭은 크지만 11:00 체크아웃 · 12:00 공항 도착이라 쇼핑할 시간은 거의 없어요. 꼭 살 것이 있으면 아침 일찍 한 곳만 들르세요."
+    }
   ],
   "ideas": [
-    { "id": "lava", "island": "bigisland", "icon": "🌋", "title": "킬라우에아 용암 분수 보기", "dates": ["2026-11-20"],
+    {
+      "id": "lava",
+      "island": "bigisland",
+      "icon": "🌋",
+      "title": "킬라우에아 용암 분수 보기",
+      "dates": [
+        "2026-11-20"
+      ],
       "why": "분출하는 날이면 국립공원 전망대에서 용암 분수가 보여요. 가장 추천하는 볼거리예요.",
       "how": "분출은 대부분 하루 안에 끝나요. 11/19~21 사이에 분출 소식이 뜨면 그날 일정을 바꿔서라도 가 볼 만해요. 밤에는 쌀쌀하니 겉옷과 손전등을 챙기세요.",
-      "place": { "name": "킬라우에아 분화구 전망대", "name_en": "Uekahuna Overlook, Hawaii Volcanoes National Park", "addr": "Hawaii Volcanoes National Park, HI 96718" },
-      "link": { "label": "USGS 킬라우에아 최신 공지", "url": "https://www.usgs.gov/volcanoes/kilauea/volcano-updates" } },
-    { "id": "manta", "island": "bigisland", "icon": "🐟", "title": "코나 만타레이 야간 스노클", "dates": ["2026-11-19", "2026-11-22"],
+      "place": {
+        "name": "킬라우에아 분화구 전망대",
+        "name_en": "Uekahuna Overlook, Hawaii Volcanoes National Park",
+        "addr": "Hawaii Volcanoes National Park, HI 96718"
+      },
+      "link": {
+        "label": "USGS 킬라우에아 최신 공지",
+        "url": "https://www.usgs.gov/volcanoes/kilauea/volcano-updates"
+      }
+    },
+    {
+      "id": "manta",
+      "island": "bigisland",
+      "icon": "🐟",
+      "title": "코나 만타레이 야간 스노클",
+      "dates": [
+        "2026-11-19",
+        "2026-11-22"
+      ],
       "why": "밤바다에서 쥐가오리를 가까이 보는 투어로, 신혼여행 코스로 인기가 많아요.",
       "how": "저녁에 약 2시간. 예약이 필요해요. 숙소(코나코스트) 근처 케아우호우 베이에서 떠나는 투어가 많아요. 출발 시각은 일몰에 따라 달라지니 예약한 업체의 집합 장소·시각을 확인하세요. 멀미약을 챙기고, 일정이 빈 11/22 저녁이 가장 무난해요.",
-      "place": { "name": "케아우호우 베이", "name_en": "Keauhou Bay", "addr": "78-7130 Kaleiopapa St, Kailua-Kona, HI 96740" },
-      "q": "코나 만타레이 야간 스노클 후기" },
-    { "id": "akaka-waipio", "island": "bigisland", "icon": "🏞", "title": "와이피오 계곡 전망대 · 아카카 폭포", "dates": ["2026-11-24"],
+      "place": {
+        "name": "케아우호우 베이",
+        "name_en": "Keauhou Bay",
+        "addr": "78-7130 Kaleiopapa St, Kailua-Kona, HI 96740"
+      },
+      "q": "코나 만타레이 야간 스노클 후기"
+    },
+    {
+      "id": "akaka-waipio",
+      "island": "bigisland",
+      "icon": "🏞",
+      "title": "와이피오 계곡 전망대 · 아카카 폭포",
+      "dates": [
+        "2026-11-24"
+      ],
       "why": "섬 북동쪽(힐로 방향)의 초록빛 풍경이에요. 서쪽 해안과 분위기가 전혀 달라요.",
       "how": "웨스틴에서 와이피오 전망대까지 약 1시간, 아카카 폭포는 거기서 약 1시간 더 가요 (이동 시간은 추정). 반나절~하루 드라이브예요. 와이피오는 전망대(무료)까지만 볼 수 있어요 — 계곡 아래로 내려가는 길은 일반 방문객·렌터카 출입 금지예요. 아카카 폭포는 08:30~17:00, 비거주자 1인 $5 + 주차 $10 (카드만 가능).",
-      "place": { "name": "와이피오 계곡 전망대", "name_en": "Waipio Valley Lookout", "addr": "48-5546 Waipio Valley Rd, Honokaa, HI 96727" },
-      "place2": { "name": "아카카 폭포 주립공원", "name_en": "Akaka Falls State Park", "addr": "Akaka Falls Rd, Honomu, HI 96728" },
-      "q": "빅아일랜드 아카카 폭포 와이피오 계곡" },
-    { "id": "cruise", "island": "oahu", "icon": "⛵", "title": "와이키키 선셋 크루즈", "dates": ["2026-11-16", "2026-11-18", "2026-11-25"],
+      "place": {
+        "name": "와이피오 계곡 전망대",
+        "name_en": "Waipio Valley Lookout",
+        "addr": "48-5546 Waipio Valley Rd, Honokaa, HI 96727"
+      },
+      "place2": {
+        "name": "아카카 폭포 주립공원",
+        "name_en": "Akaka Falls State Park",
+        "addr": "Akaka Falls Rd, Honomu, HI 96728"
+      },
+      "q": "빅아일랜드 아카카 폭포 와이피오 계곡"
+    },
+    {
+      "id": "cruise",
+      "island": "oahu",
+      "icon": "⛵",
+      "title": "와이키키 선셋 크루즈",
+      "dates": [
+        "2026-11-16",
+        "2026-11-18",
+        "2026-11-25"
+      ],
       "why": "신혼여행 저녁 일정으로 무난해요. 다이아몬드 헤드와 노을을 바다에서 봐요.",
       "how": "11월 일몰은 17:50 무렵이라 16:30~17:00에 떠나는 배가 좋아요. 오후가 비어 있는 11/16 · 11/18에 넣기 쉬워요. 미리 예약하세요.",
-      "q": "와이키키 선셋 크루즈 후기" },
-    { "id": "kailua", "island": "oahu", "icon": "🏖", "title": "카일루아 · 라니카이 비치", "dates": ["2026-11-16", "2026-11-18"],
+      "q": "와이키키 선셋 크루즈 후기"
+    },
+    {
+      "id": "kailua",
+      "island": "oahu",
+      "icon": "🏖",
+      "title": "카일루아 · 라니카이 비치",
+      "dates": [
+        "2026-11-16",
+        "2026-11-18"
+      ],
       "why": "물빛이 고운 조용한 해변이에요. 오전에 해변, 그 뒤 카일루아 타운에서 브런치가 정석이에요.",
       "how": "와이키키에서 차로 30~40분 (추정). 오아후에서는 렌터카가 없으니 우버나 버스로 가요. 지금 일정에서는 오후만 비어 있어 반나절로 다녀오게 돼요. 라니카이는 주차·화장실이 마땅치 않아요.",
-      "place": { "name": "카일루아 비치 파크", "name_en": "Kailua Beach Park", "addr": "Kawailoa Rd, Kailua, HI 96734" },
-      "q": "카일루아 라니카이 비치 가는 법" },
-    { "id": "northshore", "island": "oahu", "icon": "🚙", "title": "노스쇼어 하루 (렌터카)", "dates": [],
+      "place": {
+        "name": "카일루아 비치 파크",
+        "name_en": "Kailua Beach Park",
+        "addr": "Kawailoa Rd, Kailua, HI 96734"
+      },
+      "q": "카일루아 라니카이 비치 가는 법"
+    },
+    {
+      "id": "northshore",
+      "island": "oahu",
+      "icon": "🚙",
+      "title": "노스쇼어 하루 (렌터카)",
+      "dates": [],
       "why": "할레이바 → 라니아케아(바다거북) → 새우 트럭 순서로 도는 드라이브예요.",
       "how": "렌터카로 하루를 통째로 써야 해요. 지금 오아후 일정에는 통째로 빈 날이 없어서, 넣으려면 다른 일정 하나를 빼야 해요.",
-      "place": { "name": "할레이바 타운", "name_en": "Haleiwa Town", "addr": "Haleiwa, HI 96712" },
-      "q": "오아후 노스쇼어 렌터카 하루 코스" },
-    { "id": "leonards", "island": "oahu", "icon": "🍩", "title": "레너드 베이커리 말라사다", "dates": ["2026-11-26"],
+      "place": {
+        "name": "할레이바 타운",
+        "name_en": "Haleiwa Town",
+        "addr": "Haleiwa, HI 96712"
+      },
+      "q": "오아후 노스쇼어 렌터카 하루 코스"
+    },
+    {
+      "id": "leonards",
+      "island": "oahu",
+      "icon": "🍩",
+      "title": "레너드 베이커리 말라사다",
+      "dates": [
+        "2026-11-26"
+      ],
       "why": "갓 튀긴 하와이식 도넛 '말라사다'로 유명한 현지 빵집이에요.",
       "how": "다이아몬드 헤드에서 차로 5~10분 거리(카파훌루, 추정)라 등산 뒤에 들르기 좋아요. 11/26은 추수감사절이라 영업 여부를 확인하세요.",
-      "place": { "name": "레너드 베이커리", "name_en": "Leonard's Bakery", "addr": "933 Kapahulu Ave, Honolulu, HI 96816" } },
-    { "id": "rainbow", "island": "oahu", "icon": "🍛", "title": "레인보우 드라이브인", "dates": ["2026-11-26"],
+      "place": {
+        "name": "레너드 베이커리",
+        "name_en": "Leonard's Bakery",
+        "addr": "933 Kapahulu Ave, Honolulu, HI 96816"
+      }
+    },
+    {
+      "id": "rainbow",
+      "island": "oahu",
+      "icon": "🍛",
+      "title": "레인보우 드라이브인",
+      "dates": [
+        "2026-11-26"
+      ],
       "why": "현지인이 가는 플레이트 런치 식당이에요 (로코모코 등).",
       "how": "레너드 베이커리 근처라 함께 묶기 좋아요. 11/26은 추수감사절이라 영업 여부를 확인하세요.",
-      "place": { "name": "레인보우 드라이브인", "name_en": "Rainbow Drive-In", "addr": "3308 Kanaina Ave, Honolulu, HI 96815" } },
-    { "id": "poi", "island": "oahu", "icon": "🥥", "title": "와이아홀레 포이 팩토리", "dates": [],
+      "place": {
+        "name": "레인보우 드라이브인",
+        "name_en": "Rainbow Drive-In",
+        "addr": "3308 Kanaina Ave, Honolulu, HI 96815"
+      }
+    },
+    {
+      "id": "poi",
+      "island": "oahu",
+      "icon": "🥥",
+      "title": "와이아홀레 포이 팩토리",
+      "dates": [],
       "why": "하와이 전통 음식(포이, 라우라우)을 파는 곳이에요.",
       "how": "쿠알로아 가는 길목에 있지만 11/17은 투어 차량으로 이동해서 들르기 어려워요. 렌터카로 동쪽 해안을 갈 때 맞는 곳이에요.",
-      "place": { "name": "와이아홀레 포이 팩토리", "name_en": "Waiahole Poi Factory", "addr": "48-140 Kamehameha Hwy, Kaneohe, HI 96744" } }
+      "place": {
+        "name": "와이아홀레 포이 팩토리",
+        "name_en": "Waiahole Poi Factory",
+        "addr": "48-140 Kamehameha Hwy, Kaneohe, HI 96744"
+      }
+    },
+    {
+      "id": "musubi",
+      "island": "oahu",
+      "icon": "🍙",
+      "title": "무스비 카페 이야스메",
+      "dates": [
+        "2026-11-15"
+      ],
+      "why": "다음 날 아침용 무스비로 유명한 집이에요.",
+      "how": "매일 06:30~21:00 (여러 곳 기준) — 21:00 마감이라 20:30쯤 가세요. 늦으면 ABC 스토어에도 무스비가 있어요.",
+      "place": {
+        "name": "무스비 카페 이야스메",
+        "name_en": "Musubi Cafe Iyasume",
+        "addr": "2427 Kuhio Ave, Honolulu, HI 96815"
+      }
+    },
+    {
+      "id": "maguro",
+      "island": "oahu",
+      "icon": "🐟",
+      "title": "마구로 브라더스 와이키키 (포케)",
+      "dates": [
+        "2026-11-16"
+      ],
+      "why": "포케·사시미 덮밥 포장 맛집이에요. 거북이 투어 날 저녁에 숙소로 사 와서 먹기 좋아요.",
+      "how": "저녁만, 월~토 17:30~21:00 (일요일 휴무) — 11/16은 월요일이라 괜찮아요. 주소가 출처마다 달라서(펄 호텔 안이 가장 많음) 가기 전에 지도에서 확인하세요.",
+      "place": {
+        "name": "마구로 브라더스 와이키키",
+        "name_en": "Maguro Brothers Hawaii Waikiki",
+        "addr": "415 Nahua St, Honolulu, HI 96815"
+      }
+    },
+    {
+      "id": "paia",
+      "island": "oahu",
+      "icon": "🌮",
+      "title": "파이아 피시 마켓 와이키키",
+      "dates": [
+        "2026-11-17",
+        "2026-11-18"
+      ],
+      "why": "생선 플레이트·피시 타코를 카운터에서 주문하는 캐주얼한 곳이에요. 쿠알로아에서 지쳐 돌아온 날 가볍게 먹기 좋아요.",
+      "how": "숙소와 같은 쿠히오 애비뉴 · 대략 11:00~22:00 (출처마다 조금 다름) · 저녁에는 줄이 있을 수 있어요.",
+      "place": {
+        "name": "파이아 피시 마켓 와이키키",
+        "name_en": "Paia Fish Market Waikiki",
+        "addr": "2299 Kuhio Ave, Honolulu, HI 96815"
+      }
+    },
+    {
+      "id": "dukes",
+      "island": "oahu",
+      "icon": "🌅",
+      "title": "듀크스 와이키키",
+      "dates": [
+        "2026-11-18",
+        "2026-11-26"
+      ],
+      "why": "와이키키 해변 바로 앞 레스토랑이에요. 오아후 첫 일정을 마무리하는 저녁으로 좋아요.",
+      "how": "예약 권장 (OpenTable 또는 전화). 해변 쪽 바는 예약 없이 선착순. 추수감사절에도 영업한다는 안내가 있어 11/26 후보로도 넣었어요.",
+      "place": {
+        "name": "듀크스 와이키키",
+        "name_en": "Duke's Waikiki",
+        "addr": "2335 Kalakaua Ave #116, Honolulu, HI 96815"
+      }
+    },
+    {
+      "id": "hwak",
+      "island": "oahu",
+      "icon": "🌺",
+      "title": "하우스 위드아웃 어 키 (마지막 저녁)",
+      "dates": [
+        "2026-11-26"
+      ],
+      "why": "숙소(할레푸나) 바로 옆 할레쿨라니 호텔의 바닷가 레스토랑이에요. 매일 저녁 훌라와 노을을 보며 먹는, 신혼여행 마지막 밤에 어울리는 곳이에요.",
+      "how": "디너는 예약하세요 (선셋 칵테일·훌라 자리는 선착순). 2026년 추수감사절 메뉴는 아직 안 나와서 전화로 확인이 필요해요. 다른 후보: 로열하와이안 호텔 '아주르'(추수감사절 4코스 $165, 2026 안내 기준), 듀크스 와이키키.",
+      "place": {
+        "name": "하우스 위드아웃 어 키",
+        "name_en": "House Without A Key, Halekulani",
+        "addr": "2199 Kalia Rd, Honolulu, HI 96815"
+      }
+    },
+    {
+      "id": "shopping",
+      "island": "oahu",
+      "icon": "🛍",
+      "title": "추수감사절 · 블랙프라이데이 쇼핑",
+      "dates": [
+        "2026-11-26",
+        "2026-11-27"
+      ],
+      "why": "11/26은 추수감사절이라 문 닫는 곳이 많고, 11/27은 블랙프라이데이 할인이 있어요.",
+      "how": "11/26은 와이키키 안(로열하와이안센터 · ABC 스토어) 위주로. 알라모아나 센터는 최근 몇 년 추수감사절에 휴무, 블랙프라이데이는 08:00 오픈이었어요(2025년 기준). 11/27은 11:00 체크아웃이라 쇼핑한다면 이른 아침 한 곳만.",
+      "place": {
+        "name": "로열하와이안센터",
+        "name_en": "Royal Hawaiian Center",
+        "addr": "2201 Kalakaua Ave, Honolulu, HI 96815"
+      },
+      "place2": {
+        "name": "알라모아나 센터",
+        "name_en": "Ala Moana Center",
+        "addr": "1450 Ala Moana Blvd, Honolulu, HI 96814"
+      }
+    },
+    {
+      "id": "huggos",
+      "island": "bigisland",
+      "icon": "🌅",
+      "title": "후고스 (코나 선셋 디너)",
+      "dates": [
+        "2026-11-19",
+        "2026-11-22"
+      ],
+      "why": "바다 바로 위에서 노을을 보며 먹는 코나의 대표 레스토랑이에요.",
+      "how": "저녁 17:00~21:00쯤 (출처마다 조금 다름) · 예약은 공식 웹사이트에서만 · 노을 자리는 일찍 예약하세요. 코나코스트 리조트에서 차로 가까워요(추정).",
+      "place": {
+        "name": "후고스",
+        "name_en": "Huggo's",
+        "addr": "75-5828 Kahakai Rd, Kailua-Kona, HI 96740"
+      }
+    },
+    {
+      "id": "kahaluu",
+      "island": "bigisland",
+      "icon": "🐢",
+      "title": "카할루우 비치 스노클 (바다거북)",
+      "dates": [
+        "2026-11-22"
+      ],
+      "why": "숙소와 같은 알리이 드라이브에 있는, 바다거북이 자주 보이는 얕은 스노클링 해변이에요.",
+      "how": "아침 일찍이 물이 맑고 주차도 쉬워요. 비거주자 주차 4시간 $12 (07~19시, 출처마다 조금 다름). 거북이와는 3m 이상 거리 두기. 오아후의 같은 이름 해변과 헷갈리지 않게 지도에서 코나 쪽인지 확인하세요.",
+      "place": {
+        "name": "카할루우 비치 파크",
+        "name_en": "Kahaluu Beach Park, Kona",
+        "addr": "Alii Dr, Kailua-Kona, HI 96740"
+      }
+    },
+    {
+      "id": "heli",
+      "island": "bigisland",
+      "icon": "🚁",
+      "title": "블루 하와이안 헬기 (와이콜로아 출발)",
+      "dates": [
+        "2026-11-23",
+        "2026-11-24"
+      ],
+      "why": "웨스틴 근처 헬기장에서 출발해서 이동이 편해요. 화산까지 가는 코스와 코할라 해안·폭포 코스가 있어요.",
+      "how": "'빅아일랜드 스펙태큘러'(화산+코할라)는 판매처 기준 1인 $699~791, 코할라 해안·폭포는 약 50분 코스. 합승이고 문 없는 옵션은 없어요. 날씨로 출발 직전 취소될 수 있으니 11/24 오전에 하고, 안 되면 다른 시간으로 옮기는 여유를 두세요.",
+      "place": {
+        "name": "블루 하와이안 와이콜로아 헬기장",
+        "name_en": "Blue Hawaiian Helicopters Waikoloa",
+        "addr": "68-690 Waikoloa Rd, Waikoloa Village, HI 96738"
+      },
+      "q": "빅아일랜드 헬기투어 블루하와이안 후기"
+    },
+    {
+      "id": "queens",
+      "island": "bigisland",
+      "icon": "🍤",
+      "title": "퀸즈 마켓플레이스 푸드코트",
+      "dates": [
+        "2026-11-25"
+      ],
+      "why": "웨스틴에서 코나 공항 가는 길에 있어 체크아웃 후 점심 먹기 좋아요.",
+      "how": "L&L 하와이안 바비큐 · 피자 · 새우 등 · 대부분 11:00부터. 14:30 렌터카 반납에 늦지 않게 13:30쯤 출발하세요(이동 시간은 추정).",
+      "place": {
+        "name": "퀸즈 마켓플레이스",
+        "name_en": "Queens' MarketPlace",
+        "addr": "69-201 Waikoloa Beach Dr, Waikoloa, HI 96738"
+      }
+    }
   ],
   "already": [
-    { "title": "마우나케아 일몰 · 별 보기", "date": "2026-11-21" },
-    { "title": "푸날루우 검은 모래 해변", "date": "2026-11-20" },
-    { "title": "코나 커피 농장", "date": "2026-11-21" },
-    { "title": "하나우마 베이 스노클", "date": "2026-11-18" }
+    {
+      "title": "마우나케아 일몰 · 별 보기",
+      "date": "2026-11-21"
+    },
+    {
+      "title": "푸날루우 검은 모래 해변",
+      "date": "2026-11-20"
+    },
+    {
+      "title": "코나 커피 농장",
+      "date": "2026-11-21"
+    },
+    {
+      "title": "하나우마 베이 스노클",
+      "date": "2026-11-18"
+    }
   ]
 }

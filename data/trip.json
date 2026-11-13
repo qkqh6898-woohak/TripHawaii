@@ -80,24 +80,24 @@
         { "id": "1115-7", "start": "16:30", "place": "rhc", "title": "하와이 빙수", "cat": "food", "photos": [{ "src": "photos/shave-ice.jpg", "alt": "하와이 빙수" }] },
         { "id": "1115-8", "start": "18:30", "place": "wolfgang", "title": "울프강 스테이크", "cat": "food", "booking": "wolfgang", "confirmed": true, "must": true, "note": "로열하와이안센터 3층 · 조금 단정한 옷", "photos": [{ "src": "photos/wolfgang.jpg", "alt": "울프강 스테이크" }] },
         { "id": "1115-9", "start": "20:00", "place": "waikiki-beach", "title": "와이키키 해변 산책", "cat": "rest", "photos": [{ "src": "photos/waikiki-sunset.jpg", "alt": "와이키키 노을" }] },
-        { "id": "1115-10", "start": "21:00", "title": "다음날 아침용 무스비 사기", "cat": "food", "photos": [{ "src": "photos/musubi.jpg", "alt": "무스비" }] }
+        { "id": "1115-10", "start": "21:00", "title": "다음날 아침용 무스비 사기", "cat": "food", "photos": [{ "src": "photos/musubi.jpg", "alt": "무스비" }], "note": "추천: 무스비 카페 이야스메 (2427 Kuhio Ave) — 21:00 마감이라 20:30쯤 가기 · 늦으면 ABC 스토어" }
       ],
       "packing": ["여권 · ESTA 승인 화면", "호텔 예약 확인서", "저녁 울프강: 조금 단정한 옷"]
     },
     {
       "date": "2026-11-16", "island": "oahu", "title": "거북이 스노클링",
-      "summary": "07:00 픽업 대기 → 07:30–11:30 줌줌 거북이 투어 → 마루카메 우동 → 아사이볼 → 휴식",
+      "summary": "07:25 힐튼 후문 → 07:30 픽업 · 거북이 스노클링 → 마루카메 우동 → 아사이볼 → 휴식",
       "hotel": "hilton", "map": "maps/day-1116.png",
       "weather_zones": ["waikiki"],
       "items": [
-        { "id": "1116-1", "start": "07:00", "place": "hilton", "title": "숙소 앞 픽업 대기", "cat": "move", "booking": "zoomzoom", "must": true, "note": "픽업 장소 확인 필요 — 확정되면 이 일정을 고쳐 주세요" },
-        { "id": "1116-2", "start": "07:30", "end": "11:30", "title": "줌줌 거북이 투어", "cat": "tour", "booking": "zoomzoom", "confirmed": true },
+        { "id": "1116-1", "start": "07:25", "deadline": true, "place": "hilton", "title": "픽업 장소 도착: 힐튼가든인 후문 발렛파킹장 앞", "cat": "move", "booking": "zoomzoom", "must": true, "note": "5분 전까지 · '셔틀 탑승 장소' 표시 앞 (사진은 예약 지갑의 바우처) · 차량은 정시 출발 — 못 타면 노쇼(환불·변경 불가)" },
+        { "id": "1116-2", "start": "07:30", "end": "11:30", "title": "픽업 · 오션스타 거북이 스노클링 (줌줌투어)", "cat": "tour", "booking": "zoomzoom", "confirmed": true, "note": "와이키키 앞바다까지 약 20분 이동 · 고프로 대여 $40은 현금·계좌이체·Venmo·Zelle만 (카드 불가) · 끝나는 시각은 바우처에 없어 원래 계획 기준" },
         { "id": "1116-3", "start": "12:00", "place": "marukame", "title": "점심: 마루카메 우동", "cat": "food", "note": "숙소에서 도보 3분", "photos": [{ "src": "photos/marukame.jpg", "alt": "마루카메 우동 와이키키점" }] },
         { "id": "1116-4", "start": "13:00", "place": "alo-cafe", "title": "후식: Alo Cafe 아사이볼", "cat": "food", "note": "마루카메에서 도보 6분" },
         { "id": "1116-5", "start": "14:00", "end": "18:00", "place": "hilton", "title": "숙소 휴식", "cat": "rest" },
-        { "id": "1116-6", "start": "18:30", "title": "저녁: 근처 포케", "cat": "food" }
+        { "id": "1116-6", "start": "18:30", "title": "저녁: 근처 포케", "cat": "food", "note": "추천: 마구로 브라더스 와이키키 (포케·사시미 덮밥 포장, 월~토 17:30~21:00 · 주소가 출처마다 달라 확인 필요)" }
       ],
-      "packing": ["수영복 (안에 입고 출발) · 래시가드", "비치타월 · 갈아입을 옷", "방수팩 / 아쿠아슈즈", "멀미약 (배 타면 출발 30분 전 복용)"]
+      "packing": ["수영복은 미리 입고 위에 겉옷", "호텔에서 비치타월 1인 1개 빌려 가기", "여권은 필요 없음", "현금 조금 (고프로 대여 $40 · 팁)", "멀미약 — 배 타기 1시간 전 (ABC 스토어에서 살 수 있음)", "방수팩 · 갈아입을 옷"]
     },
     {
       "date": "2026-11-17", "island": "oahu", "title": "쿠알로아 UTV",
@@ -112,7 +112,7 @@
         { "id": "1117-9", "start": "16:15", "deadline": true, "place": "kualoa", "title": "복귀 버스 체크인: 인포메이션 데스크", "cat": "move", "booking": "kualoa", "must": true, "note": "출발 15분 전까지 인포메이션 데스크에서 대기" },
         { "id": "1117-5", "start": "16:30", "place": "kualoa", "title": "쿠알로아 출발 (복귀 버스)", "cat": "move", "booking": "kualoa", "note": "쉐라톤 와이키키로 돌아가는 버스" },
         { "id": "1117-6", "start": "17:30", "approx": true, "title": "와이키키 도착", "cat": "move" },
-        { "id": "1117-7", "start": "19:00", "title": "저녁", "cat": "food" },
+        { "id": "1117-7", "start": "19:00", "title": "저녁", "cat": "food", "note": "추천: 파이아 피시 마켓 와이키키 (2299 Kuhio Ave, 숙소 근처 · 카운터 주문이라 피곤한 날 가볍게)" },
         { "id": "1117-8", "start": "21:00", "title": "하나우마베이 가이드 카톡 확인", "cat": "tour", "booking": "hanauma", "must": true, "note": "내일 미팅 시간·장소 확인" }
       ],
       "packing": ["여권 실물 (예약자 이름과 같은 신분증 — 없으면 버스 탑승 불가)", "바우처 3장 (픽업 · 투어 · 복귀) — 예약 지갑에도 있음", "더러워져도 되는 옷 · 운동화 (흙먼지 많이 남)", "마스크 또는 버프, 물티슈", "머리끈"]
@@ -130,7 +130,7 @@
         { "id": "1118-5", "start": "13:00", "approx": true, "title": "와이키키 복귀 (총 6시간)", "cat": "move" },
         { "id": "1118-9", "start": "13:30", "title": "내일 항공편 AS1098 온라인 체크인", "cat": "move", "booking": "interisland-1119", "note": "11:28부터 가능 · 내일(11/19) 10:28 마감 · 알래스카항공 공식 웹사이트에서 · 놓치면 공항 카운터에서" },
         { "id": "1118-6", "start": "14:00", "end": "18:00", "place": "hilton", "title": "숙소 휴식", "cat": "rest" },
-        { "id": "1118-7", "start": "18:30", "title": "저녁", "cat": "food" },
+        { "id": "1118-7", "start": "18:30", "title": "저녁", "cat": "food", "note": "추천: 듀크스 와이키키 (해변 바로 앞 · 예약 권장)" },
         { "id": "1118-8", "start": "21:00", "title": "짐 싸기 (내일 빅아일랜드)", "cat": "rest" }
       ],
       "packing": ["전날 저녁 카톡 미팅시간 확인", "수영복 · 래시가드 · 비치타월", "방수팩 · 물통 (장비는 제공)", "아침 일찍 출발이라 간단한 간식"]
@@ -147,7 +147,7 @@
         { "id": "1119-4", "start": "13:00", "approx": true, "place": "alamo-koa", "title": "알라모 렌터카 픽업", "cat": "move", "booking": "alamo", "confirmed": true, "note": "예약서의 픽업 시각은 12:30 (항공편이 12:19 도착으로 바뀌어 조금 늦어질 수 있음) · 스탠다드 SUV(쉐보레 이쿼녹스급) · 픽업 가능 시간 12~16시 · 국제운전면허증 + 한국 면허증 + 신용카드 · 터미널 건너편에서 알라모 무료 셔틀 탑승", "photos": [{ "src": "photos/alamo-shuttle.jpg", "alt": "알라모 공항 셔틀 (예시: 호놀룰루 공항)" }] },
         { "id": "1119-5", "start": "15:00", "approx": true, "place": "konacoast", "title": "코나코스트 리조트 체크인", "cat": "hotel", "booking": "konacoast", "note": "체크인 시간 확인 필요 — 리조트 공식 안내는 16:00부터", "photos": [{ "src": "photos/konacoast-entrance.jpg", "alt": "코나코스트 리조트 입구" }] },
         { "id": "1119-6", "start": "16:30", "place": "kona-town", "title": "코나 시내 마트에서 물·장보기", "cat": "shop" },
-        { "id": "1119-7", "start": "18:30", "title": "저녁", "cat": "food" }
+        { "id": "1119-7", "start": "18:30", "title": "저녁", "cat": "food", "note": "추천: 후고스 (코나 바다 위 선셋 디너 · 예약은 공식 웹사이트)" }
       ],
       "packing": ["항공권(온라인 체크인 화면) · 여권", "알라모 예약 확정서", "국제운전면허증 + 한국 면허증 + 신용카드 (렌터카)", "수하물 무게 확인 (섬간 항공 유료 수하물)"]
     },
@@ -177,7 +177,7 @@
         { "id": "1121-3", "start": "14:30", "end": "16:00", "place": "konacoast", "title": "숙소 휴식 · 패딩·장갑 챙기기", "cat": "rest" },
         { "id": "1121-4", "start": "16:00", "title": "마우나케아 출발", "cat": "move", "note": "코나에서 약 1시간 반" },
         { "id": "1121-5", "start": "17:30", "place": "maunakea-vis", "title": "마우나케아 방문자센터 도착", "cat": "sight", "note": "해발 2,800m — 고산 적응" },
-        { "id": "1121-6", "start": "18:00", "end": "20:30", "place": "maunakea-vis", "title": "일몰 · 별 관측", "cat": "sight", "tentative": true, "note": "정상은 사륜구동만 가능 → 투어 권장 · 투어 이용 여부 결정 필요" },
+        { "id": "1121-6", "start": "18:00", "end": "20:30", "place": "maunakea-vis", "title": "일몰 · 별 관측", "cat": "sight", "tentative": true, "note": "추천: 직접 운전해 방문자센터(해발 2,804m)까지 — 일몰 뒤 맨눈으로 별 보기. 정상은 사륜구동만 가능하고 렌터카 약관에서 금지하는 경우가 많아요(추정 — 계약서 확인). 정상 일몰을 꼭 보고 싶으면 투어" },
         { "id": "1121-7", "start": "22:00", "approx": true, "place": "konacoast", "title": "코나 복귀", "cat": "move" }
       ],
       "packing": ["낮: 수영복 · 비치타월", "밤: 패딩 · 긴바지 · 장갑 · 모자 (정상은 영하권)", "고산병 대비: 물, 간식 / 전날 스쿠버 다이빙 금지"]
@@ -188,7 +188,7 @@
       "hotel": "konacoast", "map": "maps/day-1122.png",
       "weather_zones": ["kona"],
       "items": [
-        { "id": "1122-1", "allday": true, "title": "휴식일 (일정 미정)", "cat": "rest", "tentative": true },
+        { "id": "1122-1", "allday": true, "title": "휴식일 (일정 미정)", "cat": "rest", "tentative": true, "note": "추천: 오전 카할루우 비치 스노클(바다거북) → 오후 휴식 → 저녁 만타레이 야간 스노클(예약 필요)" },
         { "id": "1122-2", "start": "18:00", "place": "kona-town", "title": "코나 시내 알리이 드라이브 산책 · 저녁", "cat": "rest", "tentative": true, "note": "후보" }
       ],
       "packing": []
@@ -201,7 +201,7 @@
       "items": [
         { "id": "1123-1", "start": "10:00", "place": "konacoast", "title": "코나코스트 체크아웃", "cat": "hotel", "booking": "konacoast", "must": true },
         { "id": "1123-2", "start": "12:00", "place": "kona-town", "title": "코나 시내 점심", "cat": "food" },
-        { "id": "1123-3", "start": "14:00", "title": "헬기투어 후보", "cat": "tour", "booking": "helicopter", "tentative": true, "note": "23일 또는 24일 중 택1 — 시간 미정" },
+        { "id": "1123-3", "start": "14:00", "title": "헬기투어 후보", "cat": "tour", "booking": "helicopter", "tentative": true, "note": "23일 또는 24일 중 택1 — 시간 미정 · 추천: 블루 하와이안 (와이콜로아 헬기장 · 웨스틴에서 가까움) — 체크인 날보다 11/24 오전이 여유로움" },
         { "id": "1123-4", "start": "16:00", "place": "westin", "title": "웨스틴 하푸나비치 체크인", "cat": "hotel", "booking": "westin", "confirmed": true, "note": "오션뷰 킹 · 발코니", "photos": [{ "src": "photos/westin-hapuna.jpg", "alt": "웨스틴 하푸나비치 리조트" }] },
         { "id": "1123-5", "start": "18:30", "place": "westin", "title": "리조트 저녁 · 선셋", "cat": "food" }
       ],
@@ -213,7 +213,7 @@
       "hotel": "westin", "map": "maps/day-1124.png",
       "weather_zones": ["hapuna"],
       "items": [
-        { "id": "1124-1", "start": "09:00", "title": "헬기투어 (23일에 안 했다면)", "cat": "tour", "booking": "helicopter", "tentative": true, "note": "시간 미정" },
+        { "id": "1124-1", "start": "09:00", "title": "헬기투어 (23일에 안 했다면)", "cat": "tour", "booking": "helicopter", "tentative": true, "note": "시간 미정 · 추천: 블루 하와이안 와이콜로아 출발 — 화산까지 가는 코스 또는 코할라 해안·폭포 50분 코스" },
         { "id": "1124-2", "start": "11:00", "end": "17:00", "place": "hapuna", "title": "하푸나 해변 · 수영장 휴양", "cat": "rest" },
         { "id": "1124-4", "start": "17:00", "title": "내일 항공편 AS1127 온라인 체크인", "cat": "move", "booking": "interisland-1125", "note": "출발 24시간 전(16:15)부터 가능 — 11/19편과 같은 규칙으로 추정 · 알래스카항공 공식 웹사이트" },
         { "id": "1124-3", "start": "18:30", "place": "westin", "title": "저녁", "cat": "food" }
@@ -227,7 +227,7 @@
       "weather_zones": ["hapuna", "waikiki"],
       "items": [
         { "id": "1125-1", "start": "12:00", "deadline": true, "place": "westin", "title": "웨스틴 체크아웃", "cat": "hotel", "booking": "westin", "must": true },
-        { "id": "1125-2", "start": "12:30", "title": "점심", "cat": "food" },
+        { "id": "1125-2", "start": "12:30", "title": "점심", "cat": "food", "note": "추천: 퀸즈 마켓플레이스 푸드코트 (와이콜로아, 공항 가는 길 · 대부분 11:00부터)" },
         { "id": "1125-3", "start": "14:30", "place": "alamo-koa", "title": "코나 공항 · 알라모 렌터카 반납", "cat": "move", "booking": "alamo", "must": true, "note": "예약서의 반납 시각은 16:00 — 그 전에 반납하면 돼요 · 반납 뒤 셔틀로 터미널 이동" },
         { "id": "1125-4", "start": "16:15", "end": "17:05", "place": "hnl", "title": "코나 → 호놀룰루 AS1127 (알래스카항공)", "cat": "move", "booking": "interisland-1125", "flight": "koa-hnl", "must": true },
         { "id": "1125-5", "start": "18:00", "place": "halepuna", "title": "할레푸나 와이키키 체크인", "cat": "hotel", "booking": "halepuna", "confirmed": true, "note": "체크인은 15:00부터 가능", "photos": [{ "src": "photos/halepuna-entrance.jpg", "alt": "할레푸나 와이키키 입구" }] },
@@ -243,8 +243,8 @@
       "items": [
         { "id": "1126-1", "start": "07:00", "place": "kcp", "title": "호놀룰루 퀸아망 (맛집)", "cat": "food" },
         { "id": "1126-2", "start": "08:00", "end": "10:00", "place": "diamond-head", "title": "다이아몬드 헤드 등산", "cat": "sight", "booking": "diamondhead", "must": true, "note": "입장 사전 예약 필수 · 왕복 약 1.5~2시간 · 그늘 거의 없음" },
-        { "id": "1126-3", "start": "12:00", "end": "18:00", "title": "자유 · 마지막 쇼핑", "cat": "shop", "note": "추수감사절 — 문 닫거나 일찍 닫는 매장이 있어요. 갈 곳의 영업 여부 확인" },
-        { "id": "1126-4", "start": "18:30", "title": "마지막 저녁", "cat": "food", "note": "추수감사절이라 문 닫는 식당이 많아요 — 미리 예약" },
+        { "id": "1126-3", "start": "12:00", "end": "18:00", "title": "자유 · 마지막 쇼핑", "cat": "shop", "note": "추수감사절 — 문 닫거나 일찍 닫는 매장이 있어요. 갈 곳의 영업 여부 확인 · 추천: 와이키키 안에서 (로열하와이안센터 · ABC 스토어) — 알라모아나는 최근 몇 년 추수감사절 휴무" },
+        { "id": "1126-4", "start": "18:30", "title": "마지막 저녁", "cat": "food", "note": "추수감사절이라 문 닫는 식당이 많아요 — 미리 예약 · 추천: 하우스 위드아웃 어 키 (숙소 바로 옆 할레쿨라니 · 매일 저녁 훌라 · 디너 예약) — 추수감사절 영업·메뉴는 전화로 확인" },
         { "id": "1126-5", "start": "21:00", "title": "짐 싸기", "cat": "rest" }
       ],
       "packing": ["다이아몬드 헤드 입장 예약 화면", "운동화 · 물 · 모자 (그늘 거의 없음)"]

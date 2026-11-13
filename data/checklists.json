@@ -5,7 +5,7 @@
     {
       "id": "todo", "when": "before", "title": "확인 · 예약할 것", "icon": "📌",
       "items": [
-        { "id": "todo-zoomzoom-pickup", "text": "11/16 줌줌 거북이 투어 픽업 장소 확인", "owner": "seonghee" },
+        { "id": "todo-zoomzoom-pickup", "text": "줌줌(오션스타) 채팅창에 '확인했습니다' 회신 · 전날(11/15) 픽업 장소·시간 다시 확인", "owner": "seonghee" },
         { "id": "todo-diamondhead", "text": "다이아몬드 헤드 입장 사전 예약 (비거주자 예약제)", "owner": "seonghee", "url": "https://gostateparks.hawaii.gov/diamondhead" },
         { "id": "todo-helicopter", "text": "헬기투어 날짜(11/23 또는 11/24) 정하고 예약", "owner": "woohak" },
         { "id": "todo-maunakea", "text": "마우나케아 별 관측: 투어 이용 or 직접 운전 결정 (정상은 4WD 필요)", "owner": "woohak" },
