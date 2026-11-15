@@ -37,6 +37,8 @@
   ],
   "places": [
     { "id": "hnl", "name": "호놀룰루 공항 (HNL)", "name_en": "Daniel K. Inouye International Airport", "cat": "move", "island": "oahu", "lat": 21.3319, "lng": -157.9199, "addr": "300 Rodgers Blvd, Honolulu, HI 96819", "weather_zone": "waikiki" },
+    { "id": "waikiki-market", "name": "와이키키 마켓 (마트)", "name_en": "Waikiki Market", "cat": "shop", "island": "oahu", "lat": 21.2783, "lng": -157.8238, "addr": "2380 Kuhio Ave, Honolulu, HI 96815", "weather_zone": "waikiki", "note": "숙소(힐튼가든인)에서 걸어서 바로 · 릴리아 와이키키 건물 2층 · 포케 코너 · 06:00~22:00 (출처마다 다름) · 지도 핀 위치는 주변 장소 기준 추정 — 길찾기는 주소로 정확히 안내돼요" },
+    { "id": "donki", "name": "돈키호테 호놀룰루", "name_en": "Don Quijote Honolulu", "cat": "shop", "island": "oahu", "lat": 21.2942, "lng": -157.8404, "addr": "801 Kaheka St, Honolulu, HI 96814", "weather_zone": "waikiki", "note": "24시간 · 일본식 마트, 기념품·간식 · 근처에 월마트(700 Keeaumoku St, 06:00~23:00) · 휴일 영업시간은 확인 필요 · 지도 핀 위치는 주변 장소 기준 추정 — 길찾기는 주소로 정확히 안내돼요" },
     { "id": "hilton", "name": "힐튼가든인 와이키키비치", "name_en": "Hilton Garden Inn Waikiki Beach", "cat": "hotel", "island": "oahu", "lat": 21.2789, "lng": -157.8251, "addr": "2330 Kuhio Ave, Honolulu, HI 96815", "weather_zone": "waikiki" },
     { "id": "rhc", "name": "로열하와이안센터", "name_en": "Royal Hawaiian Center", "cat": "shop", "island": "oahu", "lat": 21.2792, "lng": -157.8297, "addr": "2201 Kalakaua Ave, Honolulu, HI 96815", "weather_zone": "waikiki", "note": "스투시 · 애플스토어 · 지미추 · 하와이 빙수" },
     { "id": "wolfgang", "name": "울프강 스테이크하우스", "name_en": "Wolfgang's Steakhouse Waikiki", "cat": "food", "island": "oahu", "lat": 21.2783, "lng": -157.8285, "addr": "2301 Kalakaua Ave, Honolulu, HI 96815", "weather_zone": "waikiki", "note": "로열하와이안센터 C동 3층" },
@@ -52,6 +54,8 @@
 
     { "id": "koa", "name": "코나 공항 (KOA)", "name_en": "Ellison Onizuka Kona International Airport", "cat": "move", "island": "bigisland", "lat": 19.7362, "lng": -156.0411, "addr": "73-200 Kupipi St, Kailua-Kona, HI 96740", "weather_zone": "kona" },
     { "id": "alamo-koa", "name": "알라모 렌터카 (코나 공항)", "name_en": "Alamo Rent A Car Kona Airport", "cat": "move", "island": "bigisland", "lat": 19.7347, "lng": -156.0362, "addr": "73-106 Aulepe St, Kailua-Kona, HI 96740", "weather_zone": "kona", "note": "터미널에서 걸어갈 수 없음 — 수하물 찾는 곳 건너편 중앙 정류장에서 알라모 무료 셔틀" },
+    { "id": "kta-keauhou", "name": "KTA 케아우호우 (마트)", "name_en": "KTA Super Stores Keauhou", "cat": "shop", "island": "bigisland", "lat": 19.5624, "lng": -155.9615, "addr": "78-6831 Alii Dr, Kailua-Kona, HI 96740", "weather_zone": "kona", "note": "하와이 현지 마트 · 07:00~20:00 · 코나코스트 리조트 바로 근처(케아우호우 쇼핑센터) · 100% 코나 커피도 있음 · 지도 핀 위치는 주변 장소 기준 추정 — 길찾기는 주소로 정확히 안내돼요" },
+    { "id": "costco-kona", "name": "코스트코 코나", "name_en": "Costco Kona", "cat": "shop", "island": "bigisland", "lat": 19.685, "lng": -156.017, "addr": "73-5600 Maiau St, Kailua-Kona, HI 96740", "weather_zone": "kona", "note": "회원카드 필요 · 마카다미아·호놀룰루 쿠키를 가장 싸게 · 공항 가는 길 · 영업시간은 회원 등급마다 달라 확인 필요 · 좌표는 디렉터리 기준(소수 셋째 자리)" },
     { "id": "konacoast", "name": "코나코스트 리조트", "name_en": "Kona Coast Resort", "cat": "hotel", "island": "bigisland", "lat": 19.5704, "lng": -155.964, "addr": "78-6842 Alii Dr, Kailua-Kona, HI 96740", "weather_zone": "kona" },
     { "id": "kona-town", "name": "코나 시내 (알리이 드라이브)", "name_en": "Kailua-Kona, Alii Drive", "cat": "sight", "island": "bigisland", "lat": 19.6394, "lng": -155.9969, "addr": "Alii Dr, Kailua-Kona, HI 96740", "weather_zone": "kona", "note": "마트·식당·산책" },
     { "id": "punaluu", "name": "푸날루우 블랙샌드비치", "name_en": "Punaluu Black Sand Beach", "cat": "sight", "island": "bigisland", "lat": 19.1361, "lng": -155.5039, "addr": "Ninole Loop Rd, Naalehu, HI 96772", "weather_zone": "volcano", "note": "바다거북과 3m 거리 유지" },
@@ -67,14 +71,14 @@
   "days": [
     {
       "date": "2026-11-15", "island": "oahu", "title": "하와이 도착",
-      "summary": "인천 22:50(한국) 출발 → 호놀룰루 정오 도착 → 체크인 → 로열하와이안센터 → 18:30 울프강",
+      "summary": "인천 22:50(한국) 출발 → 호놀룰루 정오 도착 → K 기둥 한인 셔틀 → 체크인 → 로열하와이안센터 → 18:30 울프강",
       "hotel": "hilton", "map": "maps/day-1115.png",
       "weather_zones": ["waikiki"],
       "items": [
         { "id": "1115-1", "start": "00:50", "clock": "home", "title": "인천공항 도착 (출발 3시간 전)", "cat": "move", "must": true, "note": "한국 시간 19:50까지 공항 도착" },
         { "id": "1115-2", "start": "03:50", "end": "12:00", "clock": "home", "title": "인천 출발 YP151 → 호놀룰루", "cat": "move", "booking": "airpremia", "flight": "yp151", "confirmed": true, "must": true, "note": "한국 시간 22:50 출발 · 비행 약 8시간 · 도착은 하와이 같은 날 정오 무렵" },
         { "id": "1115-3", "start": "12:00", "approx": true, "place": "hnl", "title": "호놀룰루 도착 → 입국 심사·짐 찾기", "cat": "move" },
-        { "id": "1115-4", "start": "13:30", "place": "hilton", "title": "숙소로 이동 (택시·우버 약 25분)", "cat": "move" },
+        { "id": "1115-4", "start": "13:00", "approx": true, "place": "hnl", "title": "K 기둥에서 한인 셔틀(CM 트래블) 체크인 → 숙소", "cat": "move", "booking": "cm-shuttle", "must": true, "note": "입국 심사·짐 찾은 뒤 왼쪽 1번 출구로 나가면 정면에 K 기둥 · 짐 추가 요금은 당일 기사에게 현금: 1인 1개 무료, 바퀴 달린 기내 가방은 무릎에 못 들고 타서 1개당 $1, 위탁 가방 $2, 큰 백팩 $1, 32인치 이상 $5 · 우리 짐(28인치 2·20·18인치·백팩) 예상 $2~3 (추정) · $1 소액권 준비" },
         { "id": "1115-5", "start": "15:00", "place": "hilton", "title": "힐튼가든인 와이키키비치 체크인", "cat": "hotel", "booking": "hilton", "photos": [{ "src": "photos/hilton-entrance.jpg", "alt": "힐튼가든인 와이키키비치 입구" }] },
         { "id": "1115-6", "start": "15:30", "place": "rhc", "title": "로열하와이안센터 쇼핑", "cat": "shop", "note": "스투시 / 애플스토어 / 지미추", "photos": [{ "src": "photos/royal-hawaiian-center.jpg", "alt": "로열하와이안센터" }] },
         { "id": "1115-7", "start": "16:30", "place": "rhc", "title": "하와이 빙수", "cat": "food", "photos": [{ "src": "photos/shave-ice.jpg", "alt": "하와이 빙수" }] },
@@ -82,7 +86,7 @@
         { "id": "1115-9", "start": "20:00", "place": "waikiki-beach", "title": "와이키키 해변 산책", "cat": "rest", "photos": [{ "src": "photos/waikiki-sunset.jpg", "alt": "와이키키 노을" }] },
         { "id": "1115-10", "start": "21:00", "title": "다음날 아침용 무스비 사기", "cat": "food", "photos": [{ "src": "photos/musubi.jpg", "alt": "무스비" }], "note": "추천: 무스비 카페 이야스메 (2427 Kuhio Ave) — 21:00 마감이라 20:30쯤 가기 · 늦으면 ABC 스토어" }
       ],
-      "packing": ["여권 · ESTA 승인 화면", "호텔 예약 확인서", "저녁 울프강: 조금 단정한 옷"]
+      "packing": ["여권 · ESTA 승인 화면", "호텔 예약 확인서", "저녁 울프강: 조금 단정한 옷", "달러 소액권 ($1 여러 장 — 공항 셔틀 짐 요금)", "기내: 긴바지 + 긴팔 (에어컨) · 보조배터리는 기내 가방에"]
     },
     {
       "date": "2026-11-16", "island": "oahu", "title": "거북이 스노클링",
@@ -146,10 +150,10 @@
         { "id": "1119-3", "start": "11:28", "end": "12:19", "place": "koa", "title": "호놀룰루 → 코나 AS1098 (알래스카항공)", "cat": "move", "booking": "interisland-1119", "flight": "hnl-koa", "must": true },
         { "id": "1119-4", "start": "13:00", "approx": true, "place": "alamo-koa", "title": "알라모 렌터카 픽업", "cat": "move", "booking": "alamo", "confirmed": true, "note": "예약서의 픽업 시각은 12:30 (항공편이 12:19 도착으로 바뀌어 조금 늦어질 수 있음) · 스탠다드 SUV(쉐보레 이쿼녹스급) · 픽업 가능 시간 12~16시 · 국제운전면허증 + 한국 면허증 + 신용카드 · 터미널 건너편에서 알라모 무료 셔틀 탑승", "photos": [{ "src": "photos/alamo-shuttle.jpg", "alt": "알라모 공항 셔틀 (예시: 호놀룰루 공항)" }] },
         { "id": "1119-5", "start": "15:00", "approx": true, "place": "konacoast", "title": "코나코스트 리조트 체크인", "cat": "hotel", "booking": "konacoast", "note": "체크인 시간 확인 필요 — 리조트 공식 안내는 16:00부터", "photos": [{ "src": "photos/konacoast-entrance.jpg", "alt": "코나코스트 리조트 입구" }] },
-        { "id": "1119-6", "start": "16:30", "place": "kona-town", "title": "코나 시내 마트에서 물·장보기", "cat": "shop" },
+        { "id": "1119-6", "start": "16:30", "place": "kta-keauhou", "title": "KTA 케아우호우에서 물·장보기", "cat": "shop", "note": "리조트 바로 근처 현지 마트 · 빅아일랜드 6일치 물·간식·아침거리 · 커피는 '100% Kona' 라벨 확인" },
         { "id": "1119-7", "start": "18:30", "title": "저녁", "cat": "food", "note": "추천: 후고스 (코나 바다 위 선셋 디너 · 예약은 공식 웹사이트)" }
       ],
-      "packing": ["항공권(온라인 체크인 화면) · 여권", "알라모 예약 확정서", "국제운전면허증 + 한국 면허증 + 신용카드 (렌터카)", "수하물 무게 확인 (섬간 항공 유료 수하물)"]
+      "packing": ["항공권(온라인 체크인 화면) · 여권", "알라모 예약 확정서", "28인치는 1인 1개씩 부치기 · 하나당 23kg 이하", "국제운전면허증 + 한국 면허증 + 신용카드 (렌터카)", "수하물 무게 확인 (섬간 항공 유료 수하물)"]
     },
     {
       "date": "2026-11-20", "island": "bigisland", "title": "블랙샌드비치 · 화산국립공원",
@@ -180,7 +184,7 @@
         { "id": "1121-6", "start": "18:00", "end": "20:30", "place": "maunakea-vis", "title": "일몰 · 별 관측", "cat": "sight", "tentative": true, "note": "추천: 직접 운전해 방문자센터(해발 2,804m)까지 — 일몰 뒤 맨눈으로 별 보기. 정상은 사륜구동만 가능하고 렌터카 약관에서 금지하는 경우가 많아요(추정 — 계약서 확인). 정상 일몰을 꼭 보고 싶으면 투어" },
         { "id": "1121-7", "start": "22:00", "approx": true, "place": "konacoast", "title": "코나 복귀", "cat": "move" }
       ],
-      "packing": ["낮: 수영복 · 비치타월", "밤: 패딩 · 긴바지 · 장갑 · 모자 (정상은 영하권)", "고산병 대비: 물, 간식 / 전날 스쿠버 다이빙 금지"]
+      "packing": ["낮: 수영복 · 비치타월", "밤: 패딩 · 후드 · 긴바지 · 두꺼운 양말 · 장갑 · 비니 (해 지면 영하 가까이) — 차에 미리 싣기", "고산병 대비: 물, 간식 / 전날 스쿠버 다이빙 금지"]
     },
     {
       "date": "2026-11-22", "island": "bigisland", "title": "휴식일 (일정 미정)",
@@ -191,7 +195,7 @@
         { "id": "1122-1", "allday": true, "title": "휴식일 (일정 미정)", "cat": "rest", "tentative": true, "note": "추천: 오전 카할루우 비치 스노클(바다거북) → 오후 휴식 → 저녁 만타레이 야간 스노클(예약 필요)" },
         { "id": "1122-2", "start": "18:00", "place": "kona-town", "title": "코나 시내 알리이 드라이브 산책 · 저녁", "cat": "rest", "tentative": true, "note": "후보" }
       ],
-      "packing": []
+      "packing": ["빨래하는 날 — 코나코스트 객실 세탁기 또는 공용 세탁실 (세제 시트)", "카할루우 비치 가면: 수영복 · 아쿠아슈즈"]
     },
     {
       "date": "2026-11-23", "island": "bigisland", "title": "웨스틴 하푸나비치로 이동",
@@ -233,7 +237,7 @@
         { "id": "1125-5", "start": "18:00", "place": "halepuna", "title": "할레푸나 와이키키 체크인", "cat": "hotel", "booking": "halepuna", "confirmed": true, "note": "체크인은 15:00부터 가능", "photos": [{ "src": "photos/halepuna-entrance.jpg", "alt": "할레푸나 와이키키 입구" }] },
         { "id": "1125-6", "start": "19:30", "place": "waikiki-beach", "title": "저녁 · 해변 산책", "cat": "food" }
       ],
-      "packing": ["항공권 · 여권", "렌터카 반납 전 주유 (연료 조건 확인)", "수하물 무게 확인 (섬간 항공 유료 수하물)"]
+      "packing": ["항공권 · 여권", "렌터카 반납 전 주유 (연료 조건 확인)", "28인치는 하나당 23kg 이하 (섬간 항공 초과 요금 큼)", "코스트코 들르면 회원카드"]
     },
     {
       "date": "2026-11-26", "island": "oahu", "title": "다이아몬드 헤드 · 마지막 쇼핑",
@@ -247,7 +251,7 @@
         { "id": "1126-4", "start": "18:30", "title": "마지막 저녁", "cat": "food", "note": "추수감사절이라 문 닫는 식당이 많아요 — 미리 예약 · 추천: 하우스 위드아웃 어 키 (숙소 바로 옆 할레쿨라니 · 매일 저녁 훌라 · 디너 예약) — 추수감사절 영업·메뉴는 전화로 확인" },
         { "id": "1126-5", "start": "21:00", "title": "짐 싸기", "cat": "rest" }
       ],
-      "packing": ["다이아몬드 헤드 입장 예약 화면", "운동화 · 물 · 모자 (그늘 거의 없음)"]
+      "packing": ["다이아몬드 헤드 입장 예약 화면", "운동화 · 물 · 모자 (그늘 거의 없음)", "저녁: 단정한 옷", "짐 싸기: 쇼핑한 것 무게 나눠 담기 · 면세 한도 1인 $800"]
     },
     {
       "date": "2026-11-27", "island": "oahu", "title": "귀국",

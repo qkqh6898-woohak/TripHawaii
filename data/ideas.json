@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "updated": "2026-11-13",
+  "updated": "2026-11-15",
   "note": "확정 일정이 아니라 '넣어 볼 만한 것'입니다. dates 는 넣기 좋은 날(후보), 비어 있으면 지금 일정에 맞는 날이 없다는 뜻입니다.",
   "notices": [
     {
@@ -361,6 +361,96 @@
         "name": "퀸즈 마켓플레이스",
         "name_en": "Queens' MarketPlace",
         "addr": "69-201 Waikoloa Beach Dr, Waikoloa, HI 96738"
+      }
+    },
+    {
+      "id": "waikiki-market",
+      "island": "oahu",
+      "icon": "🛒",
+      "title": "와이키키 마켓 (숙소 앞 마트)",
+      "dates": [
+        "2026-11-15",
+        "2026-11-16",
+        "2026-11-25"
+      ],
+      "why": "와이키키 안에 있는 제대로 된 마트예요. 물·간식·과일·포케를 사기 좋아요.",
+      "how": "힐튼가든인에서 걸어서 바로 (쿠히오 애비뉴, 릴리아 와이키키 2층). 06:00~22:00 (출처마다 다름). 11/15 밤 무스비 가게가 닫았으면 여기로.",
+      "place": {
+        "name": "와이키키 마켓",
+        "name_en": "Waikiki Market",
+        "addr": "2380 Kuhio Ave, Honolulu, HI 96815"
+      }
+    },
+    {
+      "id": "donki",
+      "island": "oahu",
+      "icon": "🏬",
+      "title": "돈키호테 · 월마트 (기념품 과자 대량)",
+      "dates": [
+        "2026-11-16",
+        "2026-11-18",
+        "2026-11-26"
+      ],
+      "why": "나눠 줄 과자·마카다미아·기념품을 싸게 많이 살 수 있어요.",
+      "how": "돈키호테는 24시간(휴일 영업 확인 필요), 걸어서 가까운 월마트는 06:00~23:00. 와이키키에서 택시·우버로. 오후가 빈 11/16·11/18이나 추수감사절 11/26에.",
+      "place": {
+        "name": "돈키호테 호놀룰루",
+        "name_en": "Don Quijote Honolulu",
+        "addr": "801 Kaheka St, Honolulu, HI 96814"
+      },
+      "place2": {
+        "name": "월마트 호놀룰루",
+        "name_en": "Walmart Honolulu Keeaumoku",
+        "addr": "700 Keeaumoku St, Honolulu, HI 96814"
+      }
+    },
+    {
+      "id": "kta",
+      "island": "bigisland",
+      "icon": "🛒",
+      "title": "KTA 케아우호우 (리조트 앞 마트)",
+      "dates": [
+        "2026-11-19",
+        "2026-11-22"
+      ],
+      "why": "코나코스트 리조트 바로 근처의 하와이 현지 마트예요. 빅아일랜드 6일치 장보기는 여기서.",
+      "how": "07:00~20:00. 물·간식·아침거리·맥주. 100% 코나 커피도 있어요 (라벨 확인).",
+      "place": {
+        "name": "KTA 케아우호우",
+        "name_en": "KTA Super Stores Keauhou",
+        "addr": "78-6831 Alii Dr, Kailua-Kona, HI 96740"
+      }
+    },
+    {
+      "id": "costco",
+      "island": "bigisland",
+      "icon": "📦",
+      "title": "코스트코 코나 (기념품 몰아 사기)",
+      "dates": [
+        "2026-11-25"
+      ],
+      "why": "마카다미아·호놀룰루 쿠키를 가장 싸게 살 수 있어요.",
+      "how": "회원카드 필요 (한국 회원카드 사용 가능 여부는 확인). 11/25 웨스틴 체크아웃 → 점심 → 코스트코 → 14:30 렌터카 반납 순서. 섬간 항공 짐 무게(23kg)를 넘지 않게 나눠 담기.",
+      "place": {
+        "name": "코스트코 코나",
+        "name_en": "Costco Kona",
+        "addr": "73-5600 Maiau St, Kailua-Kona, HI 96740"
+      }
+    },
+    {
+      "id": "alamoana",
+      "island": "oahu",
+      "icon": "🏙",
+      "title": "알라모아나 센터 · 타깃",
+      "dates": [
+        "2026-11-27"
+      ],
+      "why": "세계에서 가장 큰 야외 쇼핑몰(300곳 이상). 안에 있는 타깃에 알로하 옷·비치용품이 많아요.",
+      "how": "블랙프라이데이 08:00 오픈 (2025년 기준, 확인 필요). 11:00 체크아웃이라 08:00~10:00만. 11/26 추수감사절은 휴무였어요(작년 기준).",
+      "place": {
+        "name": "알라모아나 센터",
+        "name_en": "Ala Moana Center",
+        "addr": "1450 Ala Moana Blvd, Honolulu, HI 96814"
       }
     }
   ],

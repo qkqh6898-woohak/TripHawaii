@@ -260,7 +260,7 @@ async function runFlow(browser, base, vp) {
   await page.locator('.view-day [data-idea="lava"] [data-idea-fav]').click();
   await page.waitForTimeout(200);
   await go(page, '#/ideas');
-  assert.equal(await page.locator('.view-ideas .idea').count(), 19);
+  assert.equal(await page.locator('.view-ideas .idea').count(), 24);
   assert.equal(await page.locator('.view-ideas .card-notice, .view-ideas .notice').count() >= 3, true);
   assert.equal(await page.locator('[data-idea="lava"] [data-idea-fav]').getAttribute('aria-pressed'), 'true');   // 일정 화면에서 누른 ☆ 가 유지됨
   assert.match(await text(page, '[data-idea="northshore"]'), /맞는 날이 없어요/);
@@ -388,7 +388,7 @@ async function runFlow(browser, base, vp) {
   await kml.saveAs(kmlPath);
   const kmlText = readFileSync(kmlPath, 'utf8');
   rmSync(kmlPath, { force: true });
-  assert.equal((kmlText.match(/<Placemark>/g) || []).length, 26);
+  assert.equal((kmlText.match(/<Placemark>/g) || []).length, 30);   // 장소 수 (마트 4곳 포함)
   assert.ok(!kmlText.includes('SAMPLE-ABC123'), 'KML 에 예약 정보가 없어야 함');
   const sumOver = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
   assert.ok(sumOver <= 1, `요약 화면이 옆으로 넘침 (${sumOver}px)`);
