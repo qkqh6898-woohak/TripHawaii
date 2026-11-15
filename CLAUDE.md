@@ -10,6 +10,7 @@
 - 예약 비밀번호는 저장소·파일·명령줄 인자·커밋 메시지·메모리에 남기지 않는다. `encrypt.mjs` 에는 `--password-stdin` 으로 넘긴다.
 - 사진은 사용자가 준 것만 (`tools/shrink_image.py` 로 줄여서). 웹 사진 금지. 일정 항목의 `photos` 배열에 붙이고(여러 장 가능), `build-precache` 가 만드는 `data/photos.json` 에 있는 파일만 앱에 보인다.
   인터넷에서 찾은 남의 사진은 공개 `photos/` 가 아니라 `private/photos/` 에 넣는다 → `encrypt.mjs` 가 `secret.enc` 에 묶고, 예약 지갑을 연 폰에서만 보인다.
+  사용자가 요청해 사용자 계정(힉스필드)으로 만든 AI 이미지는 공개 `photos/ai-*.jpg` 에 둘 수 있다. 항목에 `"ai": true` 와 alt 끝에 `(AI 이미지)` 를 붙이고, 분위기용으로만 쓴다 (만나는 곳·입구처럼 길을 찾는 데 쓰는 사진은 AI 금지).
 
 ## 자주 하는 일
 - 일정 수정: `data/trip.json` → `node tools/validate.mjs` → (장소·순서가 바뀌면) `python tools/maps/make_maps.py` → `build-precache` → 커밋.

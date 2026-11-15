@@ -60,6 +60,7 @@ export function carouselHtml(photos) {
         ${photos.map((ph, i) => html`
           <button type="button" class="carousel-slide" data-gallery="${i}" aria-label="${ph.alt || '사진'} 크게 보기 (${i + 1}/${photos.length})">
             <img src="${ph.src}" alt="${ph.alt || ''}" loading="lazy" draggable="false">
+            ${ph.ai ? html`<span class="carousel-ai" title="AI로 만든 그림 — 실제 모습과 달라요">AI 이미지</span>` : ''}
             ${ph.alt ? html`<span class="carousel-cap">${ph.alt}</span>` : ''}
           </button>`)}
       </div>

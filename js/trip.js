@@ -71,12 +71,12 @@ const hasPhoto = (ph) => !!(ph && ph.src && (privatePhotos[privateKey(ph.src)] |
 // 화면에 넣을 실제 주소: 암호화된 사진이 있으면 그것(data:), 없으면 공개 photos/ 파일
 export const photoUrl = (src) => privatePhotos[privateKey(src)] || src;
 // 일정 항목의 사진 (여러 장 가능) — 실제로 있는 것만, 화면용 주소로
-export const itemPhotos = (item) => (item && Array.isArray(item.photos) ? item.photos.filter(hasPhoto).map((ph) => ({ src: photoUrl(ph.src), alt: ph.alt || item.title || '' })) : []);
+export const itemPhotos = (item) => (item && Array.isArray(item.photos) ? item.photos.filter(hasPhoto).map((ph) => ({ src: photoUrl(ph.src), alt: ph.alt || item.title || '', ai: !!ph.ai })) : []);
 // 그날의 사진 전부: 날짜에 직접 붙인 사진 + 각 항목의 사진 (중복 제거)
 export function dayPhotos(day) {
   const out = [];
   const seen = new Set();
-  const push = (ph, title) => { if (hasPhoto(ph) && !seen.has(ph.src)) { seen.add(ph.src); out.push({ src: photoUrl(ph.src), alt: ph.alt || title || '' }); } };
+  const push = (ph, title) => { if (hasPhoto(ph) && !seen.has(ph.src)) { seen.add(ph.src); out.push({ src: photoUrl(ph.src), alt: ph.alt || title || '', ai: !!ph.ai }); } };
   for (const ph of day.photos || []) push(ph, day.title);
   for (const it of day.items || []) for (const ph of it.photos || []) push(ph, it.title);
   return out;
