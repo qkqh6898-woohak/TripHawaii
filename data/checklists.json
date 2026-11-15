@@ -23,6 +23,11 @@
           "owner": "seonghee"
         },
         {
+          "id": "todo-wolfgang-cancel",
+          "text": "11/15 저녁은 츠루톤탄으로 변경 · 기존 울프강 18:30 예약 취소 여부 확인",
+          "owner": "both"
+        },
+        {
           "id": "todo-diamondhead",
           "text": "다이아몬드 헤드 입장 사전 예약 (비거주자 예약제)",
           "owner": "seonghee",
@@ -87,7 +92,7 @@
         },
         {
           "id": "todo-missing-bookings",
-          "text": "빠진 예약번호 넣기 (코나코스트 · 울프강 · 줌줌 · 다이아몬드 헤드)",
+          "text": "빠진 예약번호 넣기 (코나코스트 · 줌줌 · 다이아몬드 헤드)",
           "owner": "both"
         }
       ]
@@ -238,7 +243,7 @@
         },
         {
           "id": "pack-dress",
-          "text": "단정한 옷 1벌 (11/15 울프강 · 11/26 마지막 저녁)",
+          "text": "단정한 옷 1벌 (11/26 마지막 저녁)",
           "owner": "both"
         },
         {

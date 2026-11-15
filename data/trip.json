@@ -41,6 +41,9 @@
     { "id": "donki", "name": "돈키호테 호놀룰루", "name_en": "Don Quijote Honolulu", "cat": "shop", "island": "oahu", "lat": 21.2942, "lng": -157.8404, "addr": "801 Kaheka St, Honolulu, HI 96814", "weather_zone": "waikiki", "note": "24시간 · 일본식 마트, 기념품·간식 · 근처에 월마트(700 Keeaumoku St, 06:00~23:00) · 휴일 영업시간은 확인 필요 · 지도 핀 위치는 주변 장소 기준 추정 — 길찾기는 주소로 정확히 안내돼요" },
     { "id": "hilton", "name": "힐튼가든인 와이키키비치", "name_en": "Hilton Garden Inn Waikiki Beach", "cat": "hotel", "island": "oahu", "lat": 21.2789, "lng": -157.8251, "addr": "2330 Kuhio Ave, Honolulu, HI 96815", "weather_zone": "waikiki" },
     { "id": "rhc", "name": "로열하와이안센터", "name_en": "Royal Hawaiian Center", "cat": "shop", "island": "oahu", "lat": 21.2792, "lng": -157.8297, "addr": "2201 Kalakaua Ave, Honolulu, HI 96815", "weather_zone": "waikiki", "note": "스투시 · 애플스토어 · 지미추 · 하와이 빙수" },
+    { "id": "tsurutontan", "name": "츠루톤탄", "name_en": "TsuruTonTan Udon Noodle Brasserie", "cat": "food", "island": "oahu", "lat": 21.278, "lng": -157.829, "addr": "2233 Kalakaua Ave, Honolulu, HI 96815", "weather_zone": "waikiki", "note": "로열하와이안센터 B동 3층 · 지도 핀은 센터 기준" },
+    { "id": "ala-moana-trolley", "name": "알라모아나 핑크 트롤리 정류장", "name_en": "Waikiki Trolley Ala Moana Center Stop", "cat": "move", "island": "oahu", "lat": 21.289, "lng": -157.843, "addr": "1450 Ala Moana Blvd, Honolulu, HI 96814", "note": "알라모아나 센터 바다 쪽(Ala Moana Blvd) 10번 정류장 · 지도 핀은 정류장 주변 추정" },
+    { "id": "walmart-honolulu", "name": "월마트 호놀룰루", "name_en": "Walmart Honolulu", "cat": "shop", "island": "oahu", "lat": 21.29485, "lng": -157.8432, "addr": "700 Keeaumoku St, Honolulu, HI 96814", "note": "매일 06:00~23:00 · 알라모아나 센터에서 산 쪽으로 걸어가기" },
     { "id": "wolfgang", "name": "울프강 스테이크하우스", "name_en": "Wolfgang's Steakhouse Waikiki", "cat": "food", "island": "oahu", "lat": 21.2783, "lng": -157.8285, "addr": "2301 Kalakaua Ave, Honolulu, HI 96815", "weather_zone": "waikiki", "note": "로열하와이안센터 C동 3층" },
     { "id": "waikiki-beach", "name": "와이키키 해변", "name_en": "Waikiki Beach", "cat": "rest", "island": "oahu", "lat": 21.2755, "lng": -157.8253, "addr": "Kalakaua Ave, Honolulu, HI 96815", "weather_zone": "waikiki" },
     { "id": "marukame", "name": "마루카메 우동", "name_en": "Marugame Udon Waikiki", "cat": "food", "island": "oahu", "lat": 21.2797, "lng": -157.8259, "addr": "2310 Kuhio Ave, Honolulu, HI 96815", "weather_zone": "waikiki", "note": "숙소(힐튼가든인)에서 도보 3분" },
@@ -49,7 +52,7 @@
     { "id": "kualoa", "name": "쿠알로아 랜치 티켓 오피스", "name_en": "Kualoa Ranch", "cat": "tour", "island": "oahu", "lat": 21.5208, "lng": -157.8372, "addr": "49-560 Kamehameha Hwy, Kaneohe, HI 96744", "weather_zone": "oahu-east" },
     { "id": "hanauma", "name": "하나우마베이", "name_en": "Hanauma Bay Nature Preserve", "cat": "tour", "island": "oahu", "lat": 21.2739, "lng": -157.6943, "addr": "7455 Kalanianaole Hwy, Honolulu, HI 96825", "weather_zone": "waikiki", "note": "월·화요일 휴장" },
     { "id": "halepuna", "name": "할레푸나 와이키키", "name_en": "Halepuna Waikiki by Halekulani", "cat": "hotel", "island": "oahu", "lat": 21.2782, "lng": -157.8307, "addr": "2233 Helumoa Rd, Honolulu, HI 96815", "weather_zone": "waikiki" },
-    { "id": "kcp", "name": "코나 커피 퍼베이어스 (퀸아망)", "name_en": "Kona Coffee Purveyors b. patisserie", "cat": "food", "island": "oahu", "lat": 21.2788, "lng": -157.8257, "addr": "2330 Kalakaua Ave #160, Honolulu, HI 96815", "weather_zone": "waikiki", "note": "인터내셔널 마켓 플레이스 1층 (쿠히오 애비뉴 쪽) · 07:00 오픈 · 문서의 '호놀룰루 퀸아망'을 이곳으로 추정" },
+    { "id": "kcp", "name": "코나 커피 퍼베이어스 (퀸아망)", "name_en": "Kona Coffee Purveyors b. patisserie", "cat": "food", "island": "oahu", "lat": 21.2788, "lng": -157.8257, "addr": "2330 Kalakaua Ave #160, Honolulu, HI 96815", "weather_zone": "waikiki", "note": "인터내셔널 마켓 플레이스 1층 (쿠히오 애비뉴 쪽) · 매일 07:00~16:00 · b. patisserie 퀸아망" },
     { "id": "diamond-head", "name": "다이아몬드 헤드", "name_en": "Diamond Head State Monument", "cat": "sight", "island": "oahu", "lat": 21.2635, "lng": -157.805, "addr": "Diamond Head Rd, Honolulu, HI 96815", "weather_zone": "waikiki", "note": "비거주자는 입장 사전 예약 필수 (gostateparks.hawaii.gov/diamondhead)" },
 
     { "id": "koa", "name": "코나 공항 (KOA)", "name_en": "Ellison Onizuka Kona International Airport", "cat": "move", "island": "bigisland", "lat": 19.7362, "lng": -156.0411, "addr": "73-200 Kupipi St, Kailua-Kona, HI 96740", "weather_zone": "kona" },
@@ -71,7 +74,7 @@
   "days": [
     {
       "date": "2026-11-15", "island": "oahu", "title": "하와이 도착",
-      "summary": "인천 22:50(한국) 출발 → 호놀룰루 정오 도착 → K 기둥 한인 셔틀 → 체크인 → 로열하와이안센터 → 18:30 울프강",
+      "summary": "호놀룰루 도착 → K 기둥 한인 셔틀 → 체크인 → 퀸아망 → 핑크 트롤리로 월마트 → 18:30 츠루톤탄",
       "hotel": "hilton", "map": "maps/day-1115.png",
       "weather_zones": ["waikiki"],
       "items": [
@@ -80,13 +83,16 @@
         { "id": "1115-3", "start": "12:00", "approx": true, "place": "hnl", "title": "호놀룰루 도착 → 입국 심사·짐 찾기", "cat": "move" },
         { "id": "1115-4", "start": "13:00", "approx": true, "place": "hnl", "title": "K 기둥에서 한인 셔틀(CM 트래블) 체크인 → 숙소", "cat": "move", "booking": "cm-shuttle", "must": true, "note": "입국 심사·짐 찾은 뒤 왼쪽 1번 출구로 나가면 정면에 K 기둥 · 짐 추가 요금은 당일 기사에게 현금: 1인 1개 무료, 바퀴 달린 기내 가방은 무릎에 못 들고 타서 1개당 $1, 위탁 가방 $2, 큰 백팩 $1, 32인치 이상 $5 · 우리 짐(28인치 2·20·18인치·백팩) 예상 $2~3 (추정) · $1 소액권 준비" },
         { "id": "1115-5", "start": "15:00", "place": "hilton", "title": "힐튼가든인 와이키키비치 체크인", "cat": "hotel", "booking": "hilton", "photos": [{ "src": "photos/hilton-entrance.jpg", "alt": "힐튼가든인 와이키키비치 입구" }] },
-        { "id": "1115-6", "start": "15:30", "place": "rhc", "title": "로열하와이안센터 쇼핑", "cat": "shop", "note": "스투시 / 애플스토어 / 지미추", "photos": [{ "src": "photos/royal-hawaiian-center.jpg", "alt": "로열하와이안센터" }] },
-        { "id": "1115-7", "start": "16:30", "place": "rhc", "title": "하와이 빙수", "cat": "food", "photos": [{ "src": "photos/shave-ice.jpg", "alt": "하와이 빙수" }] },
-        { "id": "1115-8", "start": "18:30", "place": "wolfgang", "title": "울프강 스테이크", "cat": "food", "booking": "wolfgang", "confirmed": true, "must": true, "note": "로열하와이안센터 3층 · 조금 단정한 옷", "photos": [{ "src": "photos/wolfgang.jpg", "alt": "울프강 스테이크" }] },
+        { "id": "1115-11", "start": "15:15", "approx": true, "place": "kcp", "title": "퀸아망 · 코나 커피 퍼베이어스", "cat": "food", "note": "호텔 건너편 인터내셔널 마켓 플레이스 1층 쿠히오 애비뉴 입구 · 16:00 마감이라 퀸아망부터 포장" },
+        { "id": "1115-12", "start": "15:40", "approx": true, "place": "marukame", "title": "핑크 트롤리 → 알라모아나 센터", "cat": "move", "note": "쿠히오 애비뉴 마루가메 우동 앞 5번 정류장 탑승 → 알라모아나 센터 바다 쪽 10번 정류장 하차 · 약 15분 간격 · 1인 $6 하루권, 기사에게 현금 구매 가능" },
+        { "id": "1115-13", "start": "16:25", "approx": true, "place": "walmart-honolulu", "title": "월마트에서 하와이 기념품 사기", "cat": "shop", "note": "알라모아나 센터 정류장에서 도보 약 10~15분(추정) · 마카다미아, 초콜릿, 하와이 과자 등 · 17:15쯤 정류장으로 출발" },
+        { "id": "1115-14", "start": "17:30", "approx": true, "place": "ala-moana-trolley", "title": "핑크 트롤리 → 와이키키 복귀", "cat": "move", "note": "내렸던 알라모아나 센터 바다 쪽 10번 정류장에서 탑승 · 와이키키 쇼핑 플라자 1번에서 내려 로열하와이안센터로 도보 이동" },
+        { "id": "1115-6", "start": "18:00", "approx": true, "place": "rhc", "title": "로열하와이안센터 쇼핑", "cat": "shop", "note": "저녁 전 시간이 남으면 스투시 구경이나 하와이 빙수", "photos": [{ "src": "photos/royal-hawaiian-center.jpg", "alt": "로열하와이안센터" }, { "src": "photos/shave-ice.jpg", "alt": "하와이 빙수" }] },
+        { "id": "1115-15", "start": "18:30", "place": "tsurutontan", "title": "저녁: 츠루톤탄 우동", "cat": "food", "note": "로열하와이안센터 B동 3층 · 예약 미확정, 현장 대기시간 확인 · 추천: 디럭스 우동 또는 카레 디럭스 우동" },
         { "id": "1115-9", "start": "20:00", "place": "waikiki-beach", "title": "와이키키 해변 산책", "cat": "rest", "photos": [{ "src": "photos/waikiki-sunset.jpg", "alt": "와이키키 노을" }] },
-        { "id": "1115-10", "start": "21:00", "title": "다음날 아침용 무스비 사기", "cat": "food", "photos": [{ "src": "photos/musubi.jpg", "alt": "무스비" }], "note": "추천: 무스비 카페 이야스메 (2427 Kuhio Ave) — 21:00 마감이라 20:30쯤 가기 · 늦으면 ABC 스토어" }
+        { "id": "1115-10", "start": "20:30", "approx": true, "title": "다음날 아침용 무스비 사기", "cat": "food", "photos": [{ "src": "photos/musubi.jpg", "alt": "무스비" }], "note": "추천: 무스비 카페 이야스메 (2427 Kuhio Ave) — 21:00 마감 · 늦으면 ABC 스토어" }
       ],
-      "packing": ["여권 · ESTA 승인 화면", "호텔 예약 확인서", "저녁 울프강: 조금 단정한 옷", "달러 소액권 ($1 여러 장 — 공항 셔틀 짐 요금)", "기내: 긴바지 + 긴팔 (에어컨) · 보조배터리는 기내 가방에"]
+      "packing": ["여권 · ESTA 승인 화면", "호텔 예약 확인서", "달러 소액권 (공항 셔틀 짐 요금 · 핑크 트롤리 현장 구매)", "기내: 긴바지 + 긴팔 (에어컨) · 보조배터리는 기내 가방에"]
     },
     {
       "date": "2026-11-16", "island": "oahu", "title": "거북이 스노클링",
