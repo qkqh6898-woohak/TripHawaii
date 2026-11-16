@@ -431,11 +431,299 @@
       ]
     },
     {
+      "id": "shop-sephora",
+      "when": "shopping",
+      "title": "세포라 · 화장품/팀 선물",
+      "shopLabel": "세포라",
+      "icon": "🛒",
+      "intro": "와이키키 2250 Kalākaua Ave에도 세포라가 있어요. 표기 가격은 미국 공식 온라인가 참고이며 할인·매장 재고에 따라 달라요. 한국 판매가와 비교하고 구매하세요.",
+      "items": [
+        {
+          "id": "shop-sephora-glossier-you",
+          "text": "⭐ Glossier You 향수 트래블 스프레이 8mL — $32 · 시향 후 구매",
+          "owner": "both",
+          "url": "https://www.sephora.com/brand/glossier/shop-travel-size-perfume"
+        },
+        {
+          "id": "shop-sephora-glossier-balm",
+          "text": "⭐ Glossier Balm Dotcom 립밤 — $16 · 개인/친구 선물",
+          "owner": "both",
+          "url": "https://www.sephora.com/brand/glossier"
+        },
+        {
+          "id": "shop-sephora-summer-fridays",
+          "text": "⭐ Summer Fridays Lip Butter Balm — $24 · 인기 립케어, 색상 확인",
+          "owner": "both",
+          "url": "https://www.sephora.com/search?keyword=summer%20fridays%20lip%20butter%20balm"
+        },
+        {
+          "id": "shop-sephora-glossier-cloud",
+          "text": "Glossier Cloud Paint 블러셔 — $26 · 색상 테스트 필수",
+          "owner": "both",
+          "url": "https://www.sephora.com/brand/glossier"
+        },
+        {
+          "id": "shop-sephora-sephora-mask",
+          "text": "SEPHORA COLLECTION 페이스마스크 — 약 $6 · 가벼운 팀 선물",
+          "owner": "both",
+          "url": "https://www.sephora.com/brand/sephora-collection/gifts-under-15"
+        },
+        {
+          "id": "shop-sephora-sephora-foot",
+          "text": "SEPHORA COLLECTION 풋마스크 — 약 $5 · 소액 선물",
+          "owner": "both",
+          "url": "https://www.sephora.com/brand/sephora-collection/gifts-under-15"
+        },
+        {
+          "id": "shop-sephora-glossier-set",
+          "text": "Glossier You 미니 향수 세트 — 한정 세트 보이면 가격 비교",
+          "owner": "both",
+          "url": "https://www.sephora.com/brand/glossier/fragrance-families-notes"
+        }
+      ]
+    },
+    {
+      "id": "shop-abc",
+      "when": "shopping",
+      "title": "ABC Stores · 하와이 간식/소품",
+      "shopLabel": "ABC",
+      "icon": "🛒",
+      "intro": "와이키키에서 가장 접근성이 좋아요. 급하게 필요한 물건이나 소량 선물 위주로 사고, 같은 제품 대량 구매는 월마트·돈키호테 가격을 비교하세요.",
+      "items": [
+        {
+          "id": "shop-abc-abc-island-macs",
+          "text": "⭐ Hawaiian Host ABC 전용 Island Macs 4.3oz — 온라인 참고 $7.89",
+          "owner": "both",
+          "url": "https://abcstores.com/flavors-of-aloha-gifts/chocolates/"
+        },
+        {
+          "id": "shop-abc-abc-mauna",
+          "text": "⭐ Mauna Loa 마카다미아 Sea Salt / Honey Roasted — 맛별 비교",
+          "owner": "both",
+          "url": "https://abcstores.com/flavors-of-aloha-gifts/"
+        },
+        {
+          "id": "shop-abc-abc-cookkwees",
+          "text": "⭐ Maui CookKwees 마카다미아 쿠키 6oz — 온라인 참고 $6.79",
+          "owner": "both",
+          "url": "https://abcstores.com/flavors-of-aloha-gifts/"
+        },
+        {
+          "id": "shop-abc-abc-kona",
+          "text": "Royal Kona 또는 Hualalai Estate 100% Kona Coffee — 원두/분쇄 확인",
+          "owner": "both",
+          "url": "https://abcstores.com/flavors-of-aloha-gifts/coffees-teas/100-kona-coffee/"
+        },
+        {
+          "id": "shop-abc-abc-shortbread",
+          "text": "Big Island Delights 쇼트브레드 과자 모음 — 선물용",
+          "owner": "both",
+          "url": "https://abcstores.com/flavors-of-aloha-gifts/"
+        },
+        {
+          "id": "shop-abc-abc-pancake",
+          "text": "Hawaiian Sun 팬케이크 믹스 / 코코넛 시럽 — 요리 좋아하는 가족용",
+          "owner": "both",
+          "url": "https://abcstores.com/flavors-of-aloha-gifts/"
+        },
+        {
+          "id": "shop-abc-abc-goods",
+          "text": "하와이 마그넷·키링·에코백 — 가족용 소액 기념품",
+          "owner": "both"
+        },
+        {
+          "id": "shop-abc-abc-beach",
+          "text": "알로에젤·방수팩·비치매트 — 여행 중 필요할 때만",
+          "owner": "both"
+        }
+      ]
+    },
+    {
+      "id": "shop-walmart",
+      "when": "shopping",
+      "title": "월마트 · 가성비 대량 선물",
+      "shopLabel": "월마트",
+      "icon": "🛒",
+      "intro": "700 Keeaumoku St · 간식 여러 개를 살 때 우선 비교. 같은 초콜릿/마카다미아를 ABC와 중복 구매하지 않도록 체크하세요.",
+      "items": [
+        {
+          "id": "shop-walmart-wm-giftpacks",
+          "text": "⭐ Hawaiian Host 초콜릿/마카다미아 멀티팩 — 회사 동료 나눔용",
+          "owner": "both"
+        },
+        {
+          "id": "shop-walmart-wm-mac",
+          "text": "⭐ Mauna Loa 마카다미아 여러 봉지 — ABC 단가와 비교",
+          "owner": "both"
+        },
+        {
+          "id": "shop-walmart-wm-snacks",
+          "text": "⭐ Hawaiian Sun 파우더 주스·팬케이크 믹스 — 가성비 선물",
+          "owner": "both"
+        },
+        {
+          "id": "shop-walmart-wm-coffee",
+          "text": "100% Kona 커피 소포장 — 'Kona Blend'와 구별",
+          "owner": "both"
+        },
+        {
+          "id": "shop-walmart-wm-cookies",
+          "text": "Big Island / Hawaiian 브랜드 쿠키 개별 포장 — 팀 10~20명용",
+          "owner": "both"
+        },
+        {
+          "id": "shop-walmart-wm-pouch",
+          "text": "하와이 프린트 파우치·에코백 — 실용적인 선물",
+          "owner": "both"
+        },
+        {
+          "id": "shop-walmart-wm-supplies",
+          "text": "물·간식·선크림·여행용 세면도구 — 현지 사용품",
+          "owner": "both"
+        }
+      ]
+    },
+    {
+      "id": "shop-donki",
+      "when": "shopping",
+      "title": "돈키호테 · 로컬 과자/야식",
+      "shopLabel": "돈키호테",
+      "icon": "🛒",
+      "intro": "801 Kaheka St · 일본식 마트, 하와이 현지 간식과 식품을 함께 구경하기 좋아요. 선물은 상온·밀봉 제품 위주로 고르세요.",
+      "items": [
+        {
+          "id": "shop-donki-dq-furikake",
+          "text": "⭐ Furikake(후리카케)·Hurricane Popcorn 믹스 — 현지 간식",
+          "owner": "both"
+        },
+        {
+          "id": "shop-donki-dq-arares",
+          "text": "⭐ Arare(쌀과자)·Li Hing Mui 과자 — 하와이식 간식 선물",
+          "owner": "both"
+        },
+        {
+          "id": "shop-donki-dq-choco",
+          "text": "⭐ 마카다미아 초콜릿 소포장 / 할인 묶음팩",
+          "owner": "both"
+        },
+        {
+          "id": "shop-donki-dq-drinks",
+          "text": "Hawaiian Sun 구아바·패션프루트 주스 — 여행 중 마시기",
+          "owner": "both"
+        },
+        {
+          "id": "shop-donki-dq-mochi",
+          "text": "모찌·일본 과자·우베맛 간식 — 당일 간식",
+          "owner": "both"
+        },
+        {
+          "id": "shop-donki-dq-local",
+          "text": "코나커피·로컬 조미료·하와이 소금 — 선물용",
+          "owner": "both"
+        }
+      ]
+    },
+    {
+      "id": "shop-target",
+      "when": "shopping",
+      "title": "타깃/Longs Drugs · 생활잡화",
+      "shopLabel": "타깃/롱스",
+      "icon": "🛒",
+      "intro": "알라모아나 타깃 또는 와이키키 주변 Longs Drugs에서 둘러보기. 미국 브랜드 제품은 한국 판매가와 비교하세요.",
+      "items": [
+        {
+          "id": "shop-target-tl-lip",
+          "text": "⭐ Burt's Bees 립밤 멀티팩 — 동료/친구 실용 선물",
+          "owner": "both"
+        },
+        {
+          "id": "shop-target-tl-suncare",
+          "text": "⭐ Sun Bum 선크림·립밤 — 현지 사용용, 피부 적합성 확인",
+          "owner": "both"
+        },
+        {
+          "id": "shop-target-tl-cream",
+          "text": "CeraVe·Aquaphor 보습 제품 미니 — 미국 가격 비교",
+          "owner": "both"
+        },
+        {
+          "id": "shop-target-tl-mask",
+          "text": "미국 드러그스토어 헤어·스킨케어 미니 제품 — 팀 선물",
+          "owner": "both"
+        },
+        {
+          "id": "shop-target-tl-bag",
+          "text": "하와이 에코백·비치 타월·물놀이 소품 — 필요할 때만",
+          "owner": "both"
+        }
+      ]
+    },
+    {
+      "id": "shop-foodland",
+      "when": "shopping",
+      "title": "푸드랜드/와이키키 마켓 · 현지 먹거리",
+      "shopLabel": "푸드랜드",
+      "icon": "🛒",
+      "intro": "Foodland Farms Ala Moana나 호텔 옆 Waikiki Market에서 바로 먹을 식품과 선물을 고르세요. 냉장 식품은 선물용 장기 보관에 부적합해요.",
+      "items": [
+        {
+          "id": "shop-foodland-fl-poke",
+          "text": "⭐ 포케 한 팩 — 구입 후 바로 먹기, 한국 반입용 아님",
+          "owner": "both"
+        },
+        {
+          "id": "shop-foodland-fl-maikai",
+          "text": "⭐ Maika‘i 현지 과자·초콜릿 — 소량 먹어보고 선물 결정",
+          "owner": "both"
+        },
+        {
+          "id": "shop-foodland-fl-musubi",
+          "text": "스팸 무스비·벤토 — 당일 간식, 한국 반입 금지 성분 주의",
+          "owner": "both"
+        },
+        {
+          "id": "shop-foodland-fl-juice",
+          "text": "하와이 구아바 주스·패션프루트 음료 — 현지에서 마시기",
+          "owner": "both"
+        }
+      ]
+    },
+    {
+      "id": "shop-specialty",
+      "when": "shopping",
+      "title": "전문 매장 · 기념품/패션",
+      "shopLabel": "전문매장",
+      "icon": "🛒",
+      "intro": "로열 하와이안 센터 등 가까운 매장 위주. 스투시 Honolulu 한정 여부와 재고를 매장에서 확인하세요.",
+      "items": [
+        {
+          "id": "shop-specialty-sp-stussy",
+          "text": "⭐ Stüssy Honolulu 로고 티셔츠 1장 — 다른 나라 일반 로고와 비교",
+          "owner": "both"
+        },
+        {
+          "id": "shop-specialty-sp-cookie",
+          "text": "⭐ Honolulu Cookie Company 파인애플 쇼트브레드 선물팩",
+          "owner": "both"
+        },
+        {
+          "id": "shop-specialty-sp-mana",
+          "text": "House of Mana Up 하와이 로컬 초콜릿·커피 선물",
+          "owner": "both"
+        },
+        {
+          "id": "shop-specialty-sp-kith",
+          "text": "KITH 하와이 관련 디자인 반팔/모자 — 재고·가격 확인",
+          "owner": "both"
+        }
+      ]
+    },
+    {
       "id": "shopping",
-      "when": "return",
-      "title": "기념품 쇼핑 리스트",
+      "when": "shopping",
+      "title": "기존 기념품 리스트 · 공통",
       "icon": "🛍",
-      "intro": "코나 커피는 봉지에 '100% Kona Coffee'라고 적힌 것만 진짜예요. 'Kona Blend'는 코나 원두 10%만 들어 있어도 되고, 'Kona Style'·'Kona Roast'도 100%가 아니에요. 가격표에는 세금(약 4~5%, 추정)이 빠져 있어요.",
+      "intro": "기존 체크 기록은 유지돼요. 아래 매장별 추천과 같은 물건은 중복 구매하지 마세요. 가격은 매장별로 다르고 세금이 추가될 수 있어요.",
       "items": [
         {
           "id": "shop-hcc",
@@ -473,7 +761,8 @@
           "label": "호놀룰루 쿠키 · 마카다미아 등 하와이 기념품 정리 (영문)",
           "url": "https://theworldisabook.com/29692/35-best-souvenirs-from-hawaii"
         }
-      ]
+      ],
+      "shopLabel": "기존 목록"
     },
     {
       "id": "customs-kr",
