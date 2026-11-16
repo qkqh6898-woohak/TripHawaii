@@ -3,11 +3,11 @@
 // (파일을 고친 뒤 `node tools/build-precache.mjs` 를 실행하면 버전과 목록이 바뀐다 — 직접 고치지 말 것).
 
 /* PRECACHE:BEGIN */
-const VERSION = 'a771-e7b1';
+const VERSION = '2279-0c2e';
 const FILES = [
-  ['index.html', '9ca27e5d'],
+  ['index.html', '37595f72'],
   ['manifest.webmanifest', '433937d9'],
-  ['css/app.css', '7001da7c'],
+  ['css/app.css', 'b2b1bf7d'],
   ['js/checklist.js', 'f2a4c8f0'],
   ['js/crypto.js', '98dac433'],
   ['js/days.js', '45e42c5d'],
@@ -15,12 +15,14 @@ const FILES = [
   ['js/expenses.js', 'aeb12467'],
   ['js/gmap.js', '2f6dabf7'],
   ['js/ideas.js', '00838b81'],
-  ['js/main.js', '0ab56d2a'],
-  ['js/maps.js', '893ef695'],
-  ['js/more.js', 'e698a0d0'],
+  ['js/main.js', '85f4e791'],
+  ['js/maps.js', '9e7e4bd0'],
+  ['js/more.js', '493cd1dd'],
   ['js/phrases.js', '45167887'],
   ['js/prefs.js', 'd862dceb'],
   ['js/route.js', 'cdd35d20'],
+  ['js/search-core.js', '67b94cef'],
+  ['js/search.js', '246b11a2'],
   ['js/settings.js', '5cfd8b64'],
   ['js/sw-client.js', 'fe119ca0'],
   ['js/time.js', '423a3520'],
