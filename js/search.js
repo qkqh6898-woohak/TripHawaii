@@ -21,7 +21,8 @@ function rowHtml(item) {
   if (item.kind === 'schedule') return html`
     <li class="card search-card">
       <div class="search-card-title"><b>${item.title}</b><span class="tag">일정</span></div>
-      <p class="muted small">${item.subtitle}${item.note ? ' · ' + item.note : ''}</p>
+      <p class="muted small">${item.subtitle}</p>
+      ${item.note ? html`<p class="muted small search-matched-note">${item.note}</p>` : ''}
       <a class="link-btn" href="#/day/${item.date}">📅 해당 날짜 일정 보기 ›</a>
     </li>`;
   if (item.kind === 'shopping') return html`
