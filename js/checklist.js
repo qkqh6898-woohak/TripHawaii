@@ -79,15 +79,16 @@ function progressHtml(done, total) {
     <p class="muted small progress-text">${done}/${total} 완료 (${pct}%)</p>`;
 }
 
-function groupHtml(g, checks, who) {
-  const items = g.items.filter((it) => who === 'all' || it.owner === who || it.owner === 'both' || !it.owner);
+function groupHtml(g, checks, who, onlyPending = false) {
+  const allItems = g.items.filter((it) => who === 'all' || it.owner === who || it.owner === 'both' || !it.owner);
+  const items = onlyPending ? allItems.filter((it) => !(checks.get(it.id) && checks.get(it.id).done)) : allItems;
   if (!items.length) return '';
-  const done = items.filter((it) => checks.get(it.id) && checks.get(it.id).done).length;
+  const done = allItems.filter((it) => checks.get(it.id) && checks.get(it.id).done).length;
   return html`
     <section class="card check-group" data-group="${g.id}">
       <h2>${g.icon || ''} ${g.title}</h2>
       ${g.intro ? html`<p class="check-intro">${g.intro}</p>` : ''}
-      ${progressHtml(done, items.length)}
+      ${progressHtml(done, allItems.length)}
       <ul class="check-list">
         ${items.map((it) => rowHtml(it.id, it.text, !!(checks.get(it.id) && checks.get(it.id).done), it.owner, it.url))}
       </ul>
@@ -95,7 +96,7 @@ function groupHtml(g, checks, who) {
     </section>`;
 }
 
-const TABS = [['before', '출발 전'], ['daily', '매일'], ['days', '날짜별'], ['return', '귀국 전']];
+const TABS = [['before', '출발 전'], ['daily', '매일'], ['days', '날짜별'], ['shopping', '쇼핑'], ['return', '귀국 전']];
 
 function defaultDate() {
   const info = getTrip().trip;
@@ -110,15 +111,38 @@ export async function render(root, ctx) {
   const trip = getTrip();
   const tab = (ctx.query && ctx.query.tab) || (time.tripPhase(trip.trip).phase === 'before' ? 'before' : 'daily');
   const who = (ctx.query && ctx.query.who) || 'all';
+  const store = (ctx.query && ctx.query.store) || 'all';
+  const onlyPending = !!(ctx.query && ctx.query.pending === '1');
   const date = (ctx.query && ctx.query.d && dayByDate(ctx.query.d)) ? ctx.query.d : defaultDate();
   const q = (extra) => {
-    const p = new URLSearchParams({ tab, who, ...(tab === 'daily' ? { d: date } : {}), ...extra });
+    const p = new URLSearchParams({ tab, who, ...(tab === 'daily' ? { d: date } : {}), ...(tab === 'shopping' ? { store, pending: onlyPending ? '1' : '0' } : {}), ...extra });
     return `#/check?${p.toString()}`;
   };
 
   let body = '';
   if (tab === 'before' || tab === 'return') {
     body = d.groups.filter((g) => g.when === tab).map((g) => groupHtml(g, checks, who));
+  } else if (tab === 'shopping') {
+    const shops = d.groups.filter((g) => g.when === 'shopping');
+    const selected = store === 'all' ? shops : shops.filter((g) => g.id === store);
+    const shown = selected.length ? selected : shops;
+    const all = shops.reduce((n, g) => n + g.items.length, 0);
+    const done = shops.reduce((n, g) => n + g.items.filter((it) => !!(checks.get(it.id) && checks.get(it.id).done)).length, 0);
+    const cards = shown.map((g) => groupHtml(g, checks, 'all', onlyPending)).filter(Boolean);
+    body = html`
+      <section class="card">
+        <h2>🛍 매장별 하와이 쇼핑 리스트</h2>
+        <p class="muted small">⭐는 추천 우선순위예요. 가격은 현장과 다를 수 있으며, 구매 체크는 이 폰에 저장돼요.</p>
+        ${progressHtml(done, all)}
+        <div class="chips chips-scroll" aria-label="매장별 목록">
+          <a class="chip ${store === 'all' || !selected.length ? 'is-on' : ''}" href="${q({ store: 'all' })}">전체</a>
+          ${shops.map((g) => html`<a class="chip ${store === g.id ? 'is-on' : ''}" href="${q({ store: g.id })}">${g.shopLabel || g.title}</a>`)}
+        </div>
+        <div class="chips" style="margin-top:10px">
+          <a class="chip ${onlyPending ? 'is-on' : ''}" href="${q({ pending: onlyPending ? '0' : '1' })}">${onlyPending ? '✓ 미구매만 표시 중' : '미구매만 보기'}</a>
+        </div>
+      </section>
+      ${cards.length ? cards : html`<section class="card"><p>✅ 이 매장의 추천 상품을 모두 체크했어요!</p></section>`}`;
   } else if (tab === 'daily') {
     const day = dayByDate(date);
     const daily = d.groups.filter((g) => g.when === 'daily');
@@ -157,7 +181,7 @@ export async function render(root, ctx) {
 
   setHTML(root, html`
     <h1 class="page-title"><a class="back" href="#/more" aria-label="더보기로">‹</a> ✅ 체크리스트</h1>
-    <nav class="seg" aria-label="체크리스트 종류">
+    <nav class="seg seg-scroll" aria-label="체크리스트 종류">
       ${TABS.map(([id, label]) => html`<a class="seg-btn ${tab === id ? 'is-on' : ''}" href="#/check?tab=${id}&who=${who}" ${tab === id ? html`aria-current="page"` : ''}>${label}</a>`)}
     </nav>
     ${tab === 'before' || tab === 'return' ? html`
@@ -171,7 +195,7 @@ export async function render(root, ctx) {
 
   root.querySelectorAll('.progress-bar').forEach((el) => { el.style.width = `${el.dataset.pct}%`; });
 
-  // 좌우로 밀면 옆 탭으로 (출발 전 ↔ 매일 ↔ 날짜별 ↔ 귀국 전) — 위의 탭을 눌러도 같아요
+  // 좌우로 밀면 옆 탭으로 (출발 전 ↔ 매일 ↔ 날짜별 ↔ 쇼핑 ↔ 귀국 전) — 위의 탭을 눌러도 같아요
   const tabIds = TABS.map(([t]) => t);
   root.classList.add('swipe-x');
   onSwipe(root, (dir) => {
