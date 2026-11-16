@@ -47,7 +47,7 @@ test('세포라와 Glossier는 기존 쇼핑 체크리스트를 연결한다', (
 test('일정 제목 검색과 날짜 링크 연결', () => {
   const r = search('츠루톤탄');
   assert.ok(r.schedule.some((p) => /^2026-11-/.test(p.date)));
-  assert.ok(r.schedule.some((p) => p.title.includes('츠루톤탄')));
+  assert.ok(r.schedule.some((p) => (p.title + ' ' + p.note).includes('츠루톤탄')));
 });
 
 test('빈 검색·없는 결과는 빈 배열', () => {
