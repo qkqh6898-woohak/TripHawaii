@@ -223,7 +223,7 @@ export function validateChecklists(doc) {
     if (!g.id || !g.title) errors.push(`${at}: id/title 이 없습니다`);
     if (gids.has(g.id)) errors.push(`${at}: 그룹 id "${g.id}" 가 중복됩니다`);
     gids.add(g.id);
-    if (!['before', 'daily', 'return'].includes(g.when)) errors.push(`${at}: when "${g.when}" 은 before/daily/return 중 하나여야 합니다`);
+    if (!['before', 'daily', 'shopping', 'return'].includes(g.when)) errors.push(`${at}: when "${g.when}" 은 before/daily/shopping/return 중 하나여야 합니다`);
     (g.items || []).forEach((it, ii) => {
       const ia = `${at}.items[${ii}]`;
       if (!it.id) errors.push(`${ia}: id 가 없습니다`);
