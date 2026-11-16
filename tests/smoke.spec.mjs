@@ -402,7 +402,7 @@ async function runFlow(browser, base, vp) {
   await kml.saveAs(kmlPath);
   const kmlText = readFileSync(kmlPath, 'utf8');
   rmSync(kmlPath, { force: true });
-  assert.equal((kmlText.match(/<Placemark>/g) || []).length, 30);   // 장소 수 (마트 4곳 포함)
+  assert.equal((kmlText.match(/<Placemark>/g) || []).length, JSON.parse(readFileSync(join(ROOT, 'data', 'trip.json'), 'utf8')).places.length);   // 일정의 장소 수와 같음
   assert.ok(!kmlText.includes('SAMPLE-ABC123'), 'KML 에 예약 정보가 없어야 함');
   const sumOver = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
   assert.ok(sumOver <= 1, `요약 화면이 옆으로 넘침 (${sumOver}px)`);
