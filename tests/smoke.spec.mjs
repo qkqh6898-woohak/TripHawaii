@@ -87,6 +87,7 @@ async function runFlow(browser, base, vp) {
   const newContext = async () => {
     const ctx = await browser.newContext({ viewport: { width: vp.width, height: vp.height }, deviceScaleFactor: 1, locale: 'ko-KR', acceptDownloads: true });
     await ctx.route('https://api.open-meteo.com/**', (r) => r.fulfill({ contentType: 'application/json', body: JSON.stringify(weatherJson()) }));
+    await ctx.route(/^https:\/\/(maps|www)\.google\.com\//, (r) => r.fulfill({ contentType: 'text/html', body: '<!doctype html><title>map</title><p>google map stub</p>' }));
     await ctx.route(/frankfurter\.(dev|app)/, (r) => r.fulfill({ contentType: 'application/json', body: JSON.stringify({ amount: 1, base: 'USD', date: '2026-11-10', rates: { KRW: 1400 } }) }));
     await ctx.addInitScript(() => {
       window.__spoken = [];
@@ -366,6 +367,21 @@ async function runFlow(browser, base, vp) {
   await go(page, '#/maps?m=eats&cat=fav');
   assert.equal(await page.locator('.eat').count(), 1);
   await page.locator('.eat [data-eat-fav]').first().click();
+  // 앱 안에서 구글 지도 열기 → 닫기
+  await go(page, '#/maps?m=eats&cat=poke');
+  await page.locator('.eat [data-embed]').first().click();
+  const frameSrc = await page.locator('.eat .map-embed iframe').first().getAttribute('src');
+  assert.match(frameSrc, /^https:\/\/maps\.google\.com\/maps\?q=.+&output=embed$/);
+  await page.waitForTimeout(400);
+  await page.locator('.eat .map-embed .btn').first().click();
+  assert.equal(await page.locator('.eat .map-embed iframe').count(), 0);
+  // 내 지도용 CSV
+  const [csvDl] = await Promise.all([page.waitForEvent('download'), page.locator('[data-action="eats-csv"]').click()]);
+  assert.equal(csvDl.suggestedFilename(), 'aloha-eats.csv');
+  const csvPath = join(tmpdir(), `aloha-eats-${vp.name}-${Date.now()}.csv`);
+  await csvDl.saveAs(csvPath);
+  assert.equal(readFileSync(csvPath, 'utf8').trim().split('\n').length, 64);
+  rmSync(csvPath, { force: true });
   const eatSmall = await page.locator('.view-maps .eat a, .view-maps .eat button').evaluateAll((els) => els.filter((e) => { const r = e.getBoundingClientRect(); return r.width > 0 && (r.height < 44 || r.width < 44); }).length);
   assert.equal(eatSmall, 0, '맛집 화면의 누르는 곳은 모두 44px 이상');
   await go(page, '#/maps?m=oahu');

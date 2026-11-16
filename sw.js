@@ -3,19 +3,20 @@
 // (파일을 고친 뒤 `node tools/build-precache.mjs` 를 실행하면 버전과 목록이 바뀐다 — 직접 고치지 말 것).
 
 /* PRECACHE:BEGIN */
-const VERSION = '7572-111b';
+const VERSION = '63dd-2719';
 const FILES = [
-  ['index.html', '74b53b86'],
+  ['index.html', '9ca27e5d'],
   ['manifest.webmanifest', '433937d9'],
-  ['css/app.css', 'dc255661'],
+  ['css/app.css', 'aaa06bb9'],
   ['js/checklist.js', '247fa75c'],
   ['js/crypto.js', '98dac433'],
   ['js/days.js', '45e42c5d'],
   ['js/db.js', '64891c85'],
   ['js/expenses.js', 'aeb12467'],
+  ['js/gmap.js', '2f6dabf7'],
   ['js/ideas.js', '00838b81'],
   ['js/main.js', '0ab56d2a'],
-  ['js/maps.js', 'ec236792'],
+  ['js/maps.js', '32af62f7'],
   ['js/more.js', 'c9e3a73b'],
   ['js/phrases.js', '45167887'],
   ['js/prefs.js', '72abcf32'],
@@ -26,7 +27,7 @@ const FILES = [
   ['js/today.js', '2486dc19'],
   ['js/trip.js', 'ecd7f026'],
   ['js/tts.js', 'd3e03a07'],
-  ['js/ui.js', 'c26846e0'],
+  ['js/ui.js', 'ea713f8c'],
   ['js/util.js', '34632148'],
   ['js/videos.js', '90c47b9b'],
   ['js/viewer.js', 'e2b05e01'],

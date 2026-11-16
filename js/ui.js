@@ -2,6 +2,7 @@
 import { html, openSheet, copyText, debounce, toast } from './util.js';
 import { getTrip, place as getPlace, findItem, directionsUrl, coordsUrl, itemPhotos, CAT_LABEL, CAT_ICON, ISLAND_LABEL } from './trip.js';
 import { openViewer } from './viewer.js';
+import { embedButtonHtml } from './gmap.js';
 import * as time from './time.js';
 import * as wallet from './wallet.js';
 import * as db from './db.js';
@@ -109,7 +110,8 @@ export function placeBlockHtml(p) {
         <a class="btn btn-primary" href="${directionsUrl(p)}" target="_blank" rel="noopener noreferrer">🧭 길찾기</a>
         <a class="btn" href="${coordsUrl(p)}" target="_blank" rel="noopener noreferrer">📍 지도에서 위치 보기</a>
       </div>
-      <p class="muted small">길찾기는 인터넷이 될 때 Google 지도로 열려요.</p>
+      ${embedButtonHtml(p.addr ? `${p.name_en || p.name}, ${p.addr}` : `${p.lat},${p.lng}`, `${p.name} 구글 지도`)}
+      <p class="muted small">길찾기·지도는 인터넷이 될 때 Google 지도로 열려요.</p>
     </div>`;
 }
 

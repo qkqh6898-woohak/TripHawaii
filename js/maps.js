@@ -6,6 +6,7 @@ import * as time from './time.js';
 import { openViewer } from './viewer.js';
 import { bindItemClicks, timeHtml } from './ui.js';
 import { routeStops, dayRouteLinks, dayHead, missingInfo, summaryText, buildKml, timeLabel } from './route.js';
+import { loadEats, eatQuery, eatsCsv, searchUrl as gSearch, dirUrl as gDir, embedButtonHtml } from './gmap.js';
 
 const MAPS = {
   hawaii: { label: '하와이 전체', src: 'maps/overview-hawaii.png', alt: '하와이 전체 일정 지도' },
@@ -131,22 +132,7 @@ function bindSummary(root) {
 }
 
 // ───────────── 맛집 목록 (data/eats.json) ─────────────
-let eatsDoc = null;
-async function loadEats() {
-  if (eatsDoc) return eatsDoc;
-  try {
-    const res = await fetch('data/eats.json', { cache: 'no-cache' });
-    eatsDoc = res.ok ? await res.json() : { categories: [], places: [], areas: {} };
-  } catch {
-    eatsDoc = { categories: [], places: [], areas: {} };
-  }
-  return eatsDoc;
-}
-
 const AREA_ORDER = ['waikiki', 'diamondhead', 'kapahulu', 'alamoana', 'kaimuki', 'downtown', 'hawaiikai', 'northshore'];
-const eatQuery = (p) => p.q || [p.name_en || p.name, p.addr || 'Honolulu, HI'].join(', ');
-const eatSearchUrl = (p) => `https://www.google.com/maps/search/?${new URLSearchParams({ api: '1', query: eatQuery(p) }).toString()}`;
-const eatDirUrl = (p) => `https://www.google.com/maps/dir/?${new URLSearchParams({ api: '1', destination: eatQuery(p) }).toString()}`;
 
 function eatsHtml(doc, cat) {
   const favs = prefs().eatFav || [];
@@ -159,6 +145,17 @@ function eatsHtml(doc, cat) {
     <section class="card">
       <h2>🍽 맛집 ${(doc.places || []).length}곳</h2>
       <p class="muted small">${doc.note || ''}</p>
+      <button type="button" class="btn btn-block" data-action="eats-csv">⬇ 맛집 ${(doc.places || []).length}곳을 내 구글 지도에 넣는 파일</button>
+      <details class="how">
+        <summary>구글 '내 지도'에 맛집을 한 번에 넣는 방법</summary>
+        <ol class="how-steps">
+          <li>위 버튼으로 파일(aloha-eats.csv)을 받아요.</li>
+          <li>컴퓨터에서 <b>google.com/mymaps</b> → <b>새 지도 만들기 → 가져오기</b>로 파일을 골라요.</li>
+          <li>'위치' 열을 고르면 구글이 주소·가게 이름으로 핀을 찍어 줘요. 제목 열은 '이름'.</li>
+          <li>왼쪽 '스타일'에서 <b>종류</b>로 색을 나누면 보기 좋아요. 폰 구글 지도 앱 → 저장됨 → 지도에서 열어요.</li>
+        </ol>
+        <p class="muted small">핀 위치는 구글 검색 결과라 한두 곳은 다른 지점이 잡힐 수 있어요. 일정 장소는 '일정 요약'의 내 지도 파일(KML)로 따로 넣을 수 있어요.</p>
+      </details>
     </section>
     <div class="chips chips-scroll" aria-label="맛집 종류 고르기">
       ${chips.map(([id, label]) => html`<a class="chip ${cat === id ? 'is-on' : ''}" href="#/maps?m=eats&cat=${id}" ${cat === id ? html`aria-current="true"` : ''}>${label}</a>`)}
@@ -178,17 +175,23 @@ function eatsHtml(doc, cat) {
           ${p.note ? html`<p class="eat-note">${p.note}</p>` : ''}
           ${p.addr ? html`<p class="muted small">${p.addr}</p>` : ''}
           <div class="btn-row">
-            <a class="btn btn-small" href="${eatSearchUrl(p)}" target="_blank" rel="noopener noreferrer">📍 지도에서 보기</a>
-            <a class="btn btn-small" href="${eatDirUrl(p)}" target="_blank" rel="noopener noreferrer">🧭 길찾기</a>
+            <a class="btn btn-small" href="${gSearch(eatQuery(p))}" target="_blank" rel="noopener noreferrer">📍 구글 지도 앱</a>
+            <a class="btn btn-small" href="${gDir(eatQuery(p))}" target="_blank" rel="noopener noreferrer">🧭 길찾기</a>
           </div>
+          ${embedButtonHtml(eatQuery(p), `${p.name} 구글 지도`)}
         </li>`;
   })}
     </ul>
     <p class="muted small">버튼을 누르면 Google 지도로 열려요 (인터넷 필요). 이동 시간은 숙소 기준 추정이에요.</p>`;
 }
 
-function bindEats(root) {
+function bindEats(root, doc) {
   root.addEventListener('click', async (e) => {
+    if (e.target.closest('[data-action="eats-csv"]')) {
+      downloadFile('aloha-eats.csv', eatsCsv(doc), 'text/csv');
+      toast('파일을 받았어요 — 아래 방법대로 구글 내 지도에 넣어 보세요', 3500);
+      return;
+    }
     const b = e.target.closest('[data-eat-fav]');
     if (!b) return;
     const id = b.closest('[data-eat]').dataset.eat;
@@ -233,7 +236,7 @@ export async function render(root, ctx) {
     const ids = new Set(['all', 'walk', 'fav', ...(doc.categories || []).map((c) => c.id)]);
     const ecat = ids.has(q.cat) ? q.cat : 'all';
     setHTML(root, html`${navHtml}${eatsHtml(doc, ecat)}`);
-    bindEats(root);
+    bindEats(root, doc);
     const on = root.querySelector('.chips-scroll .is-on');
     const seg = root.querySelector('.seg-scroll .is-on');
     requestAnimationFrame(() => [seg, on].forEach((el) => { if (el && el.scrollIntoView) el.scrollIntoView({ inline: 'center', block: 'nearest' }); }));
