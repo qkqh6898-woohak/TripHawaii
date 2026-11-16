@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { validateTrip, validatePhrases, validateChecklists, validateSecret, validateVideos, validateIdeas } from '../tools/validate.mjs';
+import { validateTrip, validatePhrases, validateChecklists, validateSecret, validateVideos, validateIdeas, validateEats } from '../tools/validate.mjs';
 import { scanText, checkPath, checkEncFile, collectKnownSecrets } from '../tools/scan-secrets.mjs';
 
 const load = (rel) => JSON.parse(readFileSync(new URL('../' + rel, import.meta.url), 'utf8'));
@@ -106,6 +106,15 @@ test('체크리스트: 항목 id 중복 없음', () => {
   assert.deepEqual(validateChecklists(doc).errors, []);
   const broken = clone(doc); broken.groups[1].items[0].id = broken.groups[0].items[0].id;
   assert.ok(validateChecklists(broken).errors.some((e) => e.includes('중복')));
+});
+
+test('맛집 목록: 63곳 · 종류·지역·검색어 검사', () => {
+  const doc = load('data/eats.json');
+  assert.deepEqual(validateEats(doc).errors, []);
+  assert.equal(doc.places.length, 63);
+  const bad = clone(doc); bad.places[0].cat = 'nope'; bad.places[1].note = '<b>x</b>';
+  const errs = validateEats(bad).errors;
+  assert.ok(errs.some((e) => e.includes('categories')) && errs.some((e) => e.includes('꺾쇠')));
 });
 
 test('추천 코스: 날짜·링크·필수 항목 검사', () => {
