@@ -239,6 +239,7 @@ function eatsHtml(doc, cat) {
     <section class="card">
       <h2>🍽 맛집 ${(doc.places || []).length}곳</h2>
       <p class="muted small">${doc.note || ''}</p>
+      <a class="btn btn-primary btn-block" href="#/search">🔎 우동 · 포케 · 커피 · 맛집 검색</a>
       <button type="button" class="btn btn-block" data-action="eats-csv">⬇ 맛집 ${(doc.places || []).length}곳을 내 구글 지도에 넣는 파일</button>
       <details class="how">
         <summary>구글 '내 지도'에 맛집을 한 번에 넣는 방법</summary>
