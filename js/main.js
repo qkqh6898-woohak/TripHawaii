@@ -14,6 +14,7 @@ import * as days from './days.js';
 import * as maps from './maps.js';
 import * as more from './more.js';
 import * as checklist from './checklist.js';
+import * as search from './search.js';
 import * as expenses from './expenses.js';
 import * as phrases from './phrases.js';
 import * as settings from './settings.js';
@@ -28,6 +29,7 @@ const VIEWS = {
   wallet: { mod: wallet, tab: 'wallet', title: '예약' },
   more: { mod: more, tab: 'more', title: '더보기' },
   check: { mod: checklist, tab: 'more', title: '체크리스트' },
+  search: { mod: search, tab: 'more', title: '검색' },
   money: { mod: expenses, tab: 'more', title: '경비' },
   import: { mod: { render: expenses.renderImport }, tab: 'more', title: '경비 가져오기' },
   phrases: { mod: phrases, tab: 'more', title: '여행 영어' },
