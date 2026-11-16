@@ -3,12 +3,12 @@
 // (파일을 고친 뒤 `node tools/build-precache.mjs` 를 실행하면 버전과 목록이 바뀐다 — 직접 고치지 말 것).
 
 /* PRECACHE:BEGIN */
-const VERSION = '6eec-105a';
+const VERSION = '5bb0-9194';
 const FILES = [
   ['index.html', '9ca27e5d'],
   ['manifest.webmanifest', '433937d9'],
   ['css/app.css', '7001da7c'],
-  ['js/checklist.js', '247fa75c'],
+  ['js/checklist.js', '33d74e46'],
   ['js/crypto.js', '98dac433'],
   ['js/days.js', '45e42c5d'],
   ['js/db.js', '64891c85'],
@@ -17,7 +17,7 @@ const FILES = [
   ['js/ideas.js', '00838b81'],
   ['js/main.js', '0ab56d2a'],
   ['js/maps.js', '893ef695'],
-  ['js/more.js', 'ab0df307'],
+  ['js/more.js', 'e698a0d0'],
   ['js/phrases.js', '45167887'],
   ['js/prefs.js', 'd862dceb'],
   ['js/route.js', 'cdd35d20'],
@@ -35,7 +35,7 @@ const FILES = [
   ['js/wallet.js', '6127bc56'],
   ['js/weather.js', 'f8590ea6'],
   ['vendor/qrcode.js', 'ea91d711'],
-  ['data/checklists.json', '8d1b7d0e'],
+  ['data/checklists.json', 'bac118ba'],
   ['data/eats.json', '54ef3580'],
   ['data/ideas.json', '0dcbbbb6'],
   ['data/maps.json', '895cd8c4'],
