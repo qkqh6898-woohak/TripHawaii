@@ -1,6 +1,7 @@
 // 여러 화면이 함께 쓰는 조각: 일정 한 줄, 일정 상세 시트, 장소 시트
 import { html, openSheet, copyText, debounce, toast } from './util.js';
-import { getTrip, place as getPlace, findItem, directionsUrl, coordsUrl, itemPhotos, CAT_LABEL, CAT_ICON, ISLAND_LABEL } from './trip.js';
+import { getTrip, place as getPlace, findItem, directionsUrl, directionsPlan, coordsUrl, itemPhotos, CAT_LABEL, CAT_ICON, ISLAND_LABEL } from './trip.js';
+import { stopLabel } from './transit.js';
 import { openViewer } from './viewer.js';
 import { embedButtonHtml } from './gmap.js';
 import * as time from './time.js';
@@ -96,6 +97,12 @@ export function bindCarousels(root) {
   });
 }
 
+// 길찾기 출발점 안내 한 줄
+export function planHtml(plan) {
+  if (!plan) return '';
+  return html`<p class="dir-plan">🚋 길찾기 출발: <b>${stopLabel(plan.stop)}</b> → ${plan.mode === 'walking' ? '걸어서' : '대중교통(버스·전철)'} <a href="#/maps?m=transit">바꾸기</a></p>`;
+}
+
 export function placeBlockHtml(p) {
   return html`
     <div class="place-block">
@@ -106,6 +113,7 @@ export function placeBlockHtml(p) {
         <button type="button" class="copy-row" data-copy="${p.addr}" data-copy-label="주소를 복사했어요">
           <span class="copy-label">주소</span><span class="copy-value copy-addr">${p.addr}</span><span class="copy-hint">복사</span>
         </button>` : ''}
+      ${planHtml(directionsPlan(p))}
       <div class="btn-row">
         <a class="btn btn-primary" href="${directionsUrl(p)}" target="_blank" rel="noopener noreferrer">🧭 길찾기</a>
         <a class="btn" href="${coordsUrl(p)}" target="_blank" rel="noopener noreferrer">📍 지도에서 위치 보기</a>

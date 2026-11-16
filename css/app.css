@@ -527,6 +527,21 @@ details > summary { cursor: pointer; font-weight: 700; min-height: 48px; display
 .how summary { display: flex; align-items: center; min-height: 48px; font-weight: 700; color: var(--brand-ink); cursor: pointer; }
 .how-steps { list-style: decimal; padding-left: 1.3em; display: flex; flex-direction: column; gap: 6px; font-size: .94rem; }
 
+/* ───────── 트롤리 · 교통 ───────── */
+.dir-plan { font-size: .88rem; background: var(--surface-2); padding: 8px 10px; border-radius: 10px; line-height: 1.45; }
+.dir-plan a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 4px; }
+.stop-list { display: flex; flex-direction: column; gap: 8px; }
+.stop > * + * { margin-top: 6px; }
+.stop h3 { font-size: 1rem; line-height: 1.35; display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+.stop-no { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 50%; background: #e4007f; color: #fff; font-weight: 800; font-size: .86rem; }
+.stop.is-closed { opacity: .7; }
+.stop.is-closed .stop-no { background: var(--muted); }
+.stop.is-home { border-color: #e4007f; }
+.line-dot { display: inline-block; width: 12px; height: 12px; border-radius: 50%; vertical-align: middle; background: var(--muted); }
+.line-dot[data-line="pink"] { background: #e4007f; } .line-dot[data-line="blue"] { background: #1d6fd6; }
+.line-dot[data-line="green"] { background: #2e9e5b; } .line-dot[data-line="red"] { background: #d64545; }
+.notes li { line-height: 1.45; }
+
 /* ───────── 앱 안 구글 지도 ───────── */
 .map-embed { display: flex; flex-direction: column; gap: 6px; }
 .map-embed iframe { width: 100%; aspect-ratio: 4 / 3; border: 1px solid var(--line); border-radius: 12px; background: var(--surface-2); }

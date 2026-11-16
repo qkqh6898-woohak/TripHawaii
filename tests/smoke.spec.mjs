@@ -125,7 +125,9 @@ async function runFlow(browser, base, vp) {
   assert.match(next, /10:00/);
   assert.match(next, /48분 남음/);
   assert.match(await text(page, '.clock-sub'), /3일차.*오아후.*힐튼가든인/);
-  assert.match(await page.locator('.next-card a.btn-primary').getAttribute('href'), /^https:\/\/www\.google\.com\/maps\/dir\/\?api=1&destination=/);
+  const nextDir = await page.locator('.next-card a.btn-primary').getAttribute('href');
+  assert.match(nextDir, /^https:\/\/www\.google\.com\/maps\/dir\/\?api=1&destination=/);
+  assert.match(nextDir, /&origin=[^&]+&travelmode=(walking|transit)/, '오아후 길찾기는 트롤리 정거장에서 출발');
   log('오늘: 시각·다음 일정·길찾기 링크 ✓');
 
   // 2) 서비스 워커가 모든 파일을 저장할 때까지 기다림
@@ -367,6 +369,19 @@ async function runFlow(browser, base, vp) {
   await go(page, '#/maps?m=eats&cat=fav');
   assert.equal(await page.locator('.eat').count(), 1);
   await page.locator('.eat [data-eat-fav]').first().click();
+  // 교통: 핑크라인 정거장 13곳 · 출발점 바꾸기
+  await go(page, '#/maps?m=transit');
+  assert.equal(await page.locator('.stop').count(), 13);
+  assert.equal(await page.locator('.stop.is-closed').count(), 1);
+  assert.equal(await page.locator('.stop.is-home').count(), 1);
+  await page.locator('[data-dirfrom="here"]').click();
+  await page.waitForTimeout(400);
+  await go(page, '#/maps?m=eats&cat=poke');
+  assert.equal(await page.locator('.dir-plan').count(), 0, '내 위치로 바꾸면 정거장 안내가 사라짐');
+  assert.doesNotMatch(await page.locator('.eat a[href*="/maps/dir/"]').first().getAttribute('href'), /origin=/);
+  await go(page, '#/maps?m=transit');
+  await page.locator('[data-dirfrom="stop"]').click();
+  await page.waitForTimeout(400);
   // 앱 안에서 구글 지도 열기 → 닫기
   await go(page, '#/maps?m=eats&cat=poke');
   await page.locator('.eat [data-embed]').first().click();

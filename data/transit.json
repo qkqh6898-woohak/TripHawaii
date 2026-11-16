@@ -1,0 +1,194 @@
+{
+ "schema": 1,
+ "updated": "2026-11-16",
+ "note": "와이키키 트롤리 공식 안내(2026년 2월 시간표 · 1월 요금표)와 여행 안내를 정리했어요. 노선·시간은 바뀔 수 있으니 정거장 안내판과 공식 사이트를 확인하세요.",
+ "walk_km": 1.0,
+ "lines": [
+  {
+   "id": "pink",
+   "name": "핑크라인 (알라모아나 라인)",
+   "color": "#e4007f",
+   "fare": "1인 $6 (하루 동안 핑크라인 자유 승차) · 기사에게 현금 구매 가능",
+   "every": "약 15분 간격 · 한 바퀴 약 1시간",
+   "hours": "와이키키 쇼핑 플라자 10:00~19:15 (급행 09:45)",
+   "notes": [
+    "19:00 이후에는 정거장 목록이 달라져요 (일리카이 · 할레 코아 · 카 라이 등)",
+    "정거장 순서 ①②③⑩~⑬은 공식 정거장 안내, ④~⑨는 여행 안내 기준",
+    "정거장 위치는 주소 주변 추정 (길찾기는 정거장 이름·주소로 검색)"
+   ],
+   "official": "https://waikikitrolley.com/schedule/pink-line-schedule/",
+   "stops": [
+    {
+     "id": "p1",
+     "no": 1,
+     "name": "와이키키 쇼핑 플라자",
+     "name_en": "Waikiki Shopping Plaza",
+     "addr": "2250 Kalakaua Ave, Honolulu, HI 96815",
+     "lat": 21.2786,
+     "lng": -157.8288,
+     "note": "메인 탑승장 · 로열하와이안센터 앞 · 첫차 10:00(급행 09:45) · 막차 19:15"
+    },
+    {
+     "id": "p2",
+     "no": 2,
+     "name": "듀크 카하나모쿠 동상",
+     "name_en": "Duke Kahanamoku Statue",
+     "addr": "Kalakaua Ave, Kuhio Beach, Honolulu, HI 96815",
+     "lat": 21.276,
+     "lng": -157.8257,
+     "note": "와이키키 해변 · 첫차 10:04 · 막차 19:19"
+    },
+    {
+     "id": "p3",
+     "no": 3,
+     "name": "더 트윈 핀 호텔",
+     "name_en": "The Twin Fin Hotel",
+     "addr": "2570 Kalakaua Ave, Honolulu, HI 96815",
+     "lat": 21.2736,
+     "lng": -157.8228
+    },
+    {
+     "id": "p4",
+     "no": 4,
+     "name": "힐튼 와이키키 비치",
+     "name_en": "Hilton Waikiki Beach",
+     "addr": "2500 Kuhio Ave, Honolulu, HI 96815",
+     "lat": 21.2758,
+     "lng": -157.8226
+    },
+    {
+     "id": "p5",
+     "no": 5,
+     "name": "마루카메 우동 앞",
+     "name_en": "Marugame Udon Waikiki",
+     "addr": "2310 Kuhio Ave, Honolulu, HI 96815",
+     "lat": 21.2797,
+     "lng": -157.8259,
+     "note": "쿠히오 애비뉴 · 힐튼가든인(첫 숙소) 바로 옆"
+    },
+    {
+     "id": "p6",
+     "no": 6,
+     "name": "코트야드 바이 메리어트",
+     "name_en": "Courtyard by Marriott Waikiki Beach",
+     "addr": "400 Royal Hawaiian Ave, Honolulu, HI 96815",
+     "lat": 21.2807,
+     "lng": -157.8293
+    },
+    {
+     "id": "p7",
+     "no": 7,
+     "name": "호텔 라 크로아",
+     "name_en": "Hotel La Croix",
+     "addr": "2070 Kalakaua Ave, Honolulu, HI 96815",
+     "lat": 21.2823,
+     "lng": -157.8338
+    },
+    {
+     "id": "p8",
+     "no": 8,
+     "name": "호쿨라니 호텔",
+     "name_en": "Hokulani Waikiki",
+     "addr": "2181 Kalakaua Ave, Honolulu, HI 96815",
+     "lat": 21.2805,
+     "lng": -157.8315,
+     "note": "2026-07-27 상수도관 파열로 운행에서 제외 (공식 안내) — 다시 열렸는지 확인",
+     "status": "closed"
+    },
+    {
+     "id": "p9",
+     "no": 9,
+     "name": "아쿠아 팜스 와이키키",
+     "name_en": "Aqua Palms Waikiki",
+     "addr": "1850 Ala Moana Blvd, Honolulu, HI 96815",
+     "lat": 21.2848,
+     "lng": -157.8372
+    },
+    {
+     "id": "p10",
+     "no": 10,
+     "name": "알라모아나 센터 (바다 쪽)",
+     "name_en": "Waikiki Trolley Ala Moana Center Stop",
+     "addr": "1450 Ala Moana Blvd, Honolulu, HI 96814",
+     "lat": 21.289,
+     "lng": -157.843,
+     "note": "Ala Moana Blvd 쪽 · 첫차 10:43 · 막차 20:15"
+    },
+    {
+     "id": "p11",
+     "no": 11,
+     "name": "일리카이 호텔 · 힐튼 하와이안 빌리지",
+     "name_en": "Ilikai Hotel & Luxury Suites",
+     "addr": "1777 Ala Moana Blvd, Honolulu, HI 96815",
+     "lat": 21.2857,
+     "lng": -157.8395,
+     "note": "힐튼 하와이안 빌리지까지 걸어서 1분"
+    },
+    {
+     "id": "p12",
+     "no": 12,
+     "name": "할레 코아 호텔",
+     "name_en": "Hale Koa Hotel",
+     "addr": "2055 Kalia Rd, Honolulu, HI 96815",
+     "lat": 21.2827,
+     "lng": -157.8357
+    },
+    {
+     "id": "p13",
+     "no": 13,
+     "name": "카 라이 와이키키 비치",
+     "name_en": "Ka La'i Waikiki Beach",
+     "addr": "223 Saratoga Rd, Honolulu, HI 96815",
+     "lat": 21.2797,
+     "lng": -157.8321
+    }
+   ]
+  },
+  {
+   "id": "blue",
+   "name": "블루라인 (오션 뷰 라인)",
+   "color": "#1d6fd6",
+   "fare": "1인 $35 (어린이 $23)",
+   "every": "약 40분 간격",
+   "about": "다이아몬드 헤드 · 하나우마 베이 · 마카푸우 전망대 · 씨라이프 파크 방향 해안 도로",
+   "official": "https://waikikitrolley.com/ko/ocean-view-line/"
+  },
+  {
+   "id": "green",
+   "name": "그린라인 (다이아몬드 헤드 라인)",
+   "color": "#2e9e5b",
+   "fare": "1인 $22 (어린이 $15)",
+   "every": "약 60~70분 간격",
+   "about": "와이키키 쇼핑 플라자 → 듀크 동상 → 몬사라트 애비뉴 · 카피올라니 공원 → 다이아몬드 헤드 (등산은 입장 예약 따로 필요)",
+   "official": "https://waikikitrolley.com/ko/diamond-head-line/"
+  },
+  {
+   "id": "red",
+   "name": "레드라인 (역사 호놀룰루 라인)",
+   "color": "#d64545",
+   "fare": "1인 $35 (어린이 $23)",
+   "every": "약 60분 간격",
+   "about": "이올라니 궁전 · 펀치볼 등 호놀룰루 시내 역사 명소",
+   "official": "https://waikikitrolley.com/ko/historic-honolulu-line/"
+  }
+ ],
+ "passes": "전 노선 패스: 1일 $64 · 4일 $76 · 7일 $88 (성인, 2026년 1월 요금표)",
+ "public": [
+  {
+   "id": "thebus",
+   "name": "더버스 (TheBus) · 스카이라인 (전철)",
+   "icon": "🚌",
+   "text": "HOLO 카드(발급 $2)로 2시간 자유 승차 $3, 24시간 $7.50 (2026년 7월 요금). 현금은 $3.25이고 환승이 안 돼요. 스카이라인 전철은 HOLO 카드로만 탈 수 있어요.",
+   "links": [
+    {
+     "label": "더버스 요금 안내",
+     "url": "https://www.thebus.org/Fare/TheBusFares20260701.asp"
+    },
+    {
+     "label": "HOLO 카드",
+     "url": "https://www.holocard.net/"
+    }
+   ]
+  }
+ ]
+}

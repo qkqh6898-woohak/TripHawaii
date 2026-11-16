@@ -1,12 +1,14 @@
 // 지도 — 미리 그려 둔 약도(오프라인) + 날짜별 동선(시간표·장소) + Google 지도 경로 · 전체 일정 요약
 import { html, setHTML, onSwipe, copyText, downloadFile, toast, haptic } from './util.js';
 import { prefs, setPref } from './prefs.js';
-import { getTrip, dayByDate, placesOfDay, hotel, place as getPlace, directionsUrl, mapSize, mapLevels, CAT_LABEL, CAT_ICON } from './trip.js';
+import { getTrip, dayByDate, placesOfDay, hotel, place as getPlace, directionsUrl, directionsTo, directionsPlan, homeOnOahu, mapSize, mapLevels, CAT_LABEL, CAT_ICON } from './trip.js';
+import { transitDoc, dirFrom, stopQuery, stopLabel, nearestStop } from './transit.js';
+import { planHtml } from './ui.js';
 import * as time from './time.js';
 import { openViewer } from './viewer.js';
 import { bindItemClicks, timeHtml } from './ui.js';
 import { routeStops, dayRouteLinks, dayHead, missingInfo, summaryText, buildKml, timeLabel } from './route.js';
-import { loadEats, eatQuery, eatsCsv, searchUrl as gSearch, dirUrl as gDir, embedButtonHtml } from './gmap.js';
+import { loadEats, eatQuery, eatsCsv, searchUrl as gSearch, embedButtonHtml } from './gmap.js';
 
 const MAPS = {
   hawaii: { label: '하와이 전체', src: 'maps/overview-hawaii.png', alt: '하와이 전체 일정 지도' },
@@ -15,6 +17,7 @@ const MAPS = {
   day: { label: '날짜별' },
   summary: { label: '일정 요약' },
   eats: { label: '맛집' },
+  transit: { label: '🚋 교통' },
   korea: { label: '한국↔하와이', src: 'maps/korea-hawaii.png', alt: '한국과 하와이 이동 지도' },
 };
 const FILTERS = [['all', '전체'], ['hotel', '숙소'], ['sight', '관광'], ['shop', '쇼핑'], ['food', '음식'], ['tour', '투어'], ['move', '이동']];
@@ -131,6 +134,97 @@ function bindSummary(root) {
   });
 }
 
+// ───────────── 트롤리 · 대중교통 (data/transit.json) ─────────────
+const TRANSIT_LAYER = 'https://www.google.com/maps/@21.2830,-157.8330,14z/data=!5m1!1e2';   // 구글 지도 '대중교통' 표시
+function transitHtml() {
+  const doc = transitDoc();
+  if (!doc) return html`<p class="muted empty">교통 정보를 불러오지 못했어요.</p>`;
+  const pink = doc.lines.find((l) => l.id === 'pink');
+  const home = homeOnOahu();
+  const near = home ? nearestStop(home.lat, home.lng) : null;
+  const from = dirFrom();
+  const routeLink = (list) => {
+    const qs = list.map(stopQuery);
+    const params = new URLSearchParams({ api: '1', origin: qs[0], destination: qs[qs.length - 1], travelmode: 'driving' });
+    if (qs.length > 2) params.set('waypoints', qs.slice(1, -1).join('|'));
+    return `https://www.google.com/maps/dir/?${params.toString()}`;
+  };
+  const open = pink.stops.filter((s) => s.status !== 'closed');
+  return html`
+    <section class="card">
+      <h2>🧭 길찾기 출발점</h2>
+      <p class="muted small">앱의 모든 '길찾기'(오아후)가 어디서 출발할지 정해요. 빅아일랜드는 렌터카라 내 위치에서 출발해요.</p>
+      <div class="seg" role="group" aria-label="길찾기 출발점">
+        <button type="button" class="seg-btn ${from === 'stop' ? 'is-on' : ''}" data-dirfrom="stop" aria-pressed="${from === 'stop' ? 'true' : 'false'}">🚋 트롤리 정거장</button>
+        <button type="button" class="seg-btn ${from === 'here' ? 'is-on' : ''}" data-dirfrom="here" aria-pressed="${from === 'here' ? 'true' : 'false'}">📍 내 위치</button>
+      </div>
+      <p class="small">${from === 'stop' ? html`가까운 핑크라인 정거장(걸어서 ${doc.walk_km}km 안)에서 <b>걸어서</b>, 멀면 숙소 근처 정거장${near ? html`(<b>${stopLabel(near.stop)}</b>)` : ''}에서 <b>대중교통</b>으로 안내해요.` : '폰의 현재 위치에서 출발해요.'}</p>
+    </section>
+
+    <section class="card">
+      <h2><span class="line-dot" data-line="pink"></span> ${pink.name}</h2>
+      <p><b>${pink.fare}</b></p>
+      <p class="small">${pink.every} · ${pink.hours}</p>
+      <ul class="small notes">${pink.notes.map((n) => html`<li>· ${n}</li>`)}</ul>
+      <div class="btn-row">
+        <a class="btn btn-small" href="${routeLink(open.filter((s) => s.no <= 7))}" target="_blank" rel="noopener noreferrer">🗺 노선 ①~⑦ 구글 지도</a>
+        <a class="btn btn-small" href="${routeLink(open.filter((s) => s.no >= 7))}" target="_blank" rel="noopener noreferrer">🗺 노선 ⑦~⑬ 구글 지도</a>
+        <a class="btn btn-small" href="${pink.official}" target="_blank" rel="noopener noreferrer">🕒 공식 시간표</a>
+      </div>
+    </section>
+    <ol class="stop-list">
+      ${pink.stops.map((s) => html`
+        <li class="card stop ${s.status === 'closed' ? 'is-closed' : ''} ${near && near.stop.id === s.id ? 'is-home' : ''}" data-stop="${s.id}">
+          <h3><span class="stop-no">${s.no}</span> ${s.name}${near && near.stop.id === s.id ? html` <span class="tag tag-booking">숙소 근처</span>` : ''}${s.status === 'closed' ? html` <span class="tag tag-must">운행 제외</span>` : ''}</h3>
+          <p class="muted small">${s.name_en} · ${s.addr}</p>
+          ${s.note ? html`<p class="small">${s.note}</p>` : ''}
+          <div class="btn-row">
+            <a class="btn btn-small" href="${gSearch(stopQuery(s))}" target="_blank" rel="noopener noreferrer">📍 구글 지도 앱</a>
+          </div>
+          ${embedButtonHtml(stopQuery(s), `${s.name} 정거장 구글 지도`)}
+        </li>`)}
+    </ol>
+
+    <h2 class="section-title">다른 트롤리 노선</h2>
+    ${doc.lines.filter((l) => l.id !== 'pink').map((l) => html`
+      <section class="card">
+        <h3><span class="line-dot" data-line="${l.id}"></span> ${l.name}</h3>
+        <p class="small"><b>${l.fare}</b> · ${l.every}</p>
+        <p class="small">${l.about}</p>
+        <a class="link-btn" href="${l.official}" target="_blank" rel="noopener noreferrer">공식 노선 안내 ›</a>
+      </section>`)}
+    <p class="muted small">${doc.passes}</p>
+
+    <h2 class="section-title">버스 · 전철</h2>
+    ${doc.public.map((b) => html`
+      <section class="card">
+        <h3>${b.icon} ${b.name}</h3>
+        <p class="small">${b.text}</p>
+        <div class="btn-row">
+          ${(b.links || []).map((l) => html`<a class="btn btn-small" href="${l.url}" target="_blank" rel="noopener noreferrer">🔗 ${l.label}</a>`)}
+        </div>
+      </section>`)}
+    <section class="card">
+      <h3>🗺 구글 지도로 대중교통 보기</h3>
+      <div class="btn-row">
+        <a class="btn btn-small" href="${TRANSIT_LAYER}" target="_blank" rel="noopener noreferrer">🚌 와이키키 대중교통 노선도</a>
+        ${near ? html`<a class="btn btn-small" href="https://www.google.com/maps/dir/?${new URLSearchParams({ api: '1', origin: stopQuery(near.stop), travelmode: 'transit' }).toString()}" target="_blank" rel="noopener noreferrer">🚏 숙소 근처 정거장에서 대중교통 길찾기</a>` : ''}
+      </div>
+      <p class="muted small">구글 지도에는 버스·전철(더버스·스카이라인)이 나오고, 와이키키 트롤리는 나오지 않을 수 있어요. ${doc.note}</p>
+    </section>`;
+}
+
+function bindTransit(root, ctx) {
+  root.addEventListener('click', async (e) => {
+    const b = e.target.closest('[data-dirfrom]');
+    if (!b) return;
+    await setPref('dirFrom', b.dataset.dirfrom);
+    haptic();
+    toast(b.dataset.dirfrom === 'here' ? '길찾기가 내 위치에서 출발해요' : '길찾기가 트롤리 정거장에서 출발해요');
+    ctx.rerender();
+  });
+}
+
 // ───────────── 맛집 목록 (data/eats.json) ─────────────
 const AREA_ORDER = ['waikiki', 'diamondhead', 'kapahulu', 'alamoana', 'kaimuki', 'downtown', 'hawaiikai', 'northshore'];
 
@@ -176,8 +270,9 @@ function eatsHtml(doc, cat) {
           ${p.addr ? html`<p class="muted small">${p.addr}</p>` : ''}
           <div class="btn-row">
             <a class="btn btn-small" href="${gSearch(eatQuery(p))}" target="_blank" rel="noopener noreferrer">📍 구글 지도 앱</a>
-            <a class="btn btn-small" href="${gDir(eatQuery(p))}" target="_blank" rel="noopener noreferrer">🧭 길찾기</a>
+            <a class="btn btn-small" href="${directionsTo(eatQuery(p), { island: 'oahu', stop: p.stop })}" target="_blank" rel="noopener noreferrer">🧭 길찾기</a>
           </div>
+          ${planHtml(directionsPlan({ island: 'oahu', stop: p.stop }))}
           ${embedButtonHtml(eatQuery(p), `${p.name} 구글 지도`)}
         </li>`;
   })}
@@ -228,6 +323,12 @@ export async function render(root, ctx) {
   if (m === 'summary') {
     setHTML(root, html`${navHtml}${summaryHtml(trip)}`);
     bindSummary(root);
+    showSeg();
+    return;
+  }
+  if (m === 'transit') {
+    setHTML(root, html`${navHtml}${transitHtml()}`);
+    bindTransit(root, ctx);
     showSeg();
     return;
   }

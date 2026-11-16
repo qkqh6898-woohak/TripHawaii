@@ -49,7 +49,7 @@ export async function autoRate() {
 }
 
 // ───────────── 백업 / 복원 (예약 정보는 포함하지 않는다) ─────────────
-const BACKUP_PREFS = ['owner', 'rate', 'rateDate', 'rateSource', 'fee', 'theme', 'font', 'ttsRate', 'favPhrases', 'ideaFav', 'eatFav', 'haptic'];
+const BACKUP_PREFS = ['owner', 'rate', 'rateDate', 'rateSource', 'fee', 'theme', 'font', 'ttsRate', 'favPhrases', 'ideaFav', 'eatFav', 'haptic', 'dirFrom'];
 
 export async function buildBackup() {
   const p = prefs();

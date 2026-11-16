@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { validateTrip, validatePhrases, validateChecklists, validateSecret, validateVideos, validateIdeas, validateEats } from '../tools/validate.mjs';
+import { validateTrip, validatePhrases, validateChecklists, validateSecret, validateVideos, validateIdeas, validateEats, validateTransit } from '../tools/validate.mjs';
 import { scanText, checkPath, checkEncFile, collectKnownSecrets } from '../tools/scan-secrets.mjs';
 
 const load = (rel) => JSON.parse(readFileSync(new URL('../' + rel, import.meta.url), 'utf8'));
@@ -106,6 +106,14 @@ test('체크리스트: 항목 id 중복 없음', () => {
   assert.deepEqual(validateChecklists(doc).errors, []);
   const broken = clone(doc); broken.groups[1].items[0].id = broken.groups[0].items[0].id;
   assert.ok(validateChecklists(broken).errors.some((e) => e.includes('중복')));
+});
+
+test('교통: 핑크라인 정거장 · 맛집의 정거장 연결 검사', () => {
+  const doc = load('data/transit.json');
+  const eats = load('data/eats.json');
+  assert.deepEqual(validateTransit(doc, eats).errors, []);
+  const bad = clone(eats); bad.places[0].stop = 'p99';
+  assert.ok(validateTransit(doc, bad).errors.some((e) => e.includes('p99')));
 });
 
 test('맛집 목록: 63곳 · 종류·지역·검색어 검사', () => {

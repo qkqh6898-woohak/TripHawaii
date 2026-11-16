@@ -1,4 +1,6 @@
 // data/trip.json 불러오기와 조회 (장소·숙소·날짜), 길찾기 링크
+import { setTransit, dirPlan, stopQuery } from './transit.js';
+import * as time from './time.js';
 
 let trip = null;
 let index = null;
@@ -36,6 +38,10 @@ export async function loadTrip() {
     const m = await fetch('data/maps.json', { cache: 'no-cache' });
     if (m.ok) mapSizes = await m.json();
   } catch { /* 크기를 몰라도 지도는 보인다 */ }
+  try {
+    const tr = await fetch('data/transit.json', { cache: 'no-cache' });
+    if (tr.ok) setTransit(await tr.json());
+  } catch { /* 없으면 길찾기는 내 위치에서 출발 */ }
   try {
     const ph = await fetch('data/photos.json', { cache: 'no-cache' });
     if (ph.ok) photoFiles = new Set(await ph.json());
@@ -102,12 +108,33 @@ export function hotelEvents(date) {
   return out;
 }
 
+// 지금(또는 다음) 오아후 숙소 위치 — 목적지가 멀 때 어느 트롤리 정거장에서 출발할지 정하는 기준
+export function homeOnOahu() {
+  if (!trip) return null;
+  const phase = time.tripPhase(trip.trip);
+  const date = phase.phase === 'during' ? phase.date : (phase.phase === 'after' ? trip.trip.end : trip.trip.start);
+  const oahu = (trip.hotels || []).map((h) => ({ h, p: place(h.place) })).filter((x) => x.p && x.p.island === 'oahu');
+  const now = oahu.find((x) => x.h.checkin <= date && date < x.h.checkout) || oahu.find((x) => x.h.checkin > date) || oahu[oahu.length - 1];
+  return now ? now.p : null;
+}
+
+// 길찾기 계획 (화면에 '어디서 출발하는지' 보여줄 때)
+export const directionsPlan = (p) => dirPlan(p, homeOnOahu());
+
 // Google 지도 길찾기 링크 (키 불필요). 이름+주소로 찾으면 좌표보다 정확한 입구로 안내된다.
+// 오아후는 '내 위치' 대신 트롤리 정거장에서 출발한다 (transit.js).
+export function directionsTo(dest, info = {}) {
+  const params = new URLSearchParams({ api: '1', destination: dest });
+  const plan = dirPlan(info, homeOnOahu());
+  if (plan) {
+    params.set('origin', stopQuery(plan.stop));
+    params.set('travelmode', plan.mode);
+  } else if (info.island === 'bigisland') params.set('travelmode', 'driving'); // 빅아일랜드는 렌터카 이동
+  return `https://www.google.com/maps/dir/?${params.toString()}`;
+}
 export function directionsUrl(p) {
   const dest = p.addr ? `${p.name_en || p.name}, ${p.addr}` : `${p.lat},${p.lng}`;
-  const params = new URLSearchParams({ api: '1', destination: dest });
-  if (p.island === 'bigisland') params.set('travelmode', 'driving'); // 빅아일랜드는 렌터카 이동
-  return `https://www.google.com/maps/dir/?${params.toString()}`;
+  return directionsTo(dest, p);
 }
 
 // 좌표로 바로 여는 링크 (이름 검색이 엉뚱한 곳을 가리킬 때 대비)

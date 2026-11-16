@@ -283,6 +283,25 @@ export function validateIdeas(doc, tripDates = []) {
   return { errors, warnings: [] };
 }
 
+export function validateTransit(doc, eatsDoc = null) {
+  const errors = [];
+  const lines = (doc && doc.lines) || [];
+  const pink = lines.find((l) => l.id === 'pink');
+  if (!pink || !Array.isArray(pink.stops) || !pink.stops.length) errors.push('transit: 핑크라인 정거장이 없습니다');
+  const ids = new Set();
+  for (const s of (pink && pink.stops) || []) {
+    const at = `transit.pink.stops (${s.id})`;
+    if (!s.id || ids.has(s.id)) errors.push(`${at}: id 가 없거나 중복됩니다`);
+    ids.add(s.id);
+    if (!s.name || !s.name_en || !s.addr) errors.push(`${at}: name, name_en, addr 가 있어야 합니다`);
+    if (typeof s.lat !== 'number' || typeof s.lng !== 'number' || Math.abs(s.lat - 21.3) > 0.2 || Math.abs(s.lng + 157.85) > 0.2) errors.push(`${at}: 좌표가 호놀룰루 범위가 아닙니다`);
+  }
+  for (const l of lines) for (const u of [l.official]) if (u && !/^https:\/\//.test(u)) errors.push(`transit.${l.id}: official 은 https 주소여야 합니다`);
+  for (const b of (doc && doc.public) || []) for (const l of b.links || []) if (!/^https:\/\//.test(l.url || '')) errors.push(`transit.public (${b.id}): 링크는 https 주소여야 합니다`);
+  for (const p of (eatsDoc && eatsDoc.places) || []) if (p.stop && !ids.has(p.stop)) errors.push(`eats (${p.id}): stop "${p.stop}" 가 핑크라인에 없습니다`);
+  return { errors, warnings: [] };
+}
+
 export function validateEats(doc) {
   const errors = [];
   const cats = new Set(((doc && doc.categories) || []).map((c) => c.id));
@@ -387,6 +406,7 @@ async function main() {
   run('data/checklists.json', () => validateChecklists(loadJSON('data/checklists.json')));
   run('data/ideas.json', () => validateIdeas(loadJSON('data/ideas.json'), loadJSON('data/trip.json').days.map((d) => d.date)));
   run('data/eats.json', () => validateEats(loadJSON('data/eats.json')));
+  run('data/transit.json', () => validateTransit(loadJSON('data/transit.json'), loadJSON('data/eats.json')));
   run('data/videos.json', () => validateVideos(loadJSON('data/videos.json'), loadJSON('data/trip.json').days.map((d) => d.date)));
 
   if (!quiet) for (const w of warnings) console.log(`⚠️  ${w}`);
