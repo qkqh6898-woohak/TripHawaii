@@ -3,7 +3,7 @@
 // (파일을 고친 뒤 `node tools/build-precache.mjs` 를 실행하면 버전과 목록이 바뀐다 — 직접 고치지 말 것).
 
 /* PRECACHE:BEGIN */
-const VERSION = '3e97-4495';
+const VERSION = '6eec-105a';
 const FILES = [
   ['index.html', '9ca27e5d'],
   ['manifest.webmanifest', '433937d9'],
@@ -46,8 +46,8 @@ const FILES = [
   ['data/trip.json', 'b8ab2a6f'],
   ['data/videos.json', 'f543b457'],
   ['maps/big-island.png', 'a8e3a173'],
-  ['maps/day-1115-wide.png', 'fcf13574'],
-  ['maps/day-1115.png', '5308075f'],
+  ['maps/day-1115-wide.png', '89913008'],
+  ['maps/day-1115.png', '77ce582c'],
   ['maps/day-1116-wide.png', '0dbb55aa'],
   ['maps/day-1116.png', 'ed951678'],
   ['maps/day-1117-wide.png', '75e6374c'],
