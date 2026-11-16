@@ -21,6 +21,11 @@ export async function render(root) {
         <span class="menu-text"><b>체크리스트</b><span class="muted small">${phase.phase === 'before' ? `출발 전 ${prog.done}/${prog.total} 완료` : '매일 준비물 · 귀국 전 · 반입 금지 음식'}</span></span>
         <span class="menu-go" aria-hidden="true">›</span>
       </a>
+      <a class="card menu-item" href="#/check?tab=shopping">
+        <span class="menu-icon" aria-hidden="true">🛍</span>
+        <span class="menu-text"><b>쇼핑 리스트</b><span class="muted small">세포라 · ABC · 월마트 · 돈키호테 · 타깃 · 푸드랜드 · 기념품</span></span>
+        <span class="menu-go" aria-hidden="true">›</span>
+      </a>
       <a class="card menu-item" href="#/money">
         <span class="menu-icon" aria-hidden="true">💰</span>
         <span class="menu-text"><b>경비</b><span class="muted small">오늘 ${fmtUSD(money.todayUsd)} · 총 ${fmtKRW(money.all)} · 정산 · 팁 계산기</span></span>
