@@ -66,7 +66,7 @@ export function searchCatalog(trip = {}, eats = {}, checklists = {}, query = '')
   for (const p of eats.places || []) {
     eatIds.add(p.id);
     const related = byId.get(p.id);
-    const fields = [p.name, p.name_en, categories[p.cat], areas[p.area], p.note, p.plan, p.addr, related && related.name, related && related.name_en];
+    const fields = [p.name, p.name_en, categories[p.cat], areas[p.area], p.note, p.plan, p.addr, related && related.name, related && related.name_en, (p.tags || []).includes('oceanstar') ? '오션스타 추천' : ''];
     const rank = score(fields, terms);
     if (!rank) continue;
     result.food.push({

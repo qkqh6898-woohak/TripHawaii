@@ -226,15 +226,17 @@ function bindTransit(root, ctx) {
 }
 
 // ───────────── 맛집 목록 (data/eats.json) ─────────────
-const AREA_ORDER = ['waikiki', 'diamondhead', 'kapahulu', 'alamoana', 'kaimuki', 'downtown', 'hawaiikai', 'northshore'];
+const AREA_ORDER = ['waikiki', 'diamondhead', 'kapahulu', 'alamoana', 'kaimuki', 'downtown', 'hawaiikai', 'northshore', 'oahu'];
 
 function eatsHtml(doc, cat) {
   const favs = prefs().eatFav || [];
   const catOf = Object.fromEntries((doc.categories || []).map((c) => [c.id, c]));
   const list = (doc.places || [])
-    .filter((p) => (cat === 'all' ? true : cat === 'fav' ? favs.includes(p.id) : cat === 'walk' ? p.area === 'waikiki' : p.cat === cat))
+    .filter((p) => (cat === 'all' ? true : cat === 'fav' ? favs.includes(p.id) : cat === 'walk' ? p.area === 'waikiki' : cat === 'oceanstar' ? (p.tags || []).includes('oceanstar') : p.cat === cat))
     .sort((a, b) => AREA_ORDER.indexOf(a.area) - AREA_ORDER.indexOf(b.area));
-  const chips = [['all', '전체'], ['walk', '🚶 걸어서'], ['fav', `★ 찜 ${favs.length}`], ...(doc.categories || []).map((c) => [c.id, `${c.icon} ${c.title}`])];
+  const osCount = (doc.places || []).filter((p) => (p.tags || []).includes('oceanstar')).length;
+  const chips = [['all', '전체'], ['walk', '🚶 걸어서'], ['fav', `★ 찜 ${favs.length}`], ...(osCount ? [['oceanstar', `🐢 오션스타 추천 ${osCount}`]] : []), ...(doc.categories || []).map((c) => [c.id, `${c.icon} ${c.title}`])];
+  const tip = cat !== 'all' ? (catOf[cat] || {}).tip : '';
   return html`
     <section class="card">
       <h2>🍽 맛집 ${(doc.places || []).length}곳</h2>
@@ -255,6 +257,8 @@ function eatsHtml(doc, cat) {
     <div class="chips chips-scroll" aria-label="맛집 종류 고르기">
       ${chips.map(([id, label]) => html`<a class="chip ${cat === id ? 'is-on' : ''}" href="#/maps?m=eats&cat=${id}" ${cat === id ? html`aria-current="true"` : ''}>${label}</a>`)}
     </div>
+    ${cat === 'oceanstar' ? html`<p class="banner">🐢 ${(doc.sources || {}).oceanstar || ''}</p>` : ''}
+    ${tip ? html`<p class="banner">💡 ${tip}</p>` : ''}
     ${!list.length ? html`<p class="muted empty">${cat === 'fav' ? '아직 찜한 곳이 없어요. 가게 옆 ☆ 를 눌러 모아 보세요.' : '이 종류의 맛집이 없어요.'}</p>` : ''}
     <ul class="eat-list">
       ${list.map((p) => {
@@ -266,7 +270,7 @@ function eatsHtml(doc, cat) {
             <h3>${c.icon || '🍴'} ${p.name}${p.star ? html` <span class="tag tag-ok">추천</span>` : ''}</h3>
             <button type="button" class="btn btn-fav ${fav ? 'is-on' : ''}" data-eat-fav aria-pressed="${fav ? 'true' : 'false'}" aria-label="${p.name} 찜하기">${fav ? '★' : '☆'}</button>
           </div>
-          <p class="eat-meta"><span class="tag">${c.title || ''}</span> <span class="tag ${p.area === 'waikiki' ? 'tag-booking' : ''}">${(doc.areas || {})[p.area] || ''}</span>${p.plan ? html` <span class="tag tag-tentative">${p.plan}</span>` : ''}</p>
+          <p class="eat-meta">${(p.tags || []).includes('oceanstar') ? html`<span class="tag tag-ok">🐢 오션스타</span> ` : ''}<span class="tag">${c.title || ''}</span> <span class="tag ${p.area === 'waikiki' ? 'tag-booking' : ''}">${(doc.areas || {})[p.area] || ''}</span>${p.plan ? html` <span class="tag tag-tentative">${p.plan}</span>` : ''}</p>
           ${p.note ? html`<p class="eat-note">${p.note}</p>` : ''}
           ${p.addr ? html`<p class="muted small">${p.addr}</p>` : ''}
           <div class="btn-row">
@@ -335,7 +339,7 @@ export async function render(root, ctx) {
   }
   if (m === 'eats') {
     const doc = await loadEats();
-    const ids = new Set(['all', 'walk', 'fav', ...(doc.categories || []).map((c) => c.id)]);
+    const ids = new Set(['all', 'walk', 'fav', 'oceanstar', ...(doc.categories || []).map((c) => c.id)]);
     const ecat = ids.has(q.cat) ? q.cat : 'all';
     setHTML(root, html`${navHtml}${eatsHtml(doc, ecat)}`);
     bindEats(root, doc);

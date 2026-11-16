@@ -10,7 +10,8 @@
   "downtown": "다운타운·항구 · 차 15~20분",
   "diamondhead": "다이아몬드 헤드 쪽 · 차 5분",
   "hawaiikai": "하와이 카이 · 차 25분",
-  "northshore": "노스쇼어 · 차 1시간 이상"
+  "northshore": "노스쇼어 · 차 1시간 이상",
+  "oahu": "위치는 구글 지도에서 (지점이 여러 곳이면 가까운 곳)"
  },
  "categories": [
   {
@@ -31,12 +32,18 @@
   {
    "id": "poke",
    "title": "포케",
-   "icon": "🐟"
+   "icon": "🐟",
+   "tip": "주문 팁 (오션스타): Ahi 참치 · Salmon 연어 · Hamachi 방어 — 매콤마요(Spicy Mayo)와 간장(Shoyu) 베이스를 하나씩 시켜 보세요."
   },
   {
    "id": "brunch",
    "title": "브런치",
    "icon": "🥞"
+  },
+  {
+   "id": "local",
+   "title": "하와이 로컬",
+   "icon": "🌺"
   },
   {
    "id": "beachcafe",
@@ -87,6 +94,11 @@
    "id": "burger",
    "title": "햄버거",
    "icon": "🍔"
+  },
+  {
+   "id": "dessert",
+   "title": "디저트",
+   "icon": "🍨"
   },
   {
    "id": "bar",
@@ -349,7 +361,10 @@
    "name": "Nico's Pier 38",
    "area": "downtown",
    "name_en": "Nico's Pier 38",
-   "addr": "1129 N Nimitz Hwy, Honolulu, HI"
+   "addr": "1129 N Nimitz Hwy, Honolulu, HI",
+   "tags": [
+    "oceanstar"
+   ]
   },
   {
    "id": "miro",
@@ -391,7 +406,11 @@
    "area": "alamoana",
    "name_en": "Totoya Negitoro & Seafood Bowls",
    "addr": "436 Piikoi St Ste B, Honolulu, HI",
-   "stop": "p10"
+   "stop": "p10",
+   "tags": [
+    "oceanstar"
+   ],
+   "note": "카이센동·네기토로 맛집 (오션스타)"
   },
   {
    "id": "marujuu",
@@ -417,8 +436,11 @@
    "area": "waikiki",
    "name_en": "TsuruTonTan Udon Noodle Brasserie",
    "addr": "2233 Kalakaua Ave, Honolulu, HI 96815",
-   "note": "로열하와이안센터 B동 3층 · 디럭스 우동·카레 디럭스 우동 추천 · 예약 없이 대기",
-   "stop": "p1"
+   "note": "로열하와이안센터 B동 3층 · 디럭스 우동·카레 디럭스 우동 추천 · 예약 없이 대기 · 냉 명란우동 맛집 — 마루카메 우동보다 맛있다는 추천 (오션스타)",
+   "stop": "p1",
+   "tags": [
+    "oceanstar"
+   ]
   },
   {
    "id": "michels",
@@ -436,8 +458,11 @@
    "area": "waikiki",
    "name_en": "Arancino di Mare",
    "addr": "2552 Kalakaua Ave, Honolulu, HI",
-   "note": "우니 파스타",
-   "stop": "p3"
+   "note": "우니 파스타 · 이탈리안 맛집 (오션스타)",
+   "stop": "p3",
+   "tags": [
+    "oceanstar"
+   ]
   },
   {
    "id": "bernini",
@@ -681,6 +706,271 @@
    "area": "kaimuki",
    "name_en": "Hale Vietnam Restaurant Honolulu",
    "note": "베트남 쌀국수"
+  },
+  {
+   "id": "mitchs",
+   "cat": "japanese",
+   "name": "Mitch's Fish Market & Sushi Bar",
+   "area": "oahu",
+   "name_en": "Mitch's Fish Market & Sushi Bar",
+   "q": "Mitch's Fish Market & Sushi Bar, Honolulu, HI",
+   "tags": [
+    "oceanstar"
+   ],
+   "note": "로컬들이 좋아하는 스시 집"
+  },
+  {
+   "id": "katsumidori",
+   "cat": "japanese",
+   "name": "Katsumidori Sushi Tokyo",
+   "area": "oahu",
+   "name_en": "Katsumidori Sushi Tokyo Waikiki",
+   "q": "Katsumidori Sushi Tokyo Waikiki, Honolulu, HI",
+   "tags": [
+    "oceanstar"
+   ],
+   "note": "호텔 안 분위기 좋은 일식 집"
+  },
+  {
+   "id": "imanastei",
+   "cat": "japanese",
+   "name": "Imanas Tei",
+   "area": "oahu",
+   "name_en": "Imanas Tei",
+   "q": "Imanas Tei, Honolulu, HI",
+   "tags": [
+    "oceanstar"
+   ],
+   "note": "로컬들이 좋아하는 이자카야"
+  },
+  {
+   "id": "shabuya",
+   "cat": "japanese",
+   "name": "Shabuya",
+   "area": "oahu",
+   "name_en": "Shabuya Honolulu",
+   "q": "Shabuya Honolulu, Honolulu, HI",
+   "tags": [
+    "oceanstar"
+   ],
+   "note": "간단하게 먹기 좋은 무한 리필 샤브샤브"
+  },
+  {
+   "id": "zippys",
+   "cat": "local",
+   "name": "Zippy's",
+   "area": "oahu",
+   "name_en": "Zippy's",
+   "q": "Zippy's, Honolulu, HI",
+   "tags": [
+    "oceanstar"
+   ],
+   "note": "하와이 로컬 체인 (\"하와이의 김밥천국\") · 로코모코·코리안 치킨 샐러드 추천"
+  },
+  {
+   "id": "bogarts",
+   "cat": "local",
+   "name": "Bogart's",
+   "area": "oahu",
+   "name_en": "Bogart's Cafe",
+   "q": "Bogart's Cafe, Honolulu, HI",
+   "tags": [
+    "oceanstar"
+   ],
+   "note": "하와이식 브런치"
+  },
+  {
+   "id": "haleiwajoes",
+   "cat": "local",
+   "name": "Haleiwa Joe's",
+   "area": "oahu",
+   "name_en": "Haleiwa Joe's",
+   "q": "Haleiwa Joe's, Honolulu, HI",
+   "tags": [
+    "oceanstar"
+   ],
+   "note": "로컬들이 좋아하는 로컬·미국 음식 분위기"
+  },
+  {
+   "id": "sperospera",
+   "cat": "local",
+   "name": "Spero Spera",
+   "area": "oahu",
+   "name_en": "Spero Spera",
+   "q": "Spero Spera, Honolulu, HI",
+   "tags": [
+    "oceanstar"
+   ],
+   "note": "로컬 샌드위치 맛집 · 아보카도 스테이크 샌드위치·아사이볼 추천"
+  },
+  {
+   "id": "helenas",
+   "cat": "local",
+   "name": "Helena's",
+   "area": "oahu",
+   "name_en": "Helena's Hawaiian Food",
+   "q": "Helena's Hawaiian Food, Honolulu, HI",
+   "tags": [
+    "oceanstar"
+   ],
+   "note": "정통 하와이안 음식"
+  },
+  {
+   "id": "herringbone",
+   "cat": "etc",
+   "name": "Herringbone",
+   "area": "oahu",
+   "name_en": "Herringbone Waikiki",
+   "q": "Herringbone Waikiki, Honolulu, HI",
+   "tags": [
+    "oceanstar"
+   ],
+   "note": "분위기 좋은 저녁"
+  },
+  {
+   "id": "mauibrewing",
+   "cat": "bar",
+   "name": "Maui Brewing Co.",
+   "area": "oahu",
+   "name_en": "Maui Brewing Co. Waikiki",
+   "q": "Maui Brewing Co. Waikiki, Honolulu, HI",
+   "tags": [
+    "oceanstar"
+   ],
+   "note": "하와이 양조장 맥주 · 가성비 안주도 좋음"
+  },
+  {
+   "id": "ivwinebar",
+   "cat": "bar",
+   "name": "Island Vintage Wine Bar",
+   "area": "oahu",
+   "name_en": "Island Vintage Wine Bar Waikiki",
+   "q": "Island Vintage Wine Bar Waikiki, Honolulu, HI",
+   "tags": [
+    "oceanstar"
+   ],
+   "note": "와인과 맛있는 로컬식 안주"
+  },
+  {
+   "id": "foodlandpoke",
+   "cat": "poke",
+   "name": "Foodland Poke Bar",
+   "area": "oahu",
+   "name_en": "Foodland poke",
+   "q": "Foodland poke, Honolulu, HI",
+   "tags": [
+    "oceanstar"
+   ],
+   "note": "Spicy Ahi 강추 · 숙소 앞 와이키키 마켓(푸드랜드 계열)에도 포케 코너가 있어요"
+  },
+  {
+   "id": "offthehook",
+   "cat": "poke",
+   "name": "Off The Hook",
+   "area": "oahu",
+   "name_en": "Off the Hook Poke Market",
+   "q": "Off the Hook Poke Market, Honolulu, HI",
+   "tags": [
+    "oceanstar"
+   ]
+  },
+  {
+   "id": "freshcatch",
+   "cat": "poke",
+   "name": "Fresh Catch",
+   "area": "oahu",
+   "name_en": "Fresh Catch Hawaii poke",
+   "q": "Fresh Catch Hawaii poke, Honolulu, HI",
+   "tags": [
+    "oceanstar"
+   ]
+  },
+  {
+   "id": "matchamaiko",
+   "cat": "dessert",
+   "name": "Matcha Maiko",
+   "area": "oahu",
+   "name_en": "Matcha Maiko Waikiki",
+   "q": "Matcha Maiko Waikiki, Honolulu, HI",
+   "tags": [
+    "oceanstar"
+   ],
+   "note": "진하고 쌉쌀한 말차 아이스크림"
+  },
+  {
+   "id": "nanas",
+   "cat": "dessert",
+   "name": "Nana's Green Tea",
+   "area": "oahu",
+   "name_en": "Nana's Green Tea Waikiki",
+   "q": "Nana's Green Tea Waikiki, Honolulu, HI",
+   "tags": [
+    "oceanstar"
+   ],
+   "note": "호지차 라떼·아이스크림 강추"
+  },
+  {
+   "id": "mosa",
+   "cat": "dessert",
+   "name": "Mosa Ice Cream",
+   "area": "oahu",
+   "name_en": "Mosa Ice Cream",
+   "q": "Mosa Ice Cream, Honolulu, HI",
+   "tags": [
+    "oceanstar"
+   ],
+   "note": "모찌·견과류 아이스크림"
+  },
+  {
+   "id": "coffeeortea",
+   "cat": "dessert",
+   "name": "Coffee or Tea",
+   "area": "oahu",
+   "name_en": "Coffee or Tea Honolulu",
+   "q": "Coffee or Tea Honolulu, Honolulu, HI",
+   "tags": [
+    "oceanstar"
+   ],
+   "note": "로컬들이 좋아하는 밀크티·빙수"
+  },
+  {
+   "id": "leahi",
+   "cat": "dessert",
+   "name": "Leahi Health",
+   "area": "oahu",
+   "name_en": "Leahi Health Waikiki",
+   "q": "Leahi Health Waikiki, Honolulu, HI",
+   "tags": [
+    "oceanstar"
+   ],
+   "note": "아사이볼"
+  },
+  {
+   "id": "lanikaijuice",
+   "cat": "dessert",
+   "name": "Lanikai Juice",
+   "area": "oahu",
+   "name_en": "Lanikai Juice",
+   "q": "Lanikai Juice, Honolulu, HI",
+   "tags": [
+    "oceanstar"
+   ],
+   "note": "아사이볼"
+  },
+  {
+   "id": "dacove",
+   "cat": "dessert",
+   "name": "Da Cove Health Bar and Cafe",
+   "area": "oahu",
+   "name_en": "Da Cove Health Bar and Cafe",
+   "q": "Da Cove Health Bar and Cafe, Honolulu, HI",
+   "tags": [
+    "oceanstar"
+   ],
+   "note": "아사이볼"
   }
- ]
+ ],
+ "sources": {
+  "oceanstar": "오션스타(11/16 거북이 투어) 크루들이 직접 다니는 맛집 추천"
+ }
 }
