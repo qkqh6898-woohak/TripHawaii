@@ -26,6 +26,7 @@ const DEFAULTS = {
   favPhrases: [],
   haptic: true,           // 체크·즐겨찾기 때 짧은 진동 (지원하는 폰에서만)
   ideaFav: [],            // 추천 코스 중 관심 표시한 것
+  eatFav: [],             // 맛집 목록에서 찜한 곳
 };
 
 let cache = null;

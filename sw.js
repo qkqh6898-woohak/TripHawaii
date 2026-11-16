@@ -3,11 +3,11 @@
 // (파일을 고친 뒤 `node tools/build-precache.mjs` 를 실행하면 버전과 목록이 바뀐다 — 직접 고치지 말 것).
 
 /* PRECACHE:BEGIN */
-const VERSION = '298c-5e29';
+const VERSION = '5ad8-33cf';
 const FILES = [
   ['index.html', '74b53b86'],
   ['manifest.webmanifest', '433937d9'],
-  ['css/app.css', '32c90a8b'],
+  ['css/app.css', 'dc255661'],
   ['js/checklist.js', '247fa75c'],
   ['js/crypto.js', '98dac433'],
   ['js/days.js', '45e42c5d'],
@@ -15,12 +15,12 @@ const FILES = [
   ['js/expenses.js', 'aeb12467'],
   ['js/ideas.js', '00838b81'],
   ['js/main.js', '0ab56d2a'],
-  ['js/maps.js', '3f4c984c'],
-  ['js/more.js', '79b19331'],
+  ['js/maps.js', 'ec236792'],
+  ['js/more.js', 'c9e3a73b'],
   ['js/phrases.js', '45167887'],
-  ['js/prefs.js', '31a17c6e'],
+  ['js/prefs.js', '72abcf32'],
   ['js/route.js', 'cdd35d20'],
-  ['js/settings.js', '6d3d6711'],
+  ['js/settings.js', '780baa09'],
   ['js/sw-client.js', 'fe119ca0'],
   ['js/time.js', '423a3520'],
   ['js/today.js', '2486dc19'],
@@ -34,12 +34,13 @@ const FILES = [
   ['js/weather.js', 'f8590ea6'],
   ['vendor/qrcode.js', 'ea91d711'],
   ['data/checklists.json', '8d1b7d0e'],
-  ['data/ideas.json', 'c745e624'],
+  ['data/eats.json', '2d942c29'],
+  ['data/ideas.json', '0dcbbbb6'],
   ['data/maps.json', 'c05ebbe9'],
   ['data/photos.json', '203050d9'],
   ['data/phrases.json', '222339e8'],
   ['data/secret.enc', 'b6362c2a'],
-  ['data/trip.json', '6a66edfd'],
+  ['data/trip.json', '6dfbd799'],
   ['data/videos.json', 'f543b457'],
   ['maps/big-island.png', 'a8e3a173'],
   ['maps/day-1115-wide.png', '580b28ac'],

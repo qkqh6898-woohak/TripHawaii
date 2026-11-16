@@ -354,6 +354,20 @@ async function runFlow(browser, base, vp) {
   assert.equal(await page.locator('.viewer-level[aria-pressed="true"]').innerText(), '섬 전체');
   await page.locator('.viewer [data-v="close"]').click();
   await page.waitForTimeout(300);
+  // 맛집 63곳: 종류 고르기 · 구글 지도 링크 · 찜
+  await go(page, '#/maps?m=eats');
+  assert.equal(await page.locator('.eat').count(), 63);
+  await go(page, '#/maps?m=eats&cat=poke');
+  assert.equal(await page.locator('.eat').count(), 5);
+  const eatHref = await page.locator('.eat a[target="_blank"]').first().getAttribute('href');
+  assert.match(eatHref, /^https:\/\/www\.google\.com\/maps\/(search|dir)\/\?api=1&/);
+  await page.locator('.eat [data-eat-fav]').first().click();
+  await page.waitForTimeout(200);
+  await go(page, '#/maps?m=eats&cat=fav');
+  assert.equal(await page.locator('.eat').count(), 1);
+  await page.locator('.eat [data-eat-fav]').first().click();
+  const eatSmall = await page.locator('.view-maps .eat a, .view-maps .eat button').evaluateAll((els) => els.filter((e) => { const r = e.getBoundingClientRect(); return r.width > 0 && (r.height < 44 || r.width < 44); }).length);
+  assert.equal(eatSmall, 0, '맛집 화면의 누르는 곳은 모두 44px 이상');
   await go(page, '#/maps?m=oahu');
   await page.locator('.map-frame').click();
   await page.waitForSelector('.viewer img');

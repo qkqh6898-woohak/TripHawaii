@@ -1,0 +1,635 @@
+{
+ "schema": 1,
+ "updated": "2026-11-16",
+ "note": "우리가 모은 맛집 목록이에요 (일정 확정 아님). 이동 시간은 숙소(와이키키) 기준 추정이고, 영업시간·예약은 가기 전에 확인하세요. 11/26 추수감사절에는 문 닫는 곳이 많아요.",
+ "areas": {
+  "waikiki": "와이키키 · 걸어서",
+  "kapahulu": "카파훌루 · 차 5~10분",
+  "alamoana": "알라모아나·카카아코 · 차 10~15분",
+  "kaimuki": "카이무키 · 차 10~15분",
+  "downtown": "다운타운·항구 · 차 15~20분",
+  "diamondhead": "다이아몬드 헤드 쪽 · 차 5분",
+  "hawaiikai": "하와이 카이 · 차 25분",
+  "northshore": "노스쇼어 · 차 1시간 이상"
+ },
+ "categories": [
+  {
+   "id": "sunset",
+   "title": "선셋 디너",
+   "icon": "🌅"
+  },
+  {
+   "id": "seafood",
+   "title": "해산물",
+   "icon": "🦀"
+  },
+  {
+   "id": "steak",
+   "title": "스테이크",
+   "icon": "🥩"
+  },
+  {
+   "id": "poke",
+   "title": "포케",
+   "icon": "🐟"
+  },
+  {
+   "id": "brunch",
+   "title": "브런치",
+   "icon": "🥞"
+  },
+  {
+   "id": "beachcafe",
+   "title": "비치 카페",
+   "icon": "☕"
+  },
+  {
+   "id": "omakase",
+   "title": "오마카세",
+   "icon": "🍣"
+  },
+  {
+   "id": "japanese",
+   "title": "일식",
+   "icon": "🍜"
+  },
+  {
+   "id": "french",
+   "title": "프랑스",
+   "icon": "🇫🇷"
+  },
+  {
+   "id": "italian",
+   "title": "이태리",
+   "icon": "🍝"
+  },
+  {
+   "id": "fine",
+   "title": "파인다이닝",
+   "icon": "🍷"
+  },
+  {
+   "id": "tonkatsu",
+   "title": "돈까스",
+   "icon": "🐷"
+  },
+  {
+   "id": "shrimp",
+   "title": "새우트럭",
+   "icon": "🦐"
+  },
+  {
+   "id": "korean",
+   "title": "한식",
+   "icon": "🍚"
+  },
+  {
+   "id": "burger",
+   "title": "햄버거",
+   "icon": "🍔"
+  },
+  {
+   "id": "bar",
+   "title": "술집",
+   "icon": "🍺"
+  },
+  {
+   "id": "etc",
+   "title": "기타",
+   "icon": "🍴"
+  }
+ ],
+ "places": [
+  {
+   "id": "hwak",
+   "cat": "sunset",
+   "name": "House Without A Key",
+   "area": "waikiki",
+   "name_en": "House Without A Key, Halekulani",
+   "addr": "2199 Kalia Rd, Honolulu, HI 96815",
+   "note": "할레쿨라니 호텔 · 매일 저녁 훌라 · 숙소(할레푸나) 바로 옆",
+   "plan": "11/26 마지막 저녁 추천"
+  },
+  {
+   "id": "dukes",
+   "cat": "sunset",
+   "name": "Duke's Waikiki",
+   "area": "waikiki",
+   "name_en": "Duke's Waikiki",
+   "addr": "2335 Kalakaua Ave #116, Honolulu, HI 96815",
+   "note": "아웃리거 와이키키 호텔 · 해변 바로 앞",
+   "plan": "11/18 저녁 추천"
+  },
+  {
+   "id": "beachbar",
+   "cat": "sunset",
+   "name": "The Beach Bar",
+   "area": "waikiki",
+   "name_en": "The Beach Bar, Moana Surfrider",
+   "note": "모아나 서프라이더 호텔 · 반얀트리 아래"
+  },
+  {
+   "id": "tikis",
+   "cat": "sunset",
+   "name": "Tiki's Grill & Bar",
+   "area": "waikiki",
+   "name_en": "Tiki's Grill & Bar Waikiki",
+   "note": "트윈핀 호텔"
+  },
+  {
+   "id": "monkeypod",
+   "cat": "sunset",
+   "name": "Monkeypod Kitchen",
+   "area": "waikiki",
+   "name_en": "Monkeypod Kitchen Waikiki, Outrigger Reef",
+   "note": "아웃리거 리프 호텔"
+  },
+  {
+   "id": "cajun",
+   "cat": "seafood",
+   "name": "Cajun Crab Waikiki",
+   "area": "waikiki",
+   "name_en": "Cajun Crab Waikiki",
+   "addr": "226 Lewers St 2F, Honolulu, HI",
+   "note": "후기 1등",
+   "star": true
+  },
+  {
+   "id": "charthouse",
+   "cat": "seafood",
+   "name": "Chart House Waikiki",
+   "area": "waikiki",
+   "name_en": "Chart House Waikiki",
+   "addr": "1765 Ala Moana Blvd, Honolulu, HI",
+   "note": "알라와이 항구 앞 · 와이키키 서쪽 끝"
+  },
+  {
+   "id": "hys",
+   "cat": "steak",
+   "name": "Hy's Steak House",
+   "area": "waikiki",
+   "name_en": "Hy's Steak House",
+   "addr": "2440 Kuhio Ave, Honolulu, HI"
+  },
+  {
+   "id": "alohasteak",
+   "cat": "steak",
+   "name": "Aloha Steak House",
+   "area": "waikiki",
+   "name_en": "Aloha Steak House",
+   "addr": "364 Seaside Ave 1st Floor, Honolulu, HI"
+  },
+  {
+   "id": "piikoi",
+   "cat": "steak",
+   "name": "Piikoi Steak",
+   "area": "alamoana",
+   "name_en": "Piikoi Steak",
+   "addr": "514 Piikoi St, Honolulu, HI"
+  },
+  {
+   "id": "yardhouse",
+   "cat": "steak",
+   "name": "Yard House",
+   "area": "waikiki",
+   "name_en": "Yard House Waikiki",
+   "addr": "226 Lewers St, Honolulu, HI",
+   "note": "해피아워"
+  },
+  {
+   "id": "steakshack",
+   "cat": "steak",
+   "name": "Steak Shack",
+   "area": "waikiki",
+   "name_en": "Steak Shack Waikiki",
+   "addr": "2161 Kalia Rd, Honolulu, HI",
+   "note": "포장(테이크아웃)"
+  },
+  {
+   "id": "ono",
+   "cat": "poke",
+   "name": "Ono Seafood",
+   "area": "kapahulu",
+   "name_en": "Ono Seafood",
+   "addr": "747 Kapahulu Ave, Honolulu, HI"
+  },
+  {
+   "id": "maguro",
+   "cat": "poke",
+   "name": "Maguro Brothers",
+   "area": "waikiki",
+   "name_en": "Maguro Brothers Hawaii Waikiki",
+   "addr": "2250 Kalakaua Ave, Honolulu, HI",
+   "note": "저녁만 · 월~토 17:30~21:00 (출처 기준)",
+   "plan": "11/16 저녁 추천"
+  },
+  {
+   "id": "magurospot",
+   "cat": "poke",
+   "name": "Maguro Spot",
+   "area": "waikiki",
+   "name_en": "Maguro Spot",
+   "addr": "2441 Kuhio Ave, Honolulu, HI"
+  },
+  {
+   "id": "pokebar",
+   "cat": "poke",
+   "name": "Poké Bar Waikiki",
+   "area": "waikiki",
+   "name_en": "Poke Bar Waikiki",
+   "addr": "2526 Kalakaua Ave, Honolulu, HI"
+  },
+  {
+   "id": "rys",
+   "cat": "poke",
+   "name": "Ry's Poke Shack",
+   "area": "alamoana",
+   "name_en": "Ry's Poke Shack Honolulu",
+   "addr": "1232 Waimanu St #2, Honolulu, HI"
+  },
+  {
+   "id": "leia",
+   "cat": "brunch",
+   "name": "Waikiki Leia",
+   "area": "diamondhead",
+   "name_en": "Waikiki Leia",
+   "addr": "3050 Monsarrat Ave, Honolulu, HI",
+   "note": "분위기",
+   "star": true
+  },
+  {
+   "id": "heavenly",
+   "cat": "brunch",
+   "name": "Heavenly Island Lifestyle",
+   "area": "waikiki",
+   "name_en": "Heavenly Island Lifestyle Waikiki",
+   "note": "로코모코 맛집"
+  },
+  {
+   "id": "islandvintage",
+   "cat": "brunch",
+   "name": "Island Vintage Coffee",
+   "area": "waikiki",
+   "name_en": "Island Vintage Coffee Royal Hawaiian Center",
+   "note": "아사이볼"
+  },
+  {
+   "id": "royallobster",
+   "cat": "brunch",
+   "name": "Royal Lobster",
+   "area": "waikiki",
+   "name_en": "Royal Lobster Waikiki",
+   "addr": "2250 Kalakaua Ave, Honolulu, HI"
+  },
+  {
+   "id": "aloh",
+   "cat": "brunch",
+   "name": "ALOH Health Bar & Cafe",
+   "area": "waikiki",
+   "name_en": "ALOH Health Bar & Cafe",
+   "addr": "407 Seaside Ave 1st floor, Honolulu, HI"
+  },
+  {
+   "id": "alohakitchen",
+   "cat": "brunch",
+   "name": "Aloha Kitchen",
+   "area": "waikiki",
+   "name_en": "Aloha Kitchen Waikiki",
+   "addr": "432 Ena Rd, Honolulu, HI"
+  },
+  {
+   "id": "sweete",
+   "cat": "brunch",
+   "name": "Sweet E's Café",
+   "area": "kapahulu",
+   "name_en": "Sweet E's Cafe",
+   "addr": "1006 Kapahulu Ave, Honolulu, HI"
+  },
+  {
+   "id": "barefoot",
+   "cat": "beachcafe",
+   "name": "Barefoot Beach Cafe",
+   "area": "waikiki",
+   "name_en": "Barefoot Beach Cafe Queens Surf Beach",
+   "note": "퀸즈 서프 비치 · 와이키키 동쪽 끝 (걸어서 20분쯤)"
+  },
+  {
+   "id": "islandbrew",
+   "cat": "beachcafe",
+   "name": "Island Brew Coffeehouse",
+   "area": "hawaiikai",
+   "name_en": "Island Brew Coffeehouse Hawaii Kai",
+   "note": "하나우마 베이 가는 길"
+  },
+  {
+   "id": "nicos",
+   "cat": "beachcafe",
+   "name": "Nico's Pier 38",
+   "area": "downtown",
+   "name_en": "Nico's Pier 38",
+   "addr": "1129 N Nimitz Hwy, Honolulu, HI"
+  },
+  {
+   "id": "miro",
+   "cat": "omakase",
+   "name": "Miro Kaimuki — The Counter",
+   "area": "kaimuki",
+   "name_en": "Miro Kaimuki"
+  },
+  {
+   "id": "aung",
+   "cat": "omakase",
+   "name": "Omakase By Aung",
+   "area": "kapahulu",
+   "name_en": "Omakase By Aung",
+   "addr": "567 Kapahulu Ave, Honolulu, HI"
+  },
+  {
+   "id": "onodera",
+   "cat": "omakase",
+   "name": "Kaiten Sushi Ginza Onodera",
+   "area": "kapahulu",
+   "name_en": "Kaiten Sushi Ginza Onodera Honolulu",
+   "addr": "808 Kapahulu Ave, Honolulu, HI"
+  },
+  {
+   "id": "ichika",
+   "cat": "omakase",
+   "name": "Sushi Ichika",
+   "area": "alamoana",
+   "name_en": "Sushi Ichika",
+   "addr": "434 Piikoi St, Honolulu, HI 96814",
+   "note": "1인 $90 (목록 기준)"
+  },
+  {
+   "id": "totoya",
+   "cat": "japanese",
+   "name": "Totoya Negitoro & Seafood Bowls",
+   "area": "alamoana",
+   "name_en": "Totoya Negitoro & Seafood Bowls",
+   "addr": "436 Piikoi St Ste B, Honolulu, HI"
+  },
+  {
+   "id": "marujuu",
+   "cat": "japanese",
+   "name": "Marujuu Japanese Hamburg & Steak",
+   "area": "kaimuki",
+   "name_en": "Marujuu Japanese Hamburg & Steak",
+   "addr": "1145 12th Ave C and D, Honolulu, HI"
+  },
+  {
+   "id": "udongama",
+   "cat": "japanese",
+   "name": "Udon Gama-Dashi",
+   "area": "kapahulu",
+   "name_en": "Udon Gama-Dashi",
+   "addr": "755 Kapahulu Ave, Honolulu, HI",
+   "note": "우동"
+  },
+  {
+   "id": "michels",
+   "cat": "french",
+   "name": "Michel's at the Colony Surf",
+   "area": "diamondhead",
+   "name_en": "Michel's at the Colony Surf",
+   "note": "선셋 · 분위기",
+   "star": true
+  },
+  {
+   "id": "arancino",
+   "cat": "italian",
+   "name": "Arancino di Mare",
+   "area": "waikiki",
+   "name_en": "Arancino di Mare",
+   "addr": "2552 Kalakaua Ave, Honolulu, HI",
+   "note": "우니 파스타"
+  },
+  {
+   "id": "bernini",
+   "cat": "italian",
+   "name": "Bernini Honolulu",
+   "area": "alamoana",
+   "name_en": "Bernini Honolulu",
+   "addr": "1218 Waimanu St, Honolulu, HI"
+  },
+  {
+   "id": "senia",
+   "cat": "fine",
+   "name": "Senia",
+   "area": "downtown",
+   "name_en": "Senia Honolulu",
+   "addr": "75 N King St, Honolulu, HI"
+  },
+  {
+   "id": "mw",
+   "cat": "fine",
+   "name": "MW Restaurant",
+   "area": "alamoana",
+   "name_en": "MW Restaurant",
+   "addr": "888 Kapiolani Blvd, Honolulu, HI"
+  },
+  {
+   "id": "sushisho",
+   "cat": "fine",
+   "name": "Sushi Sho",
+   "area": "waikiki",
+   "name_en": "Sushi Sho Ritz-Carlton Waikiki",
+   "note": "리츠칼튼 와이키키 호텔"
+  },
+  {
+   "id": "orchids",
+   "cat": "fine",
+   "name": "Orchids",
+   "area": "waikiki",
+   "name_en": "Orchids Halekulani",
+   "addr": "2199 Kalia Rd, Honolulu, HI 96815",
+   "note": "할레쿨라니 호텔 · 숙소(할레푸나) 바로 옆"
+  },
+  {
+   "id": "tamafuji",
+   "cat": "tonkatsu",
+   "name": "Tonkatsu Tamafuji",
+   "area": "kapahulu",
+   "name_en": "Tonkatsu Tamafuji",
+   "addr": "449 Kapahulu Ave, Honolulu, HI"
+  },
+  {
+   "id": "kuro",
+   "cat": "tonkatsu",
+   "name": "Tonkatsu Kuro",
+   "area": "alamoana",
+   "name_en": "Tonkatsu Kuro",
+   "addr": "1000 Auahi St Suite 134, Honolulu, HI"
+  },
+  {
+   "id": "romys",
+   "cat": "shrimp",
+   "name": "Romy's Kahuku Prawns & Shrimp",
+   "area": "northshore",
+   "name_en": "Romy's Kahuku Prawns & Shrimp",
+   "addr": "56-1030 Kamehameha Hwy, Kahuku, HI"
+  },
+  {
+   "id": "bigwave",
+   "cat": "shrimp",
+   "name": "Big Wave Shrimp",
+   "area": "northshore",
+   "name_en": "Big Wave Shrimp",
+   "addr": "66-521 Kamehameha Hwy, Haleiwa, HI"
+  },
+  {
+   "id": "hangang",
+   "cat": "korean",
+   "name": "한강",
+   "area": "alamoana",
+   "addr": "1236 Waimanu St #1F, Honolulu, HI",
+   "q": "Korean restaurant, 1236 Waimanu St, Honolulu, HI"
+  },
+  {
+   "id": "ginza",
+   "cat": "korean",
+   "name": "긴자원",
+   "area": "waikiki",
+   "addr": "2155 Lauula St A, Honolulu, HI",
+   "q": "Korean restaurant, 2155 Lauula St, Honolulu, HI"
+  },
+  {
+   "id": "hyungjae",
+   "cat": "korean",
+   "name": "형제 (Hyung Jae)",
+   "area": "alamoana",
+   "name_en": "Hyung Jae Restaurant",
+   "addr": "636 Sheridan St, Honolulu, HI"
+  },
+  {
+   "id": "koreagarden",
+   "cat": "korean",
+   "name": "코리아 가든",
+   "area": "alamoana",
+   "name_en": "Korea Garden Restaurant",
+   "addr": "1683 Kalakaua Ave, Honolulu, HI"
+  },
+  {
+   "id": "topped",
+   "cat": "korean",
+   "name": "Topped Waikiki",
+   "area": "waikiki",
+   "name_en": "Topped Waikiki",
+   "addr": "333 Royal Hawaiian Ave, Honolulu, HI"
+  },
+  {
+   "id": "hiburger",
+   "cat": "burger",
+   "name": "Hi Burger",
+   "area": "waikiki",
+   "name_en": "Hi Burger Waikiki",
+   "addr": "342 Lewers St, Honolulu, HI",
+   "note": "추천",
+   "star": true
+  },
+  {
+   "id": "pitstop",
+   "cat": "burger",
+   "name": "Pit Stop Hawaii Food Truck",
+   "area": "waikiki",
+   "name_en": "Pit Stop Hawaii Food Truck",
+   "addr": "2411 Kuhio Ave, Honolulu, HI"
+  },
+  {
+   "id": "cheeseburger",
+   "cat": "burger",
+   "name": "Cheeseburger In Paradise",
+   "area": "waikiki",
+   "name_en": "Cheeseburger In Paradise Waikiki",
+   "addr": "2500 Kalakaua Ave, Honolulu, HI",
+   "note": "분위기"
+  },
+  {
+   "id": "teddys",
+   "cat": "burger",
+   "name": "Teddy's Bigger Burgers",
+   "area": "waikiki",
+   "name_en": "Teddy's Bigger Burgers Waikiki",
+   "addr": "134 Kapahulu Ave, Honolulu, HI",
+   "plan": "11/18 하나우마 투어 점심에 포함"
+  },
+  {
+   "id": "alohamelt",
+   "cat": "burger",
+   "name": "ALOHA MELT – Waikiki",
+   "area": "waikiki",
+   "name_en": "Aloha Melt Waikiki",
+   "addr": "355 Royal Hawaiian Ave, Honolulu, HI",
+   "note": "토스트"
+  },
+  {
+   "id": "surfbar",
+   "cat": "bar",
+   "name": "Surf Bar Waikiki",
+   "area": "waikiki",
+   "name_en": "Surf Bar Waikiki",
+   "note": "와이키키 리조트 호텔"
+  },
+  {
+   "id": "zigu",
+   "cat": "bar",
+   "name": "ZIGU",
+   "area": "waikiki",
+   "name_en": "ZIGU Waikiki",
+   "addr": "413 Seaside Ave #1F, Honolulu, HI",
+   "note": "이자카야"
+  },
+  {
+   "id": "harumi",
+   "cat": "bar",
+   "name": "Izakaya Harumi",
+   "area": "waikiki",
+   "name_en": "Izakaya Harumi Waikiki",
+   "addr": "339 Royal Hawaiian Ave #101, Honolulu, HI"
+  },
+  {
+   "id": "kingthai",
+   "cat": "etc",
+   "name": "King of Thai Boat Noodles",
+   "area": "waikiki",
+   "name_en": "King of Thai Boat Noodles Waikiki",
+   "addr": "2146 Kalakaua Ave, Honolulu, HI",
+   "note": "태국 쌀국수"
+  },
+  {
+   "id": "mikiya",
+   "cat": "etc",
+   "name": "Mikiya Wagyu Shabu House",
+   "area": "kapahulu",
+   "name_en": "Mikiya Wagyu Shabu House Kapahulu",
+   "note": "와규 샤부샤부"
+  },
+  {
+   "id": "leonards",
+   "cat": "etc",
+   "name": "Leonard's Bakery",
+   "area": "kapahulu",
+   "name_en": "Leonard's Bakery",
+   "addr": "933 Kapahulu Ave, Honolulu, HI 96816",
+   "note": "말라사다",
+   "plan": "11/26 추천"
+  },
+  {
+   "id": "pigandlady",
+   "cat": "etc",
+   "name": "The Pig and The Lady",
+   "area": "kaimuki",
+   "name_en": "The Pig and The Lady",
+   "addr": "3650 Waialae Ave, Honolulu, HI",
+   "note": "베트남"
+  },
+  {
+   "id": "halevietnam",
+   "cat": "etc",
+   "name": "Hale Vietnam Restaurant",
+   "area": "kaimuki",
+   "name_en": "Hale Vietnam Restaurant Honolulu",
+   "note": "베트남 쌀국수"
+  }
+ ]
+}

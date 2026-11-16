@@ -283,6 +283,26 @@ export function validateIdeas(doc, tripDates = []) {
   return { errors, warnings: [] };
 }
 
+export function validateEats(doc) {
+  const errors = [];
+  const cats = new Set(((doc && doc.categories) || []).map((c) => c.id));
+  const areas = new Set(Object.keys((doc && doc.areas) || {}));
+  if (!cats.size) errors.push('eats: categories 가 비어 있습니다');
+  const ids = new Set();
+  ((doc && doc.places) || []).forEach((p, i) => {
+    const at = `eats.places[${i}]${p && p.id ? ` (${p.id})` : ''}`;
+    if (!p.id || !RE_ID.test(p.id)) errors.push(`${at}: id 형식이 올바르지 않습니다`);
+    if (ids.has(p.id)) errors.push(`${at}: id "${p.id}" 가 중복됩니다`);
+    ids.add(p.id);
+    if (!p.name) errors.push(`${at}: name 이 없습니다`);
+    if (!cats.has(p.cat)) errors.push(`${at}: cat "${p.cat}" 가 categories 에 없습니다`);
+    if (!areas.has(p.area)) errors.push(`${at}: area "${p.area}" 가 areas 에 없습니다`);
+    if (!p.addr && !p.name_en && !p.q) errors.push(`${at}: 지도 검색에 쓸 addr·name_en·q 중 하나가 있어야 합니다`);
+    for (const k of ['name', 'name_en', 'addr', 'q', 'note']) if (p[k] && /https?:|<|>/.test(p[k])) errors.push(`${at}: ${k} 에 주소(URL)나 꺾쇠를 넣지 않습니다`);
+  });
+  return { errors, warnings: [] };
+}
+
 // private/trip-secret.json (암호화 전 원본) 구조 검사
 export function validateSecret(secret) {
   const errors = [];
@@ -366,6 +386,7 @@ async function main() {
   run('data/phrases.json', () => validatePhrases(loadJSON('data/phrases.json')));
   run('data/checklists.json', () => validateChecklists(loadJSON('data/checklists.json')));
   run('data/ideas.json', () => validateIdeas(loadJSON('data/ideas.json'), loadJSON('data/trip.json').days.map((d) => d.date)));
+  run('data/eats.json', () => validateEats(loadJSON('data/eats.json')));
   run('data/videos.json', () => validateVideos(loadJSON('data/videos.json'), loadJSON('data/trip.json').days.map((d) => d.date)));
 
   if (!quiet) for (const w of warnings) console.log(`⚠️  ${w}`);

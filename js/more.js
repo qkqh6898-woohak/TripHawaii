@@ -31,6 +31,11 @@ export async function render(root) {
         <span class="menu-text"><b>여행 영어</b><span class="muted small">상황 8개 · 40문장 · 발음 듣기${favs ? ` · ★ ${favs}` : ''}</span></span>
         <span class="menu-go" aria-hidden="true">›</span>
       </a>
+      <a class="card menu-item" href="#/maps?m=eats">
+        <span class="menu-icon" aria-hidden="true">🍽</span>
+        <span class="menu-text"><b>맛집</b><span class="muted small">63곳 · 선셋 디너 · 포케 · 스테이크 · 한식${(prefs().eatFav || []).length ? ` · ★ ${(prefs().eatFav || []).length}` : ''}</span></span>
+        <span class="menu-go" aria-hidden="true">›</span>
+      </a>
       <a class="card menu-item" href="#/ideas">
         <span class="menu-icon" aria-hidden="true">✨</span>
         <span class="menu-text"><b>추천 코스</b><span class="muted small">넣어 볼 만한 곳 · 추수감사절 · 용암 분출 예보${(prefs().ideaFav || []).length ? ` · ★ ${(prefs().ideaFav || []).length}` : ''}</span></span>

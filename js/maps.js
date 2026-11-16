@@ -1,5 +1,6 @@
 // 지도 — 미리 그려 둔 약도(오프라인) + 날짜별 동선(시간표·장소) + Google 지도 경로 · 전체 일정 요약
-import { html, setHTML, onSwipe, copyText, downloadFile, toast } from './util.js';
+import { html, setHTML, onSwipe, copyText, downloadFile, toast, haptic } from './util.js';
+import { prefs, setPref } from './prefs.js';
 import { getTrip, dayByDate, placesOfDay, hotel, place as getPlace, directionsUrl, mapSize, mapLevels, CAT_LABEL, CAT_ICON } from './trip.js';
 import * as time from './time.js';
 import { openViewer } from './viewer.js';
@@ -12,6 +13,7 @@ const MAPS = {
   bigisland: { label: '빅아일랜드', src: 'maps/big-island.png', alt: '빅아일랜드 장소 지도', island: 'bigisland' },
   day: { label: '날짜별' },
   summary: { label: '일정 요약' },
+  eats: { label: '맛집' },
   korea: { label: '한국↔하와이', src: 'maps/korea-hawaii.png', alt: '한국과 하와이 이동 지도' },
 };
 const FILTERS = [['all', '전체'], ['hotel', '숙소'], ['sight', '관광'], ['shop', '쇼핑'], ['food', '음식'], ['tour', '투어'], ['move', '이동']];
@@ -128,6 +130,79 @@ function bindSummary(root) {
   });
 }
 
+// ───────────── 맛집 목록 (data/eats.json) ─────────────
+let eatsDoc = null;
+async function loadEats() {
+  if (eatsDoc) return eatsDoc;
+  try {
+    const res = await fetch('data/eats.json', { cache: 'no-cache' });
+    eatsDoc = res.ok ? await res.json() : { categories: [], places: [], areas: {} };
+  } catch {
+    eatsDoc = { categories: [], places: [], areas: {} };
+  }
+  return eatsDoc;
+}
+
+const AREA_ORDER = ['waikiki', 'diamondhead', 'kapahulu', 'alamoana', 'kaimuki', 'downtown', 'hawaiikai', 'northshore'];
+const eatQuery = (p) => p.q || [p.name_en || p.name, p.addr || 'Honolulu, HI'].join(', ');
+const eatSearchUrl = (p) => `https://www.google.com/maps/search/?${new URLSearchParams({ api: '1', query: eatQuery(p) }).toString()}`;
+const eatDirUrl = (p) => `https://www.google.com/maps/dir/?${new URLSearchParams({ api: '1', destination: eatQuery(p) }).toString()}`;
+
+function eatsHtml(doc, cat) {
+  const favs = prefs().eatFav || [];
+  const catOf = Object.fromEntries((doc.categories || []).map((c) => [c.id, c]));
+  const list = (doc.places || [])
+    .filter((p) => (cat === 'all' ? true : cat === 'fav' ? favs.includes(p.id) : cat === 'walk' ? p.area === 'waikiki' : p.cat === cat))
+    .sort((a, b) => AREA_ORDER.indexOf(a.area) - AREA_ORDER.indexOf(b.area));
+  const chips = [['all', '전체'], ['walk', '🚶 걸어서'], ['fav', `★ 찜 ${favs.length}`], ...(doc.categories || []).map((c) => [c.id, `${c.icon} ${c.title}`])];
+  return html`
+    <section class="card">
+      <h2>🍽 맛집 ${(doc.places || []).length}곳</h2>
+      <p class="muted small">${doc.note || ''}</p>
+    </section>
+    <div class="chips chips-scroll" aria-label="맛집 종류 고르기">
+      ${chips.map(([id, label]) => html`<a class="chip ${cat === id ? 'is-on' : ''}" href="#/maps?m=eats&cat=${id}" ${cat === id ? html`aria-current="true"` : ''}>${label}</a>`)}
+    </div>
+    ${!list.length ? html`<p class="muted empty">${cat === 'fav' ? '아직 찜한 곳이 없어요. 가게 옆 ☆ 를 눌러 모아 보세요.' : '이 종류의 맛집이 없어요.'}</p>` : ''}
+    <ul class="eat-list">
+      ${list.map((p) => {
+    const c = catOf[p.cat] || {};
+    const fav = favs.includes(p.id);
+    return html`
+        <li class="card eat ${fav ? 'is-fav' : ''}" data-eat="${p.id}">
+          <div class="eat-head">
+            <h3>${c.icon || '🍴'} ${p.name}${p.star ? html` <span class="tag tag-ok">추천</span>` : ''}</h3>
+            <button type="button" class="btn btn-fav ${fav ? 'is-on' : ''}" data-eat-fav aria-pressed="${fav ? 'true' : 'false'}" aria-label="${p.name} 찜하기">${fav ? '★' : '☆'}</button>
+          </div>
+          <p class="eat-meta"><span class="tag">${c.title || ''}</span> <span class="tag ${p.area === 'waikiki' ? 'tag-booking' : ''}">${(doc.areas || {})[p.area] || ''}</span>${p.plan ? html` <span class="tag tag-tentative">${p.plan}</span>` : ''}</p>
+          ${p.note ? html`<p class="eat-note">${p.note}</p>` : ''}
+          ${p.addr ? html`<p class="muted small">${p.addr}</p>` : ''}
+          <div class="btn-row">
+            <a class="btn btn-small" href="${eatSearchUrl(p)}" target="_blank" rel="noopener noreferrer">📍 지도에서 보기</a>
+            <a class="btn btn-small" href="${eatDirUrl(p)}" target="_blank" rel="noopener noreferrer">🧭 길찾기</a>
+          </div>
+        </li>`;
+  })}
+    </ul>
+    <p class="muted small">버튼을 누르면 Google 지도로 열려요 (인터넷 필요). 이동 시간은 숙소 기준 추정이에요.</p>`;
+}
+
+function bindEats(root) {
+  root.addEventListener('click', async (e) => {
+    const b = e.target.closest('[data-eat-fav]');
+    if (!b) return;
+    const id = b.closest('[data-eat]').dataset.eat;
+    const cur = prefs().eatFav || [];
+    const on = !cur.includes(id);
+    await setPref('eatFav', on ? [...cur, id] : cur.filter((x) => x !== id));
+    haptic();
+    b.classList.toggle('is-on', on);
+    b.textContent = on ? '★' : '☆';
+    b.setAttribute('aria-pressed', on ? 'true' : 'false');
+    b.closest('[data-eat]').classList.toggle('is-fav', on);
+  });
+}
+
 export async function render(root, ctx) {
   const trip = getTrip();
   const q = ctx.query || {};
@@ -146,9 +221,22 @@ export async function render(root, ctx) {
     <nav class="seg seg-scroll" aria-label="지도 종류">
       ${Object.entries(MAPS).map(([k, v]) => html`<a class="seg-btn ${m === k ? 'is-on' : ''}" href="#/maps?m=${k}${k === 'day' ? `&d=${date}` : ''}" ${m === k ? html`aria-current="page"` : ''}>${v.label}</a>`)}
     </nav>`;
+  const showSeg = () => { const seg = root.querySelector('.seg-scroll .is-on'); if (seg && seg.scrollIntoView) requestAnimationFrame(() => seg.scrollIntoView({ inline: 'center', block: 'nearest' })); };
   if (m === 'summary') {
     setHTML(root, html`${navHtml}${summaryHtml(trip)}`);
     bindSummary(root);
+    showSeg();
+    return;
+  }
+  if (m === 'eats') {
+    const doc = await loadEats();
+    const ids = new Set(['all', 'walk', 'fav', ...(doc.categories || []).map((c) => c.id)]);
+    const ecat = ids.has(q.cat) ? q.cat : 'all';
+    setHTML(root, html`${navHtml}${eatsHtml(doc, ecat)}`);
+    bindEats(root);
+    const on = root.querySelector('.chips-scroll .is-on');
+    const seg = root.querySelector('.seg-scroll .is-on');
+    requestAnimationFrame(() => [seg, on].forEach((el) => { if (el && el.scrollIntoView) el.scrollIntoView({ inline: 'center', block: 'nearest' }); }));
     return;
   }
 
