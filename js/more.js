@@ -16,6 +16,11 @@ export async function render(root) {
   setHTML(root, html`
     <h1 class="page-title">☰ 더보기</h1>
     <div class="menu">
+      <a class="card menu-item" href="#/search">
+        <span class="menu-icon" aria-hidden="true">🔎</span>
+        <span class="menu-text"><b>통합 검색</b><span class="muted small">우동 · 포케 · 세포라 · 장소 · 일정 · 쇼핑 검색</span></span>
+        <span class="menu-go" aria-hidden="true">›</span>
+      </a>
       <a class="card menu-item" href="#/check">
         <span class="menu-icon" aria-hidden="true">✅</span>
         <span class="menu-text"><b>체크리스트</b><span class="muted small">${phase.phase === 'before' ? `출발 전 ${prog.done}/${prog.total} 완료` : '매일 준비물 · 귀국 전 · 반입 금지 음식'}</span></span>
