@@ -596,3 +596,33 @@ details > summary { cursor: pointer; font-weight: 700; min-height: 48px; display
   #tabs, #topbar, #toast-root { display: none; }
   #view { padding-bottom: 0; }
 }
+
+/* ───────── 통합 검색: 작은 폰에서도 입력칸·지도 버튼을 쉽게 누르도록 ───────── */
+.topbar-actions { display: flex; align-items: center; gap: 4px; min-width: 0; }
+.search-launch { flex: 0 0 44px; display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 48px; border-radius: 12px; color: var(--ink); text-decoration: none; font-size: 1.25rem; }
+.search-launch:active { background: var(--surface-2); }
+.search-panel { display: flex; flex-direction: column; gap: 10px; }
+.search-panel > * + * { margin-top: 0; }
+.search-label { display: block; font-size: .84rem; font-weight: 700; margin-bottom: 8px; color: var(--muted); }
+.search-input-row { display: flex; gap: 8px; align-items: stretch; }
+.search-input-row input { flex: 1 1 auto; min-width: 0; width: 100%; min-height: 50px; padding: 9px 12px; border: 1.5px solid var(--line); background: var(--surface); color: var(--ink); border-radius: 12px; font-size: 1rem; }
+.search-input-row .btn { flex: 0 0 auto; }
+.search-panel .chips-scroll { margin: 0; padding: 0; }
+.search-count { margin: 10px 3px !important; }
+.search-section { margin-top: 14px; }
+.search-section .section-title { margin-bottom: 8px; }
+.search-list { display: flex; flex-direction: column; gap: 10px; }
+.search-card { display: flex; flex-direction: column; gap: 6px; }
+.search-card > * + * { margin-top: 0; }
+.search-card-title { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.search-card-title b { line-height: 1.4; }
+.search-card .btn-row { margin-top: 4px; }
+.search-card .btn-row .btn { flex: 1 1 auto; }
+.search-empty { padding: 18px; }
+.search-disclaimer { margin: 14px 2px; }
+#trip-search-results { min-height: 100px; }
+@media (max-width: 370px) {
+  .brand { font-size: .92rem; }
+  .search-launch { width: 42px; flex-basis: 42px; }
+  #status .pill { font-size: .72rem; padding-inline: 6px; }
+}
