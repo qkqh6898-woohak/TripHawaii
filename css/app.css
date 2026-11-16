@@ -626,3 +626,5 @@ details > summary { cursor: pointer; font-weight: 700; min-height: 48px; display
   .search-launch { width: 42px; flex-basis: 42px; }
   #status .pill { font-size: .72rem; padding-inline: 6px; }
 }
+
+.search-matched-note { overflow: hidden; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; line-clamp: 3; }
