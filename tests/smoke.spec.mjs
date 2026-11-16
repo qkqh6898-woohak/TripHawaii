@@ -357,9 +357,9 @@ async function runFlow(browser, base, vp) {
   assert.equal(await page.locator('.viewer-level[aria-pressed="true"]').innerText(), '섬 전체');
   await page.locator('.viewer [data-v="close"]').click();
   await page.waitForTimeout(300);
-  // 맛집 63곳: 종류 고르기 · 구글 지도 링크 · 찜
+  // 맛집 64곳: 종류 고르기 · 구글 지도 링크 · 찜
   await go(page, '#/maps?m=eats');
-  assert.equal(await page.locator('.eat').count(), 63);
+  assert.equal(await page.locator('.eat').count(), 64);
   await go(page, '#/maps?m=eats&cat=poke');
   assert.equal(await page.locator('.eat').count(), 5);
   const eatHref = await page.locator('.eat a[target="_blank"]').first().getAttribute('href');
@@ -395,7 +395,7 @@ async function runFlow(browser, base, vp) {
   assert.equal(csvDl.suggestedFilename(), 'aloha-eats.csv');
   const csvPath = join(tmpdir(), `aloha-eats-${vp.name}-${Date.now()}.csv`);
   await csvDl.saveAs(csvPath);
-  assert.equal(readFileSync(csvPath, 'utf8').trim().split('\n').length, 64);
+  assert.equal(readFileSync(csvPath, 'utf8').trim().split('\n').length, 65);
   rmSync(csvPath, { force: true });
   const eatSmall = await page.locator('.view-maps .eat a, .view-maps .eat button').evaluateAll((els) => els.filter((e) => { const r = e.getBoundingClientRect(); return r.width > 0 && (r.height < 44 || r.width < 44); }).length);
   assert.equal(eatSmall, 0, '맛집 화면의 누르는 곳은 모두 44px 이상');

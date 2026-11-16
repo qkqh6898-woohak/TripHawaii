@@ -3,7 +3,7 @@
 // (파일을 고친 뒤 `node tools/build-precache.mjs` 를 실행하면 버전과 목록이 바뀐다 — 직접 고치지 말 것).
 
 /* PRECACHE:BEGIN */
-const VERSION = 'a6f2-56fb';
+const VERSION = '3e97-4495';
 const FILES = [
   ['index.html', '9ca27e5d'],
   ['manifest.webmanifest', '433937d9'],
@@ -17,7 +17,7 @@ const FILES = [
   ['js/ideas.js', '00838b81'],
   ['js/main.js', '0ab56d2a'],
   ['js/maps.js', '893ef695'],
-  ['js/more.js', 'c9e3a73b'],
+  ['js/more.js', 'ab0df307'],
   ['js/phrases.js', '45167887'],
   ['js/prefs.js', 'd862dceb'],
   ['js/route.js', 'cdd35d20'],
@@ -35,15 +35,15 @@ const FILES = [
   ['js/wallet.js', '6127bc56'],
   ['js/weather.js', 'f8590ea6'],
   ['vendor/qrcode.js', 'ea91d711'],
-  ['data/checklists.json', 'e91c199f'],
-  ['data/eats.json', 'b1625052'],
+  ['data/checklists.json', '8d1b7d0e'],
+  ['data/eats.json', '54ef3580'],
   ['data/ideas.json', '0dcbbbb6'],
   ['data/maps.json', '895cd8c4'],
   ['data/photos.json', '203050d9'],
   ['data/phrases.json', '222339e8'],
   ['data/secret.enc', 'b6362c2a'],
   ['data/transit.json', 'a4f530fd'],
-  ['data/trip.json', 'c6acd215'],
+  ['data/trip.json', 'b8ab2a6f'],
   ['data/videos.json', 'f543b457'],
   ['maps/big-island.png', 'a8e3a173'],
   ['maps/day-1115-wide.png', 'fcf13574'],

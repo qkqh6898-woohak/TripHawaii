@@ -33,7 +33,7 @@ export async function render(root) {
       </a>
       <a class="card menu-item" href="#/maps?m=eats">
         <span class="menu-icon" aria-hidden="true">🍽</span>
-        <span class="menu-text"><b>맛집</b><span class="muted small">63곳 · 선셋 디너 · 포케 · 스테이크 · 한식${(prefs().eatFav || []).length ? ` · ★ ${(prefs().eatFav || []).length}` : ''}</span></span>
+        <span class="menu-text"><b>맛집</b><span class="muted small">64곳 · 선셋 디너 · 포케 · 스테이크 · 한식${(prefs().eatFav || []).length ? ` · ★ ${(prefs().eatFav || []).length}` : ''}</span></span>
         <span class="menu-go" aria-hidden="true">›</span>
       </a>
       <a class="card menu-item" href="#/ideas">

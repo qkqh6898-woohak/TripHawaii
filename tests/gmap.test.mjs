@@ -5,7 +5,7 @@ import { eatsCsv, eatQuery, embedUrl } from '../js/gmap.js';
 
 const doc = JSON.parse(readFileSync(new URL('../data/eats.json', import.meta.url), 'utf8'));
 
-test('맛집 CSV: 머리줄 + 63곳, 쉼표·따옴표가 있으면 감싼다', () => {
+test('맛집 CSV: 머리줄 + 64곳, 쉼표·따옴표가 있으면 감싼다', () => {
   const csv = eatsCsv(doc);
   const lines = csv.trim().split('\n');
   assert.equal(lines[0], '이름,위치,종류,지역,메모');

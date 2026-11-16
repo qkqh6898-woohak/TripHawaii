@@ -411,6 +411,16 @@
    "note": "우동"
   },
   {
+   "id": "tsurutontan",
+   "cat": "japanese",
+   "name": "츠루톤탄 우동",
+   "area": "waikiki",
+   "name_en": "TsuruTonTan Udon Noodle Brasserie",
+   "addr": "2233 Kalakaua Ave, Honolulu, HI 96815",
+   "note": "로열하와이안센터 B동 3층 · 디럭스 우동·카레 디럭스 우동 추천 · 예약 없이 대기",
+   "stop": "p1"
+  },
+  {
    "id": "michels",
    "cat": "french",
    "name": "Michel's at the Colony Surf",

@@ -116,10 +116,10 @@ test('교통: 핑크라인 정거장 · 맛집의 정거장 연결 검사', () =
   assert.ok(validateTransit(doc, bad).errors.some((e) => e.includes('p99')));
 });
 
-test('맛집 목록: 63곳 · 종류·지역·검색어 검사', () => {
+test('맛집 목록: 64곳 · 종류·지역·검색어 검사', () => {
   const doc = load('data/eats.json');
   assert.deepEqual(validateEats(doc).errors, []);
-  assert.equal(doc.places.length, 63);
+  assert.equal(doc.places.length, 64);
   const bad = clone(doc); bad.places[0].cat = 'nope'; bad.places[1].note = '<b>x</b>';
   const errs = validateEats(bad).errors;
   assert.ok(errs.some((e) => e.includes('categories')) && errs.some((e) => e.includes('꺾쇠')));
