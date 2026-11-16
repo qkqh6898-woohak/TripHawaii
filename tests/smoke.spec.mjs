@@ -684,6 +684,7 @@ async function runUpdate(browser, base, site) {
   await page.reload();                                               // 앱을 다시 열면 새 버전을 받아 둔다
   await page.waitForSelector('html.is-ready');
   await page.waitForSelector('[data-apply-update]', { timeout: 30000 });
+  await page.waitForSelector('#booking-sample-hotel', { timeout: 15000 });           // 예약 카드가 그려질 때까지
   assert.equal(await page.locator('#booking-sample-hotel.is-missing').count(), 1);   // 적용 전에는 예전 내용
   await Promise.all([page.waitForEvent('load'), page.locator('[data-apply-update]').click()]);
   await page.waitForSelector('html.is-ready');

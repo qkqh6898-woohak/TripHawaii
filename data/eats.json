@@ -723,13 +723,14 @@
    "id": "katsumidori",
    "cat": "japanese",
    "name": "Katsumidori Sushi Tokyo",
-   "area": "oahu",
-   "name_en": "Katsumidori Sushi Tokyo Waikiki",
-   "q": "Katsumidori Sushi Tokyo Waikiki, Honolulu, HI",
+   "area": "waikiki",
+   "name_en": "Katsumidori Sushi Tokyo, Prince Waikiki",
    "tags": [
     "oceanstar"
    ],
-   "note": "호텔 안 분위기 좋은 일식 집"
+   "note": "호텔 안 분위기 좋은 일식 집 · 프린스 와이키키 호텔 로비 층 · 와이키키 서쪽 끝이라 숙소에서 걸어서 20분쯤 (핑크라인 ⑪ 근처) · 저녁은 예약 권장",
+   "addr": "100 Holomoana St, Honolulu, HI 96815",
+   "stop": "p11"
   },
   {
    "id": "imanastei",
@@ -747,37 +748,38 @@
    "id": "shabuya",
    "cat": "japanese",
    "name": "Shabuya",
-   "area": "oahu",
-   "name_en": "Shabuya Honolulu",
-   "q": "Shabuya Honolulu, Honolulu, HI",
+   "area": "alamoana",
+   "name_en": "Shabuya Ala Moana",
    "tags": [
     "oceanstar"
    ],
-   "note": "간단하게 먹기 좋은 무한 리필 샤브샤브"
+   "note": "간단하게 먹기 좋은 무한 리필 샤브샤브 · 알라모아나 센터 2층",
+   "addr": "1450 Ala Moana Blvd, Honolulu, HI 96814",
+   "stop": "p10"
   },
   {
    "id": "zippys",
    "cat": "local",
    "name": "Zippy's",
-   "area": "oahu",
-   "name_en": "Zippy's",
-   "q": "Zippy's, Honolulu, HI",
+   "area": "kapahulu",
+   "name_en": "Zippy's Kapahulu",
    "tags": [
     "oceanstar"
    ],
-   "note": "하와이 로컬 체인 (\"하와이의 김밥천국\") · 로코모코·코리안 치킨 샐러드 추천"
+   "note": "하와이 로컬 체인 (\"하와이의 김밥천국\") · 로코모코·코리안 치킨 샐러드 추천",
+   "addr": "601 Kapahulu Ave, Honolulu, HI 96815"
   },
   {
    "id": "bogarts",
    "cat": "local",
    "name": "Bogart's",
-   "area": "oahu",
+   "area": "diamondhead",
    "name_en": "Bogart's Cafe",
-   "q": "Bogart's Cafe, Honolulu, HI",
    "tags": [
     "oceanstar"
    ],
-   "note": "하와이식 브런치"
+   "note": "하와이식 브런치 · 다 코브와 같은 건물 (2018년 이전, 예전 주소 3118도 있음)",
+   "addr": "3045 Monsarrat Ave, Honolulu, HI 96815"
   },
   {
    "id": "haleiwajoes",
@@ -795,13 +797,13 @@
    "id": "sperospera",
    "cat": "local",
    "name": "Spero Spera",
-   "area": "oahu",
+   "area": "alamoana",
    "name_en": "Spero Spera",
-   "q": "Spero Spera, Honolulu, HI",
    "tags": [
     "oceanstar"
    ],
-   "note": "로컬 샌드위치 맛집 · 아보카도 스테이크 샌드위치·아사이볼 추천"
+   "note": "로컬 샌드위치 맛집 · 아보카도 스테이크 샌드위치·아사이볼 추천",
+   "addr": "1334 Young St Ste 102, Honolulu, HI 96814"
   },
   {
    "id": "helenas",
@@ -819,37 +821,40 @@
    "id": "herringbone",
    "cat": "etc",
    "name": "Herringbone",
-   "area": "oahu",
+   "area": "waikiki",
    "name_en": "Herringbone Waikiki",
-   "q": "Herringbone Waikiki, Honolulu, HI",
    "tags": [
     "oceanstar"
    ],
-   "note": "분위기 좋은 저녁"
+   "note": "분위기 좋은 저녁 · 인터내셔널 마켓 플레이스 3층(그랜드 라나이) · 힐튼가든인 바로 앞 · 저녁 17시부터",
+   "addr": "2330 Kalakaua Ave, Honolulu, HI 96815",
+   "stop": "p5"
   },
   {
    "id": "mauibrewing",
    "cat": "bar",
    "name": "Maui Brewing Co.",
-   "area": "oahu",
+   "area": "waikiki",
    "name_en": "Maui Brewing Co. Waikiki",
-   "q": "Maui Brewing Co. Waikiki, Honolulu, HI",
    "tags": [
     "oceanstar"
    ],
-   "note": "하와이 양조장 맥주 · 가성비 안주도 좋음"
+   "note": "하와이 양조장 맥주 · 가성비 안주도 좋음 · 아웃리거 와이키키 비치코머 호텔 2층 · 11:00~23:00 (출처 기준)",
+   "addr": "2300 Kalakaua Ave, Honolulu, HI 96815",
+   "stop": "p1"
   },
   {
    "id": "ivwinebar",
    "cat": "bar",
    "name": "Island Vintage Wine Bar",
-   "area": "oahu",
-   "name_en": "Island Vintage Wine Bar Waikiki",
-   "q": "Island Vintage Wine Bar Waikiki, Honolulu, HI",
+   "area": "waikiki",
+   "name_en": "Island Vintage Wine Bar",
    "tags": [
     "oceanstar"
    ],
-   "note": "와인과 맛있는 로컬식 안주"
+   "note": "와인과 맛있는 로컬식 안주 · 로열하와이안센터 C동 2층 (울프강과 같은 동)",
+   "addr": "2301 Kalakaua Ave, Honolulu, HI 96815",
+   "stop": "p1"
   },
   {
    "id": "foodlandpoke",
@@ -878,60 +883,64 @@
    "id": "freshcatch",
    "cat": "poke",
    "name": "Fresh Catch",
-   "area": "oahu",
-   "name_en": "Fresh Catch Hawaii poke",
-   "q": "Fresh Catch Hawaii poke, Honolulu, HI",
+   "area": "kapahulu",
+   "name_en": "Fresh Catch Kapahulu",
    "tags": [
     "oceanstar"
-   ]
+   ],
+   "addr": "747 Kapahulu Ave, Honolulu, HI 96815",
+   "note": "포케 · 주소는 2022년 기사 기준 (영업 확인)"
   },
   {
    "id": "matchamaiko",
    "cat": "dessert",
-   "name": "Matcha Maiko",
-   "area": "oahu",
-   "name_en": "Matcha Maiko Waikiki",
-   "q": "Matcha Maiko Waikiki, Honolulu, HI",
+   "name": "Matcha Cafe Maiko",
+   "area": "waikiki",
+   "name_en": "Matcha Cafe Maiko",
    "tags": [
     "oceanstar"
    ],
-   "note": "진하고 쌉쌀한 말차 아이스크림"
+   "note": "진하고 쌉쌀한 말차 아이스크림 · 쿠히오 반얀 건물 구석 · 숙소(힐튼가든인)에서 걸어서 1분",
+   "addr": "2310 Kuhio Ave, Honolulu, HI 96815",
+   "stop": "p5"
   },
   {
    "id": "nanas",
    "cat": "dessert",
    "name": "Nana's Green Tea",
-   "area": "oahu",
-   "name_en": "Nana's Green Tea Waikiki",
-   "q": "Nana's Green Tea Waikiki, Honolulu, HI",
+   "area": "waikiki",
+   "name_en": "Nana's Green Tea, Stix Asia",
    "tags": [
     "oceanstar"
    ],
-   "note": "호지차 라떼·아이스크림 강추"
+   "note": "호지차 라떼·아이스크림 강추 · 와이키키 쇼핑 플라자 지하 스틱스 아시아 푸드홀 (옛 와이키키 요코초 자리 — 위치 한 번 확인)",
+   "addr": "2250 Kalakaua Ave, Honolulu, HI 96815",
+   "stop": "p1"
   },
   {
    "id": "mosa",
    "cat": "dessert",
-   "name": "Mosa Ice Cream",
-   "area": "oahu",
-   "name_en": "Mosa Ice Cream",
-   "q": "Mosa Ice Cream, Honolulu, HI",
+   "name": "Mosa! Ice Cream",
+   "area": "waikiki",
+   "name_en": "Mosa Ice Cream Waikiki",
    "tags": [
     "oceanstar"
    ],
-   "note": "모찌·견과류 아이스크림"
+   "note": "모찌·견과류 아이스크림 · 대만식 아이스크림 · 와이키키점 주소는 디렉터리 기준 (다른 주소도 있어 확인)",
+   "addr": "2238 Lauula St, Honolulu, HI 96815",
+   "stop": "p1"
   },
   {
    "id": "coffeeortea",
    "cat": "dessert",
    "name": "Coffee or Tea",
-   "area": "oahu",
-   "name_en": "Coffee or Tea Honolulu",
-   "q": "Coffee or Tea Honolulu, Honolulu, HI",
+   "area": "alamoana",
+   "name_en": "Coffee or Tea",
    "tags": [
     "oceanstar"
    ],
-   "note": "로컬들이 좋아하는 밀크티·빙수"
+   "note": "로컬들이 좋아하는 밀크티·빙수 · 맥컬리 쇼핑센터 쪽",
+   "addr": "1960 Kapiolani Blvd #106, Honolulu, HI 96826"
   },
   {
    "id": "leahi",
@@ -961,13 +970,13 @@
    "id": "dacove",
    "cat": "dessert",
    "name": "Da Cove Health Bar and Cafe",
-   "area": "oahu",
+   "area": "diamondhead",
    "name_en": "Da Cove Health Bar and Cafe",
-   "q": "Da Cove Health Bar and Cafe, Honolulu, HI",
    "tags": [
     "oceanstar"
    ],
-   "note": "아사이볼"
+   "note": "아사이볼 · 다이아몬드 헤드 등산 뒤에 들르기 좋음",
+   "addr": "3045 Monsarrat Ave #5, Honolulu, HI 96815"
   }
  ],
  "sources": {
