@@ -98,7 +98,7 @@ export function searchCatalog(trip = {}, eats = {}, checklists = {}, query = '')
       if (!rank) continue;
       result.schedule.push({
         kind: 'schedule', id: it.id, title: it.title, subtitle: day.date + (it.start ? ' · ' + it.start : ''),
-        note: p ? p.name : '', date: day.date, score: rank,
+        note: it.note || (p ? p.name : ''), date: day.date, score: rank,
       });
     }
   }
