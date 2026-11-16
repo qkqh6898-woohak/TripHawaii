@@ -208,6 +208,8 @@ export async function render(root, ctx) {
     if (!box) return;
     await setCheck(box.dataset.check, box.checked);
     haptic();
+    // 쇼핑에서는 전체 진행률과 '미구매만 보기'를 즉시 다시 계산해요.
+    if (tab === 'shopping') { ctx.rerender(); return; }
     box.closest('.check-row').classList.toggle('is-done', box.checked);
     const group = box.closest('.check-group, .check-day');
     if (group) {
