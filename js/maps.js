@@ -229,13 +229,14 @@ function bindTransit(root, ctx) {
 const AREA_ORDER = ['waikiki', 'diamondhead', 'kapahulu', 'alamoana', 'kaimuki', 'downtown', 'hawaiikai', 'northshore', 'oahu'];
 
 function eatsHtml(doc, cat) {
+  const group = (doc.groups || []).find((g) => `g-${g.id}` === cat) || null;   // 묶음 (예: 리힝무이 파인애플 주변)
   const favs = prefs().eatFav || [];
   const catOf = Object.fromEntries((doc.categories || []).map((c) => [c.id, c]));
   const list = (doc.places || [])
-    .filter((p) => (cat === 'all' ? true : cat === 'fav' ? favs.includes(p.id) : cat === 'walk' ? p.area === 'waikiki' : cat === 'oceanstar' ? (p.tags || []).includes('oceanstar') : p.cat === cat))
-    .sort((a, b) => AREA_ORDER.indexOf(a.area) - AREA_ORDER.indexOf(b.area));
+    .filter((p) => (cat === 'all' ? true : cat === 'fav' ? favs.includes(p.id) : cat === 'walk' ? p.area === 'waikiki' : cat === 'oceanstar' ? (p.tags || []).includes('oceanstar') : group ? group.ids.includes(p.id) : p.cat === cat))
+    .sort((a, b) => (group ? group.ids.indexOf(a.id) - group.ids.indexOf(b.id) : AREA_ORDER.indexOf(a.area) - AREA_ORDER.indexOf(b.area)));
   const osCount = (doc.places || []).filter((p) => (p.tags || []).includes('oceanstar')).length;
-  const chips = [['all', '전체'], ['walk', '🚶 걸어서'], ['fav', `★ 찜 ${favs.length}`], ...(osCount ? [['oceanstar', `🐢 오션스타 추천 ${osCount}`]] : []), ...(doc.categories || []).map((c) => [c.id, `${c.icon} ${c.title}`])];
+  const chips = [['all', '전체'], ['walk', '🚶 걸어서'], ['fav', `★ 찜 ${favs.length}`], ...(doc.groups || []).map((g) => [`g-${g.id}`, `${g.icon} ${g.title} ${g.ids.length}`]), ...(osCount ? [['oceanstar', `🐢 오션스타 추천 ${osCount}`]] : []), ...(doc.categories || []).map((c) => [c.id, `${c.icon} ${c.title}`])];
   const tip = cat !== 'all' ? (catOf[cat] || {}).tip : '';
   return html`
     <section class="card">
@@ -258,6 +259,7 @@ function eatsHtml(doc, cat) {
       ${chips.map(([id, label]) => html`<a class="chip ${cat === id ? 'is-on' : ''}" href="#/maps?m=eats&cat=${id}" ${cat === id ? html`aria-current="true"` : ''}>${label}</a>`)}
     </div>
     ${cat === 'oceanstar' ? html`<p class="banner">🐢 ${(doc.sources || {}).oceanstar || ''}</p>` : ''}
+    ${group ? html`<p class="banner">${group.icon} ${group.note}</p>` : ''}
     ${tip ? html`<p class="banner">💡 ${tip}</p>` : ''}
     ${!list.length ? html`<p class="muted empty">${cat === 'fav' ? '아직 찜한 곳이 없어요. 가게 옆 ☆ 를 눌러 모아 보세요.' : '이 종류의 맛집이 없어요.'}</p>` : ''}
     <ul class="eat-list">
@@ -339,7 +341,7 @@ export async function render(root, ctx) {
   }
   if (m === 'eats') {
     const doc = await loadEats();
-    const ids = new Set(['all', 'walk', 'fav', 'oceanstar', ...(doc.categories || []).map((c) => c.id)]);
+    const ids = new Set(['all', 'walk', 'fav', 'oceanstar', ...(doc.groups || []).map((g) => `g-${g.id}`), ...(doc.categories || []).map((c) => c.id)]);
     const ecat = ids.has(q.cat) ? q.cat : 'all';
     setHTML(root, html`${navHtml}${eatsHtml(doc, ecat)}`);
     bindEats(root, doc);

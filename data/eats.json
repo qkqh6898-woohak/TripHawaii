@@ -1,6 +1,6 @@
 {
  "schema": 1,
- "updated": "2026-11-16",
+ "updated": "2026-11-17",
  "note": "우리가 모은 맛집 목록이에요 (일정 확정 아님). 이동 시간은 숙소(와이키키) 기준 추정이고, 영업시간·예약은 가기 전에 확인하세요. 11/26 추수감사절에는 문 닫는 곳이 많아요.",
  "areas": {
   "waikiki": "와이키키 · 걸어서",
@@ -509,6 +509,16 @@
    "stop": "p1"
   },
   {
+   "id": "merrimans",
+   "cat": "fine",
+   "name": "Merriman's Honolulu",
+   "area": "alamoana",
+   "name_en": "Merriman's Honolulu, Ward Village",
+   "q": "Merriman's Honolulu, Ward Village, Honolulu, HI",
+   "stop": "p10",
+   "note": "하와이 농장 재료로 만드는 하와이 지역 요리 · 워드 빌리지"
+  },
+  {
    "id": "tamafuji",
    "cat": "tonkatsu",
    "name": "Tonkatsu Tamafuji",
@@ -831,6 +841,16 @@
    "stop": "p5"
   },
   {
+   "id": "wfqueen",
+   "cat": "etc",
+   "name": "홀푸드 마켓 퀸 (Whole Foods Queen)",
+   "area": "alamoana",
+   "name_en": "Whole Foods Market Queen",
+   "addr": "388 Kamakee St, Honolulu, HI 96814",
+   "stop": "p10",
+   "note": "하와이에서 가장 큰 홀푸드 · 포케 바 · 라니카이 주스 · 하와이 최대 핫바 · 생맥주 바(Two Tides) · 07:00~22:00 (2018년 기준)"
+  },
+  {
    "id": "mauibrewing",
    "cat": "bar",
    "name": "Maui Brewing Co.",
@@ -958,13 +978,14 @@
    "id": "lanikaijuice",
    "cat": "dessert",
    "name": "Lanikai Juice",
-   "area": "oahu",
-   "name_en": "Lanikai Juice",
-   "q": "Lanikai Juice, Honolulu, HI",
+   "area": "alamoana",
+   "name_en": "Lanikai Juice, Whole Foods Market Queen",
    "tags": [
     "oceanstar"
    ],
-   "note": "아사이볼"
+   "note": "아사이볼 · 홀푸드 퀸 안 키오스크 (다른 지점도 있음)",
+   "addr": "388 Kamakee St, Honolulu, HI 96814",
+   "stop": "p10"
   },
   {
    "id": "dacove",
@@ -977,9 +998,43 @@
    ],
    "note": "아사이볼 · 다이아몬드 헤드 등산 뒤에 들르기 좋음",
    "addr": "3045 Monsarrat Ave #5, Honolulu, HI 96815"
+  },
+  {
+   "id": "lins",
+   "cat": "dessert",
+   "name": "Lin's Hawaiian Snacks (리힝무이 파인애플)",
+   "area": "alamoana",
+   "name_en": "Lin's Hawaiian Snacks",
+   "addr": "401 Kamakee St, Honolulu, HI 96814",
+   "stop": "p10",
+   "star": true,
+   "note": "리힝무이 가루를 뿌린 파인애플(파인애플 리힝)로 유명한 가게 · 크랙시드(말린 과일 간식) 100가지 넘게 · 시식 · 10:00~19:00 (확인 필요)"
   }
  ],
  "sources": {
   "oceanstar": "오션스타(11/16 거북이 투어) 크루들이 직접 다니는 맛집 추천"
- }
+ },
+ "groups": [
+  {
+   "id": "lins",
+   "icon": "🍍",
+   "title": "리힝무이 파인애플 주변",
+   "note": "Lin's Hawaiian Snacks(카카아코 · 401 Kamakee St) 주변 맛집이에요. 걸어서 5~15분 거리 (추정). 와이키키에서는 핑크라인 ⑩ 알라모아나 센터에서 내려 걸어가요.",
+   "ids": [
+    "lins",
+    "wfqueen",
+    "lanikaijuice",
+    "kuro",
+    "merrimans",
+    "rys",
+    "bernini",
+    "hangang",
+    "mw",
+    "totoya",
+    "ichika",
+    "piikoi",
+    "shabuya"
+   ]
+  }
+ ]
 }

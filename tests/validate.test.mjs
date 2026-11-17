@@ -121,6 +121,8 @@ test('맛집 목록 · 종류·지역·검색어 검사', () => {
   assert.deepEqual(validateEats(doc).errors, []);
   assert.ok(doc.places.length >= 86);
   assert.equal(doc.places.filter((p) => (p.tags || []).includes('oceanstar')).length, 26);
+  const badGroup = clone(doc); badGroup.groups[0].ids.push('nope');
+  assert.ok(validateEats(badGroup).errors.some((e) => e.includes('nope')));
   const bad = clone(doc); bad.places[0].cat = 'nope'; bad.places[1].note = '<b>x</b>';
   const errs = validateEats(bad).errors;
   assert.ok(errs.some((e) => e.includes('categories')) && errs.some((e) => e.includes('꺾쇠')));

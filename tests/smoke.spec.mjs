@@ -364,6 +364,10 @@ async function runFlow(browser, base, vp) {
   await go(page, '#/maps?m=eats&cat=oceanstar');
   assert.equal(await page.locator('.eat').count(), eatsData.places.filter((p) => (p.tags || []).includes('oceanstar')).length);
   assert.match(await text(page, '.view-maps .banner'), /오션스타/);
+  await go(page, '#/maps?m=eats&cat=g-lins');
+  assert.equal(await page.locator('.eat').count(), eatsData.groups[0].ids.length);
+  assert.match(await text(page, '.eat'), /Lin's Hawaiian Snacks/);              // 묶음 순서대로 (리힝무이 가게가 맨 위)
+  assert.match(await text(page, '.view-maps .banner'), /핑크라인 ⑩/);
   await go(page, '#/maps?m=eats&cat=poke');
   assert.equal(await page.locator('.eat').count(), eatsData.places.filter((p) => p.cat === 'poke').length);
   assert.match(await text(page, '.view-maps .banner'), /Spicy Mayo/);

@@ -319,6 +319,10 @@ export function validateEats(doc) {
     if (!p.addr && !p.name_en && !p.q) errors.push(`${at}: 지도 검색에 쓸 addr·name_en·q 중 하나가 있어야 합니다`);
     for (const k of ['name', 'name_en', 'addr', 'q', 'note']) if (p[k] && /https?:|<|>/.test(p[k])) errors.push(`${at}: ${k} 에 주소(URL)나 꺾쇠를 넣지 않습니다`);
   });
+  for (const g of (doc && doc.groups) || []) {
+    if (!g.id || !g.title || !Array.isArray(g.ids) || !g.ids.length) errors.push(`eats.groups (${g.id}): id, title, ids 가 있어야 합니다`);
+    for (const id of g.ids || []) if (!ids.has(id)) errors.push(`eats.groups (${g.id}): "${id}" 가 맛집 목록에 없습니다`);
+  }
   return { errors, warnings: [] };
 }
 
