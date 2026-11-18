@@ -378,6 +378,20 @@ async function runFlow(browser, base, vp) {
   await go(page, '#/maps?m=eats&cat=fav');
   assert.equal(await page.locator('.eat').count(), 1);
   await page.locator('.eat [data-eat-fav]').first().click();
+  // 피드백: GitHub 이슈 주소 (직전 화면은 ?… 없이)
+  await go(page, '#/maps?m=eats&cat=poke');
+  await go(page, '#/feedback');
+  await page.locator('[name="fb-title"]').fill('지도 테스트');
+  await page.locator('[name="fb-text"]').fill('맛집 탭에서 확인');
+  const fbUrl = new URL(await page.locator('[data-fb-gh]').getAttribute('href'));
+  assert.equal(fbUrl.origin + fbUrl.pathname, 'https://github.com/qkqh6898-woohak/TripHawaii/issues/new');
+  assert.equal(fbUrl.searchParams.get('title'), '[버그] 지도 테스트');
+  assert.match(fbUrl.searchParams.get('body'), /- 화면: #\/maps\n/);
+  assert.doesNotMatch(fbUrl.searchParams.get('body'), /cat=poke/);
+  await page.locator('[data-kind="idea"]').click();
+  assert.equal(new URL(await page.locator('[data-fb-gh]').getAttribute('href')).searchParams.get('labels'), 'enhancement');
+  await page.locator('[data-fb-copy]').click();
+  await page.waitForTimeout(200);
   // 교통: 핑크라인 정거장 13곳 · 출발점 바꾸기
   await go(page, '#/maps?m=transit');
   assert.equal(await page.locator('.stop').count(), 13);

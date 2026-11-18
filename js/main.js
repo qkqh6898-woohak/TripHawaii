@@ -15,6 +15,8 @@ import * as maps from './maps.js';
 import * as more from './more.js';
 import * as checklist from './checklist.js';
 import * as search from './search.js';
+import * as feedback from './feedback.js';
+import { setLastRoute, noteError } from './feedback-core.js';
 import * as expenses from './expenses.js';
 import * as phrases from './phrases.js';
 import * as settings from './settings.js';
@@ -30,6 +32,7 @@ const VIEWS = {
   more: { mod: more, tab: 'more', title: '더보기' },
   check: { mod: checklist, tab: 'more', title: '체크리스트' },
   search: { mod: search, tab: 'more', title: '검색' },
+  feedback: { mod: feedback, tab: 'more', title: '피드백' },
   money: { mod: expenses, tab: 'more', title: '경비' },
   import: { mod: { render: expenses.renderImport }, tab: 'more', title: '경비 가져오기' },
   phrases: { mod: phrases, tab: 'more', title: '여행 영어' },
@@ -67,6 +70,7 @@ async function navigate(hash, replace = false, { slide } = {}) {
 async function renderRoute({ keepScroll = false } = {}) {
   const route = parseHash();
   const view = VIEWS[route.name];
+  if (route.name !== 'feedback') setLastRoute(location.hash);   // 피드백에 '어느 화면에서'를 적어 주려고
   const seq = ++renderSeq;
   const el = document.createElement('div');
   el.className = `view view-${route.name}`;
@@ -81,7 +85,10 @@ async function renderRoute({ keepScroll = false } = {}) {
       <div class="card">
         <h2>화면을 그리지 못했어요</h2>
         <p class="muted">${e && e.message ? e.message : '알 수 없는 오류'}</p>
-        <button type="button" class="btn btn-primary" data-reload>다시 열기</button>
+        <div class="btn-row">
+          <button type="button" class="btn btn-primary" data-reload>다시 열기</button>
+          <a class="btn" href="#/feedback?kind=bug&err=${encodeURIComponent(String((e && e.message) || '알 수 없는 오류').slice(0, 200))}">🐞 버그 알리기</a>
+        </div>
       </div>`);
   }
   if (seq !== renderSeq) return; // 그리는 동안 다른 화면으로 넘어감
@@ -126,6 +133,12 @@ function fatal(message) {
       <p class="muted small">처음 여는 것이라면 인터넷에 연결한 뒤 다시 열어 주세요. 한 번 열고 나면 인터넷 없이도 보여요.</p>
       <button type="button" class="btn btn-primary" data-reload>다시 열기</button>
     </div>`);
+}
+
+// 버그 알리기에 '최근 오류'로 넣어 줄 메시지 (내용 없이 메시지만)
+if (typeof window !== 'undefined') {
+  window.addEventListener('error', (e) => noteError(e && e.message));
+  window.addEventListener('unhandledrejection', (e) => noteError(e && e.reason && (e.reason.message || String(e.reason))));
 }
 
 async function boot() {

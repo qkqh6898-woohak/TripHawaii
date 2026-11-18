@@ -3,21 +3,23 @@
 // (파일을 고친 뒤 `node tools/build-precache.mjs` 를 실행하면 버전과 목록이 바뀐다 — 직접 고치지 말 것).
 
 /* PRECACHE:BEGIN */
-const VERSION = '36e9-61b1';
+const VERSION = '2256-0b0b';
 const FILES = [
   ['index.html', '37595f72'],
   ['manifest.webmanifest', '433937d9'],
-  ['css/app.css', '0ac3715c'],
+  ['css/app.css', '2087cac8'],
   ['js/checklist.js', 'f2a4c8f0'],
   ['js/crypto.js', '98dac433'],
   ['js/days.js', '45e42c5d'],
   ['js/db.js', '64891c85'],
   ['js/expenses.js', 'c6c48eef'],
+  ['js/feedback-core.js', 'cc155e30'],
+  ['js/feedback.js', 'bd67039e'],
   ['js/gmap.js', '2f6dabf7'],
   ['js/ideas.js', '00838b81'],
-  ['js/main.js', '85f4e791'],
+  ['js/main.js', '4c198c83'],
   ['js/maps.js', '10b72aaf'],
-  ['js/more.js', '9bb90b7f'],
+  ['js/more.js', '6bbc3e87'],
   ['js/phrases.js', '45167887'],
   ['js/prefs.js', 'd862dceb'],
   ['js/route.js', 'cdd35d20'],
