@@ -412,7 +412,7 @@ async function openShareSheet(ctx) {
           <button type="button" class="btn" data-share="copy">코드 복사</button>
           <button type="button" class="btn" data-share="file">파일로 저장</button>
         </div>
-        <p class="muted small">아이폰 홈 화면 앱에서는 받은 코드를 복사해 경비 화면의 <b>받기 → 붙여넣기</b>로 넣어 주세요.</p>
+        <p class="muted small">아이폰 홈 화면 앱에서는 받은 코드를 복사해 경비 화면 맨 위의 <b>경비 받기 → 붙여넣기</b>로 넣어 주세요.</p>
         <button type="button" class="btn btn-block" data-share="done">상대가 받았어요 ✓</button>`}`);
     box.dataset.code = code;
   };
@@ -536,6 +536,10 @@ export async function render(root, ctx) {
         <div><dt>현지 지출</dt><dd>${fmtUSD(sum.tripUsd)}<small>${fmtKRW(sum.trip)}</small></dd></div>
       </dl>
       <button type="button" class="btn btn-primary btn-block" data-action="add">+ 지출 추가</button>
+      <div class="btn-row">
+        <button type="button" class="btn" data-action="share">📤 내 경비 보내기${fresh ? html` <span class="count">${fresh}</span>` : ''}</button>
+        <button type="button" class="btn" data-action="receive">📥 경비 받기</button>
+      </div>
       <p class="muted small">환율 1달러 = ${fmtKRW(p.rate)}${p.fee ? ` · 카드 수수료 ${p.fee}%` : ''} · <a href="#/settings">바꾸기</a></p>
     </section>
 
@@ -559,11 +563,8 @@ export async function render(root, ctx) {
     </section>
 
     <section class="card">
-      <h2>두 폰 맞추기</h2>
-      <div class="btn-row">
-        <button type="button" class="btn" data-action="share">내 경비 보내기${fresh ? html` <span class="count">${fresh}</span>` : ''}</button>
-        <button type="button" class="btn" data-action="receive">받기</button>
-      </div>
+      <h2>도구</h2>
+      <p class="muted small">두 폰 경비 맞추기(보내기·받기)는 맨 위 '+ 지출 추가' 아래에 있어요.</p>
       <div class="btn-row">
         <button type="button" class="btn" data-action="tip">🧮 팁 계산기</button>
         ${prepaidNew ? html`<button type="button" class="btn" data-action="prepaid">사전 결제 ${prepaidNew}건 넣기</button>` : ''}
@@ -629,7 +630,7 @@ export async function renderImport(root, ctx) {
       </section>
       <section class="card">
         <p class="muted small">홈 화면에 설치한 앱이 아니라 브라우저에서 열렸나요? 아이폰은 둘의 저장 공간이 달라요.
-        그럴 땐 아래 코드를 복사해 앱의 <b>경비 → 받기</b>에 붙여넣어 주세요.</p>
+        그럴 땐 아래 코드를 복사해 앱의 <b>경비 → 경비 받기</b>에 붙여넣어 주세요.</p>
         <button type="button" class="btn btn-block" data-action="copy-code">코드 복사</button>
       </section>`}`);
 

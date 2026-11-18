@@ -516,6 +516,7 @@ async function runFlow(browser, base, vp) {
   log('경비: 입력·환산·정산·사전 결제·팁 ✓');
 
   // 9) 경비 보내기(QR) → 다른 폰에서 가져오기 → 한 번 더 받아도 중복 없음
+  assert.equal(await page.locator('.money-summary [data-action="receive"]').count(), 1, '받기 버튼은 맨 위 요약 칸에 (지출이 많아도 바로 보이게)');
   await page.locator('[data-action="share"]').click();
   await page.waitForSelector('.share .qr svg');
   const code = await page.locator('.share').getAttribute('data-code');
