@@ -13,6 +13,21 @@
       "icon": "📌",
       "items": [
         {
+          "id": "todo-bi-stay",
+          "text": "🔥 11/23~25 숙소 2박 예약 (웨스틴 취소됨) — 코나코스트 프런트에 연장 먼저 문의",
+          "owner": "both"
+        },
+        {
+          "id": "todo-bi-manta",
+          "text": "11/22 만타레이 야간 스노클 예약 (케아우호우 베이 출발)",
+          "owner": "both"
+        },
+        {
+          "id": "todo-bi-cruise",
+          "text": "(선택) 11/23 캡틴쿡 스노클 크루즈 예약 (페어윈드 · 케아우호우 베이)",
+          "owner": "both"
+        },
+        {
           "id": "todo-bi-volcano-tour",
           "text": "11/20 한인 가이드 화산 투어 예약 (코나 숙소 픽업)",
           "owner": "both"
