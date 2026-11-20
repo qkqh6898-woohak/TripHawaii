@@ -3,7 +3,7 @@
 // (파일을 고친 뒤 `node tools/build-precache.mjs` 를 실행하면 버전과 목록이 바뀐다 — 직접 고치지 말 것).
 
 /* PRECACHE:BEGIN */
-const VERSION = 'e77b-cd66';
+const VERSION = 'd96d-8f91';
 const FILES = [
   ['index.html', '37595f72'],
   ['manifest.webmanifest', '433937d9'],
@@ -39,15 +39,15 @@ const FILES = [
   ['js/wallet.js', '6127bc56'],
   ['js/weather.js', 'f8590ea6'],
   ['vendor/qrcode.js', 'ea91d711'],
-  ['data/checklists.json', '363331c5'],
+  ['data/checklists.json', '33e849db'],
   ['data/eats.json', '0616e132'],
   ['data/ideas.json', '1676e2dc'],
-  ['data/maps.json', 'b556a24c'],
+  ['data/maps.json', '41818ebd'],
   ['data/photos.json', '203050d9'],
   ['data/phrases.json', '222339e8'],
   ['data/secret.enc', 'b6362c2a'],
   ['data/transit.json', 'a4f530fd'],
-  ['data/trip.json', '1781af76'],
+  ['data/trip.json', 'f803e855'],
   ['data/videos.json', 'f543b457'],
   ['maps/big-island.png', 'a8e3a173'],
   ['maps/day-1115-wide.png', '89913008'],
@@ -62,9 +62,9 @@ const FILES = [
   ['maps/day-1119.png', '2bab0c9a'],
   ['maps/day-1120-wide.png', 'bcd662cf'],
   ['maps/day-1120.png', '465b2f6e'],
-  ['maps/day-1121-wide.png', '2b485d72'],
-  ['maps/day-1121.png', '5d18bc85'],
-  ['maps/day-1122-wide.png', '6a947ea9'],
+  ['maps/day-1121-wide.png', '4b6e648c'],
+  ['maps/day-1121.png', '61024c0f'],
+  ['maps/day-1122-wide.png', 'e37b1c57'],
   ['maps/day-1122.png', 'bd98d850'],
   ['maps/day-1123-wide.png', '20e5cf31'],
   ['maps/day-1123.png', '94de0c25'],

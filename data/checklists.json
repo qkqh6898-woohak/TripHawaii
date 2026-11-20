@@ -23,16 +23,6 @@
           "owner": "both"
         },
         {
-          "id": "todo-bi-manta",
-          "text": "11/21 만타레이 야간 스노클 예약 (22일은 별투어라 21일로 · 케아우호우 베이 출발)",
-          "owner": "both"
-        },
-        {
-          "id": "todo-bi-cruise",
-          "text": "(선택) 캡틴쿡 스노클 크루즈 — 23일은 화산 투어라 하려면 11/24",
-          "owner": "both"
-        },
-        {
           "id": "todo-bi-volcano-tour",
           "text": "✅ 11/23 투어파크 화산 섬일주 (코나코스트 픽업 → 코트야드 드랍 · 짐 가능) — 픽업 시간 확인",
           "owner": "both"
@@ -59,18 +49,13 @@
           "url": "https://gostateparks.hawaii.gov/diamondhead"
         },
         {
-          "id": "todo-helicopter",
-          "text": "헬기투어 날짜(11/23 또는 11/24) 정하고 예약",
-          "owner": "woohak"
-        },
-        {
           "id": "todo-maunakea",
           "text": "✅ 11/22 투어파크 마우나케아 선셋 별투어 (코나코스트 픽업) — 픽업 시간 확인",
           "owner": "woohak"
         },
         {
           "id": "todo-1122",
-          "text": "11/22 일정 정하기",
+          "text": "✅ 11/22 정함 — 오전 휴식·짐 싸기, 오후 별투어",
           "owner": "both"
         },
         {
