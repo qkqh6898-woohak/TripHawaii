@@ -428,15 +428,15 @@ async function runFlow(browser, base, vp) {
   assert.deepEqual(await page.locator('.viewer-level').allInnerTexts(), ['오아후', '하와이 전체']);
   await page.locator('.viewer [data-v="close"]').click();
   await page.waitForTimeout(300);
-  await go(page, '#/maps?m=day&d=2026-11-20');
+  await go(page, '#/maps?m=day&d=2026-11-23');
   await shot(page, 'maps');
   // 날짜별 동선: 시간순 장소 + 구글 지도 경로 전체
-  assert.equal(await page.locator('.route .place-row').count(), 6);                 // 숙소 → 푸날루우 → 베이크샵 → 화산 → 빌리지 → 숙소
+  assert.equal(await page.locator('.route .place-row').count(), 7);                 // 전날 숙소 → 푸날루우 → 베이크샵 → 화산 → 새 숙소 → 시내 → 새 숙소
   assert.match(await text(page, '.route .place-row >> nth=1'), /09:30.*푸날루우/s);
   const routeUrl = new URL(await page.locator('.route [data-route]').getAttribute('href'));
   assert.equal(routeUrl.origin + routeUrl.pathname, 'https://www.google.com/maps/dir/');
   assert.match(routeUrl.searchParams.get('origin'), /^Kona Coast Resort/);
-  assert.equal(routeUrl.searchParams.get('waypoints').split('|').length, 4);
+  assert.equal(routeUrl.searchParams.get('waypoints').split('|').length, 5);
   assert.equal(routeUrl.searchParams.get('travelmode'), 'driving');
   await page.locator('.route [data-place="punaluu"]').click();                      // 장소를 누르면 주소·길찾기
   await page.waitForSelector('.sheet .place-block');

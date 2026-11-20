@@ -136,7 +136,7 @@ test('여행 전: 첫날 첫 일정이 다음', () => {
 test('종일 일정(11/22)은 진행 중·다음 계산에서 빠진다', () => {
   const r = T.currentAndNext(trip.days, at('2026-11-22T10:00'));
   assert.equal(r.current, null);
-  assert.equal(r.next.item.id, '1122-2');
+  assert.equal(r.next.item.id, '1122-4');   // 오후 별투어 픽업
 });
 
 test('일정 시각 표시', () => {

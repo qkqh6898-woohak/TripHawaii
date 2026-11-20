@@ -10,7 +10,7 @@ const params = (url) => new URL(url).searchParams;
 
 test('동선: 시간순으로 묶고, 전날 숙소 출발 · 오늘 숙소 복귀를 붙인다', () => {
   assert.deepEqual(ids('2026-11-17'), ['hilton', 'sheraton', 'kualoa', 'hilton']);
-  assert.deepEqual(ids('2026-11-20'), ['konacoast', 'punaluu', 'punaluu-bakeshop', 'volcano', 'volcano-village', 'konacoast']);
+  assert.deepEqual(ids('2026-11-23'), ['konacoast', 'punaluu', 'punaluu-bakeshop', 'volcano', 'courtyard-kona', 'kona-town', 'courtyard-kona']);  // 짐 싣고 화산 투어 → 새 숙소
   assert.deepEqual(ids('2026-11-15').slice(0, 2), ['hnl', 'hilton']);          // 첫날은 공항에서 시작
   assert.equal(ids('2026-11-27').at(-1), 'hnl');                                // 마지막 날은 공항에서 끝
   const s = routeStops(dayByDate('2026-11-17'));
@@ -33,9 +33,10 @@ test('동선: 모든 날짜에 경로 주소가 있고 형식이 맞다', () => 
       assert.equal(p.get('travelmode'), l.island === 'bigisland' ? 'driving' : null);
     }
   }
-  const d20 = params(dayRouteLinks(dayByDate('2026-11-20'))[0].url);
-  assert.match(d20.get('origin'), /^Kona Coast Resort/);
-  assert.equal(d20.get('waypoints').split('|').length, 4);
+  const d23 = params(dayRouteLinks(dayByDate('2026-11-23'))[0].url);
+  assert.match(d23.get('origin'), /^Kona Coast Resort/);         // 전날 숙소에서 출발
+  assert.match(d23.get('destination'), /^Courtyard King Kamehameha/);  // 오늘 숙소에서 끝
+  assert.equal(d23.get('waypoints').split('|').length, 5);
 });
 
 test('동선: 섬이 바뀌는 날은 섬별로 나눈다', () => {

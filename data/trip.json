@@ -98,16 +98,16 @@
       "note": "체크인·체크아웃 시간은 리조트 공식 안내 기준 — 예약 확인서로 다시 확인"
     },
     {
-      "id": "royalkona",
-      "name": "로열 코나 리조트",
-      "place": "royalkona",
+      "id": "courtyard-kona",
+      "name": "코트야드 킹 카메하메하 코나 비치 호텔",
+      "place": "courtyard-kona",
       "checkin": "2026-11-23",
       "checkout": "2026-11-25",
       "checkin_time": "15:00",
-      "checkout_time": "12:00",
+      "checkout_time": "11:00",
       "nights": 2,
-      "booking": "royalkona",
-      "note": "스탠다드 룸 (리노베이션 요금) · 체크인·체크아웃 시간은 추정 — 예약 확인서로 다시 확인"
+      "booking": "courtyard-kona",
+      "note": "킹 1 + 소파베드 · 리조트 뷰 · 발코니 · 무료 Wi-Fi · 체크인 15:00 · 체크아웃 11:00 (예약 확인서) · 리조트피·일부 세금은 호텔에서 결제"
     },
     {
       "id": "halepuna",
@@ -460,16 +460,16 @@
       "note": "만타레이 야간 스노클 · 캡틴쿡 스노클 크루즈(페어윈드) 출발 항구 · 코나코스트 리조트 근처 · 지도 핀 위치는 추정"
     },
     {
-      "id": "royalkona",
-      "name": "로열 코나 리조트",
-      "name_en": "Royal Kona Resort",
+      "id": "courtyard-kona",
+      "name": "코트야드 킹 카메하메하 코나 비치 호텔",
+      "name_en": "Courtyard King Kamehameha's Kona Beach Hotel",
       "cat": "hotel",
       "island": "bigisland",
-      "lat": 19.63,
-      "lng": -155.991,
-      "addr": "75-5852 Alii Dr, Kailua-Kona, HI 96740",
+      "lat": 19.6405,
+      "lng": -155.9975,
+      "addr": "75-5660 Palani Rd, Kailua-Kona, HI 96740",
       "weather_zone": "kona",
-      "note": "코나 시내 알리이 드라이브 · 돈스 마이타이 바 1분 · 카일루아 부두 걸어서 17분쯤 · 혼스 비치 9분 · 공항 차로 18~22분 · 지도 핀 위치는 추정"
+      "note": "카일루아 부두 바로 옆 · 호텔 앞 카마카호누 비치(잔잔한 만) · 알리이 드라이브 식당·상점 걸어서 3~7분 · 공항 차로 15~19분 · 알리이 드라이브 쪽 동관은 시끄럽다는 후기 · 지도 핀 위치는 추정"
     },
     {
       "id": "kona-town",
@@ -1192,106 +1192,45 @@
     {
       "date": "2026-11-20",
       "island": "bigisland",
-      "title": "화산국립공원 (한인 가이드 투어)",
-      "summary": "08:15~09:15 숙소 픽업 → (투어 코스에 따라) 커피 농장 · 블랙샌드비치 · 점심 → 화산국립공원 → 저녁 숙소 복귀",
+      "title": "휴식 · 투어 다시 잡기",
+      "summary": "렌터카 취소로 투어를 22일(마우나케아)·23일(화산)로 옮긴 날 · 리조트 휴식",
       "hotel": "konacoast",
       "map": "maps/day-1120.png",
       "weather_zones": [
-        "volcano",
         "kona"
       ],
       "items": [
         {
           "id": "1120-1",
-          "start": "08:15",
+          "start": "10:00",
           "place": "konacoast",
-          "title": "한인 가이드 화산 투어: 숙소 픽업",
-          "cat": "tour",
-          "note": "차 없이 가는 방법 · 예약 필요 (마이리얼트립·와그 등 '코나 숙소 픽업' 상품, 08:15~09:15 픽업 · 커피 농장·점심·화산국립공원 · 저녁 복귀) · 가이드·기사 팁 1인 $10쯤 · 영어 투어는 코나 출발 8~11시간",
-          "tentative": true
+          "title": "리조트 휴식 · 투어·숙소 다시 예약",
+          "cat": "rest",
+          "note": "투어파크: 22일 마우나케아 선셋 별투어 · 23일 화산국립공원 섬일주 (짐 싣고 코트야드 드랍)"
         },
         {
           "id": "1120-2",
-          "start": "09:30",
-          "end": "10:30",
-          "place": "punaluu",
-          "title": "푸날루우 블랙샌드비치",
-          "cat": "sight",
-          "note": "투어 코스에 있으면 · 바다거북과 3m 거리 유지",
-          "photos": [
-            {
-              "src": "photos/punaluu.jpg",
-              "alt": "푸날루우 블랙샌드비치 · 바다거북"
-            }
-          ],
-          "tentative": true
-        },
-        {
-          "id": "1120-3",
-          "start": "11:00",
-          "place": "punaluu-bakeshop",
-          "title": "점심: 푸날루우 베이크샵",
+          "start": "17:30",
+          "place": "kta-keauhou",
+          "title": "KTA 케아우호우 장보기 · 저녁거리",
           "cat": "food",
-          "note": "투어 코스에 있으면 · 나알레후",
-          "photos": [
-            {
-              "src": "photos/punaluu-bakeshop.jpg",
-              "alt": "푸날루우 베이크샵"
-            }
-          ],
-          "tentative": true
-        },
-        {
-          "id": "1120-4",
-          "start": "13:00",
-          "end": "17:30",
-          "place": "volcano",
-          "title": "화산국립공원",
-          "cat": "sight",
-          "note": "방문자센터 → 킬라우에아 분화구 전망대 · 입장료는 카드 결제 · 방문자센터가 공사 중이면 임시 웰컴센터에서 안내",
-          "photos": [
-            {
-              "src": "photos/kilauea.jpg",
-              "alt": "킬라우에아 분화구"
-            }
-          ]
-        },
-        {
-          "id": "1120-5",
-          "start": "18:00",
-          "place": "volcano-village",
-          "title": "볼케이노 빌리지 저녁",
-          "cat": "food",
-          "note": "투어 코스에 있으면 · 용암 불빛이 보이면 야경",
-          "tentative": true
-        },
-        {
-          "id": "1120-6",
-          "start": "19:00",
-          "approx": true,
-          "place": "konacoast",
-          "title": "투어 차량으로 숙소 복귀",
-          "cat": "move",
-          "note": "19:00 출발 → 21:00경 도착 (밤길 운전 주의)"
+          "tentative": true,
+          "note": "걸어서 · 22일 별투어 간식·물 미리 사기"
         }
       ],
       "packing": [
-        "운동화 (용암 지대는 바닥이 거칠어요)",
-        "바람막이 · 우비 (화산 쪽은 서늘하고 비가 자주 와요)",
-        "가이드·기사 팁 현금 · 투어비에 입장료 포함인지 확인",
-        "간식 · 물"
+        "투어 예약 확인 카톡 저장",
+        "22일 밤 별투어용 패딩·장갑 미리 꺼내 두기"
       ]
     },
     {
       "date": "2026-11-21",
       "island": "bigisland",
-      "title": "카할루우 스노클 · 마우나케아 일몰·별 (투어)",
-      "summary": "오전 커피 농장(우버) 또는 카할루우 비치(걸어서) → 휴식 → 오후 마우나케아 투어 픽업 → 정상 일몰 · 별 → 21~22시 복귀",
+      "title": "카할루우 스노클 · 휴식 · 만타 야간 스노클",
+      "summary": "오전 카할루우 비치(걸어서) 또는 커피 농장(우버) → 오후 휴식 → 저녁 만타레이 야간 스노클 (케아우호우 베이)",
       "hotel": "konacoast",
       "map": "maps/day-1121.png",
       "weather_zones": [
-        "hapuna",
-        "maunakea",
         "kona"
       ],
       "items": [
@@ -1319,36 +1258,74 @@
           "place": "kahaluu",
           "title": "카할루우 비치 스노클 (바다거북)",
           "cat": "sight",
-          "note": "리조트에서 걸어가거나 우버 · 아침이 물이 맑음 · 거북이와 3m 이상 · 하푸나 비치는 11/24 웨스틴 앞에서"
+          "note": "리조트에서 걸어가거나 우버 · 아침이 물이 맑음 · 거북이와 3m 이상"
         },
         {
           "id": "1121-3",
           "start": "13:30",
-          "end": "14:30",
+          "end": "17:00",
           "place": "konacoast",
-          "title": "숙소 휴식 · 패딩·장갑 챙기기",
+          "title": "숙소 휴식 · 수영장",
           "cat": "rest"
         },
         {
-          "id": "1121-4",
-          "start": "14:30",
-          "title": "마우나케아 투어 픽업",
-          "cat": "tour",
-          "note": "예약 필요 · 한인 투어: 코나 숙소 픽업 + 한국어 이동 가이드(정상은 영어 가이드) · 영어 투어: 코나 13:30~15:00 출발, 킹 카메하메하 코트야드 메리어트·퀸즈 마켓플레이스 등에서 픽업, 21~22시 복귀 · 정상은 사륜구동이라 투어로만",
+          "id": "1121-8",
+          "start": "19:30",
           "approx": true,
-          "tentative": true
+          "place": "keauhou-bay",
+          "title": "만타레이 야간 스노클 (예약 필요)",
+          "cat": "tour",
+          "tentative": true,
+          "note": "22일은 별투어라 21일로 · 케아우호우 베이 항구 출발 · 배로 몇 분 · 체크인 시간은 업체마다 다름 (예: 19:45까지) · 대부분 픽업 없음 — 리조트에서 우버로 몇 분 · 수영복 · 수건 · 멀미약"
+        }
+      ],
+      "packing": [
+        "수영복 · 아쿠아슈즈 · 비치타월",
+        "만타: 수영복 · 수건 · 멀미약 · 갈아입을 옷"
+      ]
+    },
+    {
+      "date": "2026-11-22",
+      "island": "bigisland",
+      "title": "마우나케아 선셋·별 투어 (투어파크)",
+      "summary": "오전 휴식·빨래 → 오후 코나코스트 픽업 → 마우나케아 일몰 · 별 관측 → 밤 숙소 복귀",
+      "hotel": "konacoast",
+      "map": "maps/day-1122.png",
+      "weather_zones": [
+        "kona",
+        "maunakea"
+      ],
+      "items": [
+        {
+          "id": "1122-1",
+          "title": "휴식 · 빨래 · 카할루우 비치 (오전)",
+          "cat": "rest",
+          "tentative": true,
+          "note": "저녁 별투어가 길어서 오전엔 쉬기 · 점심은 든든하게",
+          "allday": true
         },
         {
-          "id": "1121-5",
+          "id": "1122-4",
+          "start": "14:30",
+          "title": "투어파크 마우나케아 선셋 별투어: 코나코스트 픽업",
+          "cat": "tour",
+          "note": "예약 완료 (2인) · 픽업 시간은 업체 안내 확인 (14:30은 추정) · 한국어 가이드 · 패딩·장갑·비니 꼭",
+          "approx": true,
+          "booking": "tourpark",
+          "confirmed": true,
+          "place": "konacoast"
+        },
+        {
+          "id": "1122-5",
           "start": "17:00",
           "place": "maunakea-vis",
           "title": "마우나케아 정상 · 일몰 (투어)",
           "cat": "sight",
-          "note": "투어는 정상(4,207m)까지 올라갔다가 내려와서 별 관측 · 고산병 주의 (물 · 천천히)",
+          "note": "투어 코스에 따라 정상 또는 중턱에서 일몰 · 고산병 주의 (물 · 천천히)",
           "approx": true
         },
         {
-          "id": "1121-6",
+          "id": "1122-6",
           "start": "18:00",
           "end": "20:30",
           "place": "maunakea-vis",
@@ -1364,7 +1341,7 @@
           ]
         },
         {
-          "id": "1121-7",
+          "id": "1122-7",
           "start": "21:30",
           "approx": true,
           "place": "konacoast",
@@ -1373,133 +1350,108 @@
         }
       ],
       "packing": [
-        "오전: 수영복 · 아쿠아슈즈 · 비치타월",
-        "밤: 패딩 · 후드 · 긴바지 · 두꺼운 양말 · 장갑 · 비니 (해 지면 영하 가까이) — 투어 갈 때 들고 가기",
-        "고산병 대비: 물 · 간식 / 전날 스쿠버 다이빙 금지",
-        "가이드 팁 현금"
-      ]
-    },
-    {
-      "date": "2026-11-22",
-      "island": "bigisland",
-      "title": "휴식일 (일정 미정)",
-      "summary": "오전 카할루우 비치 (걸어서) → 오후 휴식·빨래 → 저녁 만타레이 야간 스노클 (케아우호우 베이)",
-      "hotel": "konacoast",
-      "map": "maps/day-1122.png",
-      "weather_zones": [
-        "kona"
-      ],
-      "items": [
-        {
-          "id": "1122-1",
-          "allday": true,
-          "title": "휴식일 (일정 미정)",
-          "cat": "rest",
-          "tentative": true,
-          "note": "추천: 오전 카할루우 비치 스노클(바다거북) → 오후 휴식 · 빨래"
-        },
-        {
-          "id": "1122-2",
-          "start": "17:00",
-          "place": "kona-town",
-          "title": "코나 시내 알리이 드라이브 산책 · 저녁",
-          "cat": "rest",
-          "tentative": true,
-          "note": "후보 · 우버로 15분쯤 (추정) · 만타 투어를 하면 일찍 먹고 돌아오기",
-          "photos": [
-            {
-              "src": "photos/ai-kona-sunset.jpg",
-              "alt": "코나 알리이 드라이브 노을 (AI 이미지)",
-              "ai": true
-            }
-          ]
-        },
-        {
-          "id": "1122-3",
-          "start": "19:30",
-          "approx": true,
-          "place": "keauhou-bay",
-          "title": "만타레이 야간 스노클 (예약 필요)",
-          "cat": "tour",
-          "tentative": true,
-          "note": "케아우호우 베이 항구 출발 · 배로 몇 분 · 체크인 시간은 업체마다 다름 (예: 19:45까지) · 대부분 픽업 없음 — 리조트에서 우버로 몇 분 · 수영복 · 수건 · 멀미약"
-        }
-      ],
-      "packing": [
-        "빨래하는 날 — 코나코스트 객실 세탁기 또는 공용 세탁실 (세제 시트)",
-        "카할루우 비치 가면: 수영복 · 아쿠아슈즈"
+        "밤: 패딩 · 후드 · 긴바지 · 두꺼운 양말 · 장갑 · 비니 (해 지면 영하 가까이)",
+        "고산병 대비: 물 · 간식",
+        "가이드 팁 현금",
+        "저녁 간식 (투어 포함 여부 확인)"
       ]
     },
     {
       "date": "2026-11-23",
       "island": "bigisland",
-      "title": "로열 코나로 숙소 이동",
-      "summary": "코나코스트 체크아웃 → (투어파크 화산 투어로 바꾸면 짐 싣고 투어 → 저녁에 로열 코나 드랍) → 로열 코나 체크인",
-      "hotel": "royalkona",
+      "title": "화산국립공원 섬일주 (투어파크) → 코트야드",
+      "summary": "코나코스트 체크아웃 → 짐 싣고 투어 픽업 → (투어 코스에 따라) 블랙샌드비치 · 점심 → 화산국립공원 → 섬일주 → 저녁 코트야드 드랍·체크인",
+      "hotel": "courtyard-kona",
       "map": "maps/day-1123.png",
       "weather_zones": [
-        "kona"
+        "kona",
+        "volcano"
       ],
       "items": [
         {
-          "id": "1123-7",
-          "start": "08:30",
-          "place": "keauhou-bay",
-          "title": "캡틴쿡 스노클 크루즈 (후보 · 예약 필요)",
-          "cat": "tour",
-          "tentative": true,
-          "note": "페어윈드 오전 크루즈: 케아우호우 베이에서 08:30 체크인 → 13:30쯤 복귀 · 케알라케쿠아 베이 스노클 · 자주 매진 · 24시간 전까지 취소하면 전액 환불 · 이날 하면 숙소 체크아웃은 짐을 맡기고 가기"
-        },
-        {
           "id": "1123-1",
-          "start": "10:00",
+          "start": "07:30",
           "place": "konacoast",
           "title": "코나코스트 체크아웃",
           "cat": "hotel",
           "booking": "konacoast",
           "must": true,
-          "note": "짐 정리 · 투어파크 화산 투어로 바꾸면 짐을 투어 차량에 싣고 마지막에 로열 코나에 내려 줌 (짐 개수 확인 중) · 투어를 안 하면 택시·우버로 로열 코나 (20분쯤, 추정)"
+          "note": "픽업 전에 체크아웃 · 짐 전부 투어 차량에 싣기 (수화물 가능하다고 함) · 귀중품·여권은 몸에",
+          "approx": true
         },
         {
-          "id": "1123-2",
-          "start": "12:00",
-          "place": "kona-town",
-          "title": "코나 시내 점심",
-          "cat": "food",
-          "note": "우버로 15분쯤 (추정)"
-        },
-        {
-          "id": "1123-3",
-          "start": "15:00",
-          "title": "헬기투어 후보",
+          "id": "1123-8",
+          "start": "08:15",
+          "place": "konacoast",
+          "title": "투어파크 화산국립공원 섬일주: 코나코스트 픽업",
           "cat": "tour",
-          "booking": "helicopter",
-          "tentative": true,
-          "note": "23일 또는 24일 중 하나 · 시간 미정 · 차가 없으니 코나 공항에서 출발하는 업체로 고르기 (우버) · 와이콜로아 헬기장 출발은 코나에서 30~40분 (추정)",
+          "note": "예약 완료 · 픽업 시간은 업체 안내 확인 (08:15는 추정) · 마지막에 코트야드 킹 카메하메하에 짐과 함께 내려 줌 · 가이드 팁 1인 $10쯤",
+          "approx": true,
+          "booking": "tourpark",
+          "confirmed": true
+        },
+        {
+          "id": "1123-9",
+          "start": "09:30",
+          "end": "10:30",
+          "place": "punaluu",
+          "title": "푸날루우 블랙샌드비치",
+          "cat": "sight",
+          "note": "투어 코스에 따라 · 바다거북과 3m 거리 유지",
           "photos": [
             {
-              "src": "photos/ai-heli-kohala.jpg",
-              "alt": "헬기에서 본 코할라 해안 절벽 (AI 이미지)",
-              "ai": true
+              "src": "photos/punaluu.jpg",
+              "alt": "푸날루우 블랙샌드비치 · 바다거북"
+            }
+          ],
+          "tentative": true
+        },
+        {
+          "id": "1123-10",
+          "start": "11:00",
+          "place": "punaluu-bakeshop",
+          "title": "점심: 푸날루우 베이크샵",
+          "cat": "food",
+          "note": "투어 코스에 따라 · 나알레후",
+          "photos": [
+            {
+              "src": "photos/punaluu-bakeshop.jpg",
+              "alt": "푸날루우 베이크샵"
+            }
+          ],
+          "tentative": true
+        },
+        {
+          "id": "1123-11",
+          "start": "13:00",
+          "end": "17:30",
+          "place": "volcano",
+          "title": "화산국립공원",
+          "cat": "sight",
+          "note": "투어 코스에 따라 · 방문자센터 → 킬라우에아 분화구 전망대 · 입장료는 카드 결제 · 방문자센터가 공사 중이면 임시 웰컴센터에서 안내",
+          "photos": [
+            {
+              "src": "photos/kilauea.jpg",
+              "alt": "킬라우에아 분화구"
             }
           ]
         },
         {
           "id": "1123-4",
-          "start": "15:00",
-          "place": "royalkona",
-          "title": "로열 코나 리조트 체크인",
+          "start": "19:30",
+          "place": "courtyard-kona",
+          "title": "투어 차량으로 코트야드 도착 · 체크인",
           "cat": "hotel",
-          "note": "체크인 15:00부터 (추정 — 확인서 확인) · 스탠다드 룸 (리노베이션 요금) · 2박 · 늦게 도착하면 예약 메모에 도착 시간 남기기 · 공사 소음 있으면 방 바꿔 달라고 하기",
-          "booking": "royalkona",
+          "note": "체크인은 15:00부터 · 늦게 도착 — 짐과 함께 내려 줌 · 알리이 드라이브 쪽 동관이 시끄러우면 조용한 방 요청",
+          "booking": "courtyard-kona",
           "confirmed": true,
           "approx": true
         },
         {
           "id": "1123-5",
-          "start": "18:30",
-          "place": "royalkona",
-          "title": "저녁 · 돈스 마이타이 바 선셋",
+          "start": "20:15",
+          "place": "kona-town",
+          "title": "늦은 저녁 (호텔 근처)",
           "cat": "food",
           "photos": [
             {
@@ -1508,32 +1460,43 @@
               "ai": true
             }
           ],
-          "note": "호텔 안 오션프런트 바 · 알리이 드라이브 식당도 걸어서"
+          "note": "걸어서 3~7분 · 늦게 여는 곳 확인 (투어에서 저녁을 먹으면 생략)",
+          "approx": true
         }
       ],
       "packing": [
-        "스노클 크루즈: 수영복 · 래시가드 · 선크림 · 멀미약",
-        "헬기: 어두운 색 옷 (창문 반사 줄임) · 몸무게 측정 있음",
-        "숙소를 옮기면: 짐 정리 · 택시·우버"
+        "짐 전부 싸서 아침에 체크아웃",
+        "운동화 · 바람막이 · 우비 (화산 쪽은 서늘하고 비)",
+        "가이드·기사 팁 현금",
+        "여권·귀중품은 몸에 (짐은 투어 차량)"
       ]
     },
     {
       "date": "2026-11-24",
       "island": "bigisland",
       "title": "코나 시내 뚜벅이 휴양",
-      "summary": "혼스 비치·알리이 드라이브 산책 (걸어서) → 호텔 수영장 → 저녁 · 내일 항공편 체크인",
-      "hotel": "royalkona",
+      "summary": "(헬기 후보) → 호텔 앞 카마카호누 비치 수영 → 알리이 드라이브 산책 → 저녁 · 내일 항공편 체크인",
+      "hotel": "courtyard-kona",
       "map": "maps/day-1124.png",
       "weather_zones": [
         "kona"
       ],
       "items": [
         {
+          "id": "1124-1",
+          "start": "09:00",
+          "title": "헬기투어 후보",
+          "cat": "tour",
+          "booking": "helicopter",
+          "tentative": true,
+          "note": "하려면 코나 공항 출발 업체로 (코트야드에서 차로 15~19분) · 시간·가격 비교 후 예약"
+        },
+        {
           "id": "1124-2",
           "start": "11:00",
           "end": "17:00",
-          "place": "royalkona",
-          "title": "호텔 수영장 · 혼스 비치 · 알리이 드라이브 산책",
+          "place": "courtyard-kona",
+          "title": "호텔 앞 카마카호누 비치 · 수영장 · 알리이 드라이브 산책",
           "cat": "rest",
           "photos": [
             {
@@ -1542,7 +1505,7 @@
               "ai": true
             }
           ],
-          "note": "혼스 비치 걸어서 9분쯤 · 모래 해변 수영은 코트야드 앞 카마카호누 비치(부두 옆, 걸어서 17분쯤)나 매직샌즈 비치(우버 6~7분)"
+          "note": "호텔 앞 잔잔한 해변이라 걸어서 바로 · 부두 2~3분 · 매직샌즈 비치는 우버로"
         },
         {
           "id": "1124-4",
@@ -1571,7 +1534,7 @@
       "island": "bigisland",
       "to_island": "oahu",
       "title": "오아후 복귀",
-      "summary": "로열 코나 체크아웃 → 알리이 드라이브 점심 → 14:45 택시·우버로 코나 공항 → 16:15 코나 → 17:05 호놀룰루 → 할레푸나 체크인",
+      "summary": "코트야드 체크아웃 → 알리이 드라이브 점심 → 14:45 택시·우버로 코나 공항 → 16:15 코나 → 17:05 호놀룰루 → 할레푸나 체크인",
       "hotel": "halepuna",
       "map": "maps/day-1125.png",
       "weather_zones": [
@@ -1583,12 +1546,12 @@
           "id": "1125-1",
           "start": "11:00",
           "deadline": true,
-          "place": "royalkona",
-          "title": "로열 코나 체크아웃",
+          "place": "courtyard-kona",
+          "title": "코트야드 체크아웃",
           "cat": "hotel",
           "must": true,
-          "note": "체크아웃 시간은 예약 확인서 확인 · 짐은 프런트에 맡기고 점심",
-          "booking": "royalkona"
+          "note": "체크아웃 11:00 · 짐은 프런트에 맡기고 점심",
+          "booking": "courtyard-kona"
         },
         {
           "id": "1125-2",
@@ -1602,10 +1565,10 @@
           "id": "1125-3",
           "start": "14:45",
           "place": "koa",
-          "title": "로열 코나 → 코나 공항: 택시·우버",
+          "title": "코트야드 → 코나 공항: 택시·우버",
           "cat": "move",
           "must": true,
-          "note": "차로 18~22분 · 프런트에 택시 미리 부탁 또는 우버 미리 예약 · 15:15까지 공항 도착",
+          "note": "차로 15~19분 · 프런트에 택시 미리 부탁 또는 우버 미리 예약 · 15:15까지 공항 도착",
           "approx": true
         },
         {
@@ -1652,7 +1615,7 @@
       ],
       "packing": [
         "항공권 · 여권",
-        "택시 미리 부탁 (로열 코나 프런트) 또는 우버 예약",
+        "택시 미리 부탁 (코트야드 프런트) 또는 우버 예약",
         "28인치는 하나당 23kg 이하 (섬간 항공 초과 요금 큼)"
       ]
     },
