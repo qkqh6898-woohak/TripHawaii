@@ -1,1040 +1,1259 @@
 {
- "schema": 1,
- "updated": "2026-11-17",
- "note": "우리가 모은 맛집 목록이에요 (일정 확정 아님). 이동 시간은 숙소(와이키키) 기준 추정이고, 영업시간·예약은 가기 전에 확인하세요. 11/26 추수감사절에는 문 닫는 곳이 많아요.",
- "areas": {
-  "waikiki": "와이키키 · 걸어서",
-  "kapahulu": "카파훌루 · 차 5~10분",
-  "alamoana": "알라모아나·카카아코 · 차 10~15분",
-  "kaimuki": "카이무키 · 차 10~15분",
-  "downtown": "다운타운·항구 · 차 15~20분",
-  "diamondhead": "다이아몬드 헤드 쪽 · 차 5분",
-  "hawaiikai": "하와이 카이 · 차 25분",
-  "northshore": "노스쇼어 · 차 1시간 이상",
-  "oahu": "위치는 구글 지도에서 (지점이 여러 곳이면 가까운 곳)"
- },
- "categories": [
-  {
-   "id": "sunset",
-   "title": "선셋 디너",
-   "icon": "🌅"
-  },
-  {
-   "id": "seafood",
-   "title": "해산물",
-   "icon": "🦀"
-  },
-  {
-   "id": "steak",
-   "title": "스테이크",
-   "icon": "🥩"
-  },
-  {
-   "id": "poke",
-   "title": "포케",
-   "icon": "🐟",
-   "tip": "주문 팁 (오션스타): Ahi 참치 · Salmon 연어 · Hamachi 방어 — 매콤마요(Spicy Mayo)와 간장(Shoyu) 베이스를 하나씩 시켜 보세요."
-  },
-  {
-   "id": "brunch",
-   "title": "브런치",
-   "icon": "🥞"
-  },
-  {
-   "id": "local",
-   "title": "하와이 로컬",
-   "icon": "🌺"
-  },
-  {
-   "id": "beachcafe",
-   "title": "비치 카페",
-   "icon": "☕"
-  },
-  {
-   "id": "omakase",
-   "title": "오마카세",
-   "icon": "🍣"
-  },
-  {
-   "id": "japanese",
-   "title": "일식",
-   "icon": "🍜"
-  },
-  {
-   "id": "french",
-   "title": "프랑스",
-   "icon": "🇫🇷"
-  },
-  {
-   "id": "italian",
-   "title": "이태리",
-   "icon": "🍝"
-  },
-  {
-   "id": "fine",
-   "title": "파인다이닝",
-   "icon": "🍷"
-  },
-  {
-   "id": "tonkatsu",
-   "title": "돈까스",
-   "icon": "🐷"
-  },
-  {
-   "id": "shrimp",
-   "title": "새우트럭",
-   "icon": "🦐"
-  },
-  {
-   "id": "korean",
-   "title": "한식",
-   "icon": "🍚"
-  },
-  {
-   "id": "burger",
-   "title": "햄버거",
-   "icon": "🍔"
-  },
-  {
-   "id": "dessert",
-   "title": "디저트",
-   "icon": "🍨"
-  },
-  {
-   "id": "bar",
-   "title": "술집",
-   "icon": "🍺"
-  },
-  {
-   "id": "etc",
-   "title": "기타",
-   "icon": "🍴"
-  }
- ],
- "places": [
-  {
-   "id": "hwak",
-   "cat": "sunset",
-   "name": "House Without A Key",
-   "area": "waikiki",
-   "name_en": "House Without A Key, Halekulani",
-   "addr": "2199 Kalia Rd, Honolulu, HI 96815",
-   "note": "할레쿨라니 호텔 · 매일 저녁 훌라 · 숙소(할레푸나) 바로 옆",
-   "plan": "11/26 마지막 저녁 추천",
-   "stop": "p1"
-  },
-  {
-   "id": "dukes",
-   "cat": "sunset",
-   "name": "Duke's Waikiki",
-   "area": "waikiki",
-   "name_en": "Duke's Waikiki",
-   "addr": "2335 Kalakaua Ave #116, Honolulu, HI 96815",
-   "note": "아웃리거 와이키키 호텔 · 해변 바로 앞",
-   "plan": "11/18 저녁 추천",
-   "stop": "p1"
-  },
-  {
-   "id": "beachbar",
-   "cat": "sunset",
-   "name": "The Beach Bar",
-   "area": "waikiki",
-   "name_en": "The Beach Bar, Moana Surfrider",
-   "note": "모아나 서프라이더 호텔 · 반얀트리 아래",
-   "stop": "p2"
-  },
-  {
-   "id": "tikis",
-   "cat": "sunset",
-   "name": "Tiki's Grill & Bar",
-   "area": "waikiki",
-   "name_en": "Tiki's Grill & Bar Waikiki",
-   "note": "트윈핀 호텔",
-   "stop": "p3"
-  },
-  {
-   "id": "monkeypod",
-   "cat": "sunset",
-   "name": "Monkeypod Kitchen",
-   "area": "waikiki",
-   "name_en": "Monkeypod Kitchen Waikiki, Outrigger Reef",
-   "note": "아웃리거 리프 호텔",
-   "stop": "p13"
-  },
-  {
-   "id": "cajun",
-   "cat": "seafood",
-   "name": "Cajun Crab Waikiki",
-   "area": "waikiki",
-   "name_en": "Cajun Crab Waikiki",
-   "addr": "226 Lewers St 2F, Honolulu, HI",
-   "note": "후기 1등",
-   "star": true,
-   "stop": "p1"
-  },
-  {
-   "id": "charthouse",
-   "cat": "seafood",
-   "name": "Chart House Waikiki",
-   "area": "waikiki",
-   "name_en": "Chart House Waikiki",
-   "addr": "1765 Ala Moana Blvd, Honolulu, HI",
-   "note": "알라와이 항구 앞 · 와이키키 서쪽 끝",
-   "stop": "p11"
-  },
-  {
-   "id": "hys",
-   "cat": "steak",
-   "name": "Hy's Steak House",
-   "area": "waikiki",
-   "name_en": "Hy's Steak House",
-   "addr": "2440 Kuhio Ave, Honolulu, HI",
-   "stop": "p4"
-  },
-  {
-   "id": "alohasteak",
-   "cat": "steak",
-   "name": "Aloha Steak House",
-   "area": "waikiki",
-   "name_en": "Aloha Steak House",
-   "addr": "364 Seaside Ave 1st Floor, Honolulu, HI",
-   "stop": "p5"
-  },
-  {
-   "id": "piikoi",
-   "cat": "steak",
-   "name": "Piikoi Steak",
-   "area": "alamoana",
-   "name_en": "Piikoi Steak",
-   "addr": "514 Piikoi St, Honolulu, HI",
-   "stop": "p10"
-  },
-  {
-   "id": "yardhouse",
-   "cat": "steak",
-   "name": "Yard House",
-   "area": "waikiki",
-   "name_en": "Yard House Waikiki",
-   "addr": "226 Lewers St, Honolulu, HI",
-   "note": "해피아워",
-   "stop": "p1"
-  },
-  {
-   "id": "steakshack",
-   "cat": "steak",
-   "name": "Steak Shack",
-   "area": "waikiki",
-   "name_en": "Steak Shack Waikiki",
-   "addr": "2161 Kalia Rd, Honolulu, HI",
-   "note": "포장(테이크아웃)",
-   "stop": "p13"
-  },
-  {
-   "id": "ono",
-   "cat": "poke",
-   "name": "Ono Seafood",
-   "area": "kapahulu",
-   "name_en": "Ono Seafood",
-   "addr": "747 Kapahulu Ave, Honolulu, HI"
-  },
-  {
-   "id": "maguro",
-   "cat": "poke",
-   "name": "Maguro Brothers",
-   "area": "waikiki",
-   "name_en": "Maguro Brothers Hawaii Waikiki",
-   "addr": "2250 Kalakaua Ave, Honolulu, HI",
-   "note": "저녁만 · 월~토 17:30~21:00 (출처 기준)",
-   "plan": "11/16 저녁 추천",
-   "stop": "p1"
-  },
-  {
-   "id": "magurospot",
-   "cat": "poke",
-   "name": "Maguro Spot",
-   "area": "waikiki",
-   "name_en": "Maguro Spot",
-   "addr": "2441 Kuhio Ave, Honolulu, HI",
-   "stop": "p4"
-  },
-  {
-   "id": "pokebar",
-   "cat": "poke",
-   "name": "Poké Bar Waikiki",
-   "area": "waikiki",
-   "name_en": "Poke Bar Waikiki",
-   "addr": "2526 Kalakaua Ave, Honolulu, HI",
-   "stop": "p3"
-  },
-  {
-   "id": "rys",
-   "cat": "poke",
-   "name": "Ry's Poke Shack",
-   "area": "alamoana",
-   "name_en": "Ry's Poke Shack Honolulu",
-   "addr": "1232 Waimanu St #2, Honolulu, HI",
-   "stop": "p10"
-  },
-  {
-   "id": "leia",
-   "cat": "brunch",
-   "name": "Waikiki Leia",
-   "area": "diamondhead",
-   "name_en": "Waikiki Leia",
-   "addr": "3050 Monsarrat Ave, Honolulu, HI",
-   "note": "분위기",
-   "star": true
-  },
-  {
-   "id": "heavenly",
-   "cat": "brunch",
-   "name": "Heavenly Island Lifestyle",
-   "area": "waikiki",
-   "name_en": "Heavenly Island Lifestyle Waikiki",
-   "note": "로코모코 맛집",
-   "stop": "p5"
-  },
-  {
-   "id": "islandvintage",
-   "cat": "brunch",
-   "name": "Island Vintage Coffee",
-   "area": "waikiki",
-   "name_en": "Island Vintage Coffee Royal Hawaiian Center",
-   "note": "아사이볼",
-   "stop": "p1"
-  },
-  {
-   "id": "royallobster",
-   "cat": "brunch",
-   "name": "Royal Lobster",
-   "area": "waikiki",
-   "name_en": "Royal Lobster Waikiki",
-   "addr": "2250 Kalakaua Ave, Honolulu, HI",
-   "stop": "p1"
-  },
-  {
-   "id": "aloh",
-   "cat": "brunch",
-   "name": "ALOH Health Bar & Cafe",
-   "area": "waikiki",
-   "name_en": "ALOH Health Bar & Cafe",
-   "addr": "407 Seaside Ave 1st floor, Honolulu, HI",
-   "stop": "p5"
-  },
-  {
-   "id": "alohakitchen",
-   "cat": "brunch",
-   "name": "Aloha Kitchen",
-   "area": "waikiki",
-   "name_en": "Aloha Kitchen Waikiki",
-   "addr": "432 Ena Rd, Honolulu, HI",
-   "stop": "p7"
-  },
-  {
-   "id": "sweete",
-   "cat": "brunch",
-   "name": "Sweet E's Café",
-   "area": "kapahulu",
-   "name_en": "Sweet E's Cafe",
-   "addr": "1006 Kapahulu Ave, Honolulu, HI"
-  },
-  {
-   "id": "barefoot",
-   "cat": "beachcafe",
-   "name": "Barefoot Beach Cafe",
-   "area": "waikiki",
-   "name_en": "Barefoot Beach Cafe Queens Surf Beach",
-   "note": "퀸즈 서프 비치 · 와이키키 동쪽 끝 (걸어서 20분쯤)",
-   "stop": "p3"
-  },
-  {
-   "id": "islandbrew",
-   "cat": "beachcafe",
-   "name": "Island Brew Coffeehouse",
-   "area": "hawaiikai",
-   "name_en": "Island Brew Coffeehouse Hawaii Kai",
-   "note": "하나우마 베이 가는 길"
-  },
-  {
-   "id": "nicos",
-   "cat": "beachcafe",
-   "name": "Nico's Pier 38",
-   "area": "downtown",
-   "name_en": "Nico's Pier 38",
-   "addr": "1129 N Nimitz Hwy, Honolulu, HI",
-   "tags": [
-    "oceanstar"
-   ]
-  },
-  {
-   "id": "miro",
-   "cat": "omakase",
-   "name": "Miro Kaimuki — The Counter",
-   "area": "kaimuki",
-   "name_en": "Miro Kaimuki"
-  },
-  {
-   "id": "aung",
-   "cat": "omakase",
-   "name": "Omakase By Aung",
-   "area": "kapahulu",
-   "name_en": "Omakase By Aung",
-   "addr": "567 Kapahulu Ave, Honolulu, HI"
-  },
-  {
-   "id": "onodera",
-   "cat": "omakase",
-   "name": "Kaiten Sushi Ginza Onodera",
-   "area": "kapahulu",
-   "name_en": "Kaiten Sushi Ginza Onodera Honolulu",
-   "addr": "808 Kapahulu Ave, Honolulu, HI"
-  },
-  {
-   "id": "ichika",
-   "cat": "omakase",
-   "name": "Sushi Ichika",
-   "area": "alamoana",
-   "name_en": "Sushi Ichika",
-   "addr": "434 Piikoi St, Honolulu, HI 96814",
-   "note": "1인 $90 (목록 기준)",
-   "stop": "p10"
-  },
-  {
-   "id": "totoya",
-   "cat": "japanese",
-   "name": "Totoya Negitoro & Seafood Bowls",
-   "area": "alamoana",
-   "name_en": "Totoya Negitoro & Seafood Bowls",
-   "addr": "436 Piikoi St Ste B, Honolulu, HI",
-   "stop": "p10",
-   "tags": [
-    "oceanstar"
-   ],
-   "note": "카이센동·네기토로 맛집 (오션스타)"
-  },
-  {
-   "id": "marujuu",
-   "cat": "japanese",
-   "name": "Marujuu Japanese Hamburg & Steak",
-   "area": "kaimuki",
-   "name_en": "Marujuu Japanese Hamburg & Steak",
-   "addr": "1145 12th Ave C and D, Honolulu, HI"
-  },
-  {
-   "id": "udongama",
-   "cat": "japanese",
-   "name": "Udon Gama-Dashi",
-   "area": "kapahulu",
-   "name_en": "Udon Gama-Dashi",
-   "addr": "755 Kapahulu Ave, Honolulu, HI",
-   "note": "우동"
-  },
-  {
-   "id": "tsurutontan",
-   "cat": "japanese",
-   "name": "츠루톤탄 우동",
-   "area": "waikiki",
-   "name_en": "TsuruTonTan Udon Noodle Brasserie",
-   "addr": "2233 Kalakaua Ave, Honolulu, HI 96815",
-   "note": "로열하와이안센터 B동 3층 · 디럭스 우동·카레 디럭스 우동 추천 · 예약 없이 대기 · 냉 명란우동 맛집 — 마루카메 우동보다 맛있다는 추천 (오션스타)",
-   "stop": "p1",
-   "tags": [
-    "oceanstar"
-   ]
-  },
-  {
-   "id": "michels",
-   "cat": "french",
-   "name": "Michel's at the Colony Surf",
-   "area": "diamondhead",
-   "name_en": "Michel's at the Colony Surf",
-   "note": "선셋 · 분위기",
-   "star": true
-  },
-  {
-   "id": "arancino",
-   "cat": "italian",
-   "name": "Arancino di Mare",
-   "area": "waikiki",
-   "name_en": "Arancino di Mare",
-   "addr": "2552 Kalakaua Ave, Honolulu, HI",
-   "note": "우니 파스타 · 이탈리안 맛집 (오션스타)",
-   "stop": "p3",
-   "tags": [
-    "oceanstar"
-   ]
-  },
-  {
-   "id": "bernini",
-   "cat": "italian",
-   "name": "Bernini Honolulu",
-   "area": "alamoana",
-   "name_en": "Bernini Honolulu",
-   "addr": "1218 Waimanu St, Honolulu, HI",
-   "stop": "p10"
-  },
-  {
-   "id": "senia",
-   "cat": "fine",
-   "name": "Senia",
-   "area": "downtown",
-   "name_en": "Senia Honolulu",
-   "addr": "75 N King St, Honolulu, HI"
-  },
-  {
-   "id": "mw",
-   "cat": "fine",
-   "name": "MW Restaurant",
-   "area": "alamoana",
-   "name_en": "MW Restaurant",
-   "addr": "888 Kapiolani Blvd, Honolulu, HI",
-   "stop": "p10"
-  },
-  {
-   "id": "sushisho",
-   "cat": "fine",
-   "name": "Sushi Sho",
-   "area": "waikiki",
-   "name_en": "Sushi Sho Ritz-Carlton Waikiki",
-   "note": "리츠칼튼 와이키키 호텔"
-  },
-  {
-   "id": "orchids",
-   "cat": "fine",
-   "name": "Orchids",
-   "area": "waikiki",
-   "name_en": "Orchids Halekulani",
-   "addr": "2199 Kalia Rd, Honolulu, HI 96815",
-   "note": "할레쿨라니 호텔 · 숙소(할레푸나) 바로 옆",
-   "stop": "p1"
-  },
-  {
-   "id": "merrimans",
-   "cat": "fine",
-   "name": "Merriman's Honolulu",
-   "area": "alamoana",
-   "name_en": "Merriman's Honolulu, Ward Village",
-   "q": "Merriman's Honolulu, Ward Village, Honolulu, HI",
-   "stop": "p10",
-   "note": "하와이 농장 재료로 만드는 하와이 지역 요리 · 워드 빌리지"
-  },
-  {
-   "id": "tamafuji",
-   "cat": "tonkatsu",
-   "name": "Tonkatsu Tamafuji",
-   "area": "kapahulu",
-   "name_en": "Tonkatsu Tamafuji",
-   "addr": "449 Kapahulu Ave, Honolulu, HI"
-  },
-  {
-   "id": "kuro",
-   "cat": "tonkatsu",
-   "name": "Tonkatsu Kuro",
-   "area": "alamoana",
-   "name_en": "Tonkatsu Kuro",
-   "addr": "1000 Auahi St Suite 134, Honolulu, HI",
-   "stop": "p10"
-  },
-  {
-   "id": "romys",
-   "cat": "shrimp",
-   "name": "Romy's Kahuku Prawns & Shrimp",
-   "area": "northshore",
-   "name_en": "Romy's Kahuku Prawns & Shrimp",
-   "addr": "56-1030 Kamehameha Hwy, Kahuku, HI"
-  },
-  {
-   "id": "bigwave",
-   "cat": "shrimp",
-   "name": "Big Wave Shrimp",
-   "area": "northshore",
-   "name_en": "Big Wave Shrimp",
-   "addr": "66-521 Kamehameha Hwy, Haleiwa, HI"
-  },
-  {
-   "id": "hangang",
-   "cat": "korean",
-   "name": "한강",
-   "area": "alamoana",
-   "addr": "1236 Waimanu St #1F, Honolulu, HI",
-   "q": "Korean restaurant, 1236 Waimanu St, Honolulu, HI",
-   "stop": "p10"
-  },
-  {
-   "id": "ginza",
-   "cat": "korean",
-   "name": "긴자원",
-   "area": "waikiki",
-   "addr": "2155 Lauula St A, Honolulu, HI",
-   "q": "Korean restaurant, 2155 Lauula St, Honolulu, HI",
-   "stop": "p1"
-  },
-  {
-   "id": "hyungjae",
-   "cat": "korean",
-   "name": "형제 (Hyung Jae)",
-   "area": "alamoana",
-   "name_en": "Hyung Jae Restaurant",
-   "addr": "636 Sheridan St, Honolulu, HI",
-   "stop": "p10"
-  },
-  {
-   "id": "koreagarden",
-   "cat": "korean",
-   "name": "코리아 가든",
-   "area": "alamoana",
-   "name_en": "Korea Garden Restaurant",
-   "addr": "1683 Kalakaua Ave, Honolulu, HI",
-   "stop": "p10"
-  },
-  {
-   "id": "topped",
-   "cat": "korean",
-   "name": "Topped Waikiki",
-   "area": "waikiki",
-   "name_en": "Topped Waikiki",
-   "addr": "333 Royal Hawaiian Ave, Honolulu, HI",
-   "stop": "p6"
-  },
-  {
-   "id": "hiburger",
-   "cat": "burger",
-   "name": "Hi Burger",
-   "area": "waikiki",
-   "name_en": "Hi Burger Waikiki",
-   "addr": "342 Lewers St, Honolulu, HI",
-   "note": "추천",
-   "star": true,
-   "stop": "p6"
-  },
-  {
-   "id": "pitstop",
-   "cat": "burger",
-   "name": "Pit Stop Hawaii Food Truck",
-   "area": "waikiki",
-   "name_en": "Pit Stop Hawaii Food Truck",
-   "addr": "2411 Kuhio Ave, Honolulu, HI",
-   "stop": "p4"
-  },
-  {
-   "id": "cheeseburger",
-   "cat": "burger",
-   "name": "Cheeseburger In Paradise",
-   "area": "waikiki",
-   "name_en": "Cheeseburger In Paradise Waikiki",
-   "addr": "2500 Kalakaua Ave, Honolulu, HI",
-   "note": "분위기",
-   "stop": "p3"
-  },
-  {
-   "id": "teddys",
-   "cat": "burger",
-   "name": "Teddy's Bigger Burgers",
-   "area": "waikiki",
-   "name_en": "Teddy's Bigger Burgers Waikiki",
-   "addr": "134 Kapahulu Ave, Honolulu, HI",
-   "plan": "11/18 하나우마 투어 점심에 포함"
-  },
-  {
-   "id": "alohamelt",
-   "cat": "burger",
-   "name": "ALOHA MELT – Waikiki",
-   "area": "waikiki",
-   "name_en": "Aloha Melt Waikiki",
-   "addr": "355 Royal Hawaiian Ave, Honolulu, HI",
-   "note": "토스트",
-   "stop": "p6"
-  },
-  {
-   "id": "surfbar",
-   "cat": "bar",
-   "name": "Surf Bar Waikiki",
-   "area": "waikiki",
-   "name_en": "Surf Bar Waikiki",
-   "note": "와이키키 리조트 호텔"
-  },
-  {
-   "id": "zigu",
-   "cat": "bar",
-   "name": "ZIGU",
-   "area": "waikiki",
-   "name_en": "ZIGU Waikiki",
-   "addr": "413 Seaside Ave #1F, Honolulu, HI",
-   "note": "이자카야",
-   "stop": "p5"
-  },
-  {
-   "id": "harumi",
-   "cat": "bar",
-   "name": "Izakaya Harumi",
-   "area": "waikiki",
-   "name_en": "Izakaya Harumi Waikiki",
-   "addr": "339 Royal Hawaiian Ave #101, Honolulu, HI",
-   "stop": "p6"
-  },
-  {
-   "id": "kingthai",
-   "cat": "etc",
-   "name": "King of Thai Boat Noodles",
-   "area": "waikiki",
-   "name_en": "King of Thai Boat Noodles Waikiki",
-   "addr": "2146 Kalakaua Ave, Honolulu, HI",
-   "note": "태국 쌀국수",
-   "stop": "p7"
-  },
-  {
-   "id": "mikiya",
-   "cat": "etc",
-   "name": "Mikiya Wagyu Shabu House",
-   "area": "kapahulu",
-   "name_en": "Mikiya Wagyu Shabu House Kapahulu",
-   "note": "와규 샤부샤부"
-  },
-  {
-   "id": "leonards",
-   "cat": "etc",
-   "name": "Leonard's Bakery",
-   "area": "kapahulu",
-   "name_en": "Leonard's Bakery",
-   "addr": "933 Kapahulu Ave, Honolulu, HI 96816",
-   "note": "말라사다",
-   "plan": "11/26 추천"
-  },
-  {
-   "id": "pigandlady",
-   "cat": "etc",
-   "name": "The Pig and The Lady",
-   "area": "kaimuki",
-   "name_en": "The Pig and The Lady",
-   "addr": "3650 Waialae Ave, Honolulu, HI",
-   "note": "베트남"
-  },
-  {
-   "id": "halevietnam",
-   "cat": "etc",
-   "name": "Hale Vietnam Restaurant",
-   "area": "kaimuki",
-   "name_en": "Hale Vietnam Restaurant Honolulu",
-   "note": "베트남 쌀국수"
-  },
-  {
-   "id": "mitchs",
-   "cat": "japanese",
-   "name": "Mitch's Fish Market & Sushi Bar",
-   "area": "oahu",
-   "name_en": "Mitch's Fish Market & Sushi Bar",
-   "q": "Mitch's Fish Market & Sushi Bar, Honolulu, HI",
-   "tags": [
-    "oceanstar"
-   ],
-   "note": "로컬들이 좋아하는 스시 집"
-  },
-  {
-   "id": "katsumidori",
-   "cat": "japanese",
-   "name": "Katsumidori Sushi Tokyo",
-   "area": "waikiki",
-   "name_en": "Katsumidori Sushi Tokyo, Prince Waikiki",
-   "tags": [
-    "oceanstar"
-   ],
-   "note": "호텔 안 분위기 좋은 일식 집 · 프린스 와이키키 호텔 로비 층 · 와이키키 서쪽 끝이라 숙소에서 걸어서 20분쯤 (핑크라인 ⑪ 근처) · 저녁은 예약 권장",
-   "addr": "100 Holomoana St, Honolulu, HI 96815",
-   "stop": "p11"
-  },
-  {
-   "id": "imanastei",
-   "cat": "japanese",
-   "name": "Imanas Tei",
-   "area": "oahu",
-   "name_en": "Imanas Tei",
-   "q": "Imanas Tei, Honolulu, HI",
-   "tags": [
-    "oceanstar"
-   ],
-   "note": "로컬들이 좋아하는 이자카야"
-  },
-  {
-   "id": "shabuya",
-   "cat": "japanese",
-   "name": "Shabuya",
-   "area": "alamoana",
-   "name_en": "Shabuya Ala Moana",
-   "tags": [
-    "oceanstar"
-   ],
-   "note": "간단하게 먹기 좋은 무한 리필 샤브샤브 · 알라모아나 센터 2층",
-   "addr": "1450 Ala Moana Blvd, Honolulu, HI 96814",
-   "stop": "p10"
-  },
-  {
-   "id": "zippys",
-   "cat": "local",
-   "name": "Zippy's",
-   "area": "kapahulu",
-   "name_en": "Zippy's Kapahulu",
-   "tags": [
-    "oceanstar"
-   ],
-   "note": "하와이 로컬 체인 (\"하와이의 김밥천국\") · 로코모코·코리안 치킨 샐러드 추천",
-   "addr": "601 Kapahulu Ave, Honolulu, HI 96815"
-  },
-  {
-   "id": "bogarts",
-   "cat": "local",
-   "name": "Bogart's",
-   "area": "diamondhead",
-   "name_en": "Bogart's Cafe",
-   "tags": [
-    "oceanstar"
-   ],
-   "note": "하와이식 브런치 · 다 코브와 같은 건물 (2018년 이전, 예전 주소 3118도 있음)",
-   "addr": "3045 Monsarrat Ave, Honolulu, HI 96815"
-  },
-  {
-   "id": "haleiwajoes",
-   "cat": "local",
-   "name": "Haleiwa Joe's",
-   "area": "oahu",
-   "name_en": "Haleiwa Joe's",
-   "q": "Haleiwa Joe's, Honolulu, HI",
-   "tags": [
-    "oceanstar"
-   ],
-   "note": "로컬들이 좋아하는 로컬·미국 음식 분위기"
-  },
-  {
-   "id": "sperospera",
-   "cat": "local",
-   "name": "Spero Spera",
-   "area": "alamoana",
-   "name_en": "Spero Spera",
-   "tags": [
-    "oceanstar"
-   ],
-   "note": "로컬 샌드위치 맛집 · 아보카도 스테이크 샌드위치·아사이볼 추천",
-   "addr": "1334 Young St Ste 102, Honolulu, HI 96814"
-  },
-  {
-   "id": "helenas",
-   "cat": "local",
-   "name": "Helena's",
-   "area": "oahu",
-   "name_en": "Helena's Hawaiian Food",
-   "q": "Helena's Hawaiian Food, Honolulu, HI",
-   "tags": [
-    "oceanstar"
-   ],
-   "note": "정통 하와이안 음식"
-  },
-  {
-   "id": "herringbone",
-   "cat": "etc",
-   "name": "Herringbone",
-   "area": "waikiki",
-   "name_en": "Herringbone Waikiki",
-   "tags": [
-    "oceanstar"
-   ],
-   "note": "분위기 좋은 저녁 · 인터내셔널 마켓 플레이스 3층(그랜드 라나이) · 힐튼가든인 바로 앞 · 저녁 17시부터",
-   "addr": "2330 Kalakaua Ave, Honolulu, HI 96815",
-   "stop": "p5"
-  },
-  {
-   "id": "wfqueen",
-   "cat": "etc",
-   "name": "홀푸드 마켓 퀸 (Whole Foods Queen)",
-   "area": "alamoana",
-   "name_en": "Whole Foods Market Queen",
-   "addr": "388 Kamakee St, Honolulu, HI 96814",
-   "stop": "p10",
-   "note": "하와이에서 가장 큰 홀푸드 · 포케 바 · 라니카이 주스 · 하와이 최대 핫바 · 생맥주 바(Two Tides) · 07:00~22:00 (2018년 기준)"
-  },
-  {
-   "id": "mauibrewing",
-   "cat": "bar",
-   "name": "Maui Brewing Co.",
-   "area": "waikiki",
-   "name_en": "Maui Brewing Co. Waikiki",
-   "tags": [
-    "oceanstar"
-   ],
-   "note": "하와이 양조장 맥주 · 가성비 안주도 좋음 · 아웃리거 와이키키 비치코머 호텔 2층 · 11:00~23:00 (출처 기준)",
-   "addr": "2300 Kalakaua Ave, Honolulu, HI 96815",
-   "stop": "p1"
-  },
-  {
-   "id": "ivwinebar",
-   "cat": "bar",
-   "name": "Island Vintage Wine Bar",
-   "area": "waikiki",
-   "name_en": "Island Vintage Wine Bar",
-   "tags": [
-    "oceanstar"
-   ],
-   "note": "와인과 맛있는 로컬식 안주 · 로열하와이안센터 C동 2층 (울프강과 같은 동)",
-   "addr": "2301 Kalakaua Ave, Honolulu, HI 96815",
-   "stop": "p1"
-  },
-  {
-   "id": "foodlandpoke",
-   "cat": "poke",
-   "name": "Foodland Poke Bar",
-   "area": "oahu",
-   "name_en": "Foodland poke",
-   "q": "Foodland poke, Honolulu, HI",
-   "tags": [
-    "oceanstar"
-   ],
-   "note": "Spicy Ahi 강추 · 숙소 앞 와이키키 마켓(푸드랜드 계열)에도 포케 코너가 있어요"
-  },
-  {
-   "id": "offthehook",
-   "cat": "poke",
-   "name": "Off The Hook",
-   "area": "oahu",
-   "name_en": "Off the Hook Poke Market",
-   "q": "Off the Hook Poke Market, Honolulu, HI",
-   "tags": [
-    "oceanstar"
-   ]
-  },
-  {
-   "id": "freshcatch",
-   "cat": "poke",
-   "name": "Fresh Catch",
-   "area": "kapahulu",
-   "name_en": "Fresh Catch Kapahulu",
-   "tags": [
-    "oceanstar"
-   ],
-   "addr": "747 Kapahulu Ave, Honolulu, HI 96815",
-   "note": "포케 · 주소는 2022년 기사 기준 (영업 확인)"
-  },
-  {
-   "id": "matchamaiko",
-   "cat": "dessert",
-   "name": "Matcha Cafe Maiko",
-   "area": "waikiki",
-   "name_en": "Matcha Cafe Maiko",
-   "tags": [
-    "oceanstar"
-   ],
-   "note": "진하고 쌉쌀한 말차 아이스크림 · 쿠히오 반얀 건물 구석 · 숙소(힐튼가든인)에서 걸어서 1분",
-   "addr": "2310 Kuhio Ave, Honolulu, HI 96815",
-   "stop": "p5"
-  },
-  {
-   "id": "nanas",
-   "cat": "dessert",
-   "name": "Nana's Green Tea",
-   "area": "waikiki",
-   "name_en": "Nana's Green Tea, Stix Asia",
-   "tags": [
-    "oceanstar"
-   ],
-   "note": "호지차 라떼·아이스크림 강추 · 와이키키 쇼핑 플라자 지하 스틱스 아시아 푸드홀 (옛 와이키키 요코초 자리 — 위치 한 번 확인)",
-   "addr": "2250 Kalakaua Ave, Honolulu, HI 96815",
-   "stop": "p1"
-  },
-  {
-   "id": "mosa",
-   "cat": "dessert",
-   "name": "Mosa! Ice Cream",
-   "area": "waikiki",
-   "name_en": "Mosa Ice Cream Waikiki",
-   "tags": [
-    "oceanstar"
-   ],
-   "note": "모찌·견과류 아이스크림 · 대만식 아이스크림 · 와이키키점 주소는 디렉터리 기준 (다른 주소도 있어 확인)",
-   "addr": "2238 Lauula St, Honolulu, HI 96815",
-   "stop": "p1"
-  },
-  {
-   "id": "coffeeortea",
-   "cat": "dessert",
-   "name": "Coffee or Tea",
-   "area": "alamoana",
-   "name_en": "Coffee or Tea",
-   "tags": [
-    "oceanstar"
-   ],
-   "note": "로컬들이 좋아하는 밀크티·빙수 · 맥컬리 쇼핑센터 쪽",
-   "addr": "1960 Kapiolani Blvd #106, Honolulu, HI 96826"
-  },
-  {
-   "id": "leahi",
-   "cat": "dessert",
-   "name": "Leahi Health",
-   "area": "oahu",
-   "name_en": "Leahi Health Waikiki",
-   "q": "Leahi Health Waikiki, Honolulu, HI",
-   "tags": [
-    "oceanstar"
-   ],
-   "note": "아사이볼"
-  },
-  {
-   "id": "lanikaijuice",
-   "cat": "dessert",
-   "name": "Lanikai Juice",
-   "area": "alamoana",
-   "name_en": "Lanikai Juice, Whole Foods Market Queen",
-   "tags": [
-    "oceanstar"
-   ],
-   "note": "아사이볼 · 홀푸드 퀸 안 키오스크 (다른 지점도 있음)",
-   "addr": "388 Kamakee St, Honolulu, HI 96814",
-   "stop": "p10"
-  },
-  {
-   "id": "dacove",
-   "cat": "dessert",
-   "name": "Da Cove Health Bar and Cafe",
-   "area": "diamondhead",
-   "name_en": "Da Cove Health Bar and Cafe",
-   "tags": [
-    "oceanstar"
-   ],
-   "note": "아사이볼 · 다이아몬드 헤드 등산 뒤에 들르기 좋음",
-   "addr": "3045 Monsarrat Ave #5, Honolulu, HI 96815"
-  },
-  {
-   "id": "lins",
-   "cat": "dessert",
-   "name": "Lin's Hawaiian Snacks (리힝무이 파인애플)",
-   "area": "alamoana",
-   "name_en": "Lin's Hawaiian Snacks",
-   "addr": "401 Kamakee St, Honolulu, HI 96814",
-   "stop": "p10",
-   "star": true,
-   "note": "리힝무이 가루를 뿌린 파인애플(파인애플 리힝)로 유명한 가게 · 크랙시드(말린 과일 간식) 100가지 넘게 · 시식 · 10:00~19:00 (확인 필요)"
-  }
- ],
- "sources": {
-  "oceanstar": "오션스타(11/16 거북이 투어) 크루들이 직접 다니는 맛집 추천"
- },
- "groups": [
-  {
-   "id": "lins",
-   "icon": "🍍",
-   "title": "리힝무이 파인애플 주변",
-   "note": "Lin's Hawaiian Snacks(카카아코 · 401 Kamakee St) 주변 맛집이에요. 걸어서 5~15분 거리 (추정). 와이키키에서는 핑크라인 ⑩ 알라모아나 센터에서 내려 걸어가요.",
-   "ids": [
-    "lins",
-    "wfqueen",
-    "lanikaijuice",
-    "kuro",
-    "merrimans",
-    "rys",
-    "bernini",
-    "hangang",
-    "mw",
-    "totoya",
-    "ichika",
-    "piikoi",
-    "shabuya"
-   ]
-  }
- ]
+  "schema": 1,
+  "updated": "2026-11-17",
+  "note": "우리가 모은 맛집 목록이에요 (일정 확정 아님). 이동 시간은 숙소(와이키키) 기준 추정이고, 영업시간·예약은 가기 전에 확인하세요. 11/26 추수감사절에는 문 닫는 곳이 많아요.",
+  "areas": {
+    "waikiki": "와이키키 · 걸어서",
+    "kapahulu": "카파훌루 · 차 5~10분",
+    "alamoana": "알라모아나·카카아코 · 차 10~15분",
+    "kaimuki": "카이무키 · 차 10~15분",
+    "downtown": "다운타운·항구 · 차 15~20분",
+    "diamondhead": "다이아몬드 헤드 쪽 · 차 5분",
+    "hawaiikai": "하와이 카이 · 차 25분",
+    "northshore": "노스쇼어 · 차 1시간 이상",
+    "oahu": "위치는 구글 지도에서 (지점이 여러 곳이면 가까운 곳)",
+    "keauhou": "빅아일랜드 케아우호우 · 코나코스트에서 걸어서·우버 5분",
+    "alii": "빅아일랜드 알리이 드라이브 남쪽 · 우버 5~10분",
+    "konatown": "빅아일랜드 코나 시내 · 코트야드에서 걸어서"
+  },
+  "categories": [
+    {
+      "id": "sunset",
+      "title": "선셋 디너",
+      "icon": "🌅"
+    },
+    {
+      "id": "seafood",
+      "title": "해산물",
+      "icon": "🦀"
+    },
+    {
+      "id": "steak",
+      "title": "스테이크",
+      "icon": "🥩"
+    },
+    {
+      "id": "poke",
+      "title": "포케",
+      "icon": "🐟",
+      "tip": "주문 팁 (오션스타): Ahi 참치 · Salmon 연어 · Hamachi 방어 — 매콤마요(Spicy Mayo)와 간장(Shoyu) 베이스를 하나씩 시켜 보세요."
+    },
+    {
+      "id": "brunch",
+      "title": "브런치",
+      "icon": "🥞"
+    },
+    {
+      "id": "local",
+      "title": "하와이 로컬",
+      "icon": "🌺"
+    },
+    {
+      "id": "beachcafe",
+      "title": "비치 카페",
+      "icon": "☕"
+    },
+    {
+      "id": "omakase",
+      "title": "오마카세",
+      "icon": "🍣"
+    },
+    {
+      "id": "japanese",
+      "title": "일식",
+      "icon": "🍜"
+    },
+    {
+      "id": "french",
+      "title": "프랑스",
+      "icon": "🇫🇷"
+    },
+    {
+      "id": "italian",
+      "title": "이태리",
+      "icon": "🍝"
+    },
+    {
+      "id": "fine",
+      "title": "파인다이닝",
+      "icon": "🍷"
+    },
+    {
+      "id": "tonkatsu",
+      "title": "돈까스",
+      "icon": "🐷"
+    },
+    {
+      "id": "shrimp",
+      "title": "새우트럭",
+      "icon": "🦐"
+    },
+    {
+      "id": "korean",
+      "title": "한식",
+      "icon": "🍚"
+    },
+    {
+      "id": "burger",
+      "title": "햄버거",
+      "icon": "🍔"
+    },
+    {
+      "id": "dessert",
+      "title": "디저트",
+      "icon": "🍨"
+    },
+    {
+      "id": "bar",
+      "title": "술집",
+      "icon": "🍺"
+    },
+    {
+      "id": "etc",
+      "title": "기타",
+      "icon": "🍴"
+    },
+    {
+      "id": "pizza",
+      "title": "피자 · 브루펍",
+      "icon": "🍕"
+    }
+  ],
+  "places": [
+    {
+      "id": "hwak",
+      "cat": "sunset",
+      "name": "House Without A Key",
+      "area": "waikiki",
+      "name_en": "House Without A Key, Halekulani",
+      "addr": "2199 Kalia Rd, Honolulu, HI 96815",
+      "note": "할레쿨라니 호텔 · 매일 저녁 훌라 · 숙소(할레푸나) 바로 옆",
+      "plan": "11/26 마지막 저녁 추천",
+      "stop": "p1"
+    },
+    {
+      "id": "dukes",
+      "cat": "sunset",
+      "name": "Duke's Waikiki",
+      "area": "waikiki",
+      "name_en": "Duke's Waikiki",
+      "addr": "2335 Kalakaua Ave #116, Honolulu, HI 96815",
+      "note": "아웃리거 와이키키 호텔 · 해변 바로 앞",
+      "plan": "11/18 저녁 추천",
+      "stop": "p1"
+    },
+    {
+      "id": "beachbar",
+      "cat": "sunset",
+      "name": "The Beach Bar",
+      "area": "waikiki",
+      "name_en": "The Beach Bar, Moana Surfrider",
+      "note": "모아나 서프라이더 호텔 · 반얀트리 아래",
+      "stop": "p2"
+    },
+    {
+      "id": "tikis",
+      "cat": "sunset",
+      "name": "Tiki's Grill & Bar",
+      "area": "waikiki",
+      "name_en": "Tiki's Grill & Bar Waikiki",
+      "note": "트윈핀 호텔",
+      "stop": "p3"
+    },
+    {
+      "id": "monkeypod",
+      "cat": "sunset",
+      "name": "Monkeypod Kitchen",
+      "area": "waikiki",
+      "name_en": "Monkeypod Kitchen Waikiki, Outrigger Reef",
+      "note": "아웃리거 리프 호텔",
+      "stop": "p13"
+    },
+    {
+      "id": "cajun",
+      "cat": "seafood",
+      "name": "Cajun Crab Waikiki",
+      "area": "waikiki",
+      "name_en": "Cajun Crab Waikiki",
+      "addr": "226 Lewers St 2F, Honolulu, HI",
+      "note": "후기 1등",
+      "star": true,
+      "stop": "p1"
+    },
+    {
+      "id": "charthouse",
+      "cat": "seafood",
+      "name": "Chart House Waikiki",
+      "area": "waikiki",
+      "name_en": "Chart House Waikiki",
+      "addr": "1765 Ala Moana Blvd, Honolulu, HI",
+      "note": "알라와이 항구 앞 · 와이키키 서쪽 끝",
+      "stop": "p11"
+    },
+    {
+      "id": "hys",
+      "cat": "steak",
+      "name": "Hy's Steak House",
+      "area": "waikiki",
+      "name_en": "Hy's Steak House",
+      "addr": "2440 Kuhio Ave, Honolulu, HI",
+      "stop": "p4"
+    },
+    {
+      "id": "alohasteak",
+      "cat": "steak",
+      "name": "Aloha Steak House",
+      "area": "waikiki",
+      "name_en": "Aloha Steak House",
+      "addr": "364 Seaside Ave 1st Floor, Honolulu, HI",
+      "stop": "p5"
+    },
+    {
+      "id": "piikoi",
+      "cat": "steak",
+      "name": "Piikoi Steak",
+      "area": "alamoana",
+      "name_en": "Piikoi Steak",
+      "addr": "514 Piikoi St, Honolulu, HI",
+      "stop": "p10"
+    },
+    {
+      "id": "yardhouse",
+      "cat": "steak",
+      "name": "Yard House",
+      "area": "waikiki",
+      "name_en": "Yard House Waikiki",
+      "addr": "226 Lewers St, Honolulu, HI",
+      "note": "해피아워",
+      "stop": "p1"
+    },
+    {
+      "id": "steakshack",
+      "cat": "steak",
+      "name": "Steak Shack",
+      "area": "waikiki",
+      "name_en": "Steak Shack Waikiki",
+      "addr": "2161 Kalia Rd, Honolulu, HI",
+      "note": "포장(테이크아웃)",
+      "stop": "p13"
+    },
+    {
+      "id": "ono",
+      "cat": "poke",
+      "name": "Ono Seafood",
+      "area": "kapahulu",
+      "name_en": "Ono Seafood",
+      "addr": "747 Kapahulu Ave, Honolulu, HI"
+    },
+    {
+      "id": "maguro",
+      "cat": "poke",
+      "name": "Maguro Brothers",
+      "area": "waikiki",
+      "name_en": "Maguro Brothers Hawaii Waikiki",
+      "addr": "2250 Kalakaua Ave, Honolulu, HI",
+      "note": "저녁만 · 월~토 17:30~21:00 (출처 기준)",
+      "plan": "11/16 저녁 추천",
+      "stop": "p1"
+    },
+    {
+      "id": "magurospot",
+      "cat": "poke",
+      "name": "Maguro Spot",
+      "area": "waikiki",
+      "name_en": "Maguro Spot",
+      "addr": "2441 Kuhio Ave, Honolulu, HI",
+      "stop": "p4"
+    },
+    {
+      "id": "pokebar",
+      "cat": "poke",
+      "name": "Poké Bar Waikiki",
+      "area": "waikiki",
+      "name_en": "Poke Bar Waikiki",
+      "addr": "2526 Kalakaua Ave, Honolulu, HI",
+      "stop": "p3"
+    },
+    {
+      "id": "rys",
+      "cat": "poke",
+      "name": "Ry's Poke Shack",
+      "area": "alamoana",
+      "name_en": "Ry's Poke Shack Honolulu",
+      "addr": "1232 Waimanu St #2, Honolulu, HI",
+      "stop": "p10"
+    },
+    {
+      "id": "leia",
+      "cat": "brunch",
+      "name": "Waikiki Leia",
+      "area": "diamondhead",
+      "name_en": "Waikiki Leia",
+      "addr": "3050 Monsarrat Ave, Honolulu, HI",
+      "note": "분위기",
+      "star": true
+    },
+    {
+      "id": "heavenly",
+      "cat": "brunch",
+      "name": "Heavenly Island Lifestyle",
+      "area": "waikiki",
+      "name_en": "Heavenly Island Lifestyle Waikiki",
+      "note": "로코모코 맛집",
+      "stop": "p5"
+    },
+    {
+      "id": "islandvintage",
+      "cat": "brunch",
+      "name": "Island Vintage Coffee",
+      "area": "waikiki",
+      "name_en": "Island Vintage Coffee Royal Hawaiian Center",
+      "note": "아사이볼",
+      "stop": "p1"
+    },
+    {
+      "id": "royallobster",
+      "cat": "brunch",
+      "name": "Royal Lobster",
+      "area": "waikiki",
+      "name_en": "Royal Lobster Waikiki",
+      "addr": "2250 Kalakaua Ave, Honolulu, HI",
+      "stop": "p1"
+    },
+    {
+      "id": "aloh",
+      "cat": "brunch",
+      "name": "ALOH Health Bar & Cafe",
+      "area": "waikiki",
+      "name_en": "ALOH Health Bar & Cafe",
+      "addr": "407 Seaside Ave 1st floor, Honolulu, HI",
+      "stop": "p5"
+    },
+    {
+      "id": "alohakitchen",
+      "cat": "brunch",
+      "name": "Aloha Kitchen",
+      "area": "waikiki",
+      "name_en": "Aloha Kitchen Waikiki",
+      "addr": "432 Ena Rd, Honolulu, HI",
+      "stop": "p7"
+    },
+    {
+      "id": "sweete",
+      "cat": "brunch",
+      "name": "Sweet E's Café",
+      "area": "kapahulu",
+      "name_en": "Sweet E's Cafe",
+      "addr": "1006 Kapahulu Ave, Honolulu, HI"
+    },
+    {
+      "id": "barefoot",
+      "cat": "beachcafe",
+      "name": "Barefoot Beach Cafe",
+      "area": "waikiki",
+      "name_en": "Barefoot Beach Cafe Queens Surf Beach",
+      "note": "퀸즈 서프 비치 · 와이키키 동쪽 끝 (걸어서 20분쯤)",
+      "stop": "p3"
+    },
+    {
+      "id": "islandbrew",
+      "cat": "beachcafe",
+      "name": "Island Brew Coffeehouse",
+      "area": "hawaiikai",
+      "name_en": "Island Brew Coffeehouse Hawaii Kai",
+      "note": "하나우마 베이 가는 길"
+    },
+    {
+      "id": "nicos",
+      "cat": "beachcafe",
+      "name": "Nico's Pier 38",
+      "area": "downtown",
+      "name_en": "Nico's Pier 38",
+      "addr": "1129 N Nimitz Hwy, Honolulu, HI",
+      "tags": [
+        "oceanstar"
+      ]
+    },
+    {
+      "id": "miro",
+      "cat": "omakase",
+      "name": "Miro Kaimuki — The Counter",
+      "area": "kaimuki",
+      "name_en": "Miro Kaimuki"
+    },
+    {
+      "id": "aung",
+      "cat": "omakase",
+      "name": "Omakase By Aung",
+      "area": "kapahulu",
+      "name_en": "Omakase By Aung",
+      "addr": "567 Kapahulu Ave, Honolulu, HI"
+    },
+    {
+      "id": "onodera",
+      "cat": "omakase",
+      "name": "Kaiten Sushi Ginza Onodera",
+      "area": "kapahulu",
+      "name_en": "Kaiten Sushi Ginza Onodera Honolulu",
+      "addr": "808 Kapahulu Ave, Honolulu, HI"
+    },
+    {
+      "id": "ichika",
+      "cat": "omakase",
+      "name": "Sushi Ichika",
+      "area": "alamoana",
+      "name_en": "Sushi Ichika",
+      "addr": "434 Piikoi St, Honolulu, HI 96814",
+      "note": "1인 $90 (목록 기준)",
+      "stop": "p10"
+    },
+    {
+      "id": "totoya",
+      "cat": "japanese",
+      "name": "Totoya Negitoro & Seafood Bowls",
+      "area": "alamoana",
+      "name_en": "Totoya Negitoro & Seafood Bowls",
+      "addr": "436 Piikoi St Ste B, Honolulu, HI",
+      "stop": "p10",
+      "tags": [
+        "oceanstar"
+      ],
+      "note": "카이센동·네기토로 맛집 (오션스타)"
+    },
+    {
+      "id": "marujuu",
+      "cat": "japanese",
+      "name": "Marujuu Japanese Hamburg & Steak",
+      "area": "kaimuki",
+      "name_en": "Marujuu Japanese Hamburg & Steak",
+      "addr": "1145 12th Ave C and D, Honolulu, HI"
+    },
+    {
+      "id": "udongama",
+      "cat": "japanese",
+      "name": "Udon Gama-Dashi",
+      "area": "kapahulu",
+      "name_en": "Udon Gama-Dashi",
+      "addr": "755 Kapahulu Ave, Honolulu, HI",
+      "note": "우동"
+    },
+    {
+      "id": "tsurutontan",
+      "cat": "japanese",
+      "name": "츠루톤탄 우동",
+      "area": "waikiki",
+      "name_en": "TsuruTonTan Udon Noodle Brasserie",
+      "addr": "2233 Kalakaua Ave, Honolulu, HI 96815",
+      "note": "로열하와이안센터 B동 3층 · 디럭스 우동·카레 디럭스 우동 추천 · 예약 없이 대기 · 냉 명란우동 맛집 — 마루카메 우동보다 맛있다는 추천 (오션스타)",
+      "stop": "p1",
+      "tags": [
+        "oceanstar"
+      ]
+    },
+    {
+      "id": "michels",
+      "cat": "french",
+      "name": "Michel's at the Colony Surf",
+      "area": "diamondhead",
+      "name_en": "Michel's at the Colony Surf",
+      "note": "선셋 · 분위기",
+      "star": true
+    },
+    {
+      "id": "arancino",
+      "cat": "italian",
+      "name": "Arancino di Mare",
+      "area": "waikiki",
+      "name_en": "Arancino di Mare",
+      "addr": "2552 Kalakaua Ave, Honolulu, HI",
+      "note": "우니 파스타 · 이탈리안 맛집 (오션스타)",
+      "stop": "p3",
+      "tags": [
+        "oceanstar"
+      ]
+    },
+    {
+      "id": "bernini",
+      "cat": "italian",
+      "name": "Bernini Honolulu",
+      "area": "alamoana",
+      "name_en": "Bernini Honolulu",
+      "addr": "1218 Waimanu St, Honolulu, HI",
+      "stop": "p10"
+    },
+    {
+      "id": "senia",
+      "cat": "fine",
+      "name": "Senia",
+      "area": "downtown",
+      "name_en": "Senia Honolulu",
+      "addr": "75 N King St, Honolulu, HI"
+    },
+    {
+      "id": "mw",
+      "cat": "fine",
+      "name": "MW Restaurant",
+      "area": "alamoana",
+      "name_en": "MW Restaurant",
+      "addr": "888 Kapiolani Blvd, Honolulu, HI",
+      "stop": "p10"
+    },
+    {
+      "id": "sushisho",
+      "cat": "fine",
+      "name": "Sushi Sho",
+      "area": "waikiki",
+      "name_en": "Sushi Sho Ritz-Carlton Waikiki",
+      "note": "리츠칼튼 와이키키 호텔"
+    },
+    {
+      "id": "orchids",
+      "cat": "fine",
+      "name": "Orchids",
+      "area": "waikiki",
+      "name_en": "Orchids Halekulani",
+      "addr": "2199 Kalia Rd, Honolulu, HI 96815",
+      "note": "할레쿨라니 호텔 · 숙소(할레푸나) 바로 옆",
+      "stop": "p1"
+    },
+    {
+      "id": "merrimans",
+      "cat": "fine",
+      "name": "Merriman's Honolulu",
+      "area": "alamoana",
+      "name_en": "Merriman's Honolulu, Ward Village",
+      "q": "Merriman's Honolulu, Ward Village, Honolulu, HI",
+      "stop": "p10",
+      "note": "하와이 농장 재료로 만드는 하와이 지역 요리 · 워드 빌리지"
+    },
+    {
+      "id": "tamafuji",
+      "cat": "tonkatsu",
+      "name": "Tonkatsu Tamafuji",
+      "area": "kapahulu",
+      "name_en": "Tonkatsu Tamafuji",
+      "addr": "449 Kapahulu Ave, Honolulu, HI"
+    },
+    {
+      "id": "kuro",
+      "cat": "tonkatsu",
+      "name": "Tonkatsu Kuro",
+      "area": "alamoana",
+      "name_en": "Tonkatsu Kuro",
+      "addr": "1000 Auahi St Suite 134, Honolulu, HI",
+      "stop": "p10"
+    },
+    {
+      "id": "romys",
+      "cat": "shrimp",
+      "name": "Romy's Kahuku Prawns & Shrimp",
+      "area": "northshore",
+      "name_en": "Romy's Kahuku Prawns & Shrimp",
+      "addr": "56-1030 Kamehameha Hwy, Kahuku, HI"
+    },
+    {
+      "id": "bigwave",
+      "cat": "shrimp",
+      "name": "Big Wave Shrimp",
+      "area": "northshore",
+      "name_en": "Big Wave Shrimp",
+      "addr": "66-521 Kamehameha Hwy, Haleiwa, HI"
+    },
+    {
+      "id": "hangang",
+      "cat": "korean",
+      "name": "한강",
+      "area": "alamoana",
+      "addr": "1236 Waimanu St #1F, Honolulu, HI",
+      "q": "Korean restaurant, 1236 Waimanu St, Honolulu, HI",
+      "stop": "p10"
+    },
+    {
+      "id": "ginza",
+      "cat": "korean",
+      "name": "긴자원",
+      "area": "waikiki",
+      "addr": "2155 Lauula St A, Honolulu, HI",
+      "q": "Korean restaurant, 2155 Lauula St, Honolulu, HI",
+      "stop": "p1"
+    },
+    {
+      "id": "hyungjae",
+      "cat": "korean",
+      "name": "형제 (Hyung Jae)",
+      "area": "alamoana",
+      "name_en": "Hyung Jae Restaurant",
+      "addr": "636 Sheridan St, Honolulu, HI",
+      "stop": "p10"
+    },
+    {
+      "id": "koreagarden",
+      "cat": "korean",
+      "name": "코리아 가든",
+      "area": "alamoana",
+      "name_en": "Korea Garden Restaurant",
+      "addr": "1683 Kalakaua Ave, Honolulu, HI",
+      "stop": "p10"
+    },
+    {
+      "id": "topped",
+      "cat": "korean",
+      "name": "Topped Waikiki",
+      "area": "waikiki",
+      "name_en": "Topped Waikiki",
+      "addr": "333 Royal Hawaiian Ave, Honolulu, HI",
+      "stop": "p6"
+    },
+    {
+      "id": "hiburger",
+      "cat": "burger",
+      "name": "Hi Burger",
+      "area": "waikiki",
+      "name_en": "Hi Burger Waikiki",
+      "addr": "342 Lewers St, Honolulu, HI",
+      "note": "추천",
+      "star": true,
+      "stop": "p6"
+    },
+    {
+      "id": "pitstop",
+      "cat": "burger",
+      "name": "Pit Stop Hawaii Food Truck",
+      "area": "waikiki",
+      "name_en": "Pit Stop Hawaii Food Truck",
+      "addr": "2411 Kuhio Ave, Honolulu, HI",
+      "stop": "p4"
+    },
+    {
+      "id": "cheeseburger",
+      "cat": "burger",
+      "name": "Cheeseburger In Paradise",
+      "area": "waikiki",
+      "name_en": "Cheeseburger In Paradise Waikiki",
+      "addr": "2500 Kalakaua Ave, Honolulu, HI",
+      "note": "분위기",
+      "stop": "p3"
+    },
+    {
+      "id": "teddys",
+      "cat": "burger",
+      "name": "Teddy's Bigger Burgers",
+      "area": "waikiki",
+      "name_en": "Teddy's Bigger Burgers Waikiki",
+      "addr": "134 Kapahulu Ave, Honolulu, HI",
+      "plan": "11/18 하나우마 투어 점심에 포함"
+    },
+    {
+      "id": "alohamelt",
+      "cat": "burger",
+      "name": "ALOHA MELT – Waikiki",
+      "area": "waikiki",
+      "name_en": "Aloha Melt Waikiki",
+      "addr": "355 Royal Hawaiian Ave, Honolulu, HI",
+      "note": "토스트",
+      "stop": "p6"
+    },
+    {
+      "id": "surfbar",
+      "cat": "bar",
+      "name": "Surf Bar Waikiki",
+      "area": "waikiki",
+      "name_en": "Surf Bar Waikiki",
+      "note": "와이키키 리조트 호텔"
+    },
+    {
+      "id": "zigu",
+      "cat": "bar",
+      "name": "ZIGU",
+      "area": "waikiki",
+      "name_en": "ZIGU Waikiki",
+      "addr": "413 Seaside Ave #1F, Honolulu, HI",
+      "note": "이자카야",
+      "stop": "p5"
+    },
+    {
+      "id": "harumi",
+      "cat": "bar",
+      "name": "Izakaya Harumi",
+      "area": "waikiki",
+      "name_en": "Izakaya Harumi Waikiki",
+      "addr": "339 Royal Hawaiian Ave #101, Honolulu, HI",
+      "stop": "p6"
+    },
+    {
+      "id": "kingthai",
+      "cat": "etc",
+      "name": "King of Thai Boat Noodles",
+      "area": "waikiki",
+      "name_en": "King of Thai Boat Noodles Waikiki",
+      "addr": "2146 Kalakaua Ave, Honolulu, HI",
+      "note": "태국 쌀국수",
+      "stop": "p7"
+    },
+    {
+      "id": "mikiya",
+      "cat": "etc",
+      "name": "Mikiya Wagyu Shabu House",
+      "area": "kapahulu",
+      "name_en": "Mikiya Wagyu Shabu House Kapahulu",
+      "note": "와규 샤부샤부"
+    },
+    {
+      "id": "leonards",
+      "cat": "etc",
+      "name": "Leonard's Bakery",
+      "area": "kapahulu",
+      "name_en": "Leonard's Bakery",
+      "addr": "933 Kapahulu Ave, Honolulu, HI 96816",
+      "note": "말라사다",
+      "plan": "11/26 추천"
+    },
+    {
+      "id": "pigandlady",
+      "cat": "etc",
+      "name": "The Pig and The Lady",
+      "area": "kaimuki",
+      "name_en": "The Pig and The Lady",
+      "addr": "3650 Waialae Ave, Honolulu, HI",
+      "note": "베트남"
+    },
+    {
+      "id": "halevietnam",
+      "cat": "etc",
+      "name": "Hale Vietnam Restaurant",
+      "area": "kaimuki",
+      "name_en": "Hale Vietnam Restaurant Honolulu",
+      "note": "베트남 쌀국수"
+    },
+    {
+      "id": "mitchs",
+      "cat": "japanese",
+      "name": "Mitch's Fish Market & Sushi Bar",
+      "area": "oahu",
+      "name_en": "Mitch's Fish Market & Sushi Bar",
+      "q": "Mitch's Fish Market & Sushi Bar, Honolulu, HI",
+      "tags": [
+        "oceanstar"
+      ],
+      "note": "로컬들이 좋아하는 스시 집"
+    },
+    {
+      "id": "katsumidori",
+      "cat": "japanese",
+      "name": "Katsumidori Sushi Tokyo",
+      "area": "waikiki",
+      "name_en": "Katsumidori Sushi Tokyo, Prince Waikiki",
+      "tags": [
+        "oceanstar"
+      ],
+      "note": "호텔 안 분위기 좋은 일식 집 · 프린스 와이키키 호텔 로비 층 · 와이키키 서쪽 끝이라 숙소에서 걸어서 20분쯤 (핑크라인 ⑪ 근처) · 저녁은 예약 권장",
+      "addr": "100 Holomoana St, Honolulu, HI 96815",
+      "stop": "p11"
+    },
+    {
+      "id": "imanastei",
+      "cat": "japanese",
+      "name": "Imanas Tei",
+      "area": "oahu",
+      "name_en": "Imanas Tei",
+      "q": "Imanas Tei, Honolulu, HI",
+      "tags": [
+        "oceanstar"
+      ],
+      "note": "로컬들이 좋아하는 이자카야"
+    },
+    {
+      "id": "shabuya",
+      "cat": "japanese",
+      "name": "Shabuya",
+      "area": "alamoana",
+      "name_en": "Shabuya Ala Moana",
+      "tags": [
+        "oceanstar"
+      ],
+      "note": "간단하게 먹기 좋은 무한 리필 샤브샤브 · 알라모아나 센터 2층",
+      "addr": "1450 Ala Moana Blvd, Honolulu, HI 96814",
+      "stop": "p10"
+    },
+    {
+      "id": "zippys",
+      "cat": "local",
+      "name": "Zippy's",
+      "area": "kapahulu",
+      "name_en": "Zippy's Kapahulu",
+      "tags": [
+        "oceanstar"
+      ],
+      "note": "하와이 로컬 체인 (\"하와이의 김밥천국\") · 로코모코·코리안 치킨 샐러드 추천",
+      "addr": "601 Kapahulu Ave, Honolulu, HI 96815"
+    },
+    {
+      "id": "bogarts",
+      "cat": "local",
+      "name": "Bogart's",
+      "area": "diamondhead",
+      "name_en": "Bogart's Cafe",
+      "tags": [
+        "oceanstar"
+      ],
+      "note": "하와이식 브런치 · 다 코브와 같은 건물 (2018년 이전, 예전 주소 3118도 있음)",
+      "addr": "3045 Monsarrat Ave, Honolulu, HI 96815"
+    },
+    {
+      "id": "haleiwajoes",
+      "cat": "local",
+      "name": "Haleiwa Joe's",
+      "area": "oahu",
+      "name_en": "Haleiwa Joe's",
+      "q": "Haleiwa Joe's, Honolulu, HI",
+      "tags": [
+        "oceanstar"
+      ],
+      "note": "로컬들이 좋아하는 로컬·미국 음식 분위기"
+    },
+    {
+      "id": "sperospera",
+      "cat": "local",
+      "name": "Spero Spera",
+      "area": "alamoana",
+      "name_en": "Spero Spera",
+      "tags": [
+        "oceanstar"
+      ],
+      "note": "로컬 샌드위치 맛집 · 아보카도 스테이크 샌드위치·아사이볼 추천",
+      "addr": "1334 Young St Ste 102, Honolulu, HI 96814"
+    },
+    {
+      "id": "helenas",
+      "cat": "local",
+      "name": "Helena's",
+      "area": "oahu",
+      "name_en": "Helena's Hawaiian Food",
+      "q": "Helena's Hawaiian Food, Honolulu, HI",
+      "tags": [
+        "oceanstar"
+      ],
+      "note": "정통 하와이안 음식"
+    },
+    {
+      "id": "herringbone",
+      "cat": "etc",
+      "name": "Herringbone",
+      "area": "waikiki",
+      "name_en": "Herringbone Waikiki",
+      "tags": [
+        "oceanstar"
+      ],
+      "note": "분위기 좋은 저녁 · 인터내셔널 마켓 플레이스 3층(그랜드 라나이) · 힐튼가든인 바로 앞 · 저녁 17시부터",
+      "addr": "2330 Kalakaua Ave, Honolulu, HI 96815",
+      "stop": "p5"
+    },
+    {
+      "id": "wfqueen",
+      "cat": "etc",
+      "name": "홀푸드 마켓 퀸 (Whole Foods Queen)",
+      "area": "alamoana",
+      "name_en": "Whole Foods Market Queen",
+      "addr": "388 Kamakee St, Honolulu, HI 96814",
+      "stop": "p10",
+      "note": "하와이에서 가장 큰 홀푸드 · 포케 바 · 라니카이 주스 · 하와이 최대 핫바 · 생맥주 바(Two Tides) · 07:00~22:00 (2018년 기준)"
+    },
+    {
+      "id": "mauibrewing",
+      "cat": "bar",
+      "name": "Maui Brewing Co.",
+      "area": "waikiki",
+      "name_en": "Maui Brewing Co. Waikiki",
+      "tags": [
+        "oceanstar"
+      ],
+      "note": "하와이 양조장 맥주 · 가성비 안주도 좋음 · 아웃리거 와이키키 비치코머 호텔 2층 · 11:00~23:00 (출처 기준)",
+      "addr": "2300 Kalakaua Ave, Honolulu, HI 96815",
+      "stop": "p1"
+    },
+    {
+      "id": "ivwinebar",
+      "cat": "bar",
+      "name": "Island Vintage Wine Bar",
+      "area": "waikiki",
+      "name_en": "Island Vintage Wine Bar",
+      "tags": [
+        "oceanstar"
+      ],
+      "note": "와인과 맛있는 로컬식 안주 · 로열하와이안센터 C동 2층 (울프강과 같은 동)",
+      "addr": "2301 Kalakaua Ave, Honolulu, HI 96815",
+      "stop": "p1"
+    },
+    {
+      "id": "foodlandpoke",
+      "cat": "poke",
+      "name": "Foodland Poke Bar",
+      "area": "oahu",
+      "name_en": "Foodland poke",
+      "q": "Foodland poke, Honolulu, HI",
+      "tags": [
+        "oceanstar"
+      ],
+      "note": "Spicy Ahi 강추 · 숙소 앞 와이키키 마켓(푸드랜드 계열)에도 포케 코너가 있어요"
+    },
+    {
+      "id": "offthehook",
+      "cat": "poke",
+      "name": "Off The Hook",
+      "area": "oahu",
+      "name_en": "Off the Hook Poke Market",
+      "q": "Off the Hook Poke Market, Honolulu, HI",
+      "tags": [
+        "oceanstar"
+      ]
+    },
+    {
+      "id": "freshcatch",
+      "cat": "poke",
+      "name": "Fresh Catch",
+      "area": "kapahulu",
+      "name_en": "Fresh Catch Kapahulu",
+      "tags": [
+        "oceanstar"
+      ],
+      "addr": "747 Kapahulu Ave, Honolulu, HI 96815",
+      "note": "포케 · 주소는 2022년 기사 기준 (영업 확인)"
+    },
+    {
+      "id": "matchamaiko",
+      "cat": "dessert",
+      "name": "Matcha Cafe Maiko",
+      "area": "waikiki",
+      "name_en": "Matcha Cafe Maiko",
+      "tags": [
+        "oceanstar"
+      ],
+      "note": "진하고 쌉쌀한 말차 아이스크림 · 쿠히오 반얀 건물 구석 · 숙소(힐튼가든인)에서 걸어서 1분",
+      "addr": "2310 Kuhio Ave, Honolulu, HI 96815",
+      "stop": "p5"
+    },
+    {
+      "id": "nanas",
+      "cat": "dessert",
+      "name": "Nana's Green Tea",
+      "area": "waikiki",
+      "name_en": "Nana's Green Tea, Stix Asia",
+      "tags": [
+        "oceanstar"
+      ],
+      "note": "호지차 라떼·아이스크림 강추 · 와이키키 쇼핑 플라자 지하 스틱스 아시아 푸드홀 (옛 와이키키 요코초 자리 — 위치 한 번 확인)",
+      "addr": "2250 Kalakaua Ave, Honolulu, HI 96815",
+      "stop": "p1"
+    },
+    {
+      "id": "mosa",
+      "cat": "dessert",
+      "name": "Mosa! Ice Cream",
+      "area": "waikiki",
+      "name_en": "Mosa Ice Cream Waikiki",
+      "tags": [
+        "oceanstar"
+      ],
+      "note": "모찌·견과류 아이스크림 · 대만식 아이스크림 · 와이키키점 주소는 디렉터리 기준 (다른 주소도 있어 확인)",
+      "addr": "2238 Lauula St, Honolulu, HI 96815",
+      "stop": "p1"
+    },
+    {
+      "id": "coffeeortea",
+      "cat": "dessert",
+      "name": "Coffee or Tea",
+      "area": "alamoana",
+      "name_en": "Coffee or Tea",
+      "tags": [
+        "oceanstar"
+      ],
+      "note": "로컬들이 좋아하는 밀크티·빙수 · 맥컬리 쇼핑센터 쪽",
+      "addr": "1960 Kapiolani Blvd #106, Honolulu, HI 96826"
+    },
+    {
+      "id": "leahi",
+      "cat": "dessert",
+      "name": "Leahi Health",
+      "area": "oahu",
+      "name_en": "Leahi Health Waikiki",
+      "q": "Leahi Health Waikiki, Honolulu, HI",
+      "tags": [
+        "oceanstar"
+      ],
+      "note": "아사이볼"
+    },
+    {
+      "id": "lanikaijuice",
+      "cat": "dessert",
+      "name": "Lanikai Juice",
+      "area": "alamoana",
+      "name_en": "Lanikai Juice, Whole Foods Market Queen",
+      "tags": [
+        "oceanstar"
+      ],
+      "note": "아사이볼 · 홀푸드 퀸 안 키오스크 (다른 지점도 있음)",
+      "addr": "388 Kamakee St, Honolulu, HI 96814",
+      "stop": "p10"
+    },
+    {
+      "id": "dacove",
+      "cat": "dessert",
+      "name": "Da Cove Health Bar and Cafe",
+      "area": "diamondhead",
+      "name_en": "Da Cove Health Bar and Cafe",
+      "tags": [
+        "oceanstar"
+      ],
+      "note": "아사이볼 · 다이아몬드 헤드 등산 뒤에 들르기 좋음",
+      "addr": "3045 Monsarrat Ave #5, Honolulu, HI 96815"
+    },
+    {
+      "id": "lins",
+      "cat": "dessert",
+      "name": "Lin's Hawaiian Snacks (리힝무이 파인애플)",
+      "area": "alamoana",
+      "name_en": "Lin's Hawaiian Snacks",
+      "addr": "401 Kamakee St, Honolulu, HI 96814",
+      "stop": "p10",
+      "star": true,
+      "note": "리힝무이 가루를 뿌린 파인애플(파인애플 리힝)로 유명한 가게 · 크랙시드(말린 과일 간식) 100가지 넘게 · 시식 · 10:00~19:00 (확인 필요)"
+    },
+    {
+      "id": "sunset-kai-lanai",
+      "cat": "sunset",
+      "name": "Sunset Kai Lanai (선셋 카이 라나이)",
+      "area": "keauhou",
+      "island": "bigisland",
+      "name_en": "Sunset Kai Lanai, Keauhou Shopping Center",
+      "addr": "78-6831 Alii Dr, Kailua-Kona, HI 96740",
+      "note": "케아우호우 쇼핑센터 위 오션뷰 · 옛 Sam Choy's Kai Lanai 자리, 지금은 다른 주인 · 해 질 때 가기 좋아요",
+      "star": true
+    },
+    {
+      "id": "kenichi-pacific",
+      "cat": "japanese",
+      "name": "Kenichi Pacific (케니치 퍼시픽)",
+      "area": "keauhou",
+      "island": "bigisland",
+      "name_en": "Kenichi Pacific, Keauhou Shopping Center",
+      "addr": "78-6831 Alii Dr, Kailua-Kona, HI 96740",
+      "note": "스시 · 퓨전 일식 · 오리 콩피 칭찬 후기 · 케아우호우 쇼핑센터 (KTA 옆)",
+      "plan": "11/22 점심 추천 (걸어서)"
+    },
+    {
+      "id": "peaberry-galette",
+      "cat": "brunch",
+      "name": "Peaberry & Galette (피베리 앤 갈레트)",
+      "area": "keauhou",
+      "island": "bigisland",
+      "name_en": "Peaberry & Galette, Keauhou Shopping Center",
+      "addr": "78-6831 Alii Dr, Kailua-Kona, HI 96740",
+      "note": "크레페 · 커피 · 가벼운 아침 · 케아우호우 쇼핑센터",
+      "plan": "11/22 아침·점심 (걸어서)"
+    },
+    {
+      "id": "tropics-taphouse",
+      "cat": "pizza",
+      "name": "Tropics Tap House (트로픽스 탭하우스)",
+      "area": "keauhou",
+      "island": "bigisland",
+      "name_en": "Tropics Tap House, Keauhou Shopping Center",
+      "addr": "78-6831 Alii Dr, Kailua-Kona, HI 96740",
+      "note": "생맥주(드래프트) · 펍 음식 · 케아우호우 쇼핑센터"
+    },
+    {
+      "id": "magics-beach-grill",
+      "cat": "beachcafe",
+      "name": "Magics Beach Grill (매직스 비치 그릴)",
+      "area": "alii",
+      "island": "bigisland",
+      "name_en": "Magics Beach Grill, Magic Sands Beach",
+      "addr": "77-6452 Alii Dr, Kailua-Kona, HI 96740",
+      "note": "매직샌즈 비치 바로 앞 · 바다 보며 점심·선셋 · 트롤리 201번 길목"
+    },
+    {
+      "id": "da-poke-shack",
+      "cat": "poke",
+      "name": "Da Poke Shack (다 포케 셰크)",
+      "area": "alii",
+      "island": "bigisland",
+      "name_en": "Da Poke Shack, Kailua-Kona",
+      "addr": "76-6246 Alii Dr, Kailua-Kona, HI 96740",
+      "note": "코나에서 가장 유명한 포케집 · 작은 가게라 포장해서 바닷가에서 · 늦게 가면 다 팔릴 수 있어요",
+      "plan": "11/25 점심 추천 (우버)",
+      "star": true
+    },
+    {
+      "id": "huggos",
+      "cat": "sunset",
+      "name": "Huggo's (휴고스)",
+      "area": "konatown",
+      "island": "bigisland",
+      "name_en": "Huggo's, Kailua-Kona",
+      "addr": "75-5828 Kahakai Rd, Kailua-Kona, HI 96740",
+      "note": "코나에서 오래된 오션프런트 레스토랑 · 바다 바로 위 선셋 디너 · 옆 Huggo's on the Rocks는 캐주얼 바 · 예약 추천",
+      "plan": "11/24 선셋 디너 추천",
+      "star": true
+    },
+    {
+      "id": "jackie-reys",
+      "cat": "local",
+      "name": "Jackie Rey's Ohana Grill (재키 레이스)",
+      "area": "konatown",
+      "island": "bigisland",
+      "name_en": "Jackie Rey's Ohana Grill, Kailua-Kona",
+      "note": "현지인·여행객 평점이 가장 꾸준한 곳 · 하와이식 해산물·스테이크 · 오션뷰 바 · 위치는 구글 지도로 확인 (이전했다는 후기)",
+      "plan": "11/24 저녁 대안",
+      "star": true
+    },
+    {
+      "id": "island-lava-java",
+      "cat": "brunch",
+      "name": "Island Lava Java (아일랜드 라바 자바)",
+      "area": "konatown",
+      "island": "bigisland",
+      "name_en": "Island Lava Java, Kailua-Kona",
+      "addr": "75-5799 Alii Dr, Kailua-Kona, HI 96740",
+      "note": "바다 보이는 테라스 브런치 · 코나 커피 · 아침·점심·저녁 다 함",
+      "plan": "11/24 아침 · 11/25 점심 추천",
+      "star": true
+    },
+    {
+      "id": "don-beachcomber",
+      "cat": "sunset",
+      "name": "Don the Beachcomber (돈스 마이타이 바)",
+      "area": "konatown",
+      "island": "bigisland",
+      "name_en": "Don the Beachcomber, Royal Kona Resort",
+      "addr": "75-5852 Alii Dr, Kailua-Kona, HI 96740",
+      "note": "마이타이 칵테일의 원조라고 알려진 바 · 로열 코나 리조트 바다 위 · 선셋 칵테일",
+      "plan": "11/21 선셋 칵테일"
+    },
+    {
+      "id": "kona-brewing",
+      "cat": "pizza",
+      "name": "Kona Brewing Hawaii (코나 브루잉)",
+      "area": "konatown",
+      "island": "bigisland",
+      "name_en": "Kona Brewing Hawaii, Kailua-Kona",
+      "addr": "74-5612 Pawai Pl, Kailua-Kona, HI 96740",
+      "note": "코나 맥주 양조장 펍 · 생맥주 샘플러(flight) · 피자 · 코트야드에서 걸어서 15분쯤 (추정)",
+      "plan": "11/21 블랙 록 피자가 닫았을 때",
+      "star": true
+    },
+    {
+      "id": "blackrock-pizza",
+      "cat": "pizza",
+      "name": "Black Rock Pizza (블랙 록 피자)",
+      "area": "konatown",
+      "island": "bigisland",
+      "name_en": "Black Rock Pizza, Kailua-Kona",
+      "addr": "75-5813 Alii Dr, Unit H, Kailua-Kona, HI 96740",
+      "note": "2026년 7월 위생 문제로 보건국 영업정지 기사가 있어요 — 다시 열었는지 꼭 확인 · 안내 시간 11:00~20:00",
+      "plan": "11/21 점심 (영업 확인)"
+    },
+    {
+      "id": "kona-wave-cafe",
+      "cat": "dessert",
+      "name": "Kona Wave Cafe (코나 웨이브 카페)",
+      "area": "konatown",
+      "island": "bigisland",
+      "name_en": "Kona Wave Cafe, Kailua-Kona",
+      "addr": "75-5669 Alii Dr, Suite 1109, Kailua-Kona, HI 96740",
+      "note": "아사이볼 · 커피 (마카다미아 우유 가능) · 보통 17:00쯤 닫음, 일요일 12:00~17:00 (확인 필요)",
+      "plan": "11/21 오후"
+    },
+    {
+      "id": "fish-hopper",
+      "cat": "seafood",
+      "name": "The Fish Hopper (피시 호퍼)",
+      "area": "konatown",
+      "island": "bigisland",
+      "name_en": "The Fish Hopper, Kailua-Kona",
+      "addr": "75-5683 Alii Dr, Kailua-Kona, HI 96740",
+      "note": "부두 근처 오션뷰 해산물 · 코트야드에서 걸어서 3~7분",
+      "plan": "11/23 늦은 저녁 후보 (닫는 시간 확인)"
+    },
+    {
+      "id": "fosters-kitchen",
+      "cat": "sunset",
+      "name": "Foster's Kitchen (포스터스 키친)",
+      "area": "konatown",
+      "island": "bigisland",
+      "name_en": "Foster's Kitchen, Kailua-Kona",
+      "addr": "75-5805 Alii Dr, Kailua-Kona, HI 96740",
+      "note": "알리이 드라이브 바다 앞 캐주얼 바·식당 · 칵테일",
+      "plan": "11/23 늦은 저녁 후보"
+    },
+    {
+      "id": "umekes",
+      "cat": "poke",
+      "name": "Umeke's (우메케스 포케)",
+      "area": "konatown",
+      "island": "bigisland",
+      "name_en": "Umeke's Fish Market Bar & Grill, Kailua-Kona",
+      "note": "코나 시내 포케 · 코트야드에서 걸어서 갈 만한 곳 · 지점이 2곳이라 가까운 곳으로 (구글 지도)",
+      "plan": "11/23 늦은 저녁 포장"
+    },
+    {
+      "id": "kai-eats",
+      "cat": "local",
+      "name": "Kai Eats + Drinks (카이 이츠)",
+      "area": "konatown",
+      "island": "bigisland",
+      "name_en": "Kai Eats + Drinks, Kailua-Kona",
+      "note": "2026년 Yelp 상위권 · 하와이 퓨전 · 위치는 구글 지도로"
+    }
+  ],
+  "sources": {
+    "oceanstar": "오션스타(11/16 거북이 투어) 크루들이 직접 다니는 맛집 추천"
+  },
+  "groups": [
+    {
+      "id": "lins",
+      "icon": "🍍",
+      "title": "리힝무이 파인애플 주변",
+      "note": "Lin's Hawaiian Snacks(카카아코 · 401 Kamakee St) 주변 맛집이에요. 걸어서 5~15분 거리 (추정). 와이키키에서는 핑크라인 ⑩ 알라모아나 센터에서 내려 걸어가요.",
+      "ids": [
+        "lins",
+        "wfqueen",
+        "lanikaijuice",
+        "kuro",
+        "merrimans",
+        "rys",
+        "bernini",
+        "hangang",
+        "mw",
+        "totoya",
+        "ichika",
+        "piikoi",
+        "shabuya"
+      ]
+    },
+    {
+      "id": "kona",
+      "icon": "🌋",
+      "title": "빅아일랜드 코나",
+      "note": "코나코스트(케아우호우)·코트야드(코나 시내) 근처 유명 맛집이에요. 차가 없으니 걸어서·트롤리 201번·우버로 가요. 영업 시간은 가기 전에 구글 지도로 확인하세요.",
+      "ids": [
+        "sunset-kai-lanai",
+        "kenichi-pacific",
+        "peaberry-galette",
+        "tropics-taphouse",
+        "magics-beach-grill",
+        "da-poke-shack",
+        "huggos",
+        "jackie-reys",
+        "island-lava-java",
+        "don-beachcomber",
+        "kona-brewing",
+        "blackrock-pizza",
+        "kona-wave-cafe",
+        "fish-hopper",
+        "fosters-kitchen",
+        "umekes",
+        "kai-eats"
+      ]
+    }
+  ]
 }

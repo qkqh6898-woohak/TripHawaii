@@ -316,6 +316,7 @@ export function validateEats(doc) {
     if (!p.name) errors.push(`${at}: name 이 없습니다`);
     if (!cats.has(p.cat)) errors.push(`${at}: cat "${p.cat}" 가 categories 에 없습니다`);
     if (!areas.has(p.area)) errors.push(`${at}: area "${p.area}" 가 areas 에 없습니다`);
+    if (p.island && !['oahu', 'bigisland'].includes(p.island)) errors.push(`${at}: island 는 oahu 또는 bigisland 입니다`);
     if (!p.addr && !p.name_en && !p.q) errors.push(`${at}: 지도 검색에 쓸 addr·name_en·q 중 하나가 있어야 합니다`);
     for (const k of ['name', 'name_en', 'addr', 'q', 'note']) if (p[k] && /https?:|<|>/.test(p[k])) errors.push(`${at}: ${k} 에 주소(URL)나 꺾쇠를 넣지 않습니다`);
   });

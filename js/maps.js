@@ -226,7 +226,7 @@ function bindTransit(root, ctx) {
 }
 
 // ───────────── 맛집 목록 (data/eats.json) ─────────────
-const AREA_ORDER = ['waikiki', 'diamondhead', 'kapahulu', 'alamoana', 'kaimuki', 'downtown', 'hawaiikai', 'northshore', 'oahu'];
+const AREA_ORDER = ['waikiki', 'diamondhead', 'kapahulu', 'alamoana', 'kaimuki', 'downtown', 'hawaiikai', 'northshore', 'oahu', 'keauhou', 'alii', 'konatown'];
 
 function eatsHtml(doc, cat) {
   const group = (doc.groups || []).find((g) => `g-${g.id}` === cat) || null;   // 묶음 (예: 리힝무이 파인애플 주변)
@@ -277,9 +277,9 @@ function eatsHtml(doc, cat) {
           ${p.addr ? html`<p class="muted small">${p.addr}</p>` : ''}
           <div class="btn-row">
             <a class="btn btn-small" href="${gSearch(eatQuery(p))}" target="_blank" rel="noopener noreferrer">📍 구글 지도 앱</a>
-            <a class="btn btn-small" href="${directionsTo(eatQuery(p), { island: 'oahu', stop: p.stop })}" target="_blank" rel="noopener noreferrer">🧭 길찾기</a>
+            <a class="btn btn-small" href="${directionsTo(eatQuery(p), { island: p.island || 'oahu', stop: p.stop })}" target="_blank" rel="noopener noreferrer">🧭 길찾기</a>
           </div>
-          ${planHtml(directionsPlan({ island: 'oahu', stop: p.stop }))}
+          ${planHtml(directionsPlan({ island: p.island || 'oahu', stop: p.stop }))}
           ${embedButtonHtml(eatQuery(p), `${p.name} 구글 지도`)}
         </li>`;
   })}
